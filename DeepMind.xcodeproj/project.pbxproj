@@ -1,0 +1,625 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F6559D9E2A7607DC00C1207A /* DeepMindApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6559D9D2A7607DC00C1207A /* DeepMindApp.swift */; };
+		F6559DA22A7607DF00C1207A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6559DA12A7607DF00C1207A /* Assets.xcassets */; };
+		F6559DA52A7607DF00C1207A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6559DA42A7607DF00C1207A /* Preview Assets.xcassets */; };
+		F6559DAF2A7607DF00C1207A /* DeepMindTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6559DAE2A7607DF00C1207A /* DeepMindTests.swift */; };
+		F6559DB92A7607DF00C1207A /* DeepMindUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6559DB82A7607DF00C1207A /* DeepMindUITests.swift */; };
+		F6559DBB2A7607DF00C1207A /* DeepMindUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6559DBA2A7607DF00C1207A /* DeepMindUITestsLaunchTests.swift */; };
+		F6559DCA2A76085100C1207A /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6559DC92A76085100C1207A /* SplashView.swift */; };
+		F6559DCC2A76093900C1207A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F6559DCB2A76093900C1207A /* GoogleService-Info.plist */; };
+		F6559DCF2A760A1B00C1207A /* AES256Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6559DCE2A760A1B00C1207A /* AES256Util.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F6559DAB2A7607DF00C1207A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F6559D922A7607DC00C1207A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F6559D992A7607DC00C1207A;
+			remoteInfo = DeepMind;
+		};
+		F6559DB52A7607DF00C1207A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F6559D922A7607DC00C1207A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F6559D992A7607DC00C1207A;
+			remoteInfo = DeepMind;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F6559D9A2A7607DC00C1207A /* DeepMind.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeepMind.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F6559D9D2A7607DC00C1207A /* DeepMindApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepMindApp.swift; sourceTree = "<group>"; };
+		F6559DA12A7607DF00C1207A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F6559DA42A7607DF00C1207A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F6559DAA2A7607DF00C1207A /* DeepMindTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeepMindTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F6559DAE2A7607DF00C1207A /* DeepMindTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepMindTests.swift; sourceTree = "<group>"; };
+		F6559DB42A7607DF00C1207A /* DeepMindUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeepMindUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F6559DB82A7607DF00C1207A /* DeepMindUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepMindUITests.swift; sourceTree = "<group>"; };
+		F6559DBA2A7607DF00C1207A /* DeepMindUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepMindUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		F6559DC92A76085100C1207A /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		F6559DCB2A76093900C1207A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F6559DCE2A760A1B00C1207A /* AES256Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AES256Util.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F6559D972A7607DC00C1207A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F6559DA72A7607DF00C1207A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F6559DB12A7607DF00C1207A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F6559D912A7607DC00C1207A = {
+			isa = PBXGroup;
+			children = (
+				F6559D9C2A7607DC00C1207A /* DeepMind */,
+				F6559DAD2A7607DF00C1207A /* DeepMindTests */,
+				F6559DB72A7607DF00C1207A /* DeepMindUITests */,
+				F6559D9B2A7607DC00C1207A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F6559D9B2A7607DC00C1207A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F6559D9A2A7607DC00C1207A /* DeepMind.app */,
+				F6559DAA2A7607DF00C1207A /* DeepMindTests.xctest */,
+				F6559DB42A7607DF00C1207A /* DeepMindUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F6559D9C2A7607DC00C1207A /* DeepMind */ = {
+			isa = PBXGroup;
+			children = (
+				F6559DCB2A76093900C1207A /* GoogleService-Info.plist */,
+				F6559DC72A76083C00C1207A /* Frameworks */,
+				F6559DA12A7607DF00C1207A /* Assets.xcassets */,
+				F6559DA32A7607DF00C1207A /* Preview Content */,
+			);
+			path = DeepMind;
+			sourceTree = "<group>";
+		};
+		F6559DA32A7607DF00C1207A /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				F6559DA42A7607DF00C1207A /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F6559DAD2A7607DF00C1207A /* DeepMindTests */ = {
+			isa = PBXGroup;
+			children = (
+				F6559DAE2A7607DF00C1207A /* DeepMindTests.swift */,
+			);
+			path = DeepMindTests;
+			sourceTree = "<group>";
+		};
+		F6559DB72A7607DF00C1207A /* DeepMindUITests */ = {
+			isa = PBXGroup;
+			children = (
+				F6559DB82A7607DF00C1207A /* DeepMindUITests.swift */,
+				F6559DBA2A7607DF00C1207A /* DeepMindUITestsLaunchTests.swift */,
+			);
+			path = DeepMindUITests;
+			sourceTree = "<group>";
+		};
+		F6559DC72A76083C00C1207A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F6559DCD2A760A1400C1207A /* Helper */,
+				F6559DC82A76084100C1207A /* View */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		F6559DC82A76084100C1207A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F6559D9D2A7607DC00C1207A /* DeepMindApp.swift */,
+				F6559DC92A76085100C1207A /* SplashView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F6559DCD2A760A1400C1207A /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				F6559DCE2A760A1B00C1207A /* AES256Util.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F6559D992A7607DC00C1207A /* DeepMind */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F6559DBE2A7607DF00C1207A /* Build configuration list for PBXNativeTarget "DeepMind" */;
+			buildPhases = (
+				F6559D962A7607DC00C1207A /* Sources */,
+				F6559D972A7607DC00C1207A /* Frameworks */,
+				F6559D982A7607DC00C1207A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DeepMind;
+			productName = DeepMind;
+			productReference = F6559D9A2A7607DC00C1207A /* DeepMind.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F6559DA92A7607DF00C1207A /* DeepMindTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F6559DC12A7607DF00C1207A /* Build configuration list for PBXNativeTarget "DeepMindTests" */;
+			buildPhases = (
+				F6559DA62A7607DF00C1207A /* Sources */,
+				F6559DA72A7607DF00C1207A /* Frameworks */,
+				F6559DA82A7607DF00C1207A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F6559DAC2A7607DF00C1207A /* PBXTargetDependency */,
+			);
+			name = DeepMindTests;
+			productName = DeepMindTests;
+			productReference = F6559DAA2A7607DF00C1207A /* DeepMindTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F6559DB32A7607DF00C1207A /* DeepMindUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F6559DC42A7607DF00C1207A /* Build configuration list for PBXNativeTarget "DeepMindUITests" */;
+			buildPhases = (
+				F6559DB02A7607DF00C1207A /* Sources */,
+				F6559DB12A7607DF00C1207A /* Frameworks */,
+				F6559DB22A7607DF00C1207A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F6559DB62A7607DF00C1207A /* PBXTargetDependency */,
+			);
+			name = DeepMindUITests;
+			productName = DeepMindUITests;
+			productReference = F6559DB42A7607DF00C1207A /* DeepMindUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F6559D922A7607DC00C1207A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					F6559D992A7607DC00C1207A = {
+						CreatedOnToolsVersion = 15.0;
+					};
+					F6559DA92A7607DF00C1207A = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = F6559D992A7607DC00C1207A;
+					};
+					F6559DB32A7607DF00C1207A = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = F6559D992A7607DC00C1207A;
+					};
+				};
+			};
+			buildConfigurationList = F6559D952A7607DC00C1207A /* Build configuration list for PBXProject "DeepMind" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F6559D912A7607DC00C1207A;
+			productRefGroup = F6559D9B2A7607DC00C1207A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F6559D992A7607DC00C1207A /* DeepMind */,
+				F6559DA92A7607DF00C1207A /* DeepMindTests */,
+				F6559DB32A7607DF00C1207A /* DeepMindUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F6559D982A7607DC00C1207A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F6559DA52A7607DF00C1207A /* Preview Assets.xcassets in Resources */,
+				F6559DA22A7607DF00C1207A /* Assets.xcassets in Resources */,
+				F6559DCC2A76093900C1207A /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F6559DA82A7607DF00C1207A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F6559DB22A7607DF00C1207A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F6559D962A7607DC00C1207A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F6559DCF2A760A1B00C1207A /* AES256Util.swift in Sources */,
+				F6559D9E2A7607DC00C1207A /* DeepMindApp.swift in Sources */,
+				F6559DCA2A76085100C1207A /* SplashView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F6559DA62A7607DF00C1207A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F6559DAF2A7607DF00C1207A /* DeepMindTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F6559DB02A7607DF00C1207A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F6559DBB2A7607DF00C1207A /* DeepMindUITestsLaunchTests.swift in Sources */,
+				F6559DB92A7607DF00C1207A /* DeepMindUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F6559DAC2A7607DF00C1207A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F6559D992A7607DC00C1207A /* DeepMind */;
+			targetProxy = F6559DAB2A7607DF00C1207A /* PBXContainerItemProxy */;
+		};
+		F6559DB62A7607DF00C1207A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F6559D992A7607DC00C1207A /* DeepMind */;
+			targetProxy = F6559DB52A7607DF00C1207A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		F6559DBC2A7607DF00C1207A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F6559DBD2A7607DF00C1207A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F6559DBF2A7607DF00C1207A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"DeepMind/Preview Content\"";
+				DEVELOPMENT_TEAM = H7245MHSUG;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yj.cj.DeepMind;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F6559DC02A7607DF00C1207A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"DeepMind/Preview Content\"";
+				DEVELOPMENT_TEAM = H7245MHSUG;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yj.cj.DeepMind;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		F6559DC22A7607DF00C1207A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = JLQKH6P6PL;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cj.DeepMindTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DeepMind.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DeepMind";
+			};
+			name = Debug;
+		};
+		F6559DC32A7607DF00C1207A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = JLQKH6P6PL;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cj.DeepMindTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DeepMind.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DeepMind";
+			};
+			name = Release;
+		};
+		F6559DC52A7607DF00C1207A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = JLQKH6P6PL;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cj.DeepMindUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = DeepMind;
+			};
+			name = Debug;
+		};
+		F6559DC62A7607DF00C1207A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = JLQKH6P6PL;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cj.DeepMindUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = DeepMind;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F6559D952A7607DC00C1207A /* Build configuration list for PBXProject "DeepMind" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F6559DBC2A7607DF00C1207A /* Debug */,
+				F6559DBD2A7607DF00C1207A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F6559DBE2A7607DF00C1207A /* Build configuration list for PBXNativeTarget "DeepMind" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F6559DBF2A7607DF00C1207A /* Debug */,
+				F6559DC02A7607DF00C1207A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F6559DC12A7607DF00C1207A /* Build configuration list for PBXNativeTarget "DeepMindTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F6559DC22A7607DF00C1207A /* Debug */,
+				F6559DC32A7607DF00C1207A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F6559DC42A7607DF00C1207A /* Build configuration list for PBXNativeTarget "DeepMindUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F6559DC52A7607DF00C1207A /* Debug */,
+				F6559DC62A7607DF00C1207A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F6559D922A7607DC00C1207A /* Project object */;
+}
