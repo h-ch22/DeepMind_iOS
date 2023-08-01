@@ -22,7 +22,6 @@ struct DeepMindApp: App {
     var body: some Scene {
         WindowGroup {
             SplashView()
-                .environmentObject(UserManagement())
                 .accentColor(.accentColor)
         }
     }

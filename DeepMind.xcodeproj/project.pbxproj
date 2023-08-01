@@ -16,6 +16,8 @@
 		F6344B342A7638E000FA3440 /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6344B332A7638E000FA3440 /* DrawingView.swift */; };
 		F6344B362A763ACC00FA3440 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6344B352A763ACC00FA3440 /* CanvasView.swift */; };
 		F6344B392A76407100FA3440 /* DrawingTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6344B382A76407100FA3440 /* DrawingTypeModel.swift */; };
+		F6344B3B2A764A6E00FA3440 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6344B3A2A764A6E00FA3440 /* InfoView.swift */; };
+		F6344B3E2A764A8500FA3440 /* VersionManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6344B3D2A764A8500FA3440 /* VersionManagement.swift */; };
 		F6559D9E2A7607DC00C1207A /* DeepMindApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6559D9D2A7607DC00C1207A /* DeepMindApp.swift */; };
 		F6559DA22A7607DF00C1207A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6559DA12A7607DF00C1207A /* Assets.xcassets */; };
 		F6559DA52A7607DF00C1207A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6559DA42A7607DF00C1207A /* Preview Assets.xcassets */; };
@@ -44,6 +46,11 @@
 		F6559DFD2A7617E100C1207A /* SignUpAlertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6559DFC2A7617E100C1207A /* SignUpAlertModel.swift */; };
 		F6559DFF2A762C4700C1207A /* UploadFeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6559DFE2A762C4700C1207A /* UploadFeatureView.swift */; };
 		F6559E012A762D6300C1207A /* FeatureSeverityOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6559E002A762D6300C1207A /* FeatureSeverityOption.swift */; };
+		F67F59252A78C8D5005E558A /* PersonGenderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67F59242A78C8D5005E558A /* PersonGenderModel.swift */; };
+		F67F59282A78CC57005E558A /* InspectionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67F59272A78CC57005E558A /* InspectionHelper.swift */; };
+		F6928E6F2A78C4C600E51B19 /* CL01.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F6928E6C2A78C4C600E51B19 /* CL01.mlmodel */; };
+		F6928E702A78C4C600E51B19 /* CL02.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F6928E6D2A78C4C600E51B19 /* CL02.mlmodel */; };
+		F6928E712A78C4C600E51B19 /* CL03.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F6928E6E2A78C4C600E51B19 /* CL03.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +80,8 @@
 		F6344B332A7638E000FA3440 /* DrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
 		F6344B352A763ACC00FA3440 /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
 		F6344B382A76407100FA3440 /* DrawingTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingTypeModel.swift; sourceTree = "<group>"; };
+		F6344B3A2A764A6E00FA3440 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		F6344B3D2A764A8500FA3440 /* VersionManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionManagement.swift; sourceTree = "<group>"; };
 		F6559D9A2A7607DC00C1207A /* DeepMind.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeepMind.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6559D9D2A7607DC00C1207A /* DeepMindApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepMindApp.swift; sourceTree = "<group>"; };
 		F6559DA12A7607DF00C1207A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -97,6 +106,11 @@
 		F6559DFC2A7617E100C1207A /* SignUpAlertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpAlertModel.swift; sourceTree = "<group>"; };
 		F6559DFE2A762C4700C1207A /* UploadFeatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadFeatureView.swift; sourceTree = "<group>"; };
 		F6559E002A762D6300C1207A /* FeatureSeverityOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureSeverityOption.swift; sourceTree = "<group>"; };
+		F67F59242A78C8D5005E558A /* PersonGenderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonGenderModel.swift; sourceTree = "<group>"; };
+		F67F59272A78CC57005E558A /* InspectionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectionHelper.swift; sourceTree = "<group>"; };
+		F6928E6C2A78C4C600E51B19 /* CL01.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = CL01.mlmodel; sourceTree = "<group>"; };
+		F6928E6D2A78C4C600E51B19 /* CL02.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = CL02.mlmodel; sourceTree = "<group>"; };
+		F6928E6E2A78C4C600E51B19 /* CL03.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = CL03.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +180,7 @@
 		F6344B272A76305500FA3440 /* Inspection */ = {
 			isa = PBXGroup;
 			children = (
+				F67F59262A78CC51005E558A /* Helper */,
 				F6344B372A76406800FA3440 /* Models */,
 				F6344B282A76305D00FA3440 /* View */,
 			);
@@ -201,6 +216,7 @@
 		F6344B2F2A76307C00FA3440 /* More */ = {
 			isa = PBXGroup;
 			children = (
+				F6344B3C2A764A8000FA3440 /* Helper */,
 				F6344B302A76308100FA3440 /* View */,
 			);
 			path = More;
@@ -210,6 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				F6344B312A76308500FA3440 /* MoreView.swift */,
+				F6344B3A2A764A6E00FA3440 /* InfoView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -218,8 +235,17 @@
 			isa = PBXGroup;
 			children = (
 				F6344B382A76407100FA3440 /* DrawingTypeModel.swift */,
+				F67F59242A78C8D5005E558A /* PersonGenderModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		F6344B3C2A764A8000FA3440 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				F6344B3D2A764A8500FA3440 /* VersionManagement.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		F6559D912A7607DC00C1207A = {
@@ -245,6 +271,7 @@
 		F6559D9C2A7607DC00C1207A /* DeepMind */ = {
 			isa = PBXGroup;
 			children = (
+				F6974C062A78C2AC00BCEB07 /* include */,
 				F6344B1F2A76304000FA3440 /* Home */,
 				F6344B232A76304A00FA3440 /* Diary */,
 				F6344B272A76305500FA3440 /* Inspection */,
@@ -352,6 +379,24 @@
 				F6559E002A762D6300C1207A /* FeatureSeverityOption.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		F67F59262A78CC51005E558A /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				F67F59272A78CC57005E558A /* InspectionHelper.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		F6974C062A78C2AC00BCEB07 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				F6928E6C2A78C4C600E51B19 /* CL01.mlmodel */,
+				F6928E6D2A78C4C600E51B19 /* CL02.mlmodel */,
+				F6928E6E2A78C4C600E51B19 /* CL03.mlmodel */,
+			);
+			path = include;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -501,12 +546,18 @@
 				F6559DF72A76176600C1207A /* RadioButton.swift in Sources */,
 				F6344B2E2A76307A00FA3440 /* StatisticsView.swift in Sources */,
 				F6559DF62A76176600C1207A /* RadioButtonGroup.swift in Sources */,
+				F6928E712A78C4C600E51B19 /* CL03.mlmodel in Sources */,
 				F6559DEC2A76169F00C1207A /* SignInView.swift in Sources */,
+				F67F59252A78C8D5005E558A /* PersonGenderModel.swift in Sources */,
 				F6559DF22A76174A00C1207A /* CheckBox.swift in Sources */,
 				F6559DCF2A760A1B00C1207A /* AES256Util.swift in Sources */,
 				F6344B222A76304800FA3440 /* HomeView.swift in Sources */,
+				F6928E6F2A78C4C600E51B19 /* CL01.mlmodel in Sources */,
 				F6344B322A76308500FA3440 /* MoreView.swift in Sources */,
+				F6928E702A78C4C600E51B19 /* CL02.mlmodel in Sources */,
 				F6559DF82A76176600C1207A /* ProcessView.swift in Sources */,
+				F6344B3E2A764A8500FA3440 /* VersionManagement.swift in Sources */,
+				F67F59282A78CC57005E558A /* InspectionHelper.swift in Sources */,
 				F6344B342A7638E000FA3440 /* DrawingView.swift in Sources */,
 				F6559D9E2A7607DC00C1207A /* DeepMindApp.swift in Sources */,
 				F6559DFD2A7617E100C1207A /* SignUpAlertModel.swift in Sources */,
@@ -521,6 +572,7 @@
 				F6344B1E2A76302700FA3440 /* TabManager.swift in Sources */,
 				F6559DE72A76105A00C1207A /* UserInfoModel.swift in Sources */,
 				F6559E012A762D6300C1207A /* FeatureSeverityOption.swift in Sources */,
+				F6344B3B2A764A6E00FA3440 /* InfoView.swift in Sources */,
 				F6344B2A2A76306200FA3440 /* InspectionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -683,7 +735,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 1000b;
 				DEVELOPMENT_ASSET_PATHS = "\"DeepMind/Preview Content\"";
 				DEVELOPMENT_TEAM = H7245MHSUG;
 				ENABLE_PREVIEWS = YES;
@@ -714,7 +766,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 1000b;
 				DEVELOPMENT_ASSET_PATHS = "\"DeepMind/Preview Content\"";
 				DEVELOPMENT_TEAM = H7245MHSUG;
 				ENABLE_PREVIEWS = YES;

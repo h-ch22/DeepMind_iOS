@@ -47,6 +47,15 @@ class LAHelper{
             
         case .touchID:
             return .touchID
+            
+        case .opticID:
+            if #available(iOS 17.0, *) {
+                return .opticID
+            } else {
+                return .none
+            }
+        @unknown default:
+            return .none
         }
     }
 }

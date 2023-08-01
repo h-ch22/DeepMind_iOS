@@ -10,7 +10,7 @@ import SwiftUI
 struct SplashView: View {
     @State private var showSignInView = false
     @State private var showHome = false
-    @EnvironmentObject var helper : UserManagement
+    @StateObject private var helper = UserManagement()
     
     var body: some View {
         ZStack{
@@ -50,7 +50,13 @@ struct SplashView: View {
                                 guard let result = result else{return}
                                 
                                 if result{
-                                    showHome = true
+                                    helper.getUserInfo(){ result in
+                                        guard let result = result else{return}
+                                        
+                                        if result{
+                                            showHome = true
+                                        }
+                                    }
                                 } else{
                                     showSignInView = true
                                 }
@@ -70,7 +76,7 @@ struct SplashView: View {
                 SignInView()
             }
             .fullScreenCover(isPresented: $showHome){
-                TabManager().environmentObject(helper)
+                TabManager(userManagement: helper)
             }
         }
     }

@@ -21,8 +21,14 @@ struct CanvasView: UIViewRepresentable{
     let eraser = PKEraserTool(.bitmap)
     
     func makeUIView(context: Context) -> PKCanvasView {
+        #if targetEnvironment(simulator)
+        canvas.drawingPolicy = .anyInput
+        
+        #else
         canvas.drawingPolicy = UIDevice.current.userInterfaceIdiom == .pad ? .pencilOnly : .anyInput
         canvas.tool = isDraw ? ink : eraser
+        
+        #endif
         
         return canvas
     }

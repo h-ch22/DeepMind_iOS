@@ -10,7 +10,7 @@ import SwiftUI
 struct TabManager: View {
     @State private var selectedIndex = 0
     @State private var showModal = false
-    @EnvironmentObject var userManagement : UserManagement
+    @StateObject var userManagement : UserManagement
     
     let icon = ["house.fill", "square.and.pencil", "applepencil.and.scribble", "chart.xyaxis.line", "ellipsis.circle.fill"]
     
@@ -36,7 +36,7 @@ struct TabManager: View {
                         StatisticsView().navigationTitle(Text("통계"))
 
                     case 4:
-                        MoreView().navigationTitle(Text("더 보기"))
+                        MoreView(helper: userManagement)
                     default:
                         HomeView(parent: self).navigationTitle(Text("홈"))
 
@@ -109,5 +109,5 @@ struct TabManager: View {
 }
 
 #Preview {
-    TabManager().environmentObject(UserManagement())
+    TabManager(userManagement: UserManagement())
 }

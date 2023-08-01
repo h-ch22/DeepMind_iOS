@@ -16,5 +16,5 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView(parent: TabManager())
+    HomeView(parent: TabManager(userManagement: UserManagement()))
 }

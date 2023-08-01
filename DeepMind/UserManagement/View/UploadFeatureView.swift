@@ -242,7 +242,7 @@ struct UploadFeatureView: View {
                     Text(error.recoverySuggestion ?? "")
                 }
                 .fullScreenCover(isPresented: $showHome, content: {
-                    TabManager().environmentObject(helper)
+                    TabManager(userManagement: helper)
                 })
             }
         }

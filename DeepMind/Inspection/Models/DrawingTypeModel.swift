@@ -8,7 +8,7 @@
 import Foundation
 
 enum DrawingTypeModel: CaseIterable, CustomStringConvertible{
-    case HOUSE, TREE, PERSON
+    case HOUSE, TREE, PERSON_1, PERSON_2
     
     var description: String{
         switch self{
@@ -18,8 +18,11 @@ enum DrawingTypeModel: CaseIterable, CustomStringConvertible{
         case .TREE:
             return "나무"
             
-        case .PERSON:
-            return "사람"
+        case .PERSON_1:
+            return "첫번째 사람"
+            
+        case .PERSON_2:
+            return "두번째 사람"
         }
     }
     
@@ -31,7 +34,7 @@ enum DrawingTypeModel: CaseIterable, CustomStringConvertible{
         case .TREE:
             return 2
             
-        case .PERSON:
+        case .PERSON_1, .PERSON_2:
             return 3
         }
     }

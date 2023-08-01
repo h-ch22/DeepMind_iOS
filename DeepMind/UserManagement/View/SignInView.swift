@@ -120,7 +120,7 @@ struct SignInView: View {
                         
                         Spacer().frame(height : 20)
                         
-                        Text("© 2023 Ha Changjin, Yujee Jang.\nAll Rights Reserved.")
+                        Text("© 2023 Changjin Ha, Yujee Jang.\nAll Rights Reserved.")
                             .font(.caption)
                             .multilineTextAlignment(.center)
                             .foregroundColor(.gray)
@@ -133,7 +133,7 @@ struct SignInView: View {
                         return Alert(title: Text("오류"), message: Text("로그인 처리 중 문제가 발생했습니다.\n네트워크 상태를 확인하거나, 입력한 정보가 일치하는지 확인하십시오."), dismissButton: .default(Text("확인")))
                     })
                     .fullScreenCover(isPresented: $showHome, content: {
-                        TabManager().environmentObject(helper)
+                        TabManager(userManagement: helper)
                     })
                     .overlay(ProcessView().isHidden(!showOverlay))
                     .navigationTitle(Text("로그인"))
