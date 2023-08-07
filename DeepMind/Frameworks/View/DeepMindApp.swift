@@ -130,3 +130,107 @@ extension UIView {
         }
     }
 }
+
+extension Array where Element: Comparable {
+  public func argmax() -> (Int, Element) {
+    precondition(self.count > 0)
+    var maxIndex = 0
+    var maxValue = self[0]
+    for i in 1..<self.count {
+      if self[i] > maxValue {
+        maxValue = self[i]
+        maxIndex = i
+      }
+    }
+    return (maxIndex, maxValue)
+  }
+}
+
+extension UIImage {
+  public func pixelBuffer(width: Int, height: Int) -> CVPixelBuffer? {
+    var maybePixelBuffer: CVPixelBuffer?
+    let attrs = [kCVPixelBufferCGImageCompatibilityKey: kCFBooleanTrue,
+                 kCVPixelBufferCGBitmapContextCompatibilityKey: kCFBooleanTrue]
+    let status = CVPixelBufferCreate(kCFAllocatorDefault,
+                                     Int(width),
+                                     Int(height),
+                                     kCVPixelFormatType_32ARGB,
+                                     attrs as CFDictionary,
+                                     &maybePixelBuffer)
+
+    guard status == kCVReturnSuccess, let pixelBuffer = maybePixelBuffer else {
+      return nil
+    }
+
+    CVPixelBufferLockBaseAddress(pixelBuffer, CVPixelBufferLockFlags(rawValue: 0))
+    let pixelData = CVPixelBufferGetBaseAddress(pixelBuffer)
+
+    guard let context = CGContext(data: pixelData,
+                                  width: Int(width),
+                                  height: Int(height),
+                                  bitsPerComponent: 8,
+                                  bytesPerRow: CVPixelBufferGetBytesPerRow(pixelBuffer),
+                                  space: CGColorSpaceCreateDeviceRGB(),
+                                  bitmapInfo: CGImageAlphaInfo.noneSkipFirst.rawValue)
+    else {
+      return nil
+    }
+
+    context.translateBy(x: 0, y: CGFloat(height))
+    context.scaleBy(x: 1, y: -1)
+
+    UIGraphicsPushContext(context)
+    self.draw(in: CGRect(x: 0, y: 0, width: width, height: height))
+    UIGraphicsPopContext()
+    CVPixelBufferUnlockBaseAddress(pixelBuffer, CVPixelBufferLockFlags(rawValue: 0))
+
+    return pixelBuffer
+  }
+    
+}
+
+extension Date{
+    public var year: Int{
+        return Calendar.current.component(.year, from: self)
+    }
+    
+    public var month: Int{
+        return Calendar.current.component(.month, from: self)
+    }
+    
+    public var day: Int{
+        return Calendar.current.component(.day, from: self)
+    }
+    
+    public var weekDay: Int{
+        return Calendar.current.component(.weekday, from: self)
+    }
+    
+    public func codeToWeekDay(code: Int) -> String{
+        switch code{
+        case 1:
+            return "일"
+            
+        case 2:
+            return "월"
+            
+        case 3:
+            return "화"
+            
+        case 4:
+            return "수"
+            
+        case 5:
+            return "목"
+            
+        case 6:
+            return "금"
+            
+        case 7:
+            return "토"
+            
+        default:
+            return ""
+        }
+    }
+}

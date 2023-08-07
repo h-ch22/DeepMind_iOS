@@ -14,6 +14,8 @@ struct CanvasView: UIViewRepresentable{
     @Binding var type: PKInkingTool.InkType
     @Binding var color: Color
     
+    private let pencilInteraction = UIPencilInteraction()
+
     var ink : PKInkingTool{
         PKInkingTool(type, color: UIColor(color))
     }
@@ -30,10 +32,33 @@ struct CanvasView: UIViewRepresentable{
         
         #endif
         
+        pencilInteraction.delegate = context.coordinator
+        canvas.addInteraction(pencilInteraction)
+        
         return canvas
     }
     
     func updateUIView(_ uiView: PKCanvasView, context: Context) {
-        uiView.tool = isDraw ? ink : eraser
+        uiView.tool = context.coordinator.getStatus() ? ink : eraser
+    }
+    
+    func makeCoordinator() -> Coordinator {
+        return Coordinator(isDraw: isDraw)
+    }
+    
+    class Coordinator: NSObject, UIPencilInteractionDelegate{
+        var isDraw: Bool
+        
+        init(isDraw: Bool) {
+            self.isDraw = isDraw
+        }
+        
+        func pencilInteractionDidTap(_ interaction: UIPencilInteraction) {
+            isDraw.toggle()
+        }
+        
+        func getStatus() -> Bool{
+            return isDraw
+        }
     }
 }

@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F62753832A808E03008104B5 /* DiaryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62753822A808E03008104B5 /* DiaryHelper.swift */; };
+		F62753862A808E17008104B5 /* DiaryContentsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62753852A808E17008104B5 /* DiaryContentsModel.swift */; };
+		F62753882A808E36008104B5 /* DiaryEmotionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62753872A808E36008104B5 /* DiaryEmotionModel.swift */; };
+		F627538A2A8092AF008104B5 /* WriteDiaryMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62753892A8092AF008104B5 /* WriteDiaryMainView.swift */; };
+		F627538C2A80A08C008104B5 /* WriteDiaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F627538B2A80A08C008104B5 /* WriteDiaryView.swift */; };
+		F62753942A80A899008104B5 /* KoreanKPNB-R.otf in Resources */ = {isa = PBXBuildFile; fileRef = F62753932A80A899008104B5 /* KoreanKPNB-R.otf */; };
+		F62753962A80B3CB008104B5 /* DiaryCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62753952A80B3CA008104B5 /* DiaryCanvasView.swift */; };
+		F62753982A80B4AA008104B5 /* DiaryMarkUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62753972A80B4AA008104B5 /* DiaryMarkUpView.swift */; };
+		F627539A2A80C0D4008104B5 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62753992A80C0D4008104B5 /* ImagePicker.swift */; };
 		F6344B1E2A76302700FA3440 /* TabManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6344B1D2A76302700FA3440 /* TabManager.swift */; };
 		F6344B222A76304800FA3440 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6344B212A76304800FA3440 /* HomeView.swift */; };
 		F6344B262A76305300FA3440 /* DiaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6344B252A76305300FA3440 /* DiaryView.swift */; };
@@ -51,6 +60,10 @@
 		F6928E6F2A78C4C600E51B19 /* CL01.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F6928E6C2A78C4C600E51B19 /* CL01.mlmodel */; };
 		F6928E702A78C4C600E51B19 /* CL02.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F6928E6D2A78C4C600E51B19 /* CL02.mlmodel */; };
 		F6928E712A78C4C600E51B19 /* CL03.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F6928E6E2A78C4C600E51B19 /* CL03.mlmodel */; };
+		F6D3CCA62A7B3DB800383BBB /* BoundingBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D3CCA52A7B3DB800383BBB /* BoundingBox.swift */; };
+		F6D3CCA82A7B3DD900383BBB /* CVPixelBufferHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D3CCA72A7B3DD900383BBB /* CVPixelBufferHelper.swift */; };
+		F6D3CCAC2A7B3EEE00383BBB /* Prediction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D3CCAB2A7B3EEE00383BBB /* Prediction.swift */; };
+		F6D3CCAE2A7B3F8900383BBB /* PredictTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D3CCAD2A7B3F8900383BBB /* PredictTypeModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +84,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F62753822A808E03008104B5 /* DiaryHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryHelper.swift; sourceTree = "<group>"; };
+		F62753852A808E17008104B5 /* DiaryContentsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryContentsModel.swift; sourceTree = "<group>"; };
+		F62753872A808E36008104B5 /* DiaryEmotionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryEmotionModel.swift; sourceTree = "<group>"; };
+		F62753892A8092AF008104B5 /* WriteDiaryMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteDiaryMainView.swift; sourceTree = "<group>"; };
+		F627538B2A80A08C008104B5 /* WriteDiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteDiaryView.swift; sourceTree = "<group>"; };
+		F62753902A80A806008104B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		F62753932A80A899008104B5 /* KoreanKPNB-R.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KoreanKPNB-R.otf"; sourceTree = "<group>"; };
+		F62753952A80B3CA008104B5 /* DiaryCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryCanvasView.swift; sourceTree = "<group>"; };
+		F62753972A80B4AA008104B5 /* DiaryMarkUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryMarkUpView.swift; sourceTree = "<group>"; };
+		F62753992A80C0D4008104B5 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		F6344B1D2A76302700FA3440 /* TabManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabManager.swift; sourceTree = "<group>"; };
 		F6344B212A76304800FA3440 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		F6344B252A76305300FA3440 /* DiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryView.swift; sourceTree = "<group>"; };
@@ -111,6 +134,10 @@
 		F6928E6C2A78C4C600E51B19 /* CL01.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = CL01.mlmodel; sourceTree = "<group>"; };
 		F6928E6D2A78C4C600E51B19 /* CL02.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = CL02.mlmodel; sourceTree = "<group>"; };
 		F6928E6E2A78C4C600E51B19 /* CL03.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = CL03.mlmodel; sourceTree = "<group>"; };
+		F6D3CCA52A7B3DB800383BBB /* BoundingBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoundingBox.swift; sourceTree = "<group>"; };
+		F6D3CCA72A7B3DD900383BBB /* CVPixelBufferHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVPixelBufferHelper.swift; sourceTree = "<group>"; };
+		F6D3CCAB2A7B3EEE00383BBB /* Prediction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prediction.swift; sourceTree = "<group>"; };
+		F6D3CCAD2A7B3F8900383BBB /* PredictTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictTypeModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +172,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F62753812A808DF6008104B5 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				F62753822A808E03008104B5 /* DiaryHelper.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		F62753842A808E11008104B5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F62753852A808E17008104B5 /* DiaryContentsModel.swift */,
+				F62753872A808E36008104B5 /* DiaryEmotionModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F627538D2A80A797008104B5 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				F62753932A80A899008104B5 /* KoreanKPNB-R.otf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
 		F6344B1F2A76304000FA3440 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -164,6 +216,8 @@
 		F6344B232A76304A00FA3440 /* Diary */ = {
 			isa = PBXGroup;
 			children = (
+				F62753842A808E11008104B5 /* Models */,
+				F62753812A808DF6008104B5 /* Helper */,
 				F6344B242A76304E00FA3440 /* View */,
 			);
 			path = Diary;
@@ -173,6 +227,10 @@
 			isa = PBXGroup;
 			children = (
 				F6344B252A76305300FA3440 /* DiaryView.swift */,
+				F62753892A8092AF008104B5 /* WriteDiaryMainView.swift */,
+				F627538B2A80A08C008104B5 /* WriteDiaryView.swift */,
+				F62753952A80B3CA008104B5 /* DiaryCanvasView.swift */,
+				F62753972A80B4AA008104B5 /* DiaryMarkUpView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -236,6 +294,9 @@
 			children = (
 				F6344B382A76407100FA3440 /* DrawingTypeModel.swift */,
 				F67F59242A78C8D5005E558A /* PersonGenderModel.swift */,
+				F6D3CCA52A7B3DB800383BBB /* BoundingBox.swift */,
+				F6D3CCAB2A7B3EEE00383BBB /* Prediction.swift */,
+				F6D3CCAD2A7B3F8900383BBB /* PredictTypeModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -271,6 +332,8 @@
 		F6559D9C2A7607DC00C1207A /* DeepMind */ = {
 			isa = PBXGroup;
 			children = (
+				F62753902A80A806008104B5 /* Info.plist */,
+				F627538D2A80A797008104B5 /* fonts */,
 				F6974C062A78C2AC00BCEB07 /* include */,
 				F6344B1F2A76304000FA3440 /* Home */,
 				F6344B232A76304A00FA3440 /* Diary */,
@@ -330,6 +393,7 @@
 				F6559D9D2A7607DC00C1207A /* DeepMindApp.swift */,
 				F6559DC92A76085100C1207A /* SplashView.swift */,
 				F6344B1D2A76302700FA3440 /* TabManager.swift */,
+				F62753992A80C0D4008104B5 /* ImagePicker.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -385,6 +449,7 @@
 			isa = PBXGroup;
 			children = (
 				F67F59272A78CC57005E558A /* InspectionHelper.swift */,
+				F6D3CCA72A7B3DD900383BBB /* CVPixelBufferHelper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -517,6 +582,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6559DA52A7607DF00C1207A /* Preview Assets.xcassets in Resources */,
+				F62753942A80A899008104B5 /* KoreanKPNB-R.otf in Resources */,
 				F6559DA22A7607DF00C1207A /* Assets.xcassets in Resources */,
 				F6559DCC2A76093900C1207A /* GoogleService-Info.plist in Resources */,
 			);
@@ -552,18 +618,30 @@
 				F6559DF22A76174A00C1207A /* CheckBox.swift in Sources */,
 				F6559DCF2A760A1B00C1207A /* AES256Util.swift in Sources */,
 				F6344B222A76304800FA3440 /* HomeView.swift in Sources */,
+				F62753962A80B3CB008104B5 /* DiaryCanvasView.swift in Sources */,
+				F62753882A808E36008104B5 /* DiaryEmotionModel.swift in Sources */,
 				F6928E6F2A78C4C600E51B19 /* CL01.mlmodel in Sources */,
 				F6344B322A76308500FA3440 /* MoreView.swift in Sources */,
+				F6D3CCA82A7B3DD900383BBB /* CVPixelBufferHelper.swift in Sources */,
+				F6D3CCA62A7B3DB800383BBB /* BoundingBox.swift in Sources */,
+				F62753862A808E17008104B5 /* DiaryContentsModel.swift in Sources */,
+				F627538A2A8092AF008104B5 /* WriteDiaryMainView.swift in Sources */,
 				F6928E702A78C4C600E51B19 /* CL02.mlmodel in Sources */,
 				F6559DF82A76176600C1207A /* ProcessView.swift in Sources */,
 				F6344B3E2A764A8500FA3440 /* VersionManagement.swift in Sources */,
 				F67F59282A78CC57005E558A /* InspectionHelper.swift in Sources */,
+				F6D3CCAC2A7B3EEE00383BBB /* Prediction.swift in Sources */,
+				F6D3CCAE2A7B3F8900383BBB /* PredictTypeModel.swift in Sources */,
+				F627538C2A80A08C008104B5 /* WriteDiaryView.swift in Sources */,
+				F62753982A80B4AA008104B5 /* DiaryMarkUpView.swift in Sources */,
 				F6344B342A7638E000FA3440 /* DrawingView.swift in Sources */,
 				F6559D9E2A7607DC00C1207A /* DeepMindApp.swift in Sources */,
 				F6559DFD2A7617E100C1207A /* SignUpAlertModel.swift in Sources */,
 				F6559DFB2A7617C100C1207A /* SignUpView.swift in Sources */,
 				F6559DCA2A76085100C1207A /* SplashView.swift in Sources */,
+				F627539A2A80C0D4008104B5 /* ImagePicker.swift in Sources */,
 				F6559DEE2A7616B500C1207A /* LAHelper.swift in Sources */,
+				F62753832A808E03008104B5 /* DiaryHelper.swift in Sources */,
 				F6559DE42A76104100C1207A /* UserManagement.swift in Sources */,
 				F6344B392A76407100FA3440 /* DrawingTypeModel.swift in Sources */,
 				F6344B362A763ACC00FA3440 /* CanvasView.swift in Sources */,
@@ -740,7 +818,10 @@
 				DEVELOPMENT_TEAM = H7245MHSUG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DeepMind/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "하루 일기에 사진을 추가하기 위해 카메라 권한이 필요합니다.";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "자동 로그인 기능 활성화를 위해 생체인식 권한이 필요합니다.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -771,7 +852,10 @@
 				DEVELOPMENT_TEAM = H7245MHSUG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DeepMind/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "하루 일기에 사진을 추가하기 위해 카메라 권한이 필요합니다.";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "자동 로그인 기능 활성화를 위해 생체인식 권한이 필요합니다.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
