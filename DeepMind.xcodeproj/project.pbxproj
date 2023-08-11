@@ -55,14 +55,14 @@
 		F6559DFD2A7617E100C1207A /* SignUpAlertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6559DFC2A7617E100C1207A /* SignUpAlertModel.swift */; };
 		F6559DFF2A762C4700C1207A /* UploadFeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6559DFE2A762C4700C1207A /* UploadFeatureView.swift */; };
 		F6559E012A762D6300C1207A /* FeatureSeverityOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6559E002A762D6300C1207A /* FeatureSeverityOption.swift */; };
+		F674751B2A84A2DF006471CA /* Detection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F674751A2A84A2DF006471CA /* Detection.swift */; };
+		F674751D2A84AF86006471CA /* CL01.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = F674751C2A84AF86006471CA /* CL01.mlpackage */; };
+		F674751F2A84AF8F006471CA /* CL02.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = F674751E2A84AF8F006471CA /* CL02.mlpackage */; };
+		F67475212A84AF95006471CA /* CL03.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = F67475202A84AF95006471CA /* CL03.mlpackage */; };
+		F67475232A84B922006471CA /* DetectionResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67475222A84B922006471CA /* DetectionResultsView.swift */; };
 		F67F59252A78C8D5005E558A /* PersonGenderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67F59242A78C8D5005E558A /* PersonGenderModel.swift */; };
 		F67F59282A78CC57005E558A /* InspectionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67F59272A78CC57005E558A /* InspectionHelper.swift */; };
-		F6928E6F2A78C4C600E51B19 /* CL01.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F6928E6C2A78C4C600E51B19 /* CL01.mlmodel */; };
-		F6928E702A78C4C600E51B19 /* CL02.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F6928E6D2A78C4C600E51B19 /* CL02.mlmodel */; };
-		F6928E712A78C4C600E51B19 /* CL03.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F6928E6E2A78C4C600E51B19 /* CL03.mlmodel */; };
-		F6D3CCA62A7B3DB800383BBB /* BoundingBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D3CCA52A7B3DB800383BBB /* BoundingBox.swift */; };
 		F6D3CCA82A7B3DD900383BBB /* CVPixelBufferHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D3CCA72A7B3DD900383BBB /* CVPixelBufferHelper.swift */; };
-		F6D3CCAC2A7B3EEE00383BBB /* Prediction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D3CCAB2A7B3EEE00383BBB /* Prediction.swift */; };
 		F6D3CCAE2A7B3F8900383BBB /* PredictTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D3CCAD2A7B3F8900383BBB /* PredictTypeModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -129,14 +129,14 @@
 		F6559DFC2A7617E100C1207A /* SignUpAlertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpAlertModel.swift; sourceTree = "<group>"; };
 		F6559DFE2A762C4700C1207A /* UploadFeatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadFeatureView.swift; sourceTree = "<group>"; };
 		F6559E002A762D6300C1207A /* FeatureSeverityOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureSeverityOption.swift; sourceTree = "<group>"; };
+		F674751A2A84A2DF006471CA /* Detection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detection.swift; sourceTree = "<group>"; };
+		F674751C2A84AF86006471CA /* CL01.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = CL01.mlpackage; sourceTree = "<group>"; };
+		F674751E2A84AF8F006471CA /* CL02.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = CL02.mlpackage; sourceTree = "<group>"; };
+		F67475202A84AF95006471CA /* CL03.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = CL03.mlpackage; sourceTree = "<group>"; };
+		F67475222A84B922006471CA /* DetectionResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectionResultsView.swift; sourceTree = "<group>"; };
 		F67F59242A78C8D5005E558A /* PersonGenderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonGenderModel.swift; sourceTree = "<group>"; };
 		F67F59272A78CC57005E558A /* InspectionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectionHelper.swift; sourceTree = "<group>"; };
-		F6928E6C2A78C4C600E51B19 /* CL01.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = CL01.mlmodel; sourceTree = "<group>"; };
-		F6928E6D2A78C4C600E51B19 /* CL02.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = CL02.mlmodel; sourceTree = "<group>"; };
-		F6928E6E2A78C4C600E51B19 /* CL03.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = CL03.mlmodel; sourceTree = "<group>"; };
-		F6D3CCA52A7B3DB800383BBB /* BoundingBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoundingBox.swift; sourceTree = "<group>"; };
 		F6D3CCA72A7B3DD900383BBB /* CVPixelBufferHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVPixelBufferHelper.swift; sourceTree = "<group>"; };
-		F6D3CCAB2A7B3EEE00383BBB /* Prediction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prediction.swift; sourceTree = "<group>"; };
 		F6D3CCAD2A7B3F8900383BBB /* PredictTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictTypeModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -251,6 +251,7 @@
 				F6344B292A76306200FA3440 /* InspectionView.swift */,
 				F6344B332A7638E000FA3440 /* DrawingView.swift */,
 				F6344B352A763ACC00FA3440 /* CanvasView.swift */,
+				F67475222A84B922006471CA /* DetectionResultsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -294,9 +295,8 @@
 			children = (
 				F6344B382A76407100FA3440 /* DrawingTypeModel.swift */,
 				F67F59242A78C8D5005E558A /* PersonGenderModel.swift */,
-				F6D3CCA52A7B3DB800383BBB /* BoundingBox.swift */,
-				F6D3CCAB2A7B3EEE00383BBB /* Prediction.swift */,
 				F6D3CCAD2A7B3F8900383BBB /* PredictTypeModel.swift */,
+				F674751A2A84A2DF006471CA /* Detection.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -457,9 +457,9 @@
 		F6974C062A78C2AC00BCEB07 /* include */ = {
 			isa = PBXGroup;
 			children = (
-				F6928E6C2A78C4C600E51B19 /* CL01.mlmodel */,
-				F6928E6D2A78C4C600E51B19 /* CL02.mlmodel */,
-				F6928E6E2A78C4C600E51B19 /* CL03.mlmodel */,
+				F674751C2A84AF86006471CA /* CL01.mlpackage */,
+				F674751E2A84AF8F006471CA /* CL02.mlpackage */,
+				F67475202A84AF95006471CA /* CL03.mlpackage */,
 			);
 			path = include;
 			sourceTree = "<group>";
@@ -612,25 +612,24 @@
 				F6559DF72A76176600C1207A /* RadioButton.swift in Sources */,
 				F6344B2E2A76307A00FA3440 /* StatisticsView.swift in Sources */,
 				F6559DF62A76176600C1207A /* RadioButtonGroup.swift in Sources */,
-				F6928E712A78C4C600E51B19 /* CL03.mlmodel in Sources */,
 				F6559DEC2A76169F00C1207A /* SignInView.swift in Sources */,
 				F67F59252A78C8D5005E558A /* PersonGenderModel.swift in Sources */,
 				F6559DF22A76174A00C1207A /* CheckBox.swift in Sources */,
 				F6559DCF2A760A1B00C1207A /* AES256Util.swift in Sources */,
+				F674751F2A84AF8F006471CA /* CL02.mlpackage in Sources */,
 				F6344B222A76304800FA3440 /* HomeView.swift in Sources */,
 				F62753962A80B3CB008104B5 /* DiaryCanvasView.swift in Sources */,
 				F62753882A808E36008104B5 /* DiaryEmotionModel.swift in Sources */,
-				F6928E6F2A78C4C600E51B19 /* CL01.mlmodel in Sources */,
 				F6344B322A76308500FA3440 /* MoreView.swift in Sources */,
+				F67475212A84AF95006471CA /* CL03.mlpackage in Sources */,
 				F6D3CCA82A7B3DD900383BBB /* CVPixelBufferHelper.swift in Sources */,
-				F6D3CCA62A7B3DB800383BBB /* BoundingBox.swift in Sources */,
 				F62753862A808E17008104B5 /* DiaryContentsModel.swift in Sources */,
 				F627538A2A8092AF008104B5 /* WriteDiaryMainView.swift in Sources */,
-				F6928E702A78C4C600E51B19 /* CL02.mlmodel in Sources */,
+				F674751D2A84AF86006471CA /* CL01.mlpackage in Sources */,
 				F6559DF82A76176600C1207A /* ProcessView.swift in Sources */,
 				F6344B3E2A764A8500FA3440 /* VersionManagement.swift in Sources */,
 				F67F59282A78CC57005E558A /* InspectionHelper.swift in Sources */,
-				F6D3CCAC2A7B3EEE00383BBB /* Prediction.swift in Sources */,
+				F674751B2A84A2DF006471CA /* Detection.swift in Sources */,
 				F6D3CCAE2A7B3F8900383BBB /* PredictTypeModel.swift in Sources */,
 				F627538C2A80A08C008104B5 /* WriteDiaryView.swift in Sources */,
 				F62753982A80B4AA008104B5 /* DiaryMarkUpView.swift in Sources */,
@@ -647,6 +646,7 @@
 				F6344B362A763ACC00FA3440 /* CanvasView.swift in Sources */,
 				F6559DFF2A762C4700C1207A /* UploadFeatureView.swift in Sources */,
 				F6344B262A76305300FA3440 /* DiaryView.swift in Sources */,
+				F67475232A84B922006471CA /* DetectionResultsView.swift in Sources */,
 				F6344B1E2A76302700FA3440 /* TabManager.swift in Sources */,
 				F6559DE72A76105A00C1207A /* UserInfoModel.swift in Sources */,
 				F6559E012A762D6300C1207A /* FeatureSeverityOption.swift in Sources */,

@@ -44,6 +44,10 @@ class DiaryHelper: ObservableObject{
         }
     }
     
+    func remove(id: String, completion: @escaping(_ result: Bool?) -> Void){
+        
+    }
+    
     func uploadDiary(title: String, contents: String, emotionCode: DiaryEmotionModel, photos: [UIImage] , images: [UIImage], markUps: [UIImage], completion: @escaping(_ result: Bool?) -> Void){
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy. MM. dd."
@@ -162,7 +166,7 @@ class DiaryHelper: ObservableObject{
                 }
             }
         }
-        
+                
         completion(true)
         return
     }

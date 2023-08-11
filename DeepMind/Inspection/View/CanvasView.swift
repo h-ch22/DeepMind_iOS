@@ -40,6 +40,7 @@ struct CanvasView: UIViewRepresentable{
     
     func updateUIView(_ uiView: PKCanvasView, context: Context) {
         uiView.tool = context.coordinator.getStatus() ? ink : eraser
+        canvas.tool = isDraw ? ink : eraser
     }
     
     func makeCoordinator() -> Coordinator {

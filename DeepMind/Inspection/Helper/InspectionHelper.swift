@@ -6,199 +6,229 @@
 //
 
 import Foundation
-import CoreML
 import UIKit
 import Accelerate
+import Vision
 
 class InspectionHelper: ObservableObject{
-    private let inputWidth = 416
-    private let inputHeight = 416
-    private let maxBoundingBoxes = 50
+    private let ciContext = CIContext()
     
-    let confidenceThreshold: Float = 0.6
-    let iouThreshold: Float = 0.4
-    
-    
-    let anchors: [[Float]] = [[116,90,  156,198,  373,326], [30,61,  62,45,  59,119], [10,13,  16,30,  33,23]]
-    
-    public init() { }
-    
-    public func predict_CL01(image: CVPixelBuffer) throws -> [Prediction] {
-        let model_CL01 = CL01()
-
-        if let output = try? model_CL01.prediction(image: image) {
-            return computeBoundingBoxes(features: output.var_1366, type: .HOUSE)
-        } else {
-            return []
+    private let colors:[UIColor] = {
+        var colorSet:[UIColor] = []
+        for _ in 0...80 {
+            let color = UIColor(red: CGFloat.random(in: 0...1), green: CGFloat.random(in: 0...1), blue: CGFloat.random(in: 0...1), alpha: 1)
+            colorSet.append(color)
         }
-    }
+        return colorSet
+    }()
     
-    public func predict_CL02(image: CVPixelBuffer) throws -> [Prediction] {
-        let model_CL02 = CL02()
-
-        if let output = try? model_CL02.prediction(image: image) {
-            return computeBoundingBoxes(features: output.var_1366, type: .TREE)
-        } else {
-            return []
-        }
-    }
-    
-    public func predict_CL03(image: CVPixelBuffer) throws -> [Prediction] {
-        let model_CL03 = CL03()
-
-        if let output = try? model_CL03.prediction(image: image) {
-            return computeBoundingBoxes(features: output.var_1366, type: .PERSON)
-        } else {
-            return []
-        }
-    }
-    
-    public func computeBoundingBoxes(features: MLMultiArray, type: PredictTypeModel) -> [Prediction] {
-        var predictions = [Prediction]()
-        
-        let blockSize: Float = 32
-        let boxesPerCell = 3
-        let numClasses : Int = {
-            if type == .HOUSE{
-                return 15
-            } else if type == .TREE{
-                return 14
-            } else{
-                return 20
-            }
-        }()
-        
-        var gridHeight = [13, 26, 52]
-        var gridWidth = [13, 26, 52]
-                
-        var featurePointer = UnsafeMutablePointer<Double>(OpaquePointer(features.dataPointer))
-        var channelStride = features.strides[0].intValue
-        var yStride = features.strides[1].intValue
-        var xStride = features.strides[2].intValue
-        
-        func offset(_ channel: Int, _ x: Int, _ y: Int) -> Int {
-            return channel*channelStride + y*yStride + x*xStride
-        }
-        
-        for i in 0..<3 {
-            featurePointer = UnsafeMutablePointer<Double>(OpaquePointer(features.dataPointer))
-            channelStride = features[i].intValue
-            yStride = features[i].intValue
-            xStride = features[i].intValue
-            for cy in 0..<gridHeight[i] {
-                for cx in 0..<gridWidth[i] {
-                    for b in 0..<boxesPerCell {
-                        let channel = b*(numClasses + 5)
-                        
-                        let tx = Float(featurePointer[offset(channel    , cx, cy)])
-                        let ty = Float(featurePointer[offset(channel + 1, cx, cy)])
-                        let tw = Float(featurePointer[offset(channel + 2, cx, cy)])
-                        let th = Float(featurePointer[offset(channel + 3, cx, cy)])
-                        let tc = Float(featurePointer[offset(channel + 4, cx, cy)])
-
-                        let scale = powf(2.0,Float(i))
-                        let x = (Float(cx) * blockSize + sigmoid(tx))/scale
-                        let y = (Float(cy) * blockSize + sigmoid(ty))/scale
-
-                        let w = exp(tw) * anchors[i][2*b    ]
-                        let h = exp(th) * anchors[i][2*b + 1]
-                        
-                        let confidence = sigmoid(tc)
-                        
-                        var classes = [Float](repeating: 0, count: numClasses)
-                        for c in 0..<numClasses {
-                            classes[c] = Float(featurePointer[offset(channel + 5 + c, cx, cy)])
-                        }
-                        classes = softmax(classes)
-                        
-                        let (detectedClass, bestClassScore) = classes.argmax()
-
-                        let confidenceInClass = bestClassScore * confidence
-
-                        if confidenceInClass > confidenceThreshold {
-                            let rect = CGRect(x: CGFloat(x - w/2), y: CGFloat(y - h/2),
-                                              width: CGFloat(w), height: CGFloat(h))
-                            
-                            let prediction = Prediction(classIndex: detectedClass,
-                                                        score: confidenceInClass,
-                                                        rect: rect)
-                            predictions.append(prediction)
-                        }
-                    }
-                }
-            }
-        }
-        
-        return nonMaxSuppression(boxes: predictions, limit: maxBoundingBoxes, threshold: iouThreshold)
-    }
-    
-    private func nonMaxSuppression(boxes: [Prediction], limit: Int, threshold: Float) -> [Prediction] {
-        
-        let sortedIndices = boxes.indices.sorted { boxes[$0].score > boxes[$1].score }
-        
-        var selected: [Prediction] = []
-        var active = [Bool](repeating: true, count: boxes.count)
-        var numActive = active.count
-        
-    outer: for i in 0..<boxes.count {
-        if active[i] {
-            let boxA = boxes[sortedIndices[i]]
-            selected.append(boxA)
-            if selected.count >= limit { break }
+    private func getDocumentsDirectory() -> URL?{
+        do{
+            let paths = try FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
             
-            for j in i+1..<boxes.count {
-                if active[j] {
-                    let boxB = boxes[sortedIndices[j]]
-                    if IOU(a: boxA.rect, b: boxB.rect) > threshold {
-                        active[j] = false
-                        numActive -= 1
-                        if numActive <= 0 { break outer }
-                    }
+            return paths[0]
+        } catch{
+            print(error)
+            return nil
+        }
+
+    }
+    
+    func saveImage(image: UIImage, imageName: String) -> Bool{
+        do{
+            let fileManager = FileManager.default
+
+            let directory = getDocumentsDirectory()?.appendingPathComponent(imageName)
+            
+            if directory == nil{
+                return false
+            }
+            
+            if fileManager.fileExists(atPath: directory!.absoluteString){
+                do{
+                    try fileManager.removeItem(atPath: directory!.absoluteString)
+                } catch let error{
+                    print(error)
+                    return false
                 }
             }
+            
+            if let imageData = image.pngData(){
+                try imageData.write(to: directory!)
+                return true
+            } else{
+                return false
+            }
+        } catch{
+            print(error)
+            return false
         }
     }
+    
+    func getImage(type: DrawingTypeModel) -> UIImage?{
+        let fileManager = FileManager.default
+        var imagePath : URL?
         
-        return selected
+        switch type{
+        case .HOUSE:
+            imagePath = getDocumentsDirectory()?.appendingPathComponent("House.png")
+            
+        case .TREE:
+            imagePath = getDocumentsDirectory()?.appendingPathComponent("Tree.png")
+
+        case .PERSON_1:
+            imagePath = getDocumentsDirectory()?.appendingPathComponent("Person_1.png")
+
+        case .PERSON_2:
+            imagePath = getDocumentsDirectory()?.appendingPathComponent("Person_2.png")
+        }
+        
+        return UIImage(contentsOfFile: (imagePath?.path())!) ?? nil
     }
     
-    private func IOU(a: CGRect, b: CGRect) -> Float {
-        let areaA = a.width * a.height
-        if areaA <= 0 { return 0 }
+    func getDetectedImage(type: DrawingTypeModel) -> UIImage?{
+        let fileManager = FileManager.default
+        var imagePath : URL?
         
-        let areaB = b.width * b.height
-        if areaB <= 0 { return 0 }
+        switch type{
+        case .HOUSE:
+            imagePath = getDocumentsDirectory()?.appendingPathComponent("Detection_House.png")
+            
+        case .TREE:
+            imagePath = getDocumentsDirectory()?.appendingPathComponent("Detection_Tree.png")
+
+        case .PERSON_1:
+            imagePath = getDocumentsDirectory()?.appendingPathComponent("Detection_Person_1.png")
+
+        case .PERSON_2:
+            imagePath = getDocumentsDirectory()?.appendingPathComponent("Detection_Person_2.png")
+        }
         
-        let intersectionMinX = max(a.minX, b.minX)
-        let intersectionMinY = max(a.minY, b.minY)
-        let intersectionMaxX = min(a.maxX, b.maxX)
-        let intersectionMaxY = min(a.maxY, b.maxY)
-        let intersectionArea = max(intersectionMaxY - intersectionMinY, 0) *
-        max(intersectionMaxX - intersectionMinX, 0)
-        return Float(intersectionArea / (areaA + areaB - intersectionArea))
+        return UIImage(contentsOfFile: (imagePath?.path())!) ?? nil
     }
     
-    public func sigmoid(_ x: Float) -> Float {
-        return 1 / (1 + exp(-x))
+    func detect(type: DrawingTypeModel) -> UIImage?{
+        do{
+            var model: MLModel
+            
+            switch type{
+            case .HOUSE:
+                model = try CL01().model
+
+            case .TREE:
+                model = try CL02().model
+                
+            case .PERSON_1,
+                .PERSON_2:
+                model = try CL03().model
+            }
+            
+            guard let classes = model.modelDescription.classLabels as? [String] else{
+                return nil
+            }
+            
+            let vnModel = try VNCoreMLModel(for: model)
+            let request = VNCoreMLRequest(model: vnModel)
+            
+            let image = getImage(type: type)
+            
+            if image != nil{
+                let cvPixelBuffer = image?.pixelBuffer(width: 1080, height: 1080)
+                
+                if cvPixelBuffer != nil{
+                    let handler = VNImageRequestHandler(cvPixelBuffer: cvPixelBuffer!)
+                    
+                    do{
+                        try handler.perform([request])
+                        guard let results = request.results as? [VNRecognizedObjectObservation] else{
+                            return nil
+                        }
+                        
+                        var detections : [Detection] = []
+                        
+                        for result in results{
+                            let flippedBox = CGRect(x: result.boundingBox.minX, y: 1 - result.boundingBox.maxY, width: result.boundingBox.width, height: result.boundingBox.height)
+                            let box = VNImageRectForNormalizedRect(flippedBox, 1080, 1080)
+
+                            guard let label = result.labels.first?.identifier as? String,
+                                    let colorIndex = classes.firstIndex(of: label) else {
+                                    return nil
+                            }
+                            let detection = Detection(box: box, confidence: result.confidence, label: label, color: colors[colorIndex])
+                            detections.append(detection)
+                        }
+                        
+                        let drawImage = drawRectsOnImage(detections, cvPixelBuffer!)
+                        
+                        return drawImage
+                    } catch let error{
+                        print("VNImageRequestHandler error occured.")
+                        print(error.localizedDescription)
+                        return nil
+                    }
+                } else{
+                    print("CVPixelBuffer is nil.")
+                    return nil
+                }
+            } else{
+                print("Image is nil.")
+                return nil
+            }
+            
+        } catch let error{
+            print("VNCoreModel load error")
+            print(error.localizedDescription)
+            return nil
+        }
     }
     
-    public func softmax(_ x: [Float]) -> [Float] {
-        var x = x
-        let len = vDSP_Length(x.count)
+    private func drawRectsOnImage(_ detections: [Detection], _ pixelBuffer: CVPixelBuffer) -> UIImage?{
+        let ciImage = CIImage(cvPixelBuffer: pixelBuffer)
+        let cgImage = ciContext.createCGImage(ciImage, from: ciImage.extent)!
+        let size = ciImage.extent.size
         
-        var max: Float = 0
-        vDSP_maxv(x, 1, &max, len)
+        guard let cgContext = CGContext(data: nil,
+                                        width: Int(size.width),
+                                        height: Int(size.height),
+                                        bitsPerComponent: 8,
+                                        bytesPerRow: 4 * Int(size.width),
+                                        space: CGColorSpaceCreateDeviceRGB(),
+                                        bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue) else { return nil }
+        cgContext.draw(cgImage, in: CGRect(origin: .zero, size: size))
         
-        max = -max
-        vDSP_vsadd(x, 1, &max, &x, 1, len)
+        for detection in detections{
+            let invertedBox = CGRect(x: detection.box.minX, y: size.height - detection.box.maxY, width: detection.box.width, height: detection.box.height)
+             if let labelText = detection.label {
+                 cgContext.textMatrix = .identity
+                 
+                 let text = "\(labelText) : \(round(detection.confidence*100))"
+                 
+                 let textRect  = CGRect(x: invertedBox.minX + size.width * 0.01, y: invertedBox.minY - size.width * 0.01, width: invertedBox.width, height: invertedBox.height)
+                 let textStyle = NSMutableParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
+                 
+                 let textFontAttributes = [
+                     NSAttributedString.Key.font: UIFont.systemFont(ofSize: textRect.width * 0.1, weight: .bold),
+                     NSAttributedString.Key.foregroundColor: detection.color,
+                     NSAttributedString.Key.paragraphStyle: textStyle
+                 ]
+                 
+                 cgContext.saveGState()
+                 defer { cgContext.restoreGState() }
+                 let astr = NSAttributedString(string: text, attributes: textFontAttributes)
+                 let setter = CTFramesetterCreateWithAttributedString(astr)
+                 let path = CGPath(rect: textRect, transform: nil)
+                 
+                 let frame = CTFramesetterCreateFrame(setter, CFRange(), path, nil)
+                 cgContext.textMatrix = CGAffineTransform.identity
+                 CTFrameDraw(frame, cgContext)
+                 
+                 cgContext.setStrokeColor(detection.color.cgColor)
+                 cgContext.setLineWidth(9)
+                 cgContext.stroke(invertedBox)
+             }
+        }
         
-        var count = Int32(x.count)
-        vvexpf(&x, x, &count)
-        
-        var sum: Float = 0
-        vDSP_sve(x, 1, &sum, len)
-        vDSP_vsdiv(x, 1, &sum, &x, 1, len)
-        
-        return x
+        guard let newImage = cgContext.makeImage() else { return nil }
+                return UIImage(ciImage: CIImage(cgImage: newImage))
     }
 }

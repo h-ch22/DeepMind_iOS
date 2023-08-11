@@ -116,7 +116,7 @@ struct InspectionView: View {
                             Image(systemName : "chevron.right")
                                 .foregroundColor(.white)
                         }.padding([.vertical], 20)
-                            .padding([.horizontal], 120)
+                            .padding([.horizontal], 80)
                             .background(RoundedRectangle(cornerRadius: 50).foregroundColor(Color.accent).shadow(radius: 5))
                     }
                     
