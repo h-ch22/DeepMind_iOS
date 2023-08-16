@@ -62,37 +62,6 @@ struct WriteDiaryView: View {
         }
     }
     
-    private func indexToEmotion(index: Int) -> DiaryEmotionModel?{
-        switch index{
-        case 0:
-            return .HAPPY
-            
-        case 1:
-            return .GREAT
-            
-        case 2:
-            return .GOOD
-            
-        case 3:
-            return .SOSO
-            
-        case 4:
-            return .BAD
-            
-        case 5:
-            return .SAD
-            
-        case 6:
-            return .STAY_ALONE
-            
-        case 7:
-            return .ANGRY
-            
-        default:
-            return nil
-        }
-    }
-    
     var body: some View {
         NavigationView{
             ZStack{
@@ -236,7 +205,7 @@ struct WriteDiaryView: View {
                                 if self.title != "" && self.contents != ""{
                                     showProgress = true
                                     
-                                    helper.uploadDiary(title: self.title, contents: self.contents, emotionCode: self.indexToEmotion(index: selectedIndex)!, photos: self.photoData, images: self.imageData, markUps: self.markUpData){ result in
+                                    helper.uploadDiary(title: self.title, contents: self.contents, emotionCode: DiaryHelper.indexToEmotion(index: selectedIndex)!, photos: self.photoData, images: self.imageData, markUps: self.markUpData){ result in
                                         guard let result = result else{return}
                                         showProgress = false
                                         isError = result

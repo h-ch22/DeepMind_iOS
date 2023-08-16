@@ -64,6 +64,11 @@
 		F67F59282A78CC57005E558A /* InspectionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67F59272A78CC57005E558A /* InspectionHelper.swift */; };
 		F6D3CCA82A7B3DD900383BBB /* CVPixelBufferHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D3CCA72A7B3DD900383BBB /* CVPixelBufferHelper.swift */; };
 		F6D3CCAE2A7B3F8900383BBB /* PredictTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D3CCAD2A7B3F8900383BBB /* PredictTypeModel.swift */; };
+		F6FE66DB2A8C99B500AF9D94 /* DailyEmotionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FE66DA2A8C99B500AF9D94 /* DailyEmotionHelper.swift */; };
+		F6FE66DF2A8CA93E00AF9D94 /* HomeHTPStatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FE66DE2A8CA93E00AF9D94 /* HomeHTPStatisticsView.swift */; };
+		F6FE66E12A8CA94600AF9D94 /* HomeEmotionStatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FE66E02A8CA94600AF9D94 /* HomeEmotionStatisticsView.swift */; };
+		F6FE66E42A8CAD4B00AF9D94 /* HomeStatisticsTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FE66E32A8CAD4B00AF9D94 /* HomeStatisticsTypeModel.swift */; };
+		F6FE66E72A8CB3E900AF9D94 /* StatisticsEmotionDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FE66E62A8CB3E900AF9D94 /* StatisticsEmotionDataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,6 +143,11 @@
 		F67F59272A78CC57005E558A /* InspectionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectionHelper.swift; sourceTree = "<group>"; };
 		F6D3CCA72A7B3DD900383BBB /* CVPixelBufferHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVPixelBufferHelper.swift; sourceTree = "<group>"; };
 		F6D3CCAD2A7B3F8900383BBB /* PredictTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictTypeModel.swift; sourceTree = "<group>"; };
+		F6FE66DA2A8C99B500AF9D94 /* DailyEmotionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyEmotionHelper.swift; sourceTree = "<group>"; };
+		F6FE66DE2A8CA93E00AF9D94 /* HomeHTPStatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHTPStatisticsView.swift; sourceTree = "<group>"; };
+		F6FE66E02A8CA94600AF9D94 /* HomeEmotionStatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEmotionStatisticsView.swift; sourceTree = "<group>"; };
+		F6FE66E32A8CAD4B00AF9D94 /* HomeStatisticsTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeStatisticsTypeModel.swift; sourceTree = "<group>"; };
+		F6FE66E62A8CB3E900AF9D94 /* StatisticsEmotionDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsEmotionDataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +210,8 @@
 		F6344B1F2A76304000FA3440 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				F6FE66E22A8CAD4000AF9D94 /* Models */,
+				F6FE66D92A8C99AB00AF9D94 /* Helper */,
 				F6344B202A76304300FA3440 /* View */,
 			);
 			path = Home;
@@ -209,6 +221,8 @@
 			isa = PBXGroup;
 			children = (
 				F6344B212A76304800FA3440 /* HomeView.swift */,
+				F6FE66DE2A8CA93E00AF9D94 /* HomeHTPStatisticsView.swift */,
+				F6FE66E02A8CA94600AF9D94 /* HomeEmotionStatisticsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -259,6 +273,7 @@
 		F6344B2B2A76306F00FA3440 /* Statistics */ = {
 			isa = PBXGroup;
 			children = (
+				F6FE66E52A8CB3DD00AF9D94 /* Models */,
 				F6344B2C2A76307500FA3440 /* View */,
 			);
 			path = Statistics;
@@ -464,6 +479,30 @@
 			path = include;
 			sourceTree = "<group>";
 		};
+		F6FE66D92A8C99AB00AF9D94 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				F6FE66DA2A8C99B500AF9D94 /* DailyEmotionHelper.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		F6FE66E22A8CAD4000AF9D94 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F6FE66E32A8CAD4B00AF9D94 /* HomeStatisticsTypeModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F6FE66E52A8CB3DD00AF9D94 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F6FE66E62A8CB3E900AF9D94 /* StatisticsEmotionDataModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -609,12 +648,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6FE66E42A8CAD4B00AF9D94 /* HomeStatisticsTypeModel.swift in Sources */,
 				F6559DF72A76176600C1207A /* RadioButton.swift in Sources */,
 				F6344B2E2A76307A00FA3440 /* StatisticsView.swift in Sources */,
 				F6559DF62A76176600C1207A /* RadioButtonGroup.swift in Sources */,
 				F6559DEC2A76169F00C1207A /* SignInView.swift in Sources */,
 				F67F59252A78C8D5005E558A /* PersonGenderModel.swift in Sources */,
+				F6FE66DB2A8C99B500AF9D94 /* DailyEmotionHelper.swift in Sources */,
 				F6559DF22A76174A00C1207A /* CheckBox.swift in Sources */,
+				F6FE66E72A8CB3E900AF9D94 /* StatisticsEmotionDataModel.swift in Sources */,
 				F6559DCF2A760A1B00C1207A /* AES256Util.swift in Sources */,
 				F674751F2A84AF8F006471CA /* CL02.mlpackage in Sources */,
 				F6344B222A76304800FA3440 /* HomeView.swift in Sources */,
@@ -636,6 +678,7 @@
 				F6344B342A7638E000FA3440 /* DrawingView.swift in Sources */,
 				F6559D9E2A7607DC00C1207A /* DeepMindApp.swift in Sources */,
 				F6559DFD2A7617E100C1207A /* SignUpAlertModel.swift in Sources */,
+				F6FE66E12A8CA94600AF9D94 /* HomeEmotionStatisticsView.swift in Sources */,
 				F6559DFB2A7617C100C1207A /* SignUpView.swift in Sources */,
 				F6559DCA2A76085100C1207A /* SplashView.swift in Sources */,
 				F627539A2A80C0D4008104B5 /* ImagePicker.swift in Sources */,
@@ -650,6 +693,7 @@
 				F6344B1E2A76302700FA3440 /* TabManager.swift in Sources */,
 				F6559DE72A76105A00C1207A /* UserInfoModel.swift in Sources */,
 				F6559E012A762D6300C1207A /* FeatureSeverityOption.swift in Sources */,
+				F6FE66DF2A8CA93E00AF9D94 /* HomeHTPStatisticsView.swift in Sources */,
 				F6344B3B2A764A6E00FA3440 /* InfoView.swift in Sources */,
 				F6344B2A2A76306200FA3440 /* InspectionView.swift in Sources */,
 			);

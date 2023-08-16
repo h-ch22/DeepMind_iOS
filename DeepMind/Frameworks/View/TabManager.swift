@@ -28,7 +28,7 @@ struct TabManager: View {
                 ZStack{
                     switch selectedIndex{
                     case 0:
-                        HomeView(parent: self).navigationTitle(Text("홈"))
+                        HomeView(userManagement: userManagement, parent: self).navigationTitle(Text("홈"))
                         
                     case 1:
                         DiaryView().navigationTitle(Text("하루 일기"))
@@ -38,7 +38,7 @@ struct TabManager: View {
                     case 4:
                         MoreView(helper: userManagement)
                     default:
-                        HomeView(parent: self).navigationTitle(Text("홈"))
+                        HomeView(userManagement: userManagement, parent: self).navigationTitle(Text("홈"))
 
                     }
                 }

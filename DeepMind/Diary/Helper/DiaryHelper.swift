@@ -17,7 +17,7 @@ class DiaryHelper: ObservableObject{
     private let db = Firestore.firestore()
     private let storage = Storage.storage()
     
-    private func convertEmotionCodeToEmotion(code: String) -> DiaryEmotionModel{
+    static func convertEmotionCodeToEmotion(code: String) -> DiaryEmotionModel{
         switch code{
         case "HAPPY" : return .HAPPY
         case "GREAT" : return .GREAT
@@ -31,16 +31,34 @@ class DiaryHelper: ObservableObject{
         }
     }
     
-    private func convertEmotionToCode(emotion: DiaryEmotionModel) -> String{
-        switch emotion{
-        case .HAPPY: return "HAPPY"
-        case .GREAT: return "GREAT"
-        case .GOOD: return "GOOD"
-        case .SOSO: return "SOSO"
-        case .BAD: return "BAD"
-        case .SAD: return "SAD"
-        case .STAY_ALONE: return "STAY_ALONE"
-        case .ANGRY: return "ANGRY"
+    static func indexToEmotion(index: Int) -> DiaryEmotionModel?{
+        switch index{
+        case 0:
+            return .HAPPY
+            
+        case 1:
+            return .GREAT
+            
+        case 2:
+            return .GOOD
+            
+        case 3:
+            return .SOSO
+            
+        case 4:
+            return .BAD
+            
+        case 5:
+            return .SAD
+            
+        case 6:
+            return .STAY_ALONE
+            
+        case 7:
+            return .ANGRY
+            
+        default:
+            return nil
         }
     }
     
@@ -57,7 +75,7 @@ class DiaryHelper: ObservableObject{
             self.db.collection("Diary").document(self.auth.currentUser?.uid ?? "").collection("Diaries").document(dateFormatter.string(from: Date())).setData([
                 "title" : AES256Util.encrypt(string: title),
                 "contents" : AES256Util.encrypt(string: contents),
-                "emotion" : AES256Util.encrypt(string: self.convertEmotionToCode(emotion: emotionCode)),
+                "emotion" : AES256Util.encrypt(string: emotionCode.description),
                 "imgCount" : images.count + markUps.count + photos.count
             ]){ error in
                 if error != nil{
@@ -139,7 +157,7 @@ class DiaryHelper: ObservableObject{
                         let date = document.documentID
                         let title = document.get("title") as? String ?? ""
                         let contents = document.get("contents") as? String ?? ""
-                        let emotion = self.convertEmotionCodeToEmotion(code: AES256Util.decrypt(encoded: document.get("emotion") as? String ?? ""))
+                        let emotion = DiaryHelper.convertEmotionCodeToEmotion(code: AES256Util.decrypt(encoded: document.get("emotion") as? String ?? ""))
                         let imgCount = document.get("imgCount") as? Int ?? 0
                         
                         self.diaryList.append(DiaryContentsModel(title: title, contents: contents, date: date, emotion: emotion, imgCount: imgCount))
