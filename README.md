@@ -2,4 +2,72 @@
 # DeepMind</br>
 ### Check your psychological status with ML, based on YOLOv8<br><br>
 
-#### Introduction
+## Features</br>
+#### Home</br>
+> Check your latest inspection results, emotion statistics at a glance.</br>
+
+![ ](imgs/home_1.png) ![ ](imgs/home_2.png) ![ ](imgs/home_3.png)</br>
+
+#### Daily Diary</br>
+> Once a day, record your day with emotions.</br>
+
+![ ](imgs/dailyDiary_1.png)</br>
+
+> Record your day with images, markups, and text. </br>
+
+![ ](imgs/dailyDiary_2.png)</br>
+
+#### Statistics</br>
+> Check your inspection results, emotion statistics history by date, with a chart.</br>
+
+![ ](imgs/statistics_1.png) ![ ](imgs/statistics_2.png) ![ ](imgs/statistics_3.png)</br>
+
+#### Inspection</br>
+> Draw House, Tree, Person with your Apple Pencil, or any inputs.</br>
+
+![ ](imgs/inspection_1.png) ![ ](imgs/inspection_2.png) ![ ](imgs/inspection_3.png) ![ ](imgs/inspection_4.png)</br>
+
+> Get image detection, powered by YOLOv8x.</br>
+
+![ ](imgs/inspection_5.png)</br>
+
+#### and so much more.</br>
+> Change your information, delete your data on server, change your sensitive info, sign out, and secession </br>
+
+![ ](imgs/more.png) </br>
+
+## Compatibility</br>
+> DeepMind is compatible with these devices. </br>
+### iPhone</br>
+
+> iPhone 14 Pro Max </br>
+ iPhone 14 Pro </br>
+ iPhone 14 Plus </br>
+ iPhone 14 </br>
+ iPhone 13 Pro Max </br>
+ iPhone 13 Pro </br>
+ iPhone 13 </br>
+ iPhone 13 mini </br>
+ iPhone 12 Pro Max </br>
+ iPhone 12 Pro </br>
+ iPhone 12 </br>
+ iPhone 12 mini </br>
+ iPhone SE (3rd-Generation) </br>
+
+### iPad</br>
+
+> iPad Pro 12.9 6th-Generation </br>
+ iPad Pro 11 4th-Generation </br>
+ iPad Pro 12.9 5th-Generation </br>
+ iPad 11 3rd-Generation </br>
+ iPad Pro 12.9 4th-Generation </br>
+ iPad 11 2nd-Generation </br>
+ iPad Pro 12.9 3rd-Generation </br>
+ iPad Pro 11 1st-Generation </br>
+ iPad Air (5th-Generation) </br>
+ iPad Air (4th-Generation) </br>
+ iPad mini (6th-Generation) </br>
+ iPad (10th-Generation) </br>
+
+ * Required iOS/iPadOS 16 or up. </br>
+ * 1GB or higher storage required for install application.

@@ -144,6 +144,9 @@ struct DrawingView: View {
                         
                         if isDetectComplete{
                             Text("DeepMind에서 고객님이 요청하신 작업을 모두 완료하였습니다.")
+                                .font(.caption)
+                                .foregroundStyle(Color.gray)
+                                .multilineTextAlignment(.center)
                             
                             Spacer().frame(height : 20)
                             
@@ -161,7 +164,7 @@ struct DrawingView: View {
                                     .background(RoundedRectangle(cornerRadius: 50).foregroundColor(Color.accent).shadow(radius: 5))
                             }
                         } else if detectingError != nil{
-                            Text("DeepMind에서 고객님이 요청하신 작업을 처리하는 중 문제가 발생했습니다.\n앱을 재설치하거나, 다른 그림으로 나중에 다시 시도해보십시오.")
+                            Text("DeepMind에서 고객님이 요청하신 작업을 처리하는 중 문제가 발생했습니다.\n필수 구성 요소 (예: 집 전체, 나무 전체, 사람 전체)가 인식되지 않았거나, 내부 오류일 수 있습니다. 다른 그림으로 다시 시도하거나, 나중에 다시 시도하십시오.")
                                 .font(.caption)
                                 .foregroundStyle(Color.gray)
                                 .multilineTextAlignment(.center)
@@ -189,7 +192,12 @@ struct DrawingView: View {
                         }
                         .onAppear{
                             DispatchQueue.global().async{
-                                let result_CL01 = helper.detect(type: .HOUSE)
+                                let dateFormatter = DateFormatter()
+                                dateFormatter.dateFormat = "yyyy.MM.dd. HH:mm:ss"
+                                
+                                let docId = dateFormatter.string(from: Date())
+                                
+                                let result_CL01 = helper.detect(type: .HOUSE, docId: docId)
                                 
                                 if result_CL01 == nil{
                                     detectType = nil
@@ -197,7 +205,7 @@ struct DrawingView: View {
                                 } else{
                                     helper.saveImage(image: result_CL01!, imageName: "Detection_House.png")
                                     detectType = .TREE
-                                    let result_CL02 = helper.detect(type: .TREE)
+                                    let result_CL02 = helper.detect(type: .TREE, docId: docId)
                                     
                                     if result_CL02 == nil{
                                         detectType = nil
@@ -207,7 +215,7 @@ struct DrawingView: View {
 
                                         detectType = .PERSON_1
                                         
-                                        let result_CL03_1 = helper.detect(type: .PERSON_1)
+                                        let result_CL03_1 = helper.detect(type: .PERSON_1, docId: docId)
                                         
                                         if result_CL03_1 == nil{
                                             detectType = nil
@@ -217,12 +225,13 @@ struct DrawingView: View {
 
                                             detectType = .PERSON_2
                                             
-                                            let result_CL03_2 = helper.detect(type: .PERSON_2)
+                                            let result_CL03_2 = helper.detect(type: .PERSON_2, docId: docId)
                                             
                                             if result_CL03_2 == nil{
                                                 detectType = nil
                                                 detectingError = .PERSON_2
                                             } else{
+                                                detectType = nil
                                                 helper.saveImage(image: result_CL03_2!, imageName: "Detection_Person_2.png")
 
                                                 isDetectComplete = true

@@ -7,6 +7,20 @@
 
 import Foundation
 
-enum PersonGenderModel{
-    case MALE, FEMALE
+enum PersonGenderModel: Identifiable, CaseIterable, CustomStringConvertible{
+    var id: Self {self}
+    case MALE, FEMALE, NONE
+    
+    var description: String{
+        switch self{
+        case .MALE:
+            return "남자"
+            
+        case .FEMALE:
+            return "여자"
+            
+        case .NONE:
+            return "중립/알 수 없음"
+        }
+    }
 }

@@ -9,8 +9,13 @@ import Foundation
 import UIKit
 import Accelerate
 import Vision
+import Firebase
+import FirebaseStorage
 
 class InspectionHelper: ObservableObject{
+    private let db = Firestore.firestore()
+    private let storage = Storage.storage()
+    private let auth = Auth.auth()
     private let ciContext = CIContext()
     
     private let colors:[UIColor] = {
@@ -107,7 +112,7 @@ class InspectionHelper: ObservableObject{
         return UIImage(contentsOfFile: (imagePath?.path())!) ?? nil
     }
     
-    func detect(type: DrawingTypeModel) -> UIImage?{
+    func detect(type: DrawingTypeModel, docId: String) -> UIImage?{
         do{
             var model: MLModel
             
@@ -133,6 +138,10 @@ class InspectionHelper: ObservableObject{
             let image = getImage(type: type)
             
             if image != nil{
+                self.uploadImage(image: image!, isOriginal: true, type: type, docId: docId){ result in
+                    guard let result = result else{return}
+                }
+                
                 let cvPixelBuffer = image?.pixelBuffer(width: 1080, height: 1080)
                 
                 if cvPixelBuffer != nil{
@@ -159,6 +168,27 @@ class InspectionHelper: ObservableObject{
                         }
                         
                         let drawImage = drawRectsOnImage(detections, cvPixelBuffer!)
+                        
+                        switch type{
+                        case .HOUSE:
+                            if !detections.contains(where: {$0.label == "0"}){
+                                return nil
+                            }
+                            
+                        case .TREE:
+                            if !detections.contains(where: {$0.label == "0"}){
+                                return nil
+                            }
+                            
+                        case .PERSON_1, .PERSON_2:
+                            if !detections.contains(where: {$0.label == "0"}) && !detections.contains(where: {$0.label == "1"}){
+                                return nil
+                            }
+                        }
+                        
+                        self.uploadImage(image: drawImage!, isOriginal: false, type: type, docId: docId){ result in
+                            guard let result = result else{return}
+                        }
                         
                         return drawImage
                     } catch let error{
@@ -231,4 +261,63 @@ class InspectionHelper: ObservableObject{
         guard let newImage = cgContext.makeImage() else { return nil }
                 return UIImage(ciImage: CIImage(cgImage: newImage))
     }
+    
+    func uploadImage(image: UIImage, isOriginal: Bool, type: DrawingTypeModel, docId: String, completion: @escaping(_ result: Bool?) -> Void){
+        var fileName = ""
+        
+        switch type{
+        case .HOUSE:
+            fileName = isOriginal ? "House_Original.png" : "House_Detected.png"
+            
+        case .TREE:
+            fileName = isOriginal ? "Tree_Original.png" : "Tree_Detected.png"
+
+        case .PERSON_1:
+            fileName = isOriginal ? "Person_1_Original.png" : "Person_1_Detected.png"
+
+        case .PERSON_2:
+            fileName = isOriginal ? "Person_2_Original.png" : "Person_2_Detected.png"
+        }
+        
+        self.storage.reference().child("Results/\(auth.currentUser?.uid ?? "")/\(docId)/\(fileName)").putData(image.pngData()!, metadata: nil){ (metadata, error) in
+            if error != nil{
+                print(error?.localizedDescription)
+                completion(false)
+                return
+            } else{
+                completion(true)
+                return
+            }
+        }
+    }
+    
+//    func uploadEssentialQuestionAnswer(answer_House: HouseEssentialQuestionAnswerModel, answer_Tree: TreeEssentialQuestionAnswerModel, answer_Person_1: PersonEssentialQuestionAnswerModel, answer_Person_2: PersonEssentialQuestionAnswerModel, docId: String, completion: @escaping(_ result: Bool?) -> Void){
+//        self.db.collection("Users").document(auth.currentUser?.uid ?? "").setData(["NO_DATA": nil]){ error in
+//            if error != nil{
+//                print(error?.localizedDescription)
+//                completion(false)
+//                return
+//            } else{
+//                self.db.collection("Users").document(auth.currentUser?.uid ?? "").collection("Results").document(docId).setData([
+//                    "answer_H_1" : answer_House.ANSWER_01,
+//                    "answer_H_2" : answer_House.ANSWER_02,
+//                    "answer_H_3" : answer_House.ANSWER_03?.description,
+//                    "answer_H_4" : answer_House.ANSWER_04,
+//                    "answer_H_5" : answer_House.ANSWER_05,
+//                    "answer_H_6" : answer_House.ANSWER_06?.description,
+//                    "answer_H_7" : answer_House.ANSWER_07?.description,
+//                    "answer_H_8" : answer_House.ANSWER_08?.description,
+//                    "answer_H_9" : answer_House.ANSWER_09?.description,
+//                    "answer_H_10" : answer_House.ANSWER_10?.description,
+//                    "answer_H_11" : answer_House.ANSWER_11,
+//                    "answer_H_12" : answer_House.ANSWER_12?.description,
+//                    "answer_H_13" : answer_House.ANSWER_13,
+//                    "answer_H_14" : answer_House.ANSWER_14,
+//                    "answer_T_1" : answer_Tree.ANSWER_01,
+//                    "answer_T_2" : answer_Tree.ANSWER_02,
+//                    "answ"
+//                ])
+//            }
+//        }
+//    }
 }

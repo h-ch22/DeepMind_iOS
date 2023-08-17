@@ -61,7 +61,7 @@ struct MoreView: View {
                                     Image(systemName: "checklist")
                                     
                                     VStack(alignment : .leading){
-                                        Text("질병정보 변경")
+                                        Text("민감정보 변경")
                                             .foregroundColor(.txt_color)
                                     }
                                     

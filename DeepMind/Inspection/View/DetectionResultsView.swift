@@ -12,6 +12,11 @@ struct DetectionResultsView: View {
 
     @State private var typeList : [DrawingTypeModel] = [.HOUSE, .TREE, .PERSON_1, .PERSON_2]
     @State private var currentIndex = 0
+    @State private var showModal = false
+    @State private var answer_House = HouseEssentialQuestionAnswerModel()
+    @State private var answer_Tree = TreeEssentialQuestionAnswerModel()
+    @State private var answer_Person_1 = PersonEssentialQuestionAnswerModel()
+    @State private var answer_Person_2 = PersonEssentialQuestionAnswerModel()
     @StateObject private var helper = InspectionHelper()
     
     var body: some View {
@@ -50,7 +55,7 @@ struct DetectionResultsView: View {
                     Spacer().frame(height : 20)
                     
                     Button(action: {
-                        
+                        showModal = true
                     }){
                         Text("필수 문답 작성하기")
                     }.padding(10).buttonStyle(.borderedProminent)
@@ -71,9 +76,11 @@ struct DetectionResultsView: View {
                         Button(action: {
                             if currentIndex < 3{
                                 currentIndex += 1
+                            } else{
+                                
                             }
                         }){
-                            Text("다음")
+                            Text(currentIndex == 3 ? "완료" : "다음")
                         }.padding(10).buttonStyle(.bordered)
                     }
                 }.padding(20)
@@ -89,6 +96,13 @@ struct DetectionResultsView: View {
                 })
             }
             .navigationViewStyle(StackNavigationViewStyle())
+            .sheet(isPresented: $showModal){
+                InspectionEssentialQuestionView(type: typeList[currentIndex],
+                                                answer_House: $answer_House,
+                                                answer_Tree: $answer_Tree,
+                                                answer_Person_First: $answer_Person_1,
+                                                answer_Person_Second: $answer_Person_2)
+            }
     }
 }
 

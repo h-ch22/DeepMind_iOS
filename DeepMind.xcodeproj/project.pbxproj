@@ -62,13 +62,16 @@
 		F67475232A84B922006471CA /* DetectionResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67475222A84B922006471CA /* DetectionResultsView.swift */; };
 		F67F59252A78C8D5005E558A /* PersonGenderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67F59242A78C8D5005E558A /* PersonGenderModel.swift */; };
 		F67F59282A78CC57005E558A /* InspectionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67F59272A78CC57005E558A /* InspectionHelper.swift */; };
-		F6D3CCA82A7B3DD900383BBB /* CVPixelBufferHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D3CCA72A7B3DD900383BBB /* CVPixelBufferHelper.swift */; };
+		F6BE651E2A8DB58500C40E57 /* HouseEssentialQuestionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BE651D2A8DB58500C40E57 /* HouseEssentialQuestionModels.swift */; };
+		F6BE65202A8DBC5600C40E57 /* EssentialQuestionAnswerModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BE651F2A8DBC5600C40E57 /* EssentialQuestionAnswerModels.swift */; };
 		F6D3CCAE2A7B3F8900383BBB /* PredictTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D3CCAD2A7B3F8900383BBB /* PredictTypeModel.swift */; };
 		F6FE66DB2A8C99B500AF9D94 /* DailyEmotionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FE66DA2A8C99B500AF9D94 /* DailyEmotionHelper.swift */; };
 		F6FE66DF2A8CA93E00AF9D94 /* HomeHTPStatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FE66DE2A8CA93E00AF9D94 /* HomeHTPStatisticsView.swift */; };
 		F6FE66E12A8CA94600AF9D94 /* HomeEmotionStatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FE66E02A8CA94600AF9D94 /* HomeEmotionStatisticsView.swift */; };
 		F6FE66E42A8CAD4B00AF9D94 /* HomeStatisticsTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FE66E32A8CAD4B00AF9D94 /* HomeStatisticsTypeModel.swift */; };
 		F6FE66E72A8CB3E900AF9D94 /* StatisticsEmotionDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FE66E62A8CB3E900AF9D94 /* StatisticsEmotionDataModel.swift */; };
+		F6FE66E92A8CBBE300AF9D94 /* InspectionEssentialQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FE66E82A8CBBE300AF9D94 /* InspectionEssentialQuestionView.swift */; };
+		F6FE66EB2A8CBEDE00AF9D94 /* InspectionEssentialQuestionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FE66EA2A8CBEDE00AF9D94 /* InspectionEssentialQuestionType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -141,13 +144,16 @@
 		F67475222A84B922006471CA /* DetectionResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectionResultsView.swift; sourceTree = "<group>"; };
 		F67F59242A78C8D5005E558A /* PersonGenderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonGenderModel.swift; sourceTree = "<group>"; };
 		F67F59272A78CC57005E558A /* InspectionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectionHelper.swift; sourceTree = "<group>"; };
-		F6D3CCA72A7B3DD900383BBB /* CVPixelBufferHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVPixelBufferHelper.swift; sourceTree = "<group>"; };
+		F6BE651D2A8DB58500C40E57 /* HouseEssentialQuestionModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseEssentialQuestionModels.swift; sourceTree = "<group>"; };
+		F6BE651F2A8DBC5600C40E57 /* EssentialQuestionAnswerModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssentialQuestionAnswerModels.swift; sourceTree = "<group>"; };
 		F6D3CCAD2A7B3F8900383BBB /* PredictTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictTypeModel.swift; sourceTree = "<group>"; };
 		F6FE66DA2A8C99B500AF9D94 /* DailyEmotionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyEmotionHelper.swift; sourceTree = "<group>"; };
 		F6FE66DE2A8CA93E00AF9D94 /* HomeHTPStatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHTPStatisticsView.swift; sourceTree = "<group>"; };
 		F6FE66E02A8CA94600AF9D94 /* HomeEmotionStatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEmotionStatisticsView.swift; sourceTree = "<group>"; };
 		F6FE66E32A8CAD4B00AF9D94 /* HomeStatisticsTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeStatisticsTypeModel.swift; sourceTree = "<group>"; };
 		F6FE66E62A8CB3E900AF9D94 /* StatisticsEmotionDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsEmotionDataModel.swift; sourceTree = "<group>"; };
+		F6FE66E82A8CBBE300AF9D94 /* InspectionEssentialQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectionEssentialQuestionView.swift; sourceTree = "<group>"; };
+		F6FE66EA2A8CBEDE00AF9D94 /* InspectionEssentialQuestionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectionEssentialQuestionType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -266,6 +272,7 @@
 				F6344B332A7638E000FA3440 /* DrawingView.swift */,
 				F6344B352A763ACC00FA3440 /* CanvasView.swift */,
 				F67475222A84B922006471CA /* DetectionResultsView.swift */,
+				F6FE66E82A8CBBE300AF9D94 /* InspectionEssentialQuestionView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -312,6 +319,9 @@
 				F67F59242A78C8D5005E558A /* PersonGenderModel.swift */,
 				F6D3CCAD2A7B3F8900383BBB /* PredictTypeModel.swift */,
 				F674751A2A84A2DF006471CA /* Detection.swift */,
+				F6FE66EA2A8CBEDE00AF9D94 /* InspectionEssentialQuestionType.swift */,
+				F6BE651D2A8DB58500C40E57 /* HouseEssentialQuestionModels.swift */,
+				F6BE651F2A8DBC5600C40E57 /* EssentialQuestionAnswerModels.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -464,7 +474,6 @@
 			isa = PBXGroup;
 			children = (
 				F67F59272A78CC57005E558A /* InspectionHelper.swift */,
-				F6D3CCA72A7B3DD900383BBB /* CVPixelBufferHelper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -648,6 +657,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6FE66EB2A8CBEDE00AF9D94 /* InspectionEssentialQuestionType.swift in Sources */,
 				F6FE66E42A8CAD4B00AF9D94 /* HomeStatisticsTypeModel.swift in Sources */,
 				F6559DF72A76176600C1207A /* RadioButton.swift in Sources */,
 				F6344B2E2A76307A00FA3440 /* StatisticsView.swift in Sources */,
@@ -664,15 +674,17 @@
 				F62753882A808E36008104B5 /* DiaryEmotionModel.swift in Sources */,
 				F6344B322A76308500FA3440 /* MoreView.swift in Sources */,
 				F67475212A84AF95006471CA /* CL03.mlpackage in Sources */,
-				F6D3CCA82A7B3DD900383BBB /* CVPixelBufferHelper.swift in Sources */,
 				F62753862A808E17008104B5 /* DiaryContentsModel.swift in Sources */,
 				F627538A2A8092AF008104B5 /* WriteDiaryMainView.swift in Sources */,
 				F674751D2A84AF86006471CA /* CL01.mlpackage in Sources */,
 				F6559DF82A76176600C1207A /* ProcessView.swift in Sources */,
 				F6344B3E2A764A8500FA3440 /* VersionManagement.swift in Sources */,
+				F6FE66E92A8CBBE300AF9D94 /* InspectionEssentialQuestionView.swift in Sources */,
 				F67F59282A78CC57005E558A /* InspectionHelper.swift in Sources */,
 				F674751B2A84A2DF006471CA /* Detection.swift in Sources */,
+				F6BE65202A8DBC5600C40E57 /* EssentialQuestionAnswerModels.swift in Sources */,
 				F6D3CCAE2A7B3F8900383BBB /* PredictTypeModel.swift in Sources */,
+				F6BE651E2A8DB58500C40E57 /* HouseEssentialQuestionModels.swift in Sources */,
 				F627538C2A80A08C008104B5 /* WriteDiaryView.swift in Sources */,
 				F62753982A80B4AA008104B5 /* DiaryMarkUpView.swift in Sources */,
 				F6344B342A7638E000FA3440 /* DrawingView.swift in Sources */,
