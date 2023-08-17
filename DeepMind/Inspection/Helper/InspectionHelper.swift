@@ -291,33 +291,83 @@ class InspectionHelper: ObservableObject{
         }
     }
     
-//    func uploadEssentialQuestionAnswer(answer_House: HouseEssentialQuestionAnswerModel, answer_Tree: TreeEssentialQuestionAnswerModel, answer_Person_1: PersonEssentialQuestionAnswerModel, answer_Person_2: PersonEssentialQuestionAnswerModel, docId: String, completion: @escaping(_ result: Bool?) -> Void){
-//        self.db.collection("Users").document(auth.currentUser?.uid ?? "").setData(["NO_DATA": nil]){ error in
-//            if error != nil{
-//                print(error?.localizedDescription)
-//                completion(false)
-//                return
-//            } else{
-//                self.db.collection("Users").document(auth.currentUser?.uid ?? "").collection("Results").document(docId).setData([
-//                    "answer_H_1" : answer_House.ANSWER_01,
-//                    "answer_H_2" : answer_House.ANSWER_02,
-//                    "answer_H_3" : answer_House.ANSWER_03?.description,
-//                    "answer_H_4" : answer_House.ANSWER_04,
-//                    "answer_H_5" : answer_House.ANSWER_05,
-//                    "answer_H_6" : answer_House.ANSWER_06?.description,
-//                    "answer_H_7" : answer_House.ANSWER_07?.description,
-//                    "answer_H_8" : answer_House.ANSWER_08?.description,
-//                    "answer_H_9" : answer_House.ANSWER_09?.description,
-//                    "answer_H_10" : answer_House.ANSWER_10?.description,
-//                    "answer_H_11" : answer_House.ANSWER_11,
-//                    "answer_H_12" : answer_House.ANSWER_12?.description,
-//                    "answer_H_13" : answer_House.ANSWER_13,
-//                    "answer_H_14" : answer_House.ANSWER_14,
-//                    "answer_T_1" : answer_Tree.ANSWER_01,
-//                    "answer_T_2" : answer_Tree.ANSWER_02,
-//                    "answ"
-//                ])
-//            }
-//        }
-//    }
+    func uploadEssentialQuestionAnswer(answer_House: HouseEssentialQuestionAnswerModel, answer_Tree: TreeEssentialQuestionAnswerModel, answer_Person_1: PersonEssentialQuestionAnswerModel, answer_Person_2: PersonEssentialQuestionAnswerModel, docId: String, completion: @escaping(_ result: Bool?) -> Void){
+        self.db.collection("Users").document(auth.currentUser?.uid ?? "").setData(["lastInspection": docId]){ error in
+            if error != nil{
+                print(error?.localizedDescription)
+                completion(false)
+                return
+            } else{
+                self.db.collection("Users").document(self.auth.currentUser?.uid ?? "").collection("Results").document(docId).setData([
+                    "answer_H_1" : answer_House.ANSWER_01,
+                    "answer_H_2" : answer_House.ANSWER_02,
+                    "answer_H_3" : answer_House.ANSWER_03?.description,
+                    "answer_H_4" : answer_House.ANSWER_04,
+                    "answer_H_5" : answer_House.ANSWER_05,
+                    "answer_H_6" : answer_House.ANSWER_06?.description,
+                    "answer_H_7" : answer_House.ANSWER_07?.description,
+                    "answer_H_8" : answer_House.ANSWER_08?.description,
+                    "answer_H_9" : answer_House.ANSWER_09?.description,
+                    "answer_H_10" : answer_House.ANSWER_10?.description,
+                    "answer_H_11" : answer_House.ANSWER_11,
+                    "answer_H_12" : answer_House.ANSWER_12?.description,
+                    "answer_H_13" : answer_House.ANSWER_13,
+                    "answer_H_14" : answer_House.ANSWER_14,
+                    "answer_T_1" : answer_Tree.ANSWER_01,
+                    "answer_T_2" : answer_Tree.ANSWER_02,
+                    "answer_T_3" : answer_Tree.ANSWER_03?.description,
+                    "answer_T_4" : answer_Tree.ANSWER_04,
+                    "answer_T_5" : answer_Tree.ANSWER_05,
+                    "answer_T_6" : answer_Tree.ANSWER_06,
+                    "answer_T_7" : answer_Tree.ANSWER_07,
+                    "answer_T_8" : answer_Tree.ANSWER_08,
+                    "answer_T_9" : answer_Tree.ANSWER_09?.description,
+                    "answer_T_10" : answer_Tree.ANSWER_10?.description,
+                    "answer_T_11" : answer_Tree.ANSWER_11,
+                    "answer_T_12" : answer_Tree.ANSWER_12,
+                    "answer_T_13" : answer_Tree.ANSWER_13,
+                    "answer_T_14" : answer_Tree.ANSWER_14,
+                    "answer_P_1_1" : answer_Person_1.ANSWER_01,
+                    "answer_P_1_2" : answer_Person_1.ANSWER_02,
+                    "answer_P_1_3" : answer_Person_1.ANSWER_03,
+                    "answer_P_1_4" : answer_Person_1.ANSWER_04?.description,
+                    "answer_P_1_5" : answer_Person_1.ANSWER_05,
+                    "answer_P_1_6" : answer_Person_1.ANSWER_06,
+                    "answer_P_1_7" : answer_Person_1.ANSWER_07?.description,
+                    "answer_P_1_8" : answer_Person_1.ANSWER_08?.description,
+                    "answer_P_1_9" : answer_Person_1.ANSWER_09,
+                    "answer_P_1_10" : answer_Person_1.ANSWER_10,
+                    "answer_P_1_11" : answer_Person_1.ANSWER_11,
+                    "answer_P_1_12" : answer_Person_1.ANSWER_12,
+                    "answer_P_1_13" : answer_Person_1.ANSWER_13,
+                    "answer_P_1_14" : answer_Person_1.ANSWER_14?.description,
+                    "answer_P_1_15" : answer_Person_1.ANSWER_15?.description,
+                    "answer_P_2_1" : answer_Person_2.ANSWER_01,
+                    "answer_P_2_2" : answer_Person_2.ANSWER_02,
+                    "answer_P_2_3" : answer_Person_2.ANSWER_03,
+                    "answer_P_2_4" : answer_Person_2.ANSWER_04?.description,
+                    "answer_P_2_5" : answer_Person_2.ANSWER_05,
+                    "answer_P_2_6" : answer_Person_2.ANSWER_06,
+                    "answer_P_2_7" : answer_Person_2.ANSWER_07?.description,
+                    "answer_P_2_8" : answer_Person_2.ANSWER_08?.description,
+                    "answer_P_2_9" : answer_Person_2.ANSWER_09,
+                    "answer_P_2_10" : answer_Person_2.ANSWER_10,
+                    "answer_P_2_11" : answer_Person_2.ANSWER_11,
+                    "answer_P_2_12" : answer_Person_2.ANSWER_12,
+                    "answer_P_2_13" : answer_Person_2.ANSWER_13,
+                    "answer_P_2_14" : answer_Person_2.ANSWER_14?.description,
+                    "answer_P_2_15" : answer_Person_2.ANSWER_15?.description
+                ]){error in
+                    if error != nil{
+                        print(error?.localizedDescription)
+                        completion(false)
+                        return
+                    } else{
+                        completion(true)
+                        return
+                    }
+                }
+            }
+        }
+    }
 }

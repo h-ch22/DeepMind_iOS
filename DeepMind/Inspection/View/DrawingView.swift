@@ -23,6 +23,7 @@ struct DrawingView: View {
     @State private var detectingError: DrawingTypeModel? = nil
     @State private var isDetectComplete = false
     @State private var showResult = false
+    @State private var docId = ""
     
     @Environment(\.presentationMode) var presentationMode
     
@@ -188,14 +189,14 @@ struct DrawingView: View {
                         
                     }.padding(20)
                         .sheet(isPresented: $showResult){
-                            DetectionResultsView()
+                            DetectionResultsView(docId: docId)
                         }
                         .onAppear{
                             DispatchQueue.global().async{
                                 let dateFormatter = DateFormatter()
                                 dateFormatter.dateFormat = "yyyy.MM.dd. HH:mm:ss"
                                 
-                                let docId = dateFormatter.string(from: Date())
+                                self.docId = dateFormatter.string(from: Date())
                                 
                                 let result_CL01 = helper.detect(type: .HOUSE, docId: docId)
                                 
@@ -231,7 +232,6 @@ struct DrawingView: View {
                                                 detectType = nil
                                                 detectingError = .PERSON_2
                                             } else{
-                                                detectType = nil
                                                 helper.saveImage(image: result_CL03_2!, imageName: "Detection_Person_2.png")
 
                                                 isDetectComplete = true

@@ -18,6 +18,9 @@ struct DetectionResultsView: View {
     @State private var answer_Person_1 = PersonEssentialQuestionAnswerModel()
     @State private var answer_Person_2 = PersonEssentialQuestionAnswerModel()
     @StateObject private var helper = InspectionHelper()
+    @State private var showProgress = false
+    
+    let docId: String
     
     var body: some View {
         NavigationView{
@@ -77,10 +80,19 @@ struct DetectionResultsView: View {
                             if currentIndex < 3{
                                 currentIndex += 1
                             } else{
-                                
+                                showProgress = true
+                                helper.uploadEssentialQuestionAnswer(answer_House: answer_House, answer_Tree: answer_Tree, answer_Person_1: answer_Person_1, answer_Person_2: answer_Person_2, docId: docId){result in
+                                    guard let result = result else{return}
+                                    
+                                    showProgress = false
+                                }
                             }
                         }){
-                            Text(currentIndex == 3 ? "완료" : "다음")
+                            if !showProgress{
+                                Text(currentIndex == 3 ? "완료" : "다음")
+                            } else{
+                                ProgressView()
+                            }
                         }.padding(10).buttonStyle(.bordered)
                     }
                 }.padding(20)
@@ -104,8 +116,4 @@ struct DetectionResultsView: View {
                                                 answer_Person_Second: $answer_Person_2)
             }
     }
-}
-
-#Preview {
-    DetectionResultsView()
 }
