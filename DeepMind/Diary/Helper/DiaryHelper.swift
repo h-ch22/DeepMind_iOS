@@ -163,7 +163,7 @@ class DiaryHelper: ObservableObject{
                         self.diaryList.append(DiaryContentsModel(title: title, contents: contents, date: date, emotion: emotion, imgCount: imgCount))
                     }
                     
-                    self.diaryList.sort(by: {$0.date < $1.date})
+                    self.diaryList.sort(by: {$0.date > $1.date})
                     
                     completion(true)
                     return

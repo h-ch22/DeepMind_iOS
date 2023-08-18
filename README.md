@@ -31,6 +31,10 @@
 
 ![ ](imgs/inspection_5.png)</br>
 
+> Check Essential Information for your image.</br>
+
+![ ](imgs/inspection_6.png)</br>
+
 #### and so much more.</br>
 > Change your information, delete your data on server, change your sensitive info, sign out, and secession </br>
 
@@ -52,22 +56,33 @@
  iPhone 12 Pro </br>
  iPhone 12 </br>
  iPhone 12 mini </br>
+ iPhone 11 Pro Max </br>
+ iPhone 11 Pro </br>
+ iPhone Xs Max </br>
+ iPhone Xs </br>
+ iPhone X<sub>R</sub> </br>
  iPhone SE (3rd-Generation) </br>
+ iPhone SE (2nd-Generation) </br>
 
 ### iPad</br>
 
 > iPad Pro 12.9 6th-Generation </br>
- iPad Pro 11 4th-Generation </br>
- iPad Pro 12.9 5th-Generation </br>
- iPad 11 3rd-Generation </br>
- iPad Pro 12.9 4th-Generation </br>
- iPad 11 2nd-Generation </br>
- iPad Pro 12.9 3rd-Generation </br>
- iPad Pro 11 1st-Generation </br>
+ iPad Pro 11 (4th-Generation) </br>
+ iPad Pro 12.9 (5th-Generation) </br>
+ iPad Pro 11 (3rd-Generation) </br>
+ iPad Pro 12.9 (4th-Generation) </br>
+ iPad Pro 11 (2nd-Generation) </br>
+ iPad Pro 12.9 (3rd-Generation) </br>
+ iPad Pro 11 (1st-Generation) </br>
+ iPad Pro 12.9 (2nd-Generation) </br>
+ iPad Pro 10.5 </br>
  iPad Air (5th-Generation) </br>
  iPad Air (4th-Generation) </br>
+ iPad Air (3rd-Generation) </br>
  iPad mini (6th-Generation) </br>
+ iPad mini (5th-Generation)
  iPad (10th-Generation) </br>
+ iPad (9th-Generation) </br>
 
  * Required iOS/iPadOS 16 or up. </br>
  * 1GB or higher storage required for install application.

@@ -11,6 +11,7 @@ struct HomeView: View {
     @StateObject private var helper = DailyEmotionHelper()
     @StateObject var userManagement: UserManagement
     @State private var emotions = ["🥰 행복해요", "😆 최고예요", "😀 좋아요", "🙂 그저그래요", "☹️ 안좋아요", "😢 슬퍼요", "😣 혼자있고싶어요", "😡 화나요"]
+    @State private var dailyEmotion: DiaryEmotionModel? = nil
     @State private var categories = ["HTP 검사", "하루일기", "하루감정"]
     @State private var currentIndex = 0
     
@@ -31,8 +32,8 @@ struct HomeView: View {
                         
                         Spacer()
                         
-                        if helper.dailyEmotion != nil{
-                            Text("오늘은 \n\(emotions[helper.dailyEmotion!.code])")
+                        if dailyEmotion != nil{
+                            Text("오늘은 \n\(emotions[dailyEmotion!.code])")
                                 .multilineTextAlignment(.trailing)
                         } else{
                             Text("오늘의 감정을 기록해주세요.")
@@ -41,7 +42,7 @@ struct HomeView: View {
                     
                     Spacer().frame(height : 20)
                     
-                    if helper.dailyEmotion == nil{
+                    if dailyEmotion == nil{
                         LazyVGrid(columns: columns, spacing: 20){
                             ForEach(emotions.indices, id:\.self){i in
                                 Button(action: {
@@ -51,6 +52,8 @@ struct HomeView: View {
                                     
                                     helper.getDailyEmotion(){ result in
                                         guard let result = result else{return}
+                                        
+                                        self.dailyEmotion = result
                                     }
                                 }){
                                     VStack{
@@ -112,6 +115,8 @@ struct HomeView: View {
                     .onAppear{
                         helper.getDailyEmotion(){ result in
                             guard let result = result else{return}
+                            
+                            self.dailyEmotion = result
                         }
                         
                         helper.getAllEmotions(){ result in

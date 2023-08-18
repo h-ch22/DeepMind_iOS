@@ -96,60 +96,66 @@ class UserManagement: ObservableObject{
     }
     
     func getUserInfo(completion: @escaping(_ result: Bool?) -> Void){
-        db.collection("Users").document(auth.currentUser?.uid ?? "").getDocument(){(document, error) in
-            if error != nil{
-                print(error)
-                completion(false)
-                return
-            } else{
-                if document != nil{
-                    if document!.exists{
-                        let UID = self.auth.currentUser?.uid ?? ""
-                        let email = document!.get("email") as? String ?? ""
-                        let name = document!.get("name") as? String ?? ""
-                        let nickName = document!.get("nickName") as? String ?? ""
-                        let phone = document!.get("phone") as? String ?? ""
-                        let birthDay = document!.get("birthDay") as? String ?? ""
-                        
-                        self.db.collection("FeatureInformation").document(AES256Util.encrypt(string: UID)).getDocument(){(featureDoc, error) in
-                            if error != nil{
-                                print(error)
-                                completion(false)
-                                return
-                            } else{
-                                if featureDoc != nil{
-                                    if featureDoc!.exists{
-                                        let isChildAbuseAttacker = featureDoc!.get(FieldPath([AES256Util.encrypt(string: "isChildAbuseAttacker")])) as? Bool ?? false
-                                        let isChildAbuseVictim = featureDoc!.get(FieldPath([AES256Util.encrypt(string: "isChildAbuseVictim")])) as? Bool ?? false
-                                        let isDomesticViolenceAttacker = featureDoc!.get(FieldPath([AES256Util.encrypt(string: "isDomesticViolenceAttacker")])) as? Bool ?? false
-                                        let isDomesticViolenceVictim = featureDoc!.get(FieldPath([AES256Util.encrypt(string: "isDomesticViolenceVictim")])) as? Bool ?? false
-                                        let isPsychosis = featureDoc!.get(FieldPath([AES256Util.encrypt(string: "isPsychosis")])) as? Bool ?? false
-                                        
-                                        self.userInfo = UserInfoModel(UID: UID, email: email, name: name, nickName: nickName, phone: phone, birthDay: birthDay, isChildAbuseAttacker: isChildAbuseAttacker, isChildAbuseVictim: isChildAbuseVictim, isDomesticViolenceAttacker: isDomesticViolenceAttacker, isDomesticViolenceVictim: isDomesticViolenceVictim, isPsychosis: isPsychosis)
-                                        
-                                        completion(true)
-                                        return
+        if auth.currentUser?.uid ?? "" == ""{
+            completion(false)
+            return
+        } else{
+            db.collection("Users").document(auth.currentUser?.uid ?? "").getDocument(){(document, error) in
+                if error != nil{
+                    print(error)
+                    completion(false)
+                    return
+                } else{
+                    if document != nil{
+                        if document!.exists{
+                            let UID = self.auth.currentUser?.uid ?? ""
+                            let email = document!.get("email") as? String ?? ""
+                            let name = document!.get("name") as? String ?? ""
+                            let nickName = document!.get("nickName") as? String ?? ""
+                            let phone = document!.get("phone") as? String ?? ""
+                            let birthDay = document!.get("birthDay") as? String ?? ""
+                            
+                            self.db.collection("FeatureInformation").document(AES256Util.encrypt(string: UID)).getDocument(){(featureDoc, error) in
+                                if error != nil{
+                                    print(error)
+                                    completion(false)
+                                    return
+                                } else{
+                                    if featureDoc != nil{
+                                        if featureDoc!.exists{
+                                            let isChildAbuseAttacker = featureDoc!.get(FieldPath([AES256Util.encrypt(string: "isChildAbuseAttacker")])) as? Bool ?? false
+                                            let isChildAbuseVictim = featureDoc!.get(FieldPath([AES256Util.encrypt(string: "isChildAbuseVictim")])) as? Bool ?? false
+                                            let isDomesticViolenceAttacker = featureDoc!.get(FieldPath([AES256Util.encrypt(string: "isDomesticViolenceAttacker")])) as? Bool ?? false
+                                            let isDomesticViolenceVictim = featureDoc!.get(FieldPath([AES256Util.encrypt(string: "isDomesticViolenceVictim")])) as? Bool ?? false
+                                            let isPsychosis = featureDoc!.get(FieldPath([AES256Util.encrypt(string: "isPsychosis")])) as? Bool ?? false
+                                            
+                                            self.userInfo = UserInfoModel(UID: UID, email: email, name: name, nickName: nickName, phone: phone, birthDay: birthDay, isChildAbuseAttacker: isChildAbuseAttacker, isChildAbuseVictim: isChildAbuseVictim, isDomesticViolenceAttacker: isDomesticViolenceAttacker, isDomesticViolenceVictim: isDomesticViolenceVictim, isPsychosis: isPsychosis)
+                                            
+                                            completion(true)
+                                            return
+                                        } else{
+                                            completion(false)
+                                            return
+                                        }
                                     } else{
                                         completion(false)
                                         return
                                     }
-                                } else{
-                                    completion(false)
-                                    return
                                 }
                             }
+                            
+                        } else{
+                            completion(false)
+                            return
                         }
-                        
                     } else{
                         completion(false)
                         return
                     }
-                } else{
-                    completion(false)
-                    return
                 }
             }
         }
+
     }
     
     func signOut(completion: @escaping(_ result: Bool?) -> Void){

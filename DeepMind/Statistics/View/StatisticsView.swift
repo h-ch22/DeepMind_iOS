@@ -10,6 +10,7 @@ import Charts
 
 struct StatisticsView: View {
     @StateObject private var helper = DailyEmotionHelper()
+    @StateObject private var inspectionHelper = InspectionHelper()
     @State private var currentIndex = 0
     @State private var categories = ["HTP 검사", "하루일기", "하루감정"]
 

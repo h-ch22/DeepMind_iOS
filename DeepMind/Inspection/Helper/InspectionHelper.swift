@@ -13,6 +13,8 @@ import Firebase
 import FirebaseStorage
 
 class InspectionHelper: ObservableObject{
+    @Published var inspectionResults: [InspectionHistoryModel] = []
+    
     private let db = Firestore.firestore()
     private let storage = Storage.storage()
     private let auth = Auth.auth()
@@ -291,82 +293,169 @@ class InspectionHelper: ObservableObject{
         }
     }
     
-    func uploadEssentialQuestionAnswer(answer_House: HouseEssentialQuestionAnswerModel, answer_Tree: TreeEssentialQuestionAnswerModel, answer_Person_1: PersonEssentialQuestionAnswerModel, answer_Person_2: PersonEssentialQuestionAnswerModel, docId: String, completion: @escaping(_ result: Bool?) -> Void){
-        self.db.collection("Users").document(auth.currentUser?.uid ?? "").setData(["lastInspection": docId]){ error in
+    func getHistory(completion: @escaping(_ result: Bool?) -> Void){
+        self.db.collection("Users").document(auth.currentUser?.uid ?? "").collection("Results").getDocuments(){(querySnapshot, error) in
             if error != nil{
                 print(error?.localizedDescription)
                 completion(false)
                 return
             } else{
-                self.db.collection("Users").document(self.auth.currentUser?.uid ?? "").collection("Results").document(docId).setData([
-                    "answer_H_1" : answer_House.ANSWER_01,
-                    "answer_H_2" : answer_House.ANSWER_02,
-                    "answer_H_3" : answer_House.ANSWER_03?.description,
-                    "answer_H_4" : answer_House.ANSWER_04,
-                    "answer_H_5" : answer_House.ANSWER_05,
-                    "answer_H_6" : answer_House.ANSWER_06?.description,
-                    "answer_H_7" : answer_House.ANSWER_07?.description,
-                    "answer_H_8" : answer_House.ANSWER_08?.description,
-                    "answer_H_9" : answer_House.ANSWER_09?.description,
-                    "answer_H_10" : answer_House.ANSWER_10?.description,
-                    "answer_H_11" : answer_House.ANSWER_11,
-                    "answer_H_12" : answer_House.ANSWER_12?.description,
-                    "answer_H_13" : answer_House.ANSWER_13,
-                    "answer_H_14" : answer_House.ANSWER_14,
-                    "answer_T_1" : answer_Tree.ANSWER_01,
-                    "answer_T_2" : answer_Tree.ANSWER_02,
-                    "answer_T_3" : answer_Tree.ANSWER_03?.description,
-                    "answer_T_4" : answer_Tree.ANSWER_04,
-                    "answer_T_5" : answer_Tree.ANSWER_05,
-                    "answer_T_6" : answer_Tree.ANSWER_06,
-                    "answer_T_7" : answer_Tree.ANSWER_07,
-                    "answer_T_8" : answer_Tree.ANSWER_08,
-                    "answer_T_9" : answer_Tree.ANSWER_09?.description,
-                    "answer_T_10" : answer_Tree.ANSWER_10?.description,
-                    "answer_T_11" : answer_Tree.ANSWER_11,
-                    "answer_T_12" : answer_Tree.ANSWER_12,
-                    "answer_T_13" : answer_Tree.ANSWER_13,
-                    "answer_T_14" : answer_Tree.ANSWER_14,
-                    "answer_P_1_1" : answer_Person_1.ANSWER_01,
-                    "answer_P_1_2" : answer_Person_1.ANSWER_02,
-                    "answer_P_1_3" : answer_Person_1.ANSWER_03,
-                    "answer_P_1_4" : answer_Person_1.ANSWER_04?.description,
-                    "answer_P_1_5" : answer_Person_1.ANSWER_05,
-                    "answer_P_1_6" : answer_Person_1.ANSWER_06,
-                    "answer_P_1_7" : answer_Person_1.ANSWER_07?.description,
-                    "answer_P_1_8" : answer_Person_1.ANSWER_08?.description,
-                    "answer_P_1_9" : answer_Person_1.ANSWER_09,
-                    "answer_P_1_10" : answer_Person_1.ANSWER_10,
-                    "answer_P_1_11" : answer_Person_1.ANSWER_11,
-                    "answer_P_1_12" : answer_Person_1.ANSWER_12,
-                    "answer_P_1_13" : answer_Person_1.ANSWER_13,
-                    "answer_P_1_14" : answer_Person_1.ANSWER_14?.description,
-                    "answer_P_1_15" : answer_Person_1.ANSWER_15?.description,
-                    "answer_P_2_1" : answer_Person_2.ANSWER_01,
-                    "answer_P_2_2" : answer_Person_2.ANSWER_02,
-                    "answer_P_2_3" : answer_Person_2.ANSWER_03,
-                    "answer_P_2_4" : answer_Person_2.ANSWER_04?.description,
-                    "answer_P_2_5" : answer_Person_2.ANSWER_05,
-                    "answer_P_2_6" : answer_Person_2.ANSWER_06,
-                    "answer_P_2_7" : answer_Person_2.ANSWER_07?.description,
-                    "answer_P_2_8" : answer_Person_2.ANSWER_08?.description,
-                    "answer_P_2_9" : answer_Person_2.ANSWER_09,
-                    "answer_P_2_10" : answer_Person_2.ANSWER_10,
-                    "answer_P_2_11" : answer_Person_2.ANSWER_11,
-                    "answer_P_2_12" : answer_Person_2.ANSWER_12,
-                    "answer_P_2_13" : answer_Person_2.ANSWER_13,
-                    "answer_P_2_14" : answer_Person_2.ANSWER_14?.description,
-                    "answer_P_2_15" : answer_Person_2.ANSWER_15?.description
-                ]){error in
-                    if error != nil{
-                        print(error?.localizedDescription)
-                        completion(false)
-                        return
-                    } else{
-                        completion(true)
-                        return
+                if querySnapshot != nil{
+                    for document in querySnapshot!.documents{
+                        let id = document.documentID
+                        var answer_House = HouseEssentialQuestionAnswerModel()
+                        answer_House.ANSWER_01 = document.get("answer_H_1") as? Bool ?? true
+                        answer_House.ANSWER_02 = document.get("answer_H_2") as? Bool ?? true
+                        answer_House.ANSWER_03 = HouseWeatherModel.getType(description: document.get("answer_H_3") as? String ?? "")
+                        answer_House.ANSWER_04 = document.get("answer_H_4") as? Bool ?? true
+                        answer_House.ANSWER_05 = document.get("answer_H_5") as? Int ?? 0
+                        answer_House.ANSWER_06 = HouseFamilyTypeModel.getType(description: document.get("answer_H_6") as? String ?? "")
+                        answer_House.ANSWER_07 = HouseAtmosphereModel.getType(description: document.get("answer_H_7") as? String ?? "")
+                        answer_House.ANSWER_08 = HouseInspirationModel.getType(description: document.get("answer_H_8") as? String ?? "")
+                        answer_House.ANSWER_09 = HouseRoomModel.getType(description: document.get("answer_H_9") as? String ?? "")
+                        answer_House.ANSWER_10 = HouseInspirationModel.getType(description: document.get("answer_H_10") as? String ?? "")
+                        answer_House.ANSWER_11 = document.get("answer_H_11") as? Bool ?? true
+                        answer_House.ANSWER_12 = HouseReferenceModel.getType(description: document.get("answer_H_12") as? String ?? "")
+                        answer_House.ANSWER_13 = document.get("answer_H_13") as? Bool ?? true
+                        answer_House.ANSWER_14 = document.get("answer_H_14") as? Bool ?? true
+                        
+                        var answer_Tree = TreeEssentialQuestionAnswerModel()
+                        answer_Tree.ANSWER_01 = document.get("answer_T_1") as? Bool ?? true
+                        answer_Tree.ANSWER_02 = document.get("answer_T_2") as? Bool ?? true
+                        answer_Tree.ANSWER_03 = HouseWeatherModel.getType(description: document.get("answer_T_3") as? String ?? "")
+                        answer_Tree.ANSWER_04 = document.get("answer_T_4") as? Bool ?? true
+                        answer_Tree.ANSWER_05 = document.get("answer_T_5") as? Int ?? 0
+                        answer_Tree.ANSWER_06 = document.get("answer_T_6") as? Bool ?? true
+                        answer_Tree.ANSWER_07 = document.get("answer_T_7") as? Int ?? 0
+                        answer_Tree.ANSWER_08 = document.get("answer_T_8") as? Bool ?? true
+                        answer_Tree.ANSWER_09 = HouseReferenceModel.getType(description: document.get("answer_T_9") as? String ?? "")
+                        answer_Tree.ANSWER_10 = PersonGenderModel.getType(description: document.get("answer_T_10") as? String ?? "")
+                        answer_Tree.ANSWER_11 = document.get("answer_T_11") as? Bool ?? true
+                        answer_Tree.ANSWER_12 = document.get("answer_T_12") as? Bool ?? true
+                        answer_Tree.ANSWER_13 = document.get("answer_T_13") as? Bool ?? true
+                        answer_Tree.ANSWER_14 = document.get("answer_T_14") as? Bool ?? true
+                        
+                        var answer_Person_01 = PersonEssentialQuestionAnswerModel()
+                        answer_Person_01.ANSWER_01 = document.get("answer_P_1_1") as? Int ?? 0
+                        answer_Person_01.ANSWER_02 = document.get("answer_P_1_2") as? Bool ?? true
+                        answer_Person_01.ANSWER_03 = document.get("answer_P_1_3") as? Int ?? 0
+                        answer_Person_01.ANSWER_04 = HouseFamilyTypeModel.getType(description: document.get("answer_P_1_4") as? String ?? "")
+                        answer_Person_01.ANSWER_05 = document.get("answer_P_1_5") as? Bool ?? true
+                        answer_Person_01.ANSWER_06 = document.get("answer_P_1_6") as? Bool ?? true
+                        answer_Person_01.ANSWER_07 = HouseFamilyTypeModel.getType(description: document.get("answer_P_1_7") as? String ?? "")
+                        answer_Person_01.ANSWER_08 = HouseFamilyTypeModel.getType(description: document.get("answer_P_1_8") as? String ?? "")
+                        answer_Person_01.ANSWER_09 = document.get("answer_P_1_9") as? Bool ?? true
+                        answer_Person_01.ANSWER_10 = document.get("answer_P_1_10") as? Bool ?? true
+                        answer_Person_01.ANSWER_11 = document.get("answer_P_1_11") as? Bool ?? true
+                        answer_Person_01.ANSWER_12 = document.get("answer_P_1_12") as? Bool ?? true
+                        answer_Person_01.ANSWER_13 = document.get("answer_P_1_13") as? Bool ?? true
+                        answer_Person_01.ANSWER_14 = HouseReferenceModel.getType(description: document.get("answer_P_1_14") as? String ?? "")
+                        answer_Person_01.ANSWER_15 = HouseReferenceModel.getType(description: document.get("answer_P_1_15") as? String ?? "")
+                        
+                        var answer_Person_02 = PersonEssentialQuestionAnswerModel()
+                        answer_Person_02.ANSWER_01 = document.get("answer_P_2_1") as? Int ?? 0
+                        answer_Person_02.ANSWER_02 = document.get("answer_P_2_2") as? Bool ?? true
+                        answer_Person_02.ANSWER_03 = document.get("answer_P_2_3") as? Int ?? 0
+                        answer_Person_02.ANSWER_04 = HouseFamilyTypeModel.getType(description: document.get("answer_P_2_4") as? String ?? "")
+                        answer_Person_02.ANSWER_05 = document.get("answer_P_2_5") as? Bool ?? true
+                        answer_Person_02.ANSWER_06 = document.get("answer_P_2_6") as? Bool ?? true
+                        answer_Person_02.ANSWER_07 = HouseFamilyTypeModel.getType(description: document.get("answer_P_2_7") as? String ?? "")
+                        answer_Person_02.ANSWER_08 = HouseFamilyTypeModel.getType(description: document.get("answer_P_2_8") as? String ?? "")
+                        answer_Person_02.ANSWER_09 = document.get("answer_P_2_9") as? Bool ?? true
+                        answer_Person_02.ANSWER_10 = document.get("answer_P_2_10") as? Bool ?? true
+                        answer_Person_02.ANSWER_11 = document.get("answer_P_2_11") as? Bool ?? true
+                        answer_Person_02.ANSWER_12 = document.get("answer_P_2_12") as? Bool ?? true
+                        answer_Person_02.ANSWER_13 = document.get("answer_P_2_13") as? Bool ?? true
+                        answer_Person_02.ANSWER_14 = HouseReferenceModel.getType(description: document.get("answer_P_2_14") as? String ?? "")
+                        answer_Person_02.ANSWER_15 = HouseReferenceModel.getType(description: document.get("answer_P_2_15") as? String ?? "")
+                        
+                        let files = ["House_Original.png", "House_Detected.png",
+                                     "Tree_Original.png", "Tree_Detected.png",
+                                     "Person_1_Original.png", "Person_1_Detected.png",
+                                     "Person_2_Original.png", "Person_2_Detected.png"]
+                        
+                        self.inspectionResults.append(InspectionHistoryModel(id: id, img_C01: nil, img_detected_C01: nil, answer_C01: answer_House, img_C02: nil, img_detected_C02: nil, answer_C02: answer_Tree, img_C03_1: nil, img_detected_C03_1: nil, answer_C03_1: answer_Person_01, img_C03_2: nil, img_detected_C03_2: nil, answer_C03_2: answer_Person_02))
+                        
                     }
+                    
+                    completion(true)
+                    return
+                } else{
+                    completion(false)
+                    return
                 }
+            }
+        }
+    }
+    
+    func uploadEssentialQuestionAnswer(answer_House: HouseEssentialQuestionAnswerModel, answer_Tree: TreeEssentialQuestionAnswerModel, answer_Person_1: PersonEssentialQuestionAnswerModel, answer_Person_2: PersonEssentialQuestionAnswerModel, docId: String, completion: @escaping(_ result: Bool?) -> Void){
+        self.db.collection("Users").document(self.auth.currentUser?.uid ?? "").collection("Results").document(docId).setData([
+            "answer_H_1" : answer_House.ANSWER_01,
+            "answer_H_2" : answer_House.ANSWER_02,
+            "answer_H_3" : answer_House.ANSWER_03?.description,
+            "answer_H_4" : answer_House.ANSWER_04,
+            "answer_H_5" : answer_House.ANSWER_05,
+            "answer_H_6" : answer_House.ANSWER_06?.description,
+            "answer_H_7" : answer_House.ANSWER_07?.description,
+            "answer_H_8" : answer_House.ANSWER_08?.description,
+            "answer_H_9" : answer_House.ANSWER_09?.description,
+            "answer_H_10" : answer_House.ANSWER_10?.description,
+            "answer_H_11" : answer_House.ANSWER_11,
+            "answer_H_12" : answer_House.ANSWER_12?.description,
+            "answer_H_13" : answer_House.ANSWER_13,
+            "answer_H_14" : answer_House.ANSWER_14,
+            "answer_T_1" : answer_Tree.ANSWER_01,
+            "answer_T_2" : answer_Tree.ANSWER_02,
+            "answer_T_3" : answer_Tree.ANSWER_03?.description,
+            "answer_T_4" : answer_Tree.ANSWER_04,
+            "answer_T_5" : answer_Tree.ANSWER_05,
+            "answer_T_6" : answer_Tree.ANSWER_06,
+            "answer_T_7" : answer_Tree.ANSWER_07,
+            "answer_T_8" : answer_Tree.ANSWER_08,
+            "answer_T_9" : answer_Tree.ANSWER_09?.description,
+            "answer_T_10" : answer_Tree.ANSWER_10?.description,
+            "answer_T_11" : answer_Tree.ANSWER_11,
+            "answer_T_12" : answer_Tree.ANSWER_12,
+            "answer_T_13" : answer_Tree.ANSWER_13,
+            "answer_T_14" : answer_Tree.ANSWER_14,
+            "answer_P_1_1" : answer_Person_1.ANSWER_01,
+            "answer_P_1_2" : answer_Person_1.ANSWER_02,
+            "answer_P_1_3" : answer_Person_1.ANSWER_03,
+            "answer_P_1_4" : answer_Person_1.ANSWER_04?.description,
+            "answer_P_1_5" : answer_Person_1.ANSWER_05,
+            "answer_P_1_6" : answer_Person_1.ANSWER_06,
+            "answer_P_1_7" : answer_Person_1.ANSWER_07?.description,
+            "answer_P_1_8" : answer_Person_1.ANSWER_08?.description,
+            "answer_P_1_9" : answer_Person_1.ANSWER_09,
+            "answer_P_1_10" : answer_Person_1.ANSWER_10,
+            "answer_P_1_11" : answer_Person_1.ANSWER_11,
+            "answer_P_1_12" : answer_Person_1.ANSWER_12,
+            "answer_P_1_13" : answer_Person_1.ANSWER_13,
+            "answer_P_1_14" : answer_Person_1.ANSWER_14?.description,
+            "answer_P_1_15" : answer_Person_1.ANSWER_15?.description,
+            "answer_P_2_1" : answer_Person_2.ANSWER_01,
+            "answer_P_2_2" : answer_Person_2.ANSWER_02,
+            "answer_P_2_3" : answer_Person_2.ANSWER_03,
+            "answer_P_2_4" : answer_Person_2.ANSWER_04?.description,
+            "answer_P_2_5" : answer_Person_2.ANSWER_05,
+            "answer_P_2_6" : answer_Person_2.ANSWER_06,
+            "answer_P_2_7" : answer_Person_2.ANSWER_07?.description,
+            "answer_P_2_8" : answer_Person_2.ANSWER_08?.description,
+            "answer_P_2_9" : answer_Person_2.ANSWER_09,
+            "answer_P_2_10" : answer_Person_2.ANSWER_10,
+            "answer_P_2_11" : answer_Person_2.ANSWER_11,
+            "answer_P_2_12" : answer_Person_2.ANSWER_12,
+            "answer_P_2_13" : answer_Person_2.ANSWER_13,
+            "answer_P_2_14" : answer_Person_2.ANSWER_14?.description,
+            "answer_P_2_15" : answer_Person_2.ANSWER_15?.description
+        ]){error in
+            if error != nil{
+                print(error?.localizedDescription)
+                completion(false)
+                return
+            } else{
+                completion(true)
+                return
             }
         }
     }

@@ -17,9 +17,11 @@ struct DetectionResultsView: View {
     @State private var answer_Tree = TreeEssentialQuestionAnswerModel()
     @State private var answer_Person_1 = PersonEssentialQuestionAnswerModel()
     @State private var answer_Person_2 = PersonEssentialQuestionAnswerModel()
-    @StateObject private var helper = InspectionHelper()
     @State private var showProgress = false
+    @State private var showAlert = false
     
+    @StateObject private var helper = InspectionHelper()
+
     let docId: String
     
     var body: some View {
@@ -85,6 +87,10 @@ struct DetectionResultsView: View {
                                     guard let result = result else{return}
                                     
                                     showProgress = false
+                                    
+                                    if result{
+                                        self.presentationMode.wrappedValue.dismiss()
+                                    }
                                 }
                             }
                         }){
@@ -114,6 +120,9 @@ struct DetectionResultsView: View {
                                                 answer_Tree: $answer_Tree,
                                                 answer_Person_First: $answer_Person_1,
                                                 answer_Person_Second: $answer_Person_2)
+            }
+            .alert(isPresented: $showAlert){
+                return Alert(title: Text("오류"), message: Text("결과를 서버에 업로드하는 중 문제가 발생하였습니다.\n나중에 다시 시도하십시오."), dismissButton: .default(Text("확인")))
             }
     }
 }

@@ -9,7 +9,6 @@ import Foundation
 import Firebase
 
 class DailyEmotionHelper : ObservableObject{
-    @Published var dailyEmotion: DiaryEmotionModel? = nil
     @Published var emotions: [DiaryEmotionModel] = []
     @Published var diaryEmotions: [DiaryEmotionModel] = []
     
@@ -34,21 +33,26 @@ class DailyEmotionHelper : ObservableObject{
     private let db = Firestore.firestore()
     private let auth = Auth.auth()
     private let dateFormatter = DateFormatter()
-
-    func getDailyEmotion(completion: @escaping(_ result: Bool?) -> Void){
+    
+    func getDailyEmotion(completion: @escaping(_ result: DiaryEmotionModel?) -> Void){
         dateFormatter.dateFormat = "yyyy. MM. dd."
-        
+
         db.collection("Users").document(auth.currentUser?.uid ?? "").collection("DailyEmotion").document(dateFormatter.string(from: Date())).getDocument(){(document, error) in
             if error != nil{
                 print(error?.localizedDescription)
-                completion(false)
+                completion(nil)
                 return
             } else{
-                let emotion = document?.get("emotion") as? String ?? ""
-                self.dailyEmotion = DiaryHelper.convertEmotionCodeToEmotion(code: AES256Util.decrypt(encoded: emotion))
-                
-                completion(true)
-                return
+                if document != nil && document!.exists{
+                    let emotion = document?.get("emotion") as? String ?? ""
+
+                    completion(DiaryHelper.convertEmotionCodeToEmotion(code: AES256Util.decrypt(encoded: emotion)))
+                    return
+                } else{
+                    completion(nil)
+                    return
+                }
+
             }
         }
     }

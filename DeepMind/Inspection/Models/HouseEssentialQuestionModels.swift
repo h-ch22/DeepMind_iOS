@@ -27,6 +27,25 @@ enum HouseWeatherModel: Identifiable, CaseIterable, CustomStringConvertible{
             return "눈"
         }
     }
+    
+    static func getType(description: String) -> Self{
+        switch description{
+        case "맑음":
+            return .SUNNY
+            
+        case "흐림":
+            return .CLOUDY
+            
+        case "비":
+            return .RAINING
+            
+        case "눈":
+            return .SNOWING
+            
+        default:
+            return .SUNNY
+        }
+    }
 }
 
 enum HouseFamilyTypeModel: Identifiable, CaseIterable, CustomStringConvertible{
@@ -55,6 +74,31 @@ enum HouseFamilyTypeModel: Identifiable, CaseIterable, CustomStringConvertible{
             return "무서운"
         }
     }
+    
+    static func getType(description: String) -> Self{
+        switch description{
+        case "친절한":
+            return .KIND
+            
+        case "따뜻한":
+            return .WARM
+            
+        case "폭력적인":
+            return .VIOLENT
+            
+        case "불화가 있는":
+            return .DISSENSION
+            
+        case "행복한":
+            return .HAPPY
+            
+        case "무서운":
+            return .SCARY
+            
+        default:
+            return .KIND
+        }
+    }
 }
 
 enum HouseAtmosphereModel: Identifiable, CaseIterable, CustomStringConvertible{
@@ -75,6 +119,25 @@ enum HouseAtmosphereModel: Identifiable, CaseIterable, CustomStringConvertible{
             
         case .UNAFFECTIONATE:
             return "애정이 없는"
+        }
+    }
+    
+    static func getType(description: String) -> Self{
+        switch description{
+        case "화목한":
+            return .HARMONIOUS
+            
+        case "따뜻한":
+            return .WARM
+            
+        case "폭력적인":
+            return .VIOLENT
+            
+        case "애정이 없는":
+            return .UNAFFECTIONATE
+            
+        default:
+            return .HARMONIOUS
         }
     }
 }
@@ -108,6 +171,34 @@ enum HouseInspirationModel: Identifiable, CaseIterable, CustomStringConvertible{
             return "그 외/모르는 사람"
         }
     }
+    
+    static func getType(description: String) -> Self{
+        switch description{
+        case "부모":
+            return .PARENT
+            
+        case "형제/자매":
+            return .BROTHERS
+            
+        case "배우자":
+            return .SPOUSE
+            
+        case "그 외 가족":
+            return .FAMILY
+            
+        case "친구":
+            return .FRIENDS
+            
+        case "애인":
+            return .LOVER
+            
+        case "그 외/모르는 사람":
+            return .OTHERS
+            
+        default:
+            return .PARENT
+        }
+    }
 }
 
 enum HouseRoomModel: Identifiable, CaseIterable, CustomStringConvertible{
@@ -128,6 +219,25 @@ enum HouseRoomModel: Identifiable, CaseIterable, CustomStringConvertible{
             
         case .ANY:
             return "기타/상관없음"
+        }
+    }
+    
+    static func getType(description: String) -> Self{
+        switch description{
+        case "큰 방":
+            return .LARGE
+            
+        case "작은 방":
+            return .SMALL
+            
+        case "거실":
+            return .LIVING_ROOM
+            
+        case "기타/상관없음":
+            return .ANY
+            
+        default:
+            return .LARGE
         }
     }
 }
@@ -162,6 +272,37 @@ enum HouseReferenceModel: Identifiable, CaseIterable, CustomStringConvertible{
             
         case .OTHERS:
             return "그 외/모르는 사람"
+        }
+    }
+    
+    static func getType(description: String) -> Self{
+        switch description{
+        case "부모":
+            return .PARENT
+            
+        case "형제/자매":
+            return .BROTHERS
+            
+        case "배우자":
+            return .SPOUSE
+            
+        case "그 외 가족":
+            return .FAMILY
+            
+        case "친구":
+            return .FRIENDS
+            
+        case "애인":
+            return .LOVER
+            
+        case "자신":
+            return .MY
+            
+        case "그 외/모르는 사람":
+            return .OTHERS
+            
+        default:
+            return .PARENT
         }
     }
 }

@@ -23,4 +23,20 @@ enum PersonGenderModel: Identifiable, CaseIterable, CustomStringConvertible{
             return "중립/알 수 없음"
         }
     }
+    
+    static func getType(description: String) -> Self{
+        switch description{
+        case "남자":
+            return .MALE
+            
+        case "여자":
+            return .FEMALE
+            
+        case "중립/알 수 없음":
+            return .NONE
+            
+        default:
+            return .MALE
+        }
+    }
 }

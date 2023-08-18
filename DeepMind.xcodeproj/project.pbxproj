@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F6110ACC2A8F05DB0090F9B9 /* InspectionHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6110ACB2A8F05DB0090F9B9 /* InspectionHistoryModel.swift */; };
 		F62753832A808E03008104B5 /* DiaryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62753822A808E03008104B5 /* DiaryHelper.swift */; };
 		F62753862A808E17008104B5 /* DiaryContentsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62753852A808E17008104B5 /* DiaryContentsModel.swift */; };
 		F62753882A808E36008104B5 /* DiaryEmotionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62753872A808E36008104B5 /* DiaryEmotionModel.swift */; };
@@ -92,6 +93,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F6110ACB2A8F05DB0090F9B9 /* InspectionHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectionHistoryModel.swift; sourceTree = "<group>"; };
 		F62753822A808E03008104B5 /* DiaryHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryHelper.swift; sourceTree = "<group>"; };
 		F62753852A808E17008104B5 /* DiaryContentsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryContentsModel.swift; sourceTree = "<group>"; };
 		F62753872A808E36008104B5 /* DiaryEmotionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryEmotionModel.swift; sourceTree = "<group>"; };
@@ -322,6 +324,7 @@
 				F6FE66EA2A8CBEDE00AF9D94 /* InspectionEssentialQuestionType.swift */,
 				F6BE651D2A8DB58500C40E57 /* HouseEssentialQuestionModels.swift */,
 				F6BE651F2A8DBC5600C40E57 /* EssentialQuestionAnswerModels.swift */,
+				F6110ACB2A8F05DB0090F9B9 /* InspectionHistoryModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -671,6 +674,7 @@
 				F674751F2A84AF8F006471CA /* CL02.mlpackage in Sources */,
 				F6344B222A76304800FA3440 /* HomeView.swift in Sources */,
 				F62753962A80B3CB008104B5 /* DiaryCanvasView.swift in Sources */,
+				F6110ACC2A8F05DB0090F9B9 /* InspectionHistoryModel.swift in Sources */,
 				F62753882A808E36008104B5 /* DiaryEmotionModel.swift in Sources */,
 				F6344B322A76308500FA3440 /* MoreView.swift in Sources */,
 				F67475212A84AF95006471CA /* CL03.mlpackage in Sources */,
