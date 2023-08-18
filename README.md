@@ -1,4 +1,4 @@
-![ ](imgs/ic_deepMind_h.png)</br>
+![ ](imgs/ic_deepMind_h.PNG)</br>
 # DeepMind</br>
 ### Check your psychological status with ML, based on YOLOv8<br><br>
 
@@ -6,39 +6,39 @@
 #### Home</br>
 > Check your latest inspection results, emotion statistics at a glance.</br>
 
-![ ](imgs/home_1.png) ![ ](imgs/home_2.png) ![ ](imgs/home_3.png)</br>
+![ ](imgs/home_1.PNG) ![ ](imgs/home_2.PNG) ![ ](imgs/home_3.PNG)</br>
 
 #### Daily Diary</br>
 > Once a day, record your day with emotions.</br>
 
-![ ](imgs/dailyDiary_1.png)</br>
+![ ](imgs/dailyDiary_1.PNG)</br>
 
 > Record your day with images, markups, and text. </br>
 
-![ ](imgs/dailyDiary_2.png)</br>
+![ ](imgs/dailyDiary_2.PNG)</br>
 
 #### Statistics</br>
 > Check your inspection results, emotion statistics history by date, with a chart.</br>
 
-![ ](imgs/statistics_1.png) ![ ](imgs/statistics_2.png) ![ ](imgs/statistics_3.png)</br>
+![ ](imgs/statistics_1.PNG) ![ ](imgs/statistics_2.PNG) ![ ](imgs/statistics_3.PNG)</br>
 
 #### Inspection</br>
 > Draw House, Tree, Person with your Apple Pencil, or any inputs.</br>
 
-![ ](imgs/inspection_1.png) ![ ](imgs/inspection_2.png) ![ ](imgs/inspection_3.png) ![ ](imgs/inspection_4.png)</br>
+![ ](imgs/inspection_1.PNG) ![ ](imgs/inspection_2.PNG) ![ ](imgs/inspection_3.PNG) ![ ](imgs/inspection_4.PNG)</br>
 
 > Get image detection, powered by YOLOv8x.</br>
 
-![ ](imgs/inspection_5.png)</br>
+![ ](imgs/inspection_5.PNG)</br>
 
 > Check Essential Information for your image.</br>
 
-![ ](imgs/inspection_6.png)</br>
+![ ](imgs/inspection_6.PNG)</br>
 
 #### and so much more.</br>
 > Change your information, delete your data on server, change your sensitive info, sign out, and secession </br>
 
-![ ](imgs/more.png) </br>
+![ ](imgs/more.PNG) </br>
 
 ## Compatibility</br>
 > DeepMind is compatible with these devices. </br>
