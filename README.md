@@ -66,7 +66,7 @@
 
 ### iPad</br>
 
-> iPad Pro 12.9 6th-Generation </br>
+> iPad Pro 12.9 (6th-Generation) </br>
  iPad Pro 11 (4th-Generation) </br>
  iPad Pro 12.9 (5th-Generation) </br>
  iPad Pro 11 (3rd-Generation) </br>
@@ -80,7 +80,7 @@
  iPad Air (4th-Generation) </br>
  iPad Air (3rd-Generation) </br>
  iPad mini (6th-Generation) </br>
- iPad mini (5th-Generation)
+ iPad mini (5th-Generation) </br>
  iPad (10th-Generation) </br>
  iPad (9th-Generation) </br>
 
