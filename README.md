@@ -58,6 +58,7 @@
  iPhone 12 mini </br>
  iPhone 11 Pro Max </br>
  iPhone 11 Pro </br>
+ iPhone 11 </br>
  iPhone Xs Max </br>
  iPhone Xs </br>
  iPhone X<sub>R</sub> </br>
