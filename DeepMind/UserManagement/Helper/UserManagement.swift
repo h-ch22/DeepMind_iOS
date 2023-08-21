@@ -70,7 +70,7 @@ class UserManagement: ObservableObject{
     }
     
     func uploadFeatures(isChildAbuseAttacker: Bool, isChildAbuseVictim: Bool, isDomesticViolenceAttacker: Bool, isDomesticViolenceVictim: Bool, isPsychosis: Bool, completion: @escaping(_ result: Bool?) -> Void){
-        db.collection("FeatureInformation").document(AES256Util.encrypt(string: auth.currentUser?.uid ?? "")).setData([
+        db.collection("FeatureInformation").document(auth.currentUser?.uid ?? "").setData([
             AES256Util.encrypt(string: "isChildAbuseAttacker") : isChildAbuseAttacker,
             AES256Util.encrypt(string: "isChildAbuseVictim") : isChildAbuseVictim,
             AES256Util.encrypt(string: "isDomesticViolenceAttacker") : isDomesticViolenceAttacker,
@@ -115,7 +115,7 @@ class UserManagement: ObservableObject{
                             let phone = document!.get("phone") as? String ?? ""
                             let birthDay = document!.get("birthDay") as? String ?? ""
                             
-                            self.db.collection("FeatureInformation").document(AES256Util.encrypt(string: UID)).getDocument(){(featureDoc, error) in
+                            self.db.collection("FeatureInformation").document(UID).getDocument(){(featureDoc, error) in
                                 if error != nil{
                                     print(error)
                                     completion(false)
