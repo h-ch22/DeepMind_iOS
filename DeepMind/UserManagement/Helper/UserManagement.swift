@@ -15,6 +15,10 @@ class UserManagement: ObservableObject{
     private let auth = Auth.auth()
     private let db = Firestore.firestore()
     
+    func getUID() -> String{
+        return auth.currentUser?.uid ?? ""
+    }
+    
     func signIn(email: String, password: String, completion: @escaping(_ result: Bool?) -> Void){
         auth.signIn(withEmail: email, password: password){ (_, error) in
             if error != nil{

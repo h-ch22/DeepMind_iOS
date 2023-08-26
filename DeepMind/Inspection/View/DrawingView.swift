@@ -24,6 +24,7 @@ struct DrawingView: View {
     @State private var isDetectComplete = false
     @State private var showResult = false
     @State private var docId = ""
+    @State private var elapsedTimes: [Int] = []
     
     @Environment(\.presentationMode) var presentationMode
     
@@ -189,7 +190,7 @@ struct DrawingView: View {
                         
                     }.padding(20)
                         .sheet(isPresented: $showResult){
-                            DetectionResultsView(docId: docId)
+                            DetectionResultsView(elapsedTimes: $elapsedTimes, docId: docId)
                         }
                         .onAppear{
                             DispatchQueue.global().async{
@@ -309,6 +310,7 @@ struct DrawingView: View {
                             if !showProgress{
                                 Button(action: {
                                     showProgress = true
+                                    elapsedTimes.append(timer)
                                     
                                     DispatchQueue.main.async{
                                         switch drawingType{
@@ -321,6 +323,7 @@ struct DrawingView: View {
                                                 canvasView.drawing = PKDrawing()
                                                 timer = 0
                                             } else{
+                                                elapsedTimes.removeLast()
                                                 showErrorAlert = true
                                             }
                                             
@@ -336,6 +339,7 @@ struct DrawingView: View {
                                                 canvasView.drawing = PKDrawing()
                                                 timer = 0
                                             } else{
+                                                elapsedTimes.removeLast()
                                                 showErrorAlert = true
                                             }
                                             
@@ -350,6 +354,7 @@ struct DrawingView: View {
                                                 canvasView.drawing = PKDrawing()
                                                 timer = 0
                                             } else{
+                                                elapsedTimes.removeLast()
                                                 showErrorAlert = true
                                             }
                                             
@@ -362,6 +367,7 @@ struct DrawingView: View {
                                             if result{
                                                 isDetecting = true
                                             } else{
+                                                elapsedTimes.removeLast()
                                                 showErrorAlert = true
                                             }
                                             

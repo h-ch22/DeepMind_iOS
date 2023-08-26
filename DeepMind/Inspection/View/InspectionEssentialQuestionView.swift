@@ -29,7 +29,7 @@ struct InspectionEssentialQuestionView: View {
     @State private var answer_Tree_3: HouseWeatherModel = .SUNNY
     @State private var answer_Tree_5 = 0
     @State private var answer_Tree_7 = 0
-    @State private var answer_Tree_9: HouseReferenceModel = .PARENT
+    @State private var answer_Tree_9: HouseInspirationModel = .PARENT
     @State private var answer_Tree_10: PersonGenderModel = .MALE
     @State private var answer_Tree_Yes_No: [Int: Bool] = [0: true, 1: true, 3: true, 5: true, 7: true, 10: true, 11: true, 12: true, 13: true]
     @State private var showProgress = false
@@ -95,6 +95,8 @@ struct InspectionEssentialQuestionView: View {
         InspectionEssentialQuestionType(question: "이 사람은 누구를 닮았나요?", isYesNoQuestion: false)
     ]
     
+    let img: UIImage?
+    
     private func binding_Yes_No(for key: Int) -> Binding<Bool>{
         switch type{
         case .HOUSE:
@@ -124,6 +126,14 @@ struct InspectionEssentialQuestionView: View {
                 
                 ScrollView{
                     VStack{
+                        if img != nil{
+                            Image(uiImage: img!)
+                                .resizable()
+                                .frame(width: 250, height : 250)
+                            
+                            Spacer().frame(height : 20)
+                        }
+                        
                         if type == .HOUSE{
                             Group{
                                 ForEach(questions_House.indices, id:\.self){index in
@@ -207,7 +217,7 @@ struct InspectionEssentialQuestionView: View {
                                 ForEach(questions_Tree.indices, id:\.self){index in
                                     HStack{
                                         Text(questions_Tree[index].question)
-                                            .isHidden(index == 6 && !answer_Tree_Yes_No[5]!)
+                                            .isHidden(index == 6 && answer_Tree_Yes_No[5]!)
                                         
                                         Spacer()
                                         
@@ -232,7 +242,7 @@ struct InspectionEssentialQuestionView: View {
                                                 Stepper(value: $answer_Tree_7, in: 1...100, label: {
                                                     Text("\(answer_Tree_7)년 전")
                                                         .foregroundStyle(Color.accent)
-                                                }).isHidden(!answer_Tree_Yes_No[5]!)
+                                                }).isHidden(answer_Tree_Yes_No[5]!)
                                                 
                                             case 8:
                                                 Picker("답변 선택", selection: $answer_Tree_9){
@@ -437,5 +447,5 @@ struct InspectionEssentialQuestionView: View {
 }
 
 #Preview {
-    InspectionEssentialQuestionView(type: .PERSON_1, answer_House: .constant(HouseEssentialQuestionAnswerModel()), answer_Tree: .constant(TreeEssentialQuestionAnswerModel()), answer_Person_First: .constant(PersonEssentialQuestionAnswerModel()), answer_Person_Second: .constant(PersonEssentialQuestionAnswerModel()))
+    InspectionEssentialQuestionView(type: .PERSON_1, answer_House: .constant(HouseEssentialQuestionAnswerModel()), answer_Tree: .constant(TreeEssentialQuestionAnswerModel()), answer_Person_First: .constant(PersonEssentialQuestionAnswerModel()), answer_Person_Second: .constant(PersonEssentialQuestionAnswerModel()), img: nil)
 }

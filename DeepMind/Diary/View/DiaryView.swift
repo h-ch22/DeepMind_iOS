@@ -73,6 +73,8 @@ struct DiaryView: View {
                         Text("당신의 하루를 기록해보세요.")
                             .fontWeight(.semibold)
                             .foregroundStyle(Color.gray)
+                        
+                        Spacer()
                     }
                 } else{
                     ScrollView{
@@ -181,9 +183,12 @@ struct DiaryView: View {
                     if result{
                         showProgress = false
                         
-                        helper.getURL(id: helper.diaryList[0].date, imgCount: helper.diaryList[0].imgCount){ downloadResult in
-                            guard let downloadResult = downloadResult else{return}
+                        if helper.diaryList.count > 0{
+                            helper.getURL(id: helper.diaryList[0].date, imgCount: helper.diaryList[0].imgCount){ downloadResult in
+                                guard let downloadResult = downloadResult else{return}
+                            }
                         }
+
                     } else{
                         showProgress = false
                         showError = true
@@ -192,9 +197,11 @@ struct DiaryView: View {
             }
             .toolbar(content: {
                 ToolbarItemGroup(placement: .topBarTrailing, content: {
-                    Button(action: {}){
-                        Image(systemName : "trash.fill")
-                            .foregroundStyle(Color.red)
+                    if helper.diaryList.count > 0{
+                        Button(action: {}){
+                            Image(systemName : "trash.fill")
+                                .foregroundStyle(Color.red)
+                        }
                     }
                     
                     Button(action: {

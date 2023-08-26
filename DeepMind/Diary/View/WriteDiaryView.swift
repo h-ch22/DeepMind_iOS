@@ -208,7 +208,7 @@ struct WriteDiaryView: View {
                                     helper.uploadDiary(title: self.title, contents: self.contents, emotionCode: DiaryHelper.indexToEmotion(index: selectedIndex)!, photos: self.photoData, images: self.imageData, markUps: self.markUpData){ result in
                                         guard let result = result else{return}
                                         showProgress = false
-                                        isError = result
+                                        isError = !result
                                         showAlert = true
                                     }
                                 }
