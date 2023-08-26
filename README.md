@@ -35,6 +35,10 @@
 
 ![ ](imgs/inspection_6.PNG)</br>
 
+> Share your inspection data as PDF. </br>
+
+![ ](imgs/inspection_7.PNG)</br>
+
 #### and so much more.</br>
 > Change your information, delete your data on server, change your sensitive info, sign out, and secession </br>
 
