@@ -26,7 +26,7 @@ struct SignInView: View {
                     
                     Image("ic_appstore")
                         .resizable()
-                        .frame(width : 150, height : 150)
+                        .frame(width : 100, height : 100)
                         .clipShape(RoundedRectangle(cornerRadius: 15))
                     
                     HStack{
@@ -106,21 +106,28 @@ struct SignInView: View {
                         
                         Spacer().frame(height : 20)
                         
-                        HStack{
-                            NavigationLink(destination : EmptyView()){
-                                Text("비밀번호 재설정")
-                            }
-                            
-                            Spacer()
-                            
-                            NavigationLink(destination : SignUpView(helper: helper)){
-                                Text("회원가입")
-                            }
+                        NavigationLink(destination : UserTypeSelectionView(helper: helper)){
+                            HStack{
+                                VStack(alignment: .leading){
+                                    Text("처음 사용하시나요?")
+                                        .font(.caption)
+                                        .foregroundStyle(Color.white)
+                                    
+                                    Text("회원가입 바로가기")
+                                        .fontWeight(.semibold)
+                                        .foregroundStyle(Color.white)
+                                }
+                                
+                                Spacer().frame(width: 20)
+                                
+                                Image(systemName: "arrow.right.circle.fill")
+                                    .foregroundStyle(Color.white)
+                            }.padding(20).background(RoundedRectangle(cornerRadius: 15).shadow(radius: 5))
                         }
                         
                         Spacer().frame(height : 20)
                         
-                        Text("© 2023 Changjin Ha, Yujee Jang.\nAll Rights Reserved.")
+                        Text("© 2023 Changjin Ha, Yujee Chang.\nAll Rights Reserved.")
                             .font(.caption)
                             .multilineTextAlignment(.center)
                             .foregroundColor(.gray)

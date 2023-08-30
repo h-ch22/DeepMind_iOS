@@ -42,7 +42,7 @@ class UserManagement: ObservableObject{
         }
     }
     
-    func signUp(email: String, password: String, nickName: String, name: String, phone: String, birthDay: String, completion: @escaping(_ result: Bool?) -> Void){
+    func signUp(email: String, password: String, nickName: String, name: String, phone: String, birthDay: String, type: UserTypeModel, agency: String?, completion: @escaping(_ result: Bool?) -> Void){
         auth.createUser(withEmail: email, password: password){(_, error) in
             if error != nil{
                 print(error)
@@ -55,7 +55,9 @@ class UserManagement: ObservableObject{
                 "name" : AES256Util.encrypt(string: name),
                 "nickName" : AES256Util.encrypt(string: nickName),
                 "phone" : AES256Util.encrypt(string: phone),
-                "birthDay" : AES256Util.encrypt(string: birthDay)
+                "birthDay" : AES256Util.encrypt(string: birthDay),
+                "agency": agency != nil ? AES256Util.encrypt(string: agency!) : nil,
+                "type": type.code
             ]){ error in
                 if error != nil{
                     print(error)
@@ -118,6 +120,8 @@ class UserManagement: ObservableObject{
                             let nickName = document!.get("nickName") as? String ?? ""
                             let phone = document!.get("phone") as? String ?? ""
                             let birthDay = document!.get("birthDay") as? String ?? ""
+                            let agency = document!.get("agency") as? String ?? ""
+                            let type = document!.get("type") as? String ?? ""
                             
                             self.db.collection("FeatureInformation").document(UID).getDocument(){(featureDoc, error) in
                                 if error != nil{
@@ -133,7 +137,7 @@ class UserManagement: ObservableObject{
                                             let isDomesticViolenceVictim = featureDoc!.get(FieldPath([AES256Util.encrypt(string: "isDomesticViolenceVictim")])) as? Bool ?? false
                                             let isPsychosis = featureDoc!.get(FieldPath([AES256Util.encrypt(string: "isPsychosis")])) as? Bool ?? false
                                             
-                                            self.userInfo = UserInfoModel(UID: UID, email: email, name: name, nickName: nickName, phone: phone, birthDay: birthDay, isChildAbuseAttacker: isChildAbuseAttacker, isChildAbuseVictim: isChildAbuseVictim, isDomesticViolenceAttacker: isDomesticViolenceAttacker, isDomesticViolenceVictim: isDomesticViolenceVictim, isPsychosis: isPsychosis)
+                                            self.userInfo = UserInfoModel(UID: UID, email: email, name: name, nickName: nickName, phone: phone, birthDay: birthDay, agency: agency, type: type == "CUSTOMER" ? .CUSTOMER : .PROFESSIONAL , isChildAbuseAttacker: isChildAbuseAttacker, isChildAbuseVictim: isChildAbuseVictim, isDomesticViolenceAttacker: isDomesticViolenceAttacker, isDomesticViolenceVictim: isDomesticViolenceVictim, isPsychosis: isPsychosis)
                                             
                                             completion(true)
                                             return
@@ -164,14 +168,17 @@ class UserManagement: ObservableObject{
     
     func signOut(completion: @escaping(_ result: Bool?) -> Void){
         do{
-            try? auth.signOut()
-            completion(true)
-            return
+            try auth.signOut()
         } catch{
             print(error)
             completion(false)
             return
         }
+        
+        UserDefaults.standard.removeObject(forKey: "auth_email")
+        UserDefaults.standard.removeObject(forKey: "auth_password")
+        completion(true)
+        return
     }
     
     func secession(completion: @escaping(_ result: Bool?) -> Void){
@@ -181,14 +188,16 @@ class UserManagement: ObservableObject{
                 completion(false)
                 return
             } else{
-                self.db.collection("FeatureInformation").document(AES256Util.encrypt(string: self.auth.currentUser?.uid ?? "")).delete(){ error in
+                self.db.collection("FeatureInformation").document(self.auth.currentUser?.uid ?? "").delete(){ error in
                     if error != nil{
                         print(error)
                         completion(false)
                         return
                     } else{
                         do{
-                            try? self.auth.currentUser?.delete()
+                            try self.auth.currentUser?.delete()
+                            UserDefaults.standard.removeObject(forKey: "auth_email")
+                            UserDefaults.standard.removeObject(forKey: "auth_password")
                             self.userInfo = nil
                             completion(true)
                             return

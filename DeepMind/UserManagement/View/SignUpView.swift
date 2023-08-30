@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SignUpView: View {
     @State private var titleList = ["반가워요!", "E-Mail을 입력해주세요", "비밀번호를 입력해주세요", "비밀번호를 확인해주세요",
-                                    "이름을 입력해주세요.", "닉네임을 입력해주세요", "연락처와 생년월일을 입력해주세요"]
+                                    "이름을 입력해주세요.", "닉네임을 입력해주세요", "연락처와 생년월일을 입력해주세요", "소속 기관을 입력해주세요."]
     @State private var email = ""
     @State private var password = ""
     @State private var checkPassword = ""
@@ -17,6 +17,7 @@ struct SignUpView: View {
     @State private var nickName = ""
     @State private var birthDay = ""
     @State private var phone = ""
+    @State private var agency = ""
     @State private var date = Date()
     
     @State private var acceptEULA = false
@@ -30,6 +31,7 @@ struct SignUpView: View {
     @State private var changeView = false
     
     @StateObject var helper: UserManagement
+    let type: UserTypeModel
 
     var body: some View {
         ZStack{
@@ -153,7 +155,14 @@ struct SignUpView: View {
                         HStack {
                             Image(systemName: "iphone.gen3.circle.fill")
                             
-                            TextField("연락처", text:$phone)
+                            TextField("연락처", text:$phone, onEditingChanged: {(editing) in
+                                if !editing{
+                                    if index < 7 && type == .PROFESSIONAL{
+                                        index += 1
+                                    }
+                                }
+                                
+                            })
                             .keyboardType(.numberPad)
                         }
                         .padding(20)
@@ -169,13 +178,29 @@ struct SignUpView: View {
                             .isHidden(index < 6)
                             .transition(AnyTransition.opacity.animation(.easeInOut))
 
+                        if type == .PROFESSIONAL{
+                            Spacer().frame(height : 20)
+                            
+                            HStack {
+                                Image(systemName: "building.2.fill")
+                                
+                                TextField("소속 기관", text:$agency)
+                            }
+                            .padding(20)
+                            .padding([.horizontal], 20)
+                            .background(RoundedRectangle(cornerRadius: 10).foregroundStyle(Color.btn_color).shadow(radius: 5)
+                                .padding([.horizontal],15))
+                            .isHidden(index < 7)
+                            .transition(AnyTransition.opacity.animation(.easeInOut))
+                        }
+
                         Spacer().frame(height : 20)
 
                         HStack{
                             CheckBox(checked : $acceptEULA, title: "최종 사용권 계약서 (필수)")
                             
                             Spacer()
-                        }.isHidden(index < 6)
+                        }.isHidden(type == .CUSTOMER ? index < 6 : index < 7)
                             .transition(AnyTransition.opacity.animation(.easeInOut))
                         
                         Spacer().frame(height : 20)
@@ -185,7 +210,7 @@ struct SignUpView: View {
                             
                             Spacer()
                             
-                        }.isHidden(index < 6)
+                        }.isHidden(type == .CUSTOMER ? index < 6 : index < 7)
                             .transition(AnyTransition.opacity.animation(.easeInOut))
 
                         Spacer().frame(height : 20)
@@ -194,7 +219,7 @@ struct SignUpView: View {
                             CheckBox(checked : $acceptSensitive, title: "민감정보 수집 및 처리방침 (필수)")
                             
                             Spacer()
-                        }.isHidden(index < 6)
+                        }.isHidden(type == .CUSTOMER ? index < 6 : index < 7)
                             .transition(AnyTransition.opacity.animation(.easeInOut))
 
                         Spacer().frame(height : 20)
@@ -220,7 +245,7 @@ struct SignUpView: View {
                             
                             self.birthDay = dateFormatter.string(from: self.date)
                             
-                            helper.signUp(email: self.email, password: self.password, nickName: self.nickName, name: self.name, phone: self.phone, birthDay: self.birthDay){ result in
+                            helper.signUp(email: self.email, password: self.password, nickName: self.nickName, name: self.name, phone: self.phone, birthDay: self.birthDay, type: self.type, agency: type == .PROFESSIONAL ? agency : nil){ result in
                                 guard let result = result else{return}
                                                                 
                                 if !result{
@@ -242,8 +267,8 @@ struct SignUpView: View {
                                 .foregroundColor(.white)
                         }.padding([.vertical], 20)
                             .padding([.horizontal], 120)
-                            .background(RoundedRectangle(cornerRadius: 50).foregroundStyle(Color.accentColor).shadow(radius: 5))
-                    }.isHidden(index < 6)
+                            .background(RoundedRectangle(cornerRadius: 50).shadow(radius: 5))
+                    }.isHidden(type == .CUSTOMER ? index < 6 : index < 7)
                         .transition(AnyTransition.opacity.animation(.easeInOut))
 
                 }.animation(.easeInOut).padding(20)
@@ -269,5 +294,5 @@ struct SignUpView: View {
 }
 
 #Preview {
-    SignUpView(helper: UserManagement())
+    SignUpView(helper: UserManagement(), type: .PROFESSIONAL)
 }

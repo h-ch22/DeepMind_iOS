@@ -30,104 +30,44 @@ struct MoreView: View {
                             Spacer()
                         }
                         
-                        HStack{
-                            Image("ic_appstore")
-                                .resizable()
-                                .frame(width : 35, height : 35)
-                                .clipShape(Circle())
-                            
-                            VStack(alignment : .leading){
-                                Text(AES256Util.decrypt(encoded: helper.userInfo?.name ?? ""))
-                                    .foregroundColor(.txt_color)
-                                    .fontWeight(.semibold)
-                                
-                                Text(AES256Util.decrypt(encoded: helper.userInfo?.email ?? ""))
-                                    .font(.caption)
-                                    .foregroundColor(.gray)
-                            }
-                            
-                            Spacer()
-                        }.padding(20).background(RoundedRectangle(cornerRadius: 15).foregroundColor(.btn_color).shadow(radius: 2, x:0, y:2))
-                        
-                        Group{
-                            Spacer().frame(height : 20)
-                            
-                            Divider()
-                            
-                            Spacer().frame(height : 20)
-                            
-                            Button(action : {}){
-                                HStack{
-                                    Image(systemName: "checklist")
-                                    
-                                    VStack(alignment : .leading){
-                                        Text("민감정보 변경")
-                                            .foregroundColor(.txt_color)
-                                    }
-                                    
-                                    Spacer()
-                                }.padding(20)
-                                    .background(RoundedRectangle(cornerRadius: 15).foregroundColor(.btn_color).shadow(radius: 2, x:0, y:2))
-                            }
-                            
-                            Spacer().frame(height : 20)
-                            
-                            Button(action : {}){
-                                HStack{
-                                    Image(systemName: "key.horizontal.fill")
-                                    
-                                    VStack(alignment : .leading){
-                                        Text("비밀번호 변경")
-                                            .foregroundColor(.txt_color)
-                                    }
-                                    
-                                    Spacer()
-                                }.padding(20)
-                                    .background(RoundedRectangle(cornerRadius: 15).foregroundColor(.btn_color).shadow(radius: 2, x:0, y:2))
-                            }
-                            
-                            Spacer().frame(height : 20)
-                            
-                            Button(action : {}){
-                                HStack{
-                                    Image(systemName: "iphone.gen3")
-                                    
-                                    VStack(alignment : .leading){
-                                        Text("연락처 변경")
-                                            .foregroundColor(.txt_color)
-                                    }
-                                    
-                                    Spacer()
-                                }.padding(20)
-                                    .background(RoundedRectangle(cornerRadius: 15).foregroundColor(.btn_color).shadow(radius: 2, x:0, y:2))
-                            }
-                        }
-                        
-                        Spacer().frame(height : 20)
-                        
-                        Button(action : {}){
+                        NavigationLink(destination: UserInfoView(helper: helper)){
                             HStack{
-                                Image(systemName: "xmark.bin.fill")
-                                                            
+                                Image("ic_appstore")
+                                    .resizable()
+                                    .frame(width : 35, height : 35)
+                                    .clipShape(Circle())
+                                
                                 VStack(alignment : .leading){
-                                    Text("민감정보 삭제 요청 및 동의 철회")
-                                        .multilineTextAlignment(.leading)
-                                        .foregroundColor(.txt_color)
+                                    HStack{
+                                        Text(AES256Util.decrypt(encoded: helper.userInfo?.name ?? ""))
+                                            .foregroundColor(.txt_color)
+                                            .fontWeight(.semibold)
+                                        
+                                        ProBadgeView()
+                                            .isHidden(helper.userInfo?.type != .PROFESSIONAL)
+                                    }
+                                    
+                                    Text(AES256Util.decrypt(encoded: helper.userInfo?.email ?? ""))
+                                        .font(.caption)
+                                        .foregroundColor(.gray)
                                 }
                                 
                                 Spacer()
-                            }.padding(20)
-                            .background(RoundedRectangle(cornerRadius: 15).foregroundColor(.btn_color).shadow(radius: 2, x:0, y:2))
+                            }.padding(20).background(RoundedRectangle(cornerRadius: 15).foregroundColor(.btn_color).shadow(radius: 2, x:0, y:2))
                         }
                         
                         Spacer().frame(height : 20)
                         
-                        NavigationLink(destination : EmptyView()){
+                        Divider()
+                        
+                        Spacer().frame(height : 20)
+                        
+                        NavigationLink(destination : StatisticsView().navigationTitle(Text("통계 및 검사 기록"))){
                             HStack{
-                                Image(systemName: "heart.fill")
+                                Image(systemName: "chart.xyaxis.line")
                                 
                                 VStack(alignment : .leading){
-                                    Text("피드백 허브")
+                                    Text("통계 및 검사 기록")
                                         .foregroundColor(.txt_color)
                                 }
                                 
@@ -137,6 +77,36 @@ struct MoreView: View {
                         
                         Spacer().frame(height : 20)
                         
+                        NavigationLink(destination : DiaryView().navigationTitle(Text("성장 일기"))){
+                            HStack{
+                                Image(systemName: "square.and.pencil")
+                                
+                                VStack(alignment : .leading){
+                                    Text("성장 일기")
+                                        .foregroundColor(.txt_color)
+                                }
+                                
+                                Spacer()
+                            }.padding(20).background(RoundedRectangle(cornerRadius: 15).foregroundColor(.btn_color).shadow(radius: 2, x:0, y:2))
+                        }
+                        
+                        Spacer().frame(height : 20)
+                        
+                        NavigationLink(destination : EmptyView()){
+                            HStack{
+                                Image(systemName: "calendar.badge.clock")
+                                
+                                VStack(alignment : .leading){
+                                    Text("병원 예약 기록")
+                                        .foregroundColor(.txt_color)
+                                }
+                                
+                                Spacer()
+                            }.padding(20).background(RoundedRectangle(cornerRadius: 15).foregroundColor(.btn_color).shadow(radius: 2, x:0, y:2))
+                        }
+                        
+                        Spacer().frame(height : 20)
+
                         NavigationLink(destination : InfoView()){
                             HStack{
                                 Image(systemName: "info.circle.fill")
@@ -149,33 +119,13 @@ struct MoreView: View {
                                 Spacer()
                             }.padding(20).background(RoundedRectangle(cornerRadius: 15).foregroundColor(.btn_color).shadow(radius: 2, x:0, y:2))
                         }
-                        
-                        Spacer().frame(height : 20)
-                        
-                        HStack{
-                            Button(action : {}){
-                                Text("로그아웃")
-                                    .font(.caption)
-                                    .foregroundColor(.gray)
-                                
-                                Text(" 또는 ")
-                                    .font(.caption)
-                                    .foregroundColor(.gray)
-                                
-                                Button(action : {}){
-                                    Text("회원 탈퇴")
-                                        .font(.caption)
-                                        .foregroundColor(.gray)
-                                }
-                            }
-                        }
                     }
                     
                 }.padding(20)
                     .animation(.easeInOut, value: 1.0)
             }
         }
-
+        
     }
 }
 

@@ -137,7 +137,7 @@ struct InfoView: View {
                     
                     Spacer().frame(height : 30)
                     
-                    Text("© 2023 Changjin Ha, Yujee Jang.\nAll Rights Reserved.")
+                    Text("© 2023 Changjin Ha, Yujee Chang.\nAll Rights Reserved.")
                         .font(.caption)
                         .multilineTextAlignment(.center)
                         .foregroundColor(.gray)

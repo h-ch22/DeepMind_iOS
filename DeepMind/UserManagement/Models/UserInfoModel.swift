@@ -14,19 +14,23 @@ struct UserInfoModel{
     let nickName: String
     let phone: String
     let birthDay: String
+    let agency: String?
+    let type: UserTypeModel
     let isChildAbuseAttacker: Bool
     let isChildAbuseVictim: Bool
     let isDomesticViolenceAttacker: Bool
     let isDomesticViolenceVictim: Bool
     let isPsychosis: Bool
     
-    init(UID: String, email: String, name: String, nickName: String, phone: String, birthDay: String, isChildAbuseAttacker: Bool, isChildAbuseVictim: Bool, isDomesticViolenceAttacker: Bool, isDomesticViolenceVictim: Bool, isPsychosis: Bool) {
+    init(UID: String, email: String, name: String, nickName: String, phone: String, birthDay: String, agency: String?, type: UserTypeModel, isChildAbuseAttacker: Bool, isChildAbuseVictim: Bool, isDomesticViolenceAttacker: Bool, isDomesticViolenceVictim: Bool, isPsychosis: Bool) {
         self.UID = UID
         self.email = email
         self.name = name
         self.nickName = nickName
         self.phone = phone
         self.birthDay = birthDay
+        self.agency = agency
+        self.type = type
         self.isChildAbuseAttacker = isChildAbuseAttacker
         self.isChildAbuseVictim = isChildAbuseVictim
         self.isDomesticViolenceAttacker = isDomesticViolenceAttacker

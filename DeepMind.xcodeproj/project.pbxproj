@@ -64,6 +64,11 @@
 		F67F59252A78C8D5005E558A /* PersonGenderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67F59242A78C8D5005E558A /* PersonGenderModel.swift */; };
 		F67F59282A78CC57005E558A /* InspectionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67F59272A78CC57005E558A /* InspectionHelper.swift */; };
 		F690AADE2A9A44A6004775FC /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F690AADD2A9A44A6004775FC /* ActivityViewController.swift */; };
+		F69586532A9EDDBC006F0520 /* UserTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69586522A9EDDBC006F0520 /* UserTypeModel.swift */; };
+		F69586552A9EDE21006F0520 /* UserTypeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69586542A9EDE21006F0520 /* UserTypeSelectionView.swift */; };
+		F69586572A9EFB1B006F0520 /* ProBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69586562A9EFB1B006F0520 /* ProBadgeView.swift */; };
+		F69586592A9EFB40006F0520 /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69586582A9EFB40006F0520 /* UserInfoView.swift */; };
+		F695865C2A9EFDA7006F0520 /* UserStatusChangeResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F695865B2A9EFDA7006F0520 /* UserStatusChangeResultModel.swift */; };
 		F6BE651E2A8DB58500C40E57 /* HouseEssentialQuestionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BE651D2A8DB58500C40E57 /* HouseEssentialQuestionModels.swift */; };
 		F6BE65202A8DBC5600C40E57 /* EssentialQuestionAnswerModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BE651F2A8DBC5600C40E57 /* EssentialQuestionAnswerModels.swift */; };
 		F6D3CCAE2A7B3F8900383BBB /* PredictTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D3CCAD2A7B3F8900383BBB /* PredictTypeModel.swift */; };
@@ -148,6 +153,11 @@
 		F67F59242A78C8D5005E558A /* PersonGenderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonGenderModel.swift; sourceTree = "<group>"; };
 		F67F59272A78CC57005E558A /* InspectionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectionHelper.swift; sourceTree = "<group>"; };
 		F690AADD2A9A44A6004775FC /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
+		F69586522A9EDDBC006F0520 /* UserTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTypeModel.swift; sourceTree = "<group>"; };
+		F69586542A9EDE21006F0520 /* UserTypeSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTypeSelectionView.swift; sourceTree = "<group>"; };
+		F69586562A9EFB1B006F0520 /* ProBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProBadgeView.swift; sourceTree = "<group>"; };
+		F69586582A9EFB40006F0520 /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
+		F695865B2A9EFDA7006F0520 /* UserStatusChangeResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatusChangeResultModel.swift; sourceTree = "<group>"; };
 		F6BE651D2A8DB58500C40E57 /* HouseEssentialQuestionModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseEssentialQuestionModels.swift; sourceTree = "<group>"; };
 		F6BE651F2A8DBC5600C40E57 /* EssentialQuestionAnswerModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssentialQuestionAnswerModels.swift; sourceTree = "<group>"; };
 		F6D3CCAD2A7B3F8900383BBB /* PredictTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictTypeModel.swift; sourceTree = "<group>"; };
@@ -301,6 +311,7 @@
 		F6344B2F2A76307C00FA3440 /* More */ = {
 			isa = PBXGroup;
 			children = (
+				F695865A2A9EFD9F006F0520 /* Models */,
 				F6344B3C2A764A8000FA3440 /* Helper */,
 				F6344B302A76308100FA3440 /* View */,
 			);
@@ -312,6 +323,7 @@
 			children = (
 				F6344B312A76308500FA3440 /* MoreView.swift */,
 				F6344B3A2A764A6E00FA3440 /* InfoView.swift */,
+				F69586582A9EFB40006F0520 /* UserInfoView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -454,6 +466,7 @@
 				F6559DEB2A76169F00C1207A /* SignInView.swift */,
 				F6559DFA2A7617C100C1207A /* SignUpView.swift */,
 				F6559DFE2A762C4700C1207A /* UploadFeatureView.swift */,
+				F69586542A9EDE21006F0520 /* UserTypeSelectionView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -472,6 +485,8 @@
 				F6559DE62A76105A00C1207A /* UserInfoModel.swift */,
 				F6559DFC2A7617E100C1207A /* SignUpAlertModel.swift */,
 				F6559E002A762D6300C1207A /* FeatureSeverityOption.swift */,
+				F69586522A9EDDBC006F0520 /* UserTypeModel.swift */,
+				F69586562A9EFB1B006F0520 /* ProBadgeView.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -482,6 +497,14 @@
 				F67F59272A78CC57005E558A /* InspectionHelper.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		F695865A2A9EFD9F006F0520 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F695865B2A9EFDA7006F0520 /* UserStatusChangeResultModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		F6974C062A78C2AC00BCEB07 /* include */ = {
@@ -666,6 +689,7 @@
 				F6FE66EB2A8CBEDE00AF9D94 /* InspectionEssentialQuestionType.swift in Sources */,
 				F6FE66E42A8CAD4B00AF9D94 /* HomeStatisticsTypeModel.swift in Sources */,
 				F6559DF72A76176600C1207A /* RadioButton.swift in Sources */,
+				F69586552A9EDE21006F0520 /* UserTypeSelectionView.swift in Sources */,
 				F6344B2E2A76307A00FA3440 /* StatisticsView.swift in Sources */,
 				F6559DF62A76176600C1207A /* RadioButtonGroup.swift in Sources */,
 				F6559DEC2A76169F00C1207A /* SignInView.swift in Sources */,
@@ -674,6 +698,7 @@
 				F6559DF22A76174A00C1207A /* CheckBox.swift in Sources */,
 				F6FE66E72A8CB3E900AF9D94 /* StatisticsEmotionDataModel.swift in Sources */,
 				F6559DCF2A760A1B00C1207A /* AES256Util.swift in Sources */,
+				F69586572A9EFB1B006F0520 /* ProBadgeView.swift in Sources */,
 				F674751F2A84AF8F006471CA /* CL02.mlpackage in Sources */,
 				F6344B222A76304800FA3440 /* HomeView.swift in Sources */,
 				F62753962A80B3CB008104B5 /* DiaryCanvasView.swift in Sources */,
@@ -697,6 +722,7 @@
 				F62753982A80B4AA008104B5 /* DiaryMarkUpView.swift in Sources */,
 				F6344B342A7638E000FA3440 /* DrawingView.swift in Sources */,
 				F6559D9E2A7607DC00C1207A /* DeepMindApp.swift in Sources */,
+				F69586592A9EFB40006F0520 /* UserInfoView.swift in Sources */,
 				F6559DFD2A7617E100C1207A /* SignUpAlertModel.swift in Sources */,
 				F6FE66E12A8CA94600AF9D94 /* HomeEmotionStatisticsView.swift in Sources */,
 				F6559DFB2A7617C100C1207A /* SignUpView.swift in Sources */,
@@ -710,11 +736,13 @@
 				F6559DFF2A762C4700C1207A /* UploadFeatureView.swift in Sources */,
 				F6344B262A76305300FA3440 /* DiaryView.swift in Sources */,
 				F67475232A84B922006471CA /* DetectionResultsView.swift in Sources */,
+				F695865C2A9EFDA7006F0520 /* UserStatusChangeResultModel.swift in Sources */,
 				F6344B1E2A76302700FA3440 /* TabManager.swift in Sources */,
 				F6559DE72A76105A00C1207A /* UserInfoModel.swift in Sources */,
 				F6559E012A762D6300C1207A /* FeatureSeverityOption.swift in Sources */,
 				F6FE66DF2A8CA93E00AF9D94 /* HomeHTPStatisticsView.swift in Sources */,
 				F6344B3B2A764A6E00FA3440 /* InfoView.swift in Sources */,
+				F69586532A9EDDBC006F0520 /* UserTypeModel.swift in Sources */,
 				F6344B2A2A76306200FA3440 /* InspectionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
