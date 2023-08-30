@@ -44,6 +44,14 @@
 
 ![ ](imgs/more.PNG) </br>
 
+#### TODO </br>
+> Seperate Features for B2B-B2C </br>
+> Community </br>
+> Grow-up diary </br>
+> All-new home screen </br>
+> Find hospital, reserve </br>
+> Contact to Professional </br>
+
 ## Compatibility</br>
 > DeepMind is compatible with these devices. </br>
 ### iPhone</br>
