@@ -38,7 +38,7 @@ struct TabManager: View {
                         }
                         
                     case 3:
-                        EmptyView().navigationTitle(Text("커뮤니티"))
+                        CommunityMainView(userManagement: userManagement).navigationTitle(Text("커뮤니티"))
 
                     case 4:
                         MoreView(helper: userManagement)
