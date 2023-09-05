@@ -31,7 +31,7 @@ struct CommunityArticleListModel: View {
                 }
                 
                 HStack{
-                    Text(data.createDate)
+                    Text("\(data.board)|\(data.createDate)")
                         .font(.caption)
                         .foregroundStyle(Color.gray)
                     
@@ -41,10 +41,24 @@ struct CommunityArticleListModel: View {
             
             Spacer()
             
-            Text(String(data.commentCount))
-                .foregroundStyle(Color.accent)
-        }.padding(10)
-            .background(RoundedRectangle(cornerRadius: 15).foregroundStyle(Color.btn_color).shadow(radius: 3))
+            ZStack(alignment: .center){
+                Image(systemName: "bubble.left.fill")
+                    .resizable()
+                    .frame(width: 35, height: 35)
+                    .foregroundStyle(Color.accent)
+                
+                Text(String(data.commentCount))
+                    .foregroundStyle(Color.white)
+            }
 
+        }.padding(10)
+            
+
+    }
+}
+
+struct CommunityArticleListModel_previews: PreviewProvider{
+    static var previews: some View{
+        CommunityArticleListModel(data: CommunityArticleDataModel(id: "", title: "", contents: "", imageIndex: 0, author: "", nickName: "", createDate: "", views: 0, commentCount: 0, board: ""))
     }
 }

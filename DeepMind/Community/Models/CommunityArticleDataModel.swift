@@ -8,6 +8,7 @@
 import Foundation
 
 struct CommunityArticleDataModel: Hashable{
+    var id: String
     var title: String
     var contents: String
     var imageIndex: Int
@@ -18,7 +19,8 @@ struct CommunityArticleDataModel: Hashable{
     var commentCount: Int
     var board: String
     
-    init(title: String, contents: String, imageIndex: Int, author: String, nickName: String, createDate: String, views: Int, commentCount: Int, board: String) {
+    init(id: String, title: String, contents: String, imageIndex: Int, author: String, nickName: String, createDate: String, views: Int, commentCount: Int, board: String) {
+        self.id = id
         self.title = title
         self.contents = contents
         self.imageIndex = imageIndex

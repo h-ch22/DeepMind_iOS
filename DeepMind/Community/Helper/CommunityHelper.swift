@@ -12,6 +12,10 @@ import FirebaseStorage
 
 class CommunityHelper: ObservableObject{
     @Published var articleList: [CommunityArticleDataModel] = []
+    @Published var boardList: [String:String] = ["자유 게시판": "Free", "질문 게시판": "Question", "맛집 게시판": "Restaurant", "병원 추천" : "Hospital", "문화/생활" : "Culture", "이벤트": "Event", "자녀방": "Children", "구인/구직": "JobSearch", "판매": "Market"]
+    @Published var filterList = ["전체", "자유 게시판", "질문 게시판", "맛집 게시판", "병원 추천", "문화/생활", "이벤트", "자녀방", "구인/구직", "판매"]
+    @Published var imgList: [URL] = []
+    @Published var comments: [CommunityCommentDataModel] = []
     
     private let db = Firestore.firestore()
     private let storage = Storage.storage()
@@ -39,7 +43,8 @@ class CommunityHelper: ObservableObject{
                         guard let result = result else {return}
                         
                         self.articleList.append(
-                            CommunityArticleDataModel(title: AES256Util.decrypt(encoded: title),
+                            CommunityArticleDataModel(id: document.documentID,
+                                                      title: AES256Util.decrypt(encoded: title),
                                                       contents: AES256Util.decrypt(encoded: contents),
                                                       imageIndex: imageIndex,
                                                       author: author,
@@ -47,7 +52,7 @@ class CommunityHelper: ObservableObject{
                                                       createDate: createDate,
                                                       views: views,
                                                       commentCount: result,
-                                                      board: AES256Util.decrypt(encoded: board))
+                                                      board: self.boardList.someKey(forValue: AES256Util.decrypt(encoded: board)) ?? "")
                         )
                     }
                 }
@@ -58,6 +63,74 @@ class CommunityHelper: ObservableObject{
                 completion(false)
                 return
             }
+        }
+    }
+    
+    func downloadImages(id: String, imgIndex: Int, completion: @escaping(_ result: Bool?) -> Void){
+        imgList.removeAll()
+        
+        for i in 0..<imgIndex{
+            storage.reference().child("Community/\(id)/\(i).png").downloadURL(){(downloadURL, error) in
+                if error != nil{
+                    print(error?.localizedDescription)
+                    completion(false)
+                    return
+                }
+                
+                self.imgList.append(downloadURL!)
+            }
+        }
+        
+        completion(true)
+    }
+    
+    func getComments(id: String, completion: @escaping(_ result: Bool?) -> Void){
+        comments.removeAll()
+        
+        db.collection("Community").document(id).collection("Comments").getDocuments(){(querySnapshot, error) in
+            if error != nil{
+                print(error?.localizedDescription)
+                completion(false)
+                return
+            }
+            
+            if querySnapshot != nil{
+                for document in querySnapshot!.documents{
+                    let author = document.get("author") as? String ?? ""
+                    let nickName = document.get("nickName") as? String ?? ""
+                    let contents = document.get("contents") as? String ?? ""
+                    let uploadDate = document.get("uploadDate") as? String ?? ""
+                    
+                    self.comments.append(CommunityCommentDataModel(author: author,
+                                                                   nickName: AES256Util.decrypt(encoded: nickName),
+                                                                   contents: AES256Util.decrypt(encoded: contents),
+                                                                   uploadDate: uploadDate))
+                }
+                
+                completion(true)
+                return
+            }
+        }
+    }
+    
+    func uploadComments(id: String, contents: String, nickName: String, author: String, completion: @escaping(_ result: Bool?) -> Void){
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy.MM.dd. kk:mm:ss.SSSS"
+        
+        db.collection("Community").document(id).collection("Comments").addDocument(data: [
+            "author": author,
+            "nickName": nickName,
+            "contents": AES256Util.encrypt(string: contents),
+            "uploadDate": dateFormatter.string(from: Date())
+        ]){ error in
+            if error != nil{
+                print(error?.localizedDescription)
+                completion(false)
+                return
+            }
+            
+            completion(true)
+            return
         }
     }
     
@@ -88,10 +161,10 @@ class CommunityHelper: ObservableObject{
             "contents": AES256Util.encrypt(string: contents),
             "imageIndex": imgs.count,
             "author": author,
-            "nickName": AES256Util.encrypt(string: nickName),
+            "nickName": nickName,
             "createDate": dateFormatter.string(from: Date()),
             "views": 0,
-            "board": AES256Util.encrypt(string: board)
+            "board": AES256Util.encrypt(string: boardList[board] ?? "")
         ]){error in
             if error != nil{
                 print(error?.localizedDescription)
@@ -100,8 +173,9 @@ class CommunityHelper: ObservableObject{
             }
             
             if(imgs.count > 0){
-                for img in imgs{
-                    self.storage.reference().child("Community/\(docRef.documentID)").putData(img.pngData()!){_, error in
+                for i in 0..<imgs.count{
+                    let storageRef = self.storage.reference().child("Community/\(docRef.documentID)/\(i).png")
+                    storageRef.putData(imgs[i].pngData()!){_, error in
                         if error != nil{
                             print(error?.localizedDescription)
                             completion(false)
