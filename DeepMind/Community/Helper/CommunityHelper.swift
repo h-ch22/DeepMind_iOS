@@ -151,6 +151,41 @@ class CommunityHelper: ObservableObject{
         }
     }
     
+    func remove(id: String, completion: @escaping(_ result: Bool?) -> Void){
+        let commentsRef = self.db.collection("Community").document(id).collection("Comments")
+        commentsRef.getDocuments(){(querySnapshot, error) in
+            if error == nil && querySnapshot != nil{
+                for document in querySnapshot!.documents{
+                    commentsRef.document(document.documentID).delete()
+                }
+            }
+        }
+        
+        db.collection("Community").document(id).delete(){error in
+            if error != nil{
+                print(error?.localizedDescription)
+                completion(false)
+                return
+            } else{
+                completion(true)
+                return
+            }
+        }
+    }
+    
+    func removeComment(id: String, commentId: String, completion: @escaping(_ result: Bool?) -> Void){
+        self.db.collection("Community").document(id).collection("Comments").document(commentId).delete(){ error in
+            if error != nil{
+                print(error?.localizedDescription)
+                completion(false)
+                return
+            } else{
+                completion(true)
+                return
+            }
+        }
+    }
+    
     func upload(title: String, contents: String, author: String, nickName: String, board: String, imgs: [UIImage], completion: @escaping(_ result: Bool?) -> Void){
         let docRef = db.collection("Community").document()
         let dateFormatter = DateFormatter()

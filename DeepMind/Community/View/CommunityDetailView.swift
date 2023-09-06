@@ -11,8 +11,17 @@ struct CommunityDetailView: View {
     @State private var helper = CommunityHelper()
     @State private var comment = ""
     @State private var showProgress = false
+    @State private var showImages = false
+    @State private var showComments = false
+    @State private var showAlert = false
+    @State private var alertModel: CommonAlertModel = .CONFIRM
+    @State private var deletionModel: CommunityDeletionModel? = nil
+    @State private var showOverlay = false
+    @State private var selectedComment: CommunityCommentDataModel? = nil
     
     @StateObject var userManagement: UserManagement
+    @Environment(\.presentationMode) var presentationMode
+    
     let data: CommunityArticleDataModel
     
     var body: some View {
@@ -47,10 +56,10 @@ struct CommunityDetailView: View {
                             .font(.caption)
                             .foregroundStyle(Color.accent)
                     }
-
-                    if data.imageIndex > 0 && !helper.imgList.isEmpty{
+                    
+                    if data.imageIndex > 0 && showImages{
                         Spacer().frame(height : 20)
-
+                        
                         TabView{
                             ForEach(helper.imgList, id:\.self){ url in
                                 AsyncImage(url: url, content: { image in
@@ -62,10 +71,15 @@ struct CommunityDetailView: View {
                                 })
                             }
                         }.tabViewStyle(.page)
+                            .frame(width: 300, height: 300)
+                    } else if data.imageIndex > 0 && !showImages{
+                        Spacer().frame(height : 20)
+                        
+                        ProgressView()
                     }
                     
                     Spacer().frame(height : 20)
-
+                    
                     HStack{
                         Text(data.contents)
                             .foregroundStyle(Color.txt_color)
@@ -73,9 +87,9 @@ struct CommunityDetailView: View {
                         
                         Spacer()
                     }
-
+                    
                     Spacer().frame(height : 40)
-
+                    
                     HStack{
                         Text("댓글")
                             .font(.title)
@@ -96,20 +110,22 @@ struct CommunityDetailView: View {
                         
                         if !showProgress{
                             Button(action: {
-                                showProgress = true
-                                
-                                helper.uploadComments(id: data.id,
-                                                      contents: comment,
-                                                      nickName: userManagement.userInfo?.nickName ?? "",
-                                                      author: userManagement.userInfo?.UID ?? ""){ result in
-                                    guard let result = result else{return}
+                                if comment != ""{
+                                    showProgress = true
                                     
-                                    if result{
-                                        comment = ""
-                                        helper.getComments(id: data.id){ result in }
+                                    helper.uploadComments(id: data.id,
+                                                          contents: comment,
+                                                          nickName: userManagement.userInfo?.nickName ?? "",
+                                                          author: userManagement.userInfo?.UID ?? ""){ result in
+                                        guard let result = result else{return}
+                                        
+                                        if result{
+                                            comment = ""
+                                            helper.getComments(id: data.id){ result in }
+                                        }
+                                        
+                                        showProgress = false
                                     }
-                                    
-                                    showProgress = false
                                 }
                             }){
                                 Image(systemName: "arrow.up.circle.fill")
@@ -123,26 +139,107 @@ struct CommunityDetailView: View {
                     }
                     
                     Spacer().frame(height : 20)
-
-                    ForEach(helper.comments, id: \.self){ comment in
-                        CommunityCommentsListModel(data: comment, creatorUID: data.author)
-                            .padding(20)
-                            .background(RoundedRectangle(cornerRadius: 15).foregroundStyle(Color.btn_color).shadow(radius: 3))
+                    
+                    if showComments{
+                        ForEach(helper.comments, id: \.self){ comment in
+                            CommunityCommentsListModel(data: comment, creatorUID: data.author)
+                                .padding(20)
+                                .background(RoundedRectangle(cornerRadius: 15).foregroundStyle(Color.btn_color).shadow(radius: 3))
+                                .swipeActions(edge: .leading, allowsFullSwipe: false){
+                                    if userManagement.userInfo?.UID ?? "" == comment.author{
+                                        Button{
+                                            deletionModel = .COMMENT
+                                            selectedComment = comment
+                                            alertModel = .CONFIRM
+                                            showAlert = true
+                                        } label: {
+                                            Label("제거", systemImage: "trash.fill")
+                                        }.tint(.red)
+                                    }
+                                    
+                                }
+                        }
+                        
                     }
-
+                    
                     
                 }.padding(20)
             }.background(Color.backgroundColor.edgesIgnoringSafeArea(.all))
                 .onAppear{
                     helper.downloadImages(id: data.id, imgIndex: data.imageIndex){ result in
                         guard let result = result else{return}
+                        
+                        if result{
+                            showImages = true
+                        }
                     }
                     
                     helper.getComments(id: data.id){ result in
                         guard let result = result else{return}
+                        
+                        if result{
+                            showComments = true
+                        }
                     }
                 }
                 .navigationBarTitleDisplayMode(.inline)
+                .toolbar{
+                    ToolbarItemGroup(placement: .topBarTrailing, content: {
+                        if userManagement.userInfo?.UID ?? "" == data.author{
+                            Button(action: {
+                                deletionModel = .ARTICLE
+                                alertModel = .CONFIRM
+                                showAlert = true
+                            }){
+                                Image(systemName: "trash.fill")
+                                    .foregroundStyle(Color.red)
+                            }
+                        }
+                    })
+                }
+                .alert(isPresented: $showAlert, content: {
+                    switch alertModel{
+                    case .CONFIRM:
+                        return Alert(title: Text("제거 확인"), message: Text("선택한 글을 제거하시겠습니까?"), primaryButton: .default(Text("예")){
+                            if deletionModel == .ARTICLE{
+                                helper.remove(id: data.id){ result in
+                                    guard let result = result else{return}
+                                    
+                                    if result{
+                                        alertModel = .SUCCESS
+                                        showAlert = true
+                                    } else{
+                                        alertModel = .ERROR
+                                        showAlert = true
+                                    }
+                                }
+                            } else if deletionModel == .COMMENT{
+                                helper.removeComment(id: data.id, commentId: selectedComment?.author ?? ""){ result in
+                                    guard let result = result else{return}
+                                    
+                                    if result{
+                                        alertModel = .SUCCESS
+                                        showAlert = true
+                                    } else{
+                                        alertModel = .ERROR
+                                        showAlert = true
+                                    }
+                                }
+                            }
+                        }, secondaryButton: .default(Text("아니오")))
+                        
+                    case .SUCCESS:
+                        return Alert(title: Text("작업 완료"), message: Text("요청하신 작업이 정상적으로 처리되었습니다."), dismissButton: .default(Text("확인")){
+                            self.presentationMode.wrappedValue.dismiss()
+                        })
+                        
+                    case .ERROR:
+                        return Alert(title: Text("오류"), message: Text("요청하신 작업을 처리하는 중 문제가 발생했습니다.\n네트워크 상태, 정상 로그인 여부 또는 이 작업을 수행할 수 있는 권한이 있는지 확인하신 후 다시 시도하십시오."), dismissButton: .default(Text("확인")){
+                            
+                        })
+                    }
+                })
+                .overlay(ProcessView().isHidden(!showOverlay))
         }
     }
 }

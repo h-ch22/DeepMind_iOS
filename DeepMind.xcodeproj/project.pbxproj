@@ -77,6 +77,8 @@
 		F69586572A9EFB1B006F0520 /* ProBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69586562A9EFB1B006F0520 /* ProBadgeView.swift */; };
 		F69586592A9EFB40006F0520 /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69586582A9EFB40006F0520 /* UserInfoView.swift */; };
 		F695865C2A9EFDA7006F0520 /* UserStatusChangeResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F695865B2A9EFDA7006F0520 /* UserStatusChangeResultModel.swift */; };
+		F69F94052AA8606A002EE0A3 /* CommonAlertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69F94042AA8606A002EE0A3 /* CommonAlertModel.swift */; };
+		F69F94072AA860CD002EE0A3 /* CommunityDeletionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69F94062AA860CD002EE0A3 /* CommunityDeletionModel.swift */; };
 		F6BE651E2A8DB58500C40E57 /* HouseEssentialQuestionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BE651D2A8DB58500C40E57 /* HouseEssentialQuestionModels.swift */; };
 		F6BE65202A8DBC5600C40E57 /* EssentialQuestionAnswerModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BE651F2A8DBC5600C40E57 /* EssentialQuestionAnswerModels.swift */; };
 		F6D3CCAE2A7B3F8900383BBB /* PredictTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D3CCAD2A7B3F8900383BBB /* PredictTypeModel.swift */; };
@@ -174,6 +176,8 @@
 		F69586562A9EFB1B006F0520 /* ProBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProBadgeView.swift; sourceTree = "<group>"; };
 		F69586582A9EFB40006F0520 /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
 		F695865B2A9EFDA7006F0520 /* UserStatusChangeResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatusChangeResultModel.swift; sourceTree = "<group>"; };
+		F69F94042AA8606A002EE0A3 /* CommonAlertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonAlertModel.swift; sourceTree = "<group>"; };
+		F69F94062AA860CD002EE0A3 /* CommunityDeletionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityDeletionModel.swift; sourceTree = "<group>"; };
 		F6BE651D2A8DB58500C40E57 /* HouseEssentialQuestionModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseEssentialQuestionModels.swift; sourceTree = "<group>"; };
 		F6BE651F2A8DBC5600C40E57 /* EssentialQuestionAnswerModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssentialQuestionAnswerModels.swift; sourceTree = "<group>"; };
 		F6D3CCAD2A7B3F8900383BBB /* PredictTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictTypeModel.swift; sourceTree = "<group>"; };
@@ -245,6 +249,7 @@
 				F60A10A82AA5C67300FA9AD9 /* CommunityCommentDataModel.swift */,
 				F60A10AD2AA5CAE200FA9AD9 /* CommunityArticleListModel.swift */,
 				F60A10B32AA6DA5600FA9AD9 /* CommunityCommentsListModel.swift */,
+				F69F94062AA860CD002EE0A3 /* CommunityDeletionModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -475,6 +480,7 @@
 		F6559DC72A76083C00C1207A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F69F94032AA86063002EE0A3 /* Models */,
 				F6559DCD2A760A1400C1207A /* Helper */,
 				F6559DC82A76084100C1207A /* View */,
 			);
@@ -571,6 +577,14 @@
 				F67475202A84AF95006471CA /* CL03.mlpackage */,
 			);
 			path = include;
+			sourceTree = "<group>";
+		};
+		F69F94032AA86063002EE0A3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F69F94042AA8606A002EE0A3 /* CommonAlertModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		F6FE66D92A8C99AB00AF9D94 /* Helper */ = {
@@ -751,6 +765,7 @@
 				F6559DEC2A76169F00C1207A /* SignInView.swift in Sources */,
 				F67F59252A78C8D5005E558A /* PersonGenderModel.swift in Sources */,
 				F6FE66DB2A8C99B500AF9D94 /* DailyEmotionHelper.swift in Sources */,
+				F69F94052AA8606A002EE0A3 /* CommonAlertModel.swift in Sources */,
 				F6559DF22A76174A00C1207A /* CheckBox.swift in Sources */,
 				F6FE66E72A8CB3E900AF9D94 /* StatisticsEmotionDataModel.swift in Sources */,
 				F6559DCF2A760A1B00C1207A /* AES256Util.swift in Sources */,
@@ -794,6 +809,7 @@
 				F6559DEE2A7616B500C1207A /* LAHelper.swift in Sources */,
 				F62753832A808E03008104B5 /* DiaryHelper.swift in Sources */,
 				F6559DE42A76104100C1207A /* UserManagement.swift in Sources */,
+				F69F94072AA860CD002EE0A3 /* CommunityDeletionModel.swift in Sources */,
 				F6344B392A76407100FA3440 /* DrawingTypeModel.swift in Sources */,
 				F6344B362A763ACC00FA3440 /* CanvasView.swift in Sources */,
 				F6559DFF2A762C4700C1207A /* UploadFeatureView.swift in Sources */,

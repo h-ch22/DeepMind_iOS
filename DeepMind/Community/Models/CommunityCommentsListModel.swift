@@ -20,7 +20,7 @@ struct CommunityCommentsListModel: View {
                 
                 if creatorUID == data.author{
                     Text("작성자")
-                        .font(.headline)
+                        .font(.caption)
                         .padding(5)
                         .foregroundStyle(Color.white)
                         .background(RoundedRectangle(cornerRadius: 50).foregroundStyle(Color.accent))
@@ -35,8 +35,13 @@ struct CommunityCommentsListModel: View {
             
             Spacer().frame(height: 10)
             
-            Text(data.contents)
-                .foregroundStyle(Color.txt_color)
+            HStack{
+                Text(data.contents)
+                    .foregroundStyle(Color.txt_color)
+                
+                Spacer()
+            }
+
         }
     }
 }

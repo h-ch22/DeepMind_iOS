@@ -57,7 +57,7 @@ struct CommunityMainView: View {
                         }
                     }
                 }, label: {
-                    Image(systemName: "line.3.horizontal.decrease.circle")
+                    Image(systemName: currentBoard == "전체" ? "line.3.horizontal.decrease.circle" : "line.3.horizontal.decrease.circle.fill")
                 })
                 
                 NavigationLink(destination: WriteCommunityView(userManagement: userManagement)){
