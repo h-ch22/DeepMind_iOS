@@ -12,6 +12,7 @@ import FirebaseStorage
 
 class CommunityHelper: ObservableObject{
     @Published var articleList: [CommunityArticleDataModel] = []
+    @Published var latestArticles: [CommunityArticleDataModel] = []
     @Published var boardList: [String:String] = ["자유 게시판": "Free", "질문 게시판": "Question", "맛집 게시판": "Restaurant", "병원 추천" : "Hospital", "문화/생활" : "Culture", "이벤트": "Event", "자녀방": "Children", "구인/구직": "JobSearch", "판매": "Market"]
     @Published var filterList = ["전체", "자유 게시판", "질문 게시판", "맛집 게시판", "병원 추천", "문화/생활", "이벤트", "자녀방", "구인/구직", "판매"]
     @Published var imgList: [URL] = []
@@ -19,6 +20,44 @@ class CommunityHelper: ObservableObject{
     
     private let db = Firestore.firestore()
     private let storage = Storage.storage()
+    
+    func getLatestArticles(completion: @escaping(_ result: Bool?) -> Void){
+        self.db.collection("Community").order(by: "createDate").limit(to: 5).getDocuments(){(querySnapshot, error) in
+            if error != nil{
+                print(error?.localizedDescription)
+                completion(false)
+                return
+            } else if querySnapshot != nil{
+                for document in querySnapshot!.documents{
+                    let title = document.get("title") as? String ?? ""
+                    let contents = document.get("contents") as? String ?? ""
+                    let imageIndex = document.get("imageIndex") as? Int ?? 0
+                    let author = document.get("author") as? String ?? ""
+                    let nickName = document.get("nickName") as? String ?? ""
+                    let createDate = document.get("createDate") as? String ?? ""
+                    let views = document.get("views") as? Int ?? 0
+                    let board = document.get("board") as? String ?? ""
+                    
+                    self.getCommentCount(id: document.documentID){ result in
+                        guard let result = result else {return}
+                        
+                        self.latestArticles.append(
+                            CommunityArticleDataModel(id: document.documentID,
+                                                      title: AES256Util.decrypt(encoded: title),
+                                                      contents: AES256Util.decrypt(encoded: contents),
+                                                      imageIndex: imageIndex,
+                                                      author: author,
+                                                      nickName: AES256Util.decrypt(encoded: nickName),
+                                                      createDate: createDate,
+                                                      views: views,
+                                                      commentCount: result,
+                                                      board: self.boardList.someKey(forValue: AES256Util.decrypt(encoded: board)) ?? "")
+                        )
+                    }
+                }
+            }
+        }
+    }
     
     func getAllArticles(completion: @escaping(_ result: Bool?) -> Void){
         self.db.collection("Community").getDocuments(){(querySnapshot, error) in

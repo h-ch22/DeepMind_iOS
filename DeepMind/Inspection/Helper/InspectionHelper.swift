@@ -15,6 +15,7 @@ import PDFKit
 
 class InspectionHelper: ObservableObject{
     @Published var inspectionResults: [InspectionHistoryModel] = []
+    @Published var latestInspectionResult: InspectionHistoryModel? = nil
     
     private let db = Firestore.firestore()
     private let storage = Storage.storage()
@@ -290,6 +291,23 @@ class InspectionHelper: ObservableObject{
             } else{
                 completion(true)
                 return
+            }
+        }
+    }
+    
+    func getLatestHistory(completion: @escaping(_ result: Bool?) -> Void){
+        self.db.collection("Inspection").document(auth.currentUser?.uid ?? "").collection("Results").getDocuments(){(querySnapshot, error) in
+            if error != nil{
+                print(error?.localizedDescription)
+                completion(false)
+                return
+            } else{
+                if querySnapshot != nil{
+                    
+                } else{
+                    completion(false)
+                    return
+                }
             }
         }
     }

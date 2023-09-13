@@ -137,7 +137,7 @@ class UserManagement: ObservableObject{
                                             let isDomesticViolenceVictim = featureDoc!.get(FieldPath([AES256Util.encrypt(string: "isDomesticViolenceVictim")])) as? Bool ?? false
                                             let isPsychosis = featureDoc!.get(FieldPath([AES256Util.encrypt(string: "isPsychosis")])) as? Bool ?? false
                                             
-                                            self.userInfo = UserInfoModel(UID: UID, email: email, name: name, nickName: nickName, phone: phone, birthDay: birthDay, agency: agency, type: type == "CUSTOMER" ? .CUSTOMER : .PROFESSIONAL , isChildAbuseAttacker: isChildAbuseAttacker, isChildAbuseVictim: isChildAbuseVictim, isDomesticViolenceAttacker: isDomesticViolenceAttacker, isDomesticViolenceVictim: isDomesticViolenceVictim, isPsychosis: isPsychosis)
+                                            self.userInfo = UserInfoModel(UID: UID, email: email, name: name, nickName: nickName, phone: phone, birthDay: birthDay, agency: agency, type: type == "Professional" ? .PROFESSIONAL : .CUSTOMER , isChildAbuseAttacker: isChildAbuseAttacker, isChildAbuseVictim: isChildAbuseVictim, isDomesticViolenceAttacker: isDomesticViolenceAttacker, isDomesticViolenceVictim: isDomesticViolenceVictim, isPsychosis: isPsychosis)
                                             
                                             completion(true)
                                             return

@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct HomeView: View {
-    @StateObject private var helper = DailyEmotionHelper()
+    @StateObject private var inspectionHelper = InspectionHelper()
+    @StateObject private var communityHelper = CommunityHelper()
     @StateObject var userManagement: UserManagement
     @State private var emotions = ["🥰 행복해요", "😆 최고예요", "😀 좋아요", "🙂 그저그래요", "☹️ 안좋아요", "😢 슬퍼요", "😣 혼자있고싶어요", "😡 화나요"]
     @State private var dailyEmotion: DiaryEmotionModel? = nil
@@ -31,97 +32,97 @@ struct HomeView: View {
                             .fontWeight(.semibold)
                         
                         Spacer()
-                        
-                        if dailyEmotion != nil{
-                            Text("오늘은 \n\(emotions[dailyEmotion!.code])")
-                                .multilineTextAlignment(.trailing)
-                        } else{
-                            Text("오늘의 감정을 기록해주세요.")
-                        }
                     }
                     
                     Spacer().frame(height : 20)
                     
-                    if dailyEmotion == nil{
-                        LazyVGrid(columns: columns, spacing: 20){
-                            ForEach(emotions.indices, id:\.self){i in
-                                Button(action: {
-                                    helper.uploadDailyEmotion(emotion: DiaryHelper.indexToEmotion(index: i) ?? .HAPPY){ result in
-                                        guard let result = result else{return}
-                                    }
-                                    
-                                    helper.getDailyEmotion(){ result in
-                                        guard let result = result else{return}
-                                        
-                                        self.dailyEmotion = result
-                                    }
-                                }){
-                                    VStack{
-                                        Text(emotions[i].split(separator: " ")[0])
-                                            .font(UIDevice.current.userInterfaceIdiom == .phone ? .caption : .headline)
-                                        Text(emotions[i].split(separator: " ")[1])
-                                            .font(UIDevice.current.userInterfaceIdiom == .phone ? .caption : .headline)
-                                    }
-                                    .foregroundStyle(Color.txt_color)
+                    HStack{
+                        if inspectionHelper.latestInspectionResult == nil{
+                            Button(action: {}){
+                                VStack{
+                                    Text("최근 검사 기록이 없어요😢")
+                                        .foregroundStyle(Color.white)
+                                        .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                                }.padding(20)
+                                    .padding([.vertical], 50)
+                                    .frame(width: 150, height: 150)
+                                    .background(RoundedRectangle(cornerRadius: 15).foregroundStyle(Color.gray).shadow(radius: 5))
+                            }
+                        }
 
-                                }.frame(width : UIDevice.current.userInterfaceIdiom == .phone ? 60 : 120,
-                                        height : UIDevice.current.userInterfaceIdiom == .phone ? 60 : 120)
+                        
+                        Button(action: {}){
+                            VStack(alignment: .leading){
+                                Text("HTP 검사")
+                                    .font(.caption)
+                                    .foregroundStyle(Color.white)
+                                
+                                HStack{
+                                    Text("시작하기")
+                                        .fontWeight(.semibold)
+                                        .foregroundStyle(Color.white)
+                                    
+                                    Image(systemName : "arrow.right.circle.fill")
+                                        .foregroundStyle(Color.white)
+                                }
+                            }.padding(20)
+                                .padding([.vertical], 50)
+                                .frame(width: 150, height: 150)
+                                .background(RoundedRectangle(cornerRadius: 15).foregroundStyle(Color.accent).shadow(radius: 5))
+                        }
+                    }.fixedSize(horizontal: false, vertical: true)
+                        .frame(maxWidth: .infinity, maxHeight: 200)
+                    
+                    Spacer().frame(height: 20)
+                    
+                    if userManagement.userInfo?.type == .PROFESSIONAL{
+                        
+                    } else{
+                        HStack{
+                            Text("🔥 최신 커뮤니티 게시물")
+                                .foregroundStyle(Color.txt_color)
+                                .fontWeight(.semibold)
+                            
+                            Spacer()
+                        }
+                        
+                        Spacer().frame(height: 20)
+                        
+                        HStack{
+                            ForEach(communityHelper.latestArticles, id:\.self){item in
+                                Button(action: {}){
+                                    HomeCommunityListModel(data: item)
+                                }
+                                
+                                Spacer().frame(width: 10)
+                            }
+                            
+                            Button(action: {}){
+                                HStack{
+                                    Text("더 많은 게시물 확인하기")
+                                        .foregroundStyle(Color.txt_color)
+                                        .fontWeight(.semibold)
+                                    
+                                    Image(systemName: "arrow.right.circle.fill")
+                                        .foregroundStyle(Color.txt_color)
+                                }.padding(20)
+                                    .frame(minHeight: 80, maxHeight: 80)
                                     .background(RoundedRectangle(cornerRadius: 15).foregroundStyle(Color.btn_color).shadow(radius: 5))
                             }
-                        }.padding(.horizontal)
-                        
-                        Spacer().frame(height : 20)
-                    }
-                    
-                    Spacer().frame(height : 10)
-                    
-                    Picker("", selection : $currentIndex){
-                        ForEach(categories.indices, id:\.self){category in
-                            Text(categories[category])
-                        }
-                    }.pickerStyle(.segmented)
-                    
-                    Spacer().frame(height : 20)
-                    
-                    if currentIndex != 0{
-                        HomeEmotionStatisticsView(type: currentIndex == 1 ? .DIARY_EMOTION : .DAILY_EMOTION, helper: helper)
-                        
-                        Spacer().frame(height : 20)
-
-                        Button(action:{
-                            parent.changeView(index: 3)
-                        }){
-                            HStack{
-                                Image(systemName : "chart.xyaxis.line")
-                                    .foregroundStyle(Color.txt_color)
-                                Text("통계에서 자세한 기록 확인하기")
-                                    .foregroundStyle(Color.txt_color)
-                            }.padding(20).background(RoundedRectangle(cornerRadius: 15).foregroundStyle(Color.btn_color).shadow(radius: 5))
-                        }
-                    } else{
-                        Text("HTP 검사를 진행하고 통계를 확인해보세요.")
-                            .foregroundStyle(Color.gray)
-                        
-                        Spacer().frame(height : 10)
-                        
-                        Button(action: {
-                            parent.showInspectionSheet()
-                        }){
-                            Text("검사 시작")
+                            
+                            Spacer()
                         }
                     }
                     
                 }.padding(20)
                     .onAppear{
-                        helper.getDailyEmotion(){ result in
-                            guard let result = result else{return}
-                            
-                            self.dailyEmotion = result
-                        }
-                        
-                        helper.getAllEmotions(){ result in
-                            guard let result = result else{return}
-                        }
+//                        inspectionHelper.getLatestHistory(){ result in
+//                            guard let result = result else{return}
+//                        }
+//                        
+//                        communityHelper.getLatestArticles(){ result in
+//                            guard let result = result else{return}
+//                        }
                     }
                     .navigationBarHidden(true)
                     .animation(.easeInOut)
@@ -130,8 +131,8 @@ struct HomeView: View {
     }
 }
 
-//#Preview {
-//    Group{
-//        HomeView(userManagement: UserManagement(), parent: TabManager(userManagement: UserManagement()))
-//    }
-//}
+#Preview {
+    Group{
+        HomeView(userManagement: UserManagement(), parent: TabManager(userManagement: UserManagement()))
+    }
+}

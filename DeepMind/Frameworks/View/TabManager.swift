@@ -10,6 +10,7 @@ import SwiftUI
 struct TabManager: View {
     @State private var selectedIndex = 0
     @State private var showModal = false
+    @State private var viewSize: CGSize = .zero
     @StateObject var userManagement : UserManagement
     
     let icon = ["house.fill", "map.fill", "applepencil.and.scribble", "shared.with.you", "ellipsis.circle.fill"]
@@ -32,9 +33,9 @@ struct TabManager: View {
                         
                     case 1:
                         if userManagement.userInfo?.type == .CUSTOMER{
-                            EmptyView().navigationTitle(Text("병원 찾기 및 예약"))
+                            HospitalMapView(bottomBarHeight: viewSize.height).navigationTitle(Text("병원 찾기 및 예약"))
                         } else{
-                            EmptyView().navigationTitle(Text("상담 관리"))
+                            HospitalMapView(bottomBarHeight: viewSize.height).navigationTitle(Text("상담 관리"))
                         }
                         
                     case 3:
@@ -51,7 +52,7 @@ struct TabManager: View {
                 Spacer()
                 
                 Divider()
-                
+
                 HStack{
                     ForEach(0..<5, id:\.self){number in
                         Spacer()
@@ -104,7 +105,11 @@ struct TabManager: View {
                         
                         Spacer()
                     }
-                }
+                    
+
+                }.saveViewSize(in: $viewSize)
+                
+
             }
             
             .sheet(isPresented: $showModal, content: {

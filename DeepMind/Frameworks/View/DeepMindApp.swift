@@ -335,3 +335,9 @@ extension Dictionary where Value: Equatable {
         return first(where: { $1 == val })?.key
     }
 }
+
+extension View {
+    func saveViewSize(in size: Binding<CGSize>) -> some View {
+        modifier(ViewSizeCalculator(size: size))
+    }
+}

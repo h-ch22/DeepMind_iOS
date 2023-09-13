@@ -40,7 +40,6 @@ struct CommunityMainView: View {
                     Spacer()
                 }.padding(20)
             }
-            
         }.onAppear{
             helper.getAllArticles(){ result in
                 guard let result = result else{return}

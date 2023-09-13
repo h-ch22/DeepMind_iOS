@@ -79,13 +79,18 @@
 		F695865C2A9EFDA7006F0520 /* UserStatusChangeResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F695865B2A9EFDA7006F0520 /* UserStatusChangeResultModel.swift */; };
 		F69F94052AA8606A002EE0A3 /* CommonAlertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69F94042AA8606A002EE0A3 /* CommonAlertModel.swift */; };
 		F69F94072AA860CD002EE0A3 /* CommunityDeletionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69F94062AA860CD002EE0A3 /* CommunityDeletionModel.swift */; };
+		F6A1326D2AB1EB7A00F53CF8 /* InspectionResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A1326C2AB1EB7A00F53CF8 /* InspectionResultView.swift */; };
+		F6A1326F2AB1F12D00F53CF8 /* HomeCommunityListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A1326E2AB1F12D00F53CF8 /* HomeCommunityListModel.swift */; };
 		F6BE651E2A8DB58500C40E57 /* HouseEssentialQuestionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BE651D2A8DB58500C40E57 /* HouseEssentialQuestionModels.swift */; };
 		F6BE65202A8DBC5600C40E57 /* EssentialQuestionAnswerModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BE651F2A8DBC5600C40E57 /* EssentialQuestionAnswerModels.swift */; };
 		F6D3CCAE2A7B3F8900383BBB /* PredictTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D3CCAD2A7B3F8900383BBB /* PredictTypeModel.swift */; };
-		F6FE66DB2A8C99B500AF9D94 /* DailyEmotionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FE66DA2A8C99B500AF9D94 /* DailyEmotionHelper.swift */; };
-		F6FE66DF2A8CA93E00AF9D94 /* HomeHTPStatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FE66DE2A8CA93E00AF9D94 /* HomeHTPStatisticsView.swift */; };
-		F6FE66E12A8CA94600AF9D94 /* HomeEmotionStatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FE66E02A8CA94600AF9D94 /* HomeEmotionStatisticsView.swift */; };
-		F6FE66E42A8CAD4B00AF9D94 /* HomeStatisticsTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FE66E32A8CAD4B00AF9D94 /* HomeStatisticsTypeModel.swift */; };
+		F6F6421A2AB2016B0009A554 /* NMapsMap in Frameworks */ = {isa = PBXBuildFile; productRef = F6F642192AB2016B0009A554 /* NMapsMap */; };
+		F6F6421D2AB201960009A554 /* HospitalMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F6421C2AB201960009A554 /* HospitalMapView.swift */; };
+		F6F642212AB202820009A554 /* HospitalMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F642202AB202820009A554 /* HospitalMapViewController.swift */; };
+		F6F642242AB2050C0009A554 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = F6F642232AB2050C0009A554 /* Alamofire */; };
+		F6F642272AB205370009A554 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = F6F642262AB205370009A554 /* SwiftyJSON */; };
+		F6F6422A2AB205D10009A554 /* HospitalMapHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F642292AB205D10009A554 /* HospitalMapHelper.swift */; };
+		F6F6422C2AB2159C0009A554 /* ViewSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F6422B2AB2159C0009A554 /* ViewSizeCalculator.swift */; };
 		F6FE66E72A8CB3E900AF9D94 /* StatisticsEmotionDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FE66E62A8CB3E900AF9D94 /* StatisticsEmotionDataModel.swift */; };
 		F6FE66E92A8CBBE300AF9D94 /* InspectionEssentialQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FE66E82A8CBBE300AF9D94 /* InspectionEssentialQuestionView.swift */; };
 		F6FE66EB2A8CBEDE00AF9D94 /* InspectionEssentialQuestionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FE66EA2A8CBEDE00AF9D94 /* InspectionEssentialQuestionType.swift */; };
@@ -178,13 +183,15 @@
 		F695865B2A9EFDA7006F0520 /* UserStatusChangeResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatusChangeResultModel.swift; sourceTree = "<group>"; };
 		F69F94042AA8606A002EE0A3 /* CommonAlertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonAlertModel.swift; sourceTree = "<group>"; };
 		F69F94062AA860CD002EE0A3 /* CommunityDeletionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityDeletionModel.swift; sourceTree = "<group>"; };
+		F6A1326C2AB1EB7A00F53CF8 /* InspectionResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectionResultView.swift; sourceTree = "<group>"; };
+		F6A1326E2AB1F12D00F53CF8 /* HomeCommunityListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCommunityListModel.swift; sourceTree = "<group>"; };
 		F6BE651D2A8DB58500C40E57 /* HouseEssentialQuestionModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseEssentialQuestionModels.swift; sourceTree = "<group>"; };
 		F6BE651F2A8DBC5600C40E57 /* EssentialQuestionAnswerModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssentialQuestionAnswerModels.swift; sourceTree = "<group>"; };
 		F6D3CCAD2A7B3F8900383BBB /* PredictTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictTypeModel.swift; sourceTree = "<group>"; };
-		F6FE66DA2A8C99B500AF9D94 /* DailyEmotionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyEmotionHelper.swift; sourceTree = "<group>"; };
-		F6FE66DE2A8CA93E00AF9D94 /* HomeHTPStatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHTPStatisticsView.swift; sourceTree = "<group>"; };
-		F6FE66E02A8CA94600AF9D94 /* HomeEmotionStatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEmotionStatisticsView.swift; sourceTree = "<group>"; };
-		F6FE66E32A8CAD4B00AF9D94 /* HomeStatisticsTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeStatisticsTypeModel.swift; sourceTree = "<group>"; };
+		F6F6421C2AB201960009A554 /* HospitalMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalMapView.swift; sourceTree = "<group>"; };
+		F6F642202AB202820009A554 /* HospitalMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalMapViewController.swift; sourceTree = "<group>"; };
+		F6F642292AB205D10009A554 /* HospitalMapHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalMapHelper.swift; sourceTree = "<group>"; };
+		F6F6422B2AB2159C0009A554 /* ViewSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSizeCalculator.swift; sourceTree = "<group>"; };
 		F6FE66E62A8CB3E900AF9D94 /* StatisticsEmotionDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsEmotionDataModel.swift; sourceTree = "<group>"; };
 		F6FE66E82A8CBBE300AF9D94 /* InspectionEssentialQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectionEssentialQuestionView.swift; sourceTree = "<group>"; };
 		F6FE66EA2A8CBEDE00AF9D94 /* InspectionEssentialQuestionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectionEssentialQuestionType.swift; sourceTree = "<group>"; };
@@ -195,12 +202,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6F642242AB2050C0009A554 /* Alamofire in Frameworks */,
 				F6559DD22A760BE700C1207A /* FirebaseAnalytics in Frameworks */,
 				F6559DD42A760BE700C1207A /* FirebaseAuth in Frameworks */,
 				F6559DDA2A760BE700C1207A /* FirebaseMessaging in Frameworks */,
 				F6559DD62A760BE700C1207A /* FirebaseFirestore in Frameworks */,
 				F6559DD82A760BE700C1207A /* FirebaseFunctions in Frameworks */,
+				F6F6421A2AB2016B0009A554 /* NMapsMap in Frameworks */,
 				F6559DDC2A760BE700C1207A /* FirebaseStorage in Frameworks */,
+				F6F642272AB205370009A554 /* SwiftyJSON in Frameworks */,
 				F6559DDF2A760D0600C1207A /* CryptoSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -301,8 +311,6 @@
 			isa = PBXGroup;
 			children = (
 				F6344B212A76304800FA3440 /* HomeView.swift */,
-				F6FE66DE2A8CA93E00AF9D94 /* HomeHTPStatisticsView.swift */,
-				F6FE66E02A8CA94600AF9D94 /* HomeEmotionStatisticsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -434,6 +442,8 @@
 		F6559D9C2A7607DC00C1207A /* DeepMind */ = {
 			isa = PBXGroup;
 			children = (
+				F6A132702AB1FF6F00F53CF8 /* HospitalMap */,
+				F699F3BC2AB1EAD800D530FC /* Demo */,
 				F60A10A12AA5C61900FA9AD9 /* Community */,
 				F62753902A80A806008104B5 /* Info.plist */,
 				F627538D2A80A797008104B5 /* fonts */,
@@ -499,6 +509,7 @@
 				F6344B1D2A76302700FA3440 /* TabManager.swift */,
 				F62753992A80C0D4008104B5 /* ImagePicker.swift */,
 				F690AADD2A9A44A6004775FC /* ActivityViewController.swift */,
+				F6F6422B2AB2159C0009A554 /* ViewSizeCalculator.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -579,6 +590,14 @@
 			path = include;
 			sourceTree = "<group>";
 		};
+		F699F3BC2AB1EAD800D530FC /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				F6A1326B2AB1EB6900F53CF8 /* View */,
+			);
+			path = Demo;
+			sourceTree = "<group>";
+		};
 		F69F94032AA86063002EE0A3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -587,10 +606,43 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		F6A1326B2AB1EB6900F53CF8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F6A1326C2AB1EB7A00F53CF8 /* InspectionResultView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F6A132702AB1FF6F00F53CF8 /* HospitalMap */ = {
+			isa = PBXGroup;
+			children = (
+				F6F642282AB2056F0009A554 /* Helper */,
+				F6F6421B2AB2018F0009A554 /* View */,
+			);
+			path = HospitalMap;
+			sourceTree = "<group>";
+		};
+		F6F6421B2AB2018F0009A554 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F6F6421C2AB201960009A554 /* HospitalMapView.swift */,
+				F6F642202AB202820009A554 /* HospitalMapViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F6F642282AB2056F0009A554 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				F6F642292AB205D10009A554 /* HospitalMapHelper.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		F6FE66D92A8C99AB00AF9D94 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				F6FE66DA2A8C99B500AF9D94 /* DailyEmotionHelper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -598,7 +650,7 @@
 		F6FE66E22A8CAD4000AF9D94 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				F6FE66E32A8CAD4B00AF9D94 /* HomeStatisticsTypeModel.swift */,
+				F6A1326E2AB1F12D00F53CF8 /* HomeCommunityListModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -635,6 +687,9 @@
 				F6559DD92A760BE700C1207A /* FirebaseMessaging */,
 				F6559DDB2A760BE700C1207A /* FirebaseStorage */,
 				F6559DDE2A760D0600C1207A /* CryptoSwift */,
+				F6F642192AB2016B0009A554 /* NMapsMap */,
+				F6F642232AB2050C0009A554 /* Alamofire */,
+				F6F642262AB205370009A554 /* SwiftyJSON */,
 			);
 			productName = DeepMind;
 			productReference = F6559D9A2A7607DC00C1207A /* DeepMind.app */;
@@ -711,6 +766,9 @@
 			packageReferences = (
 				F6559DD02A760BE600C1207A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				F6559DDD2A760D0600C1207A /* XCRemoteSwiftPackageReference "CryptoSwift" */,
+				F6F642182AB2016B0009A554 /* XCRemoteSwiftPackageReference "NMapsMap-SwiftPM" */,
+				F6F642222AB2050B0009A554 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				F6F642252AB205370009A554 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 			);
 			productRefGroup = F6559D9B2A7607DC00C1207A /* Products */;
 			projectDirPath = "";
@@ -757,14 +815,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6FE66EB2A8CBEDE00AF9D94 /* InspectionEssentialQuestionType.swift in Sources */,
-				F6FE66E42A8CAD4B00AF9D94 /* HomeStatisticsTypeModel.swift in Sources */,
 				F6559DF72A76176600C1207A /* RadioButton.swift in Sources */,
 				F69586552A9EDE21006F0520 /* UserTypeSelectionView.swift in Sources */,
 				F6344B2E2A76307A00FA3440 /* StatisticsView.swift in Sources */,
 				F6559DF62A76176600C1207A /* RadioButtonGroup.swift in Sources */,
 				F6559DEC2A76169F00C1207A /* SignInView.swift in Sources */,
 				F67F59252A78C8D5005E558A /* PersonGenderModel.swift in Sources */,
-				F6FE66DB2A8C99B500AF9D94 /* DailyEmotionHelper.swift in Sources */,
 				F69F94052AA8606A002EE0A3 /* CommonAlertModel.swift in Sources */,
 				F6559DF22A76174A00C1207A /* CheckBox.swift in Sources */,
 				F6FE66E72A8CB3E900AF9D94 /* StatisticsEmotionDataModel.swift in Sources */,
@@ -780,6 +836,7 @@
 				F6344B322A76308500FA3440 /* MoreView.swift in Sources */,
 				F67475212A84AF95006471CA /* CL03.mlpackage in Sources */,
 				F62753862A808E17008104B5 /* DiaryContentsModel.swift in Sources */,
+				F6A1326F2AB1F12D00F53CF8 /* HomeCommunityListModel.swift in Sources */,
 				F627538A2A8092AF008104B5 /* WriteDiaryMainView.swift in Sources */,
 				F674751D2A84AF86006471CA /* CL01.mlpackage in Sources */,
 				F6559DF82A76176600C1207A /* ProcessView.swift in Sources */,
@@ -787,10 +844,12 @@
 				F6FE66E92A8CBBE300AF9D94 /* InspectionEssentialQuestionView.swift in Sources */,
 				F67F59282A78CC57005E558A /* InspectionHelper.swift in Sources */,
 				F674751B2A84A2DF006471CA /* Detection.swift in Sources */,
+				F6F6421D2AB201960009A554 /* HospitalMapView.swift in Sources */,
 				F60A10B02AA5CE2100FA9AD9 /* WriteCommunityView.swift in Sources */,
 				F690AADE2A9A44A6004775FC /* ActivityViewController.swift in Sources */,
 				F60A10A42AA5C62400FA9AD9 /* CommunityMainView.swift in Sources */,
 				F6BE65202A8DBC5600C40E57 /* EssentialQuestionAnswerModels.swift in Sources */,
+				F6F6422A2AB205D10009A554 /* HospitalMapHelper.swift in Sources */,
 				F6D3CCAE2A7B3F8900383BBB /* PredictTypeModel.swift in Sources */,
 				F6BE651E2A8DB58500C40E57 /* HouseEssentialQuestionModels.swift in Sources */,
 				F627538C2A80A08C008104B5 /* WriteDiaryView.swift in Sources */,
@@ -799,28 +858,29 @@
 				F6559D9E2A7607DC00C1207A /* DeepMindApp.swift in Sources */,
 				F69586592A9EFB40006F0520 /* UserInfoView.swift in Sources */,
 				F6559DFD2A7617E100C1207A /* SignUpAlertModel.swift in Sources */,
-				F6FE66E12A8CA94600AF9D94 /* HomeEmotionStatisticsView.swift in Sources */,
 				F6559DFB2A7617C100C1207A /* SignUpView.swift in Sources */,
 				F6559DCA2A76085100C1207A /* SplashView.swift in Sources */,
 				F627539A2A80C0D4008104B5 /* ImagePicker.swift in Sources */,
+				F6F6422C2AB2159C0009A554 /* ViewSizeCalculator.swift in Sources */,
 				F60A10A92AA5C67300FA9AD9 /* CommunityCommentDataModel.swift in Sources */,
 				F60A10B22AA6D2D600FA9AD9 /* CommunityDetailView.swift in Sources */,
 				F60A10B42AA6DA5600FA9AD9 /* CommunityCommentsListModel.swift in Sources */,
 				F6559DEE2A7616B500C1207A /* LAHelper.swift in Sources */,
 				F62753832A808E03008104B5 /* DiaryHelper.swift in Sources */,
+				F6F642212AB202820009A554 /* HospitalMapViewController.swift in Sources */,
 				F6559DE42A76104100C1207A /* UserManagement.swift in Sources */,
 				F69F94072AA860CD002EE0A3 /* CommunityDeletionModel.swift in Sources */,
 				F6344B392A76407100FA3440 /* DrawingTypeModel.swift in Sources */,
 				F6344B362A763ACC00FA3440 /* CanvasView.swift in Sources */,
 				F6559DFF2A762C4700C1207A /* UploadFeatureView.swift in Sources */,
 				F6344B262A76305300FA3440 /* DiaryView.swift in Sources */,
+				F6A1326D2AB1EB7A00F53CF8 /* InspectionResultView.swift in Sources */,
 				F67475232A84B922006471CA /* DetectionResultsView.swift in Sources */,
 				F695865C2A9EFDA7006F0520 /* UserStatusChangeResultModel.swift in Sources */,
 				F6344B1E2A76302700FA3440 /* TabManager.swift in Sources */,
 				F6559DE72A76105A00C1207A /* UserInfoModel.swift in Sources */,
 				F6559E012A762D6300C1207A /* FeatureSeverityOption.swift in Sources */,
 				F60A10AC2AA5C6BD00FA9AD9 /* CommunityHelper.swift in Sources */,
-				F6FE66DF2A8CA93E00AF9D94 /* HomeHTPStatisticsView.swift in Sources */,
 				F6344B3B2A764A6E00FA3440 /* InfoView.swift in Sources */,
 				F69586532A9EDDBC006F0520 /* UserTypeModel.swift in Sources */,
 				F6344B2A2A76306200FA3440 /* InspectionView.swift in Sources */,
@@ -993,6 +1053,8 @@
 				INFOPLIST_FILE = DeepMind/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "하루 일기에 사진을 추가하기 위해 카메라 권한이 필요합니다.";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "자동 로그인 기능 활성화를 위해 생체인식 권한이 필요합니다.";
+				INFOPLIST_KEY_NSLocationUsageDescription = "현재 위치를 기준으로 근처 병원의 위치를 표시하기 위해 위치 권한이 필요합니다.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "현재 위치를 기준으로 근처 병원의 위치를 표시하기 위해 위치 권한이 필요합니다.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1027,6 +1089,8 @@
 				INFOPLIST_FILE = DeepMind/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "하루 일기에 사진을 추가하기 위해 카메라 권한이 필요합니다.";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "자동 로그인 기능 활성화를 위해 생체인식 권한이 필요합니다.";
+				INFOPLIST_KEY_NSLocationUsageDescription = "현재 위치를 기준으로 근처 병원의 위치를 표시하기 위해 위치 권한이 필요합니다.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "현재 위치를 기준으로 근처 병원의 위치를 표시하기 위해 위치 권한이 필요합니다.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1181,6 +1245,30 @@
 				minimumVersion = 1.7.2;
 			};
 		};
+		F6F642182AB2016B0009A554 /* XCRemoteSwiftPackageReference "NMapsMap-SwiftPM" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stleamist/NMapsMap-SwiftPM";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		F6F642222AB2050B0009A554 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.8.0;
+			};
+		};
+		F6F642252AB205370009A554 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1218,6 +1306,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F6559DDD2A760D0600C1207A /* XCRemoteSwiftPackageReference "CryptoSwift" */;
 			productName = CryptoSwift;
+		};
+		F6F642192AB2016B0009A554 /* NMapsMap */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F6F642182AB2016B0009A554 /* XCRemoteSwiftPackageReference "NMapsMap-SwiftPM" */;
+			productName = NMapsMap;
+		};
+		F6F642232AB2050C0009A554 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F6F642222AB2050B0009A554 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		F6F642262AB205370009A554 /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F6F642252AB205370009A554 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
