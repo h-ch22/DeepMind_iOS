@@ -21,8 +21,8 @@ class HealthDataHelper: ObservableObject{
     
     private let dataToRead = Set(
         [HKObjectType.quantityType(forIdentifier: .distanceWalkingRunning)!,
-         HKObjectType.quantityType(forIdentifier: .timeInDaylight)!
-        ])
+         HKObjectType.quantityType(forIdentifier: .timeInDaylight)!]
+    )
     
     func requestAuthorization(completion: @escaping(_ result: Bool?) -> Void){
         self.healthStore.requestAuthorization(toShare: nil, read: dataToRead){(success, error) in

@@ -12,11 +12,13 @@ struct CommunityCommentDataModel: Hashable{
     var nickName: String
     var contents: String
     var uploadDate: String
+    var profile: URL?
     
-    init(author: String, nickName: String, contents: String, uploadDate: String) {
+    init(author: String, nickName: String, contents: String, uploadDate: String, profile: URL?) {
         self.author = author
         self.nickName = nickName
         self.contents = contents
         self.uploadDate = uploadDate
+        self.profile = profile
     }
 }

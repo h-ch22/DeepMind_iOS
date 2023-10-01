@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import PhotosUI
 
 struct UserInfoView: View {
     @StateObject var helper: UserManagement
@@ -14,6 +15,13 @@ struct UserInfoView: View {
     @State private var showSignOutAlert = false
     @State private var showSecessionAlert = false
     @State private var showSignInView = false
+    @State private var showUpdateInfoView = false
+    
+    @State private var showPhotosPicker = false
+
+    @State private var updateInfoType: UpdateUserInfoModel = .NICK_NAME
+    @State private var selectedPhotos : [PhotosPickerItem] = []
+    @State private var profileToUpdate : [UIImage] = []
     
     @State private var alertModel: UserStatusChangeResultModel = .CONFIRM
     
@@ -26,11 +34,23 @@ struct UserInfoView: View {
                 VStack{
                     Spacer()
                     
-                    Image("ic_appstore")
-                        .resizable()
-                        .frame(width : 80, height : 80)
-                        .clipShape(Circle())
-                        .shadow(radius: 5)
+                    if helper.profile != nil{
+                        AsyncImage(url: helper.profile!, content: { image in
+                            image.resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 80, height: 80)
+                                .clipShape(Circle())
+                                .shadow(radius: 5)
+                        }, placeholder: {
+                            ProgressView()
+                        })
+                    } else{
+                        Image("ic_appstore")
+                            .resizable()
+                            .frame(width : 80, height : 80)
+                            .clipShape(Circle())
+                            .shadow(radius: 5)
+                    }
                     
                     Spacer().frame(height : 5)
                     
@@ -52,14 +72,19 @@ struct UserInfoView: View {
                     
                     Spacer().frame(height : 5)
                     
-                    Button(action:{}){
+                    Button(action:{
+                        showPhotosPicker = true
+                    }){
                         Text("프로필 이미지 변경")
                             .font(.caption)
                     }
                     
                     Spacer().frame(height : 20)
                     
-                    Button(action : {}){
+                    Button(action : {
+                        updateInfoType = .NICK_NAME
+                        showUpdateInfoView = true
+                    }){
                         HStack{
                             Image(systemName: "person.circle.fill")
                             
@@ -91,7 +116,10 @@ struct UserInfoView: View {
                     
                     Spacer().frame(height : 20)
                     
-                    Button(action : {}){
+                    Button(action : {
+                        updateInfoType = .PASSWORD
+                        showUpdateInfoView = true
+                    }){
                         HStack{
                             Image(systemName: "key.horizontal.fill")
                             
@@ -107,7 +135,10 @@ struct UserInfoView: View {
                     
                     Spacer().frame(height : 20)
                     
-                    Button(action : {}){
+                    Button(action : {
+                        updateInfoType = .PHONE
+                        showUpdateInfoView = true
+                    }){
                         HStack{
                             Image(systemName: "iphone.gen3")
                             
@@ -195,7 +226,7 @@ struct UserInfoView: View {
                     .alert(isPresented: $showSecessionAlert, content:{
                         switch alertModel{
                         case .CONFIRM:
-                            return Alert(title: Text("회원탈퇴 확인"), message: Text("회원탈퇴 시 모든 정보가 제거되며, 다시 가입해야 합니다. 계속하시겠습니까?"), primaryButton: .default(Text("예")){
+                            return Alert(title: Text("회원 탈퇴 확인"), message: Text("회원 탈퇴 시 모든 정보가 제거되며, 다시 가입해야 합니다. 계속하시겠습니까?"), primaryButton: .default(Text("예")){
                                 showProgress = true
                                 helper.secession(){result in
                                     guard let result = result else{return}
@@ -225,6 +256,15 @@ struct UserInfoView: View {
                 
                 Spacer()
             }.padding(20)
+                .onAppear{
+                    helper.getProfile(){ result in
+                        guard let result = result else{return}
+                    }
+                }
+                .sheet(isPresented: $showUpdateInfoView, content: {
+                    UpdateUserInfoView(helper: helper, updateType: updateInfoType)
+                })
+
             
         }
         .overlay(ProcessView().isHidden(!showProgress))
@@ -232,7 +272,32 @@ struct UserInfoView: View {
         .fullScreenCover(isPresented: $showSignInView, content: {
             SignInView()
         })
-        
+        .photosPicker(isPresented: $showPhotosPicker, selection: $selectedPhotos, maxSelectionCount: 1)
+        .onChange(of: selectedPhotos){ items in
+            self.profileToUpdate.removeAll()
+            
+            for item in items{
+                item.loadTransferable(type: Data.self){ result in
+                    switch result{
+                    case .success(let image):
+                        if let image{
+                            showProgress = true
+                            
+                            helper.updateProfile(data: UIImage(data: image)!){ result in
+                                guard let result = result else{return}
+                                
+                                showProgress = false
+                            }
+                        } else{
+                            print("No supported content type found.")
+                        }
+                        
+                    case .failure(let error):
+                        print(error)
+                    }
+                }
+            }
+        }
     }
 }
 

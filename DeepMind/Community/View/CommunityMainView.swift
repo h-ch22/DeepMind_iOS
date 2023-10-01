@@ -13,6 +13,23 @@ struct CommunityMainView: View {
     
     @State private var showProgress = true
     @State private var currentBoard = "전체"
+    @State private var searchText = ""
+    
+    var filteredDatas: [CommunityArticleDataModel] {
+        if searchText.isEmpty{
+            return currentBoard == "전체" ? helper.articleList : helper.filteredArticleList
+        } else{
+            if currentBoard == "전체"{
+                return helper.articleList.filter{
+                    $0.title.localizedStandardContains(searchText)
+                }
+            } else{
+                return helper.filteredArticleList.filter{
+                    $0.title.localizedStandardContains(searchText)
+                }
+            }
+        }
+    }
     
     var body: some View {
         ZStack{
@@ -27,24 +44,27 @@ struct CommunityMainView: View {
                     Spacer()
                 }
             } else{
-                VStack{
-                    LazyVStack{
-                        ForEach(helper.articleList, id: \.self){ article in
-                            NavigationLink(destination: CommunityDetailView(userManagement: userManagement, data: article)){
-                                CommunityArticleListModel(data: article)
-                                    .background(RoundedRectangle(cornerRadius: 15).foregroundStyle(Color.btn_color).shadow(radius: 3))
-                            }
-                        }
-                    }.background(Color.backgroundColor.edgesIgnoringSafeArea(.all))
-                    
-                    Spacer()
-                }.padding(20)
+                List(filteredDatas){ article in
+                    NavigationLink(destination: CommunityDetailView(userManagement: userManagement, helper: helper, data: article)){
+                        CommunityArticleListModel(data: article)
+                    }
+                }
             }
-        }.onAppear{
+        }.onAppear{            
             helper.getAllArticles(){ result in
                 guard let result = result else{return}
                 
                 showProgress = false
+            }
+        }
+        .searchable(
+            text: $searchText,
+            placement: .navigationBarDrawer,
+            prompt: "게시물 제목을 검색해보세요!"
+        )
+        .onChange(of: currentBoard){(newVal) in
+            if newVal != "전체"{
+                helper.filterList(filter: currentBoard)
             }
         }
         .toolbar{

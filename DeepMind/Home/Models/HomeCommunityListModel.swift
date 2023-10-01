@@ -44,5 +44,5 @@ struct HomeCommunityListModel: View {
 }
 
 #Preview {
-    HomeCommunityListModel(data: CommunityArticleDataModel(id: "", title: "TITLE", contents: "", imageIndex: 0, author: "", nickName: "NICKNAME", createDate: "DATE", views: 0, commentCount: 0, board: "BOARD"))
+    HomeCommunityListModel(data: CommunityArticleDataModel(id: "", title: "TITLE", contents: "", imageIndex: 0, author: "", nickName: "NICKNAME", createDate: "DATE", views: 0, commentCount: 0, board: "BOARD", profile: nil, thumbnail: nil))
 }

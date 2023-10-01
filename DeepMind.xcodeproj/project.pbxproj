@@ -69,6 +69,13 @@
 		F674751F2A84AF8F006471CA /* CL02.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = F674751E2A84AF8F006471CA /* CL02.mlpackage */; };
 		F67475212A84AF95006471CA /* CL03.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = F67475202A84AF95006471CA /* CL03.mlpackage */; };
 		F67475232A84B922006471CA /* DetectionResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67475222A84B922006471CA /* DetectionResultsView.swift */; };
+		F677CE2D2AC9A4580082DDA7 /* CommunityWrittenArticleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F677CE2C2AC9A4580082DDA7 /* CommunityWrittenArticleListView.swift */; };
+		F677CE2F2AC9AAD30082DDA7 /* CommunityUserDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F677CE2E2AC9AAD30082DDA7 /* CommunityUserDataModel.swift */; };
+		F677CE312AC9B0A70082DDA7 /* UpdateUserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F677CE302AC9B0A70082DDA7 /* UpdateUserInfoView.swift */; };
+		F677CE332AC9B0CF0082DDA7 /* UpdateUserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F677CE322AC9B0CF0082DDA7 /* UpdateUserInfoModel.swift */; };
+		F677CE3B2AC9C1EF0082DDA7 /* ConsultingMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F677CE3A2AC9C1EF0082DDA7 /* ConsultingMainView.swift */; };
+		F677CE3E2AC9C1FD0082DDA7 /* ConsultingProView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F677CE3D2AC9C1FD0082DDA7 /* ConsultingProView.swift */; };
+		F677CE412AC9C4A70082DDA7 /* ConsultingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F677CE402AC9C4A70082DDA7 /* ConsultingHelper.swift */; };
 		F67F59252A78C8D5005E558A /* PersonGenderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67F59242A78C8D5005E558A /* PersonGenderModel.swift */; };
 		F67F59282A78CC57005E558A /* InspectionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67F59272A78CC57005E558A /* InspectionHelper.swift */; };
 		F690AADE2A9A44A6004775FC /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F690AADD2A9A44A6004775FC /* ActivityViewController.swift */; };
@@ -85,11 +92,8 @@
 		F6BE65202A8DBC5600C40E57 /* EssentialQuestionAnswerModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BE651F2A8DBC5600C40E57 /* EssentialQuestionAnswerModels.swift */; };
 		F6D3CCAE2A7B3F8900383BBB /* PredictTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D3CCAD2A7B3F8900383BBB /* PredictTypeModel.swift */; };
 		F6F6421A2AB2016B0009A554 /* NMapsMap in Frameworks */ = {isa = PBXBuildFile; productRef = F6F642192AB2016B0009A554 /* NMapsMap */; };
-		F6F6421D2AB201960009A554 /* HospitalMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F6421C2AB201960009A554 /* HospitalMapView.swift */; };
-		F6F642212AB202820009A554 /* HospitalMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F642202AB202820009A554 /* HospitalMapViewController.swift */; };
 		F6F642242AB2050C0009A554 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = F6F642232AB2050C0009A554 /* Alamofire */; };
 		F6F642272AB205370009A554 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = F6F642262AB205370009A554 /* SwiftyJSON */; };
-		F6F6422A2AB205D10009A554 /* HospitalMapHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F642292AB205D10009A554 /* HospitalMapHelper.swift */; };
 		F6F6422C2AB2159C0009A554 /* ViewSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F6422B2AB2159C0009A554 /* ViewSizeCalculator.swift */; };
 		F6FD5E452AC86169002498F9 /* HealthDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FD5E442AC86169002498F9 /* HealthDataHelper.swift */; };
 		F6FD5E472AC86EE1002498F9 /* AddDailyEmotionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FD5E462AC86EE1002498F9 /* AddDailyEmotionView.swift */; };
@@ -176,6 +180,13 @@
 		F674751E2A84AF8F006471CA /* CL02.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = CL02.mlpackage; sourceTree = "<group>"; };
 		F67475202A84AF95006471CA /* CL03.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = CL03.mlpackage; sourceTree = "<group>"; };
 		F67475222A84B922006471CA /* DetectionResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectionResultsView.swift; sourceTree = "<group>"; };
+		F677CE2C2AC9A4580082DDA7 /* CommunityWrittenArticleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityWrittenArticleListView.swift; sourceTree = "<group>"; };
+		F677CE2E2AC9AAD30082DDA7 /* CommunityUserDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityUserDataModel.swift; sourceTree = "<group>"; };
+		F677CE302AC9B0A70082DDA7 /* UpdateUserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserInfoView.swift; sourceTree = "<group>"; };
+		F677CE322AC9B0CF0082DDA7 /* UpdateUserInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserInfoModel.swift; sourceTree = "<group>"; };
+		F677CE3A2AC9C1EF0082DDA7 /* ConsultingMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultingMainView.swift; sourceTree = "<group>"; };
+		F677CE3D2AC9C1FD0082DDA7 /* ConsultingProView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultingProView.swift; sourceTree = "<group>"; };
+		F677CE402AC9C4A70082DDA7 /* ConsultingHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultingHelper.swift; sourceTree = "<group>"; };
 		F67F59242A78C8D5005E558A /* PersonGenderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonGenderModel.swift; sourceTree = "<group>"; };
 		F67F59272A78CC57005E558A /* InspectionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectionHelper.swift; sourceTree = "<group>"; };
 		F690AADD2A9A44A6004775FC /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
@@ -191,9 +202,6 @@
 		F6BE651D2A8DB58500C40E57 /* HouseEssentialQuestionModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseEssentialQuestionModels.swift; sourceTree = "<group>"; };
 		F6BE651F2A8DBC5600C40E57 /* EssentialQuestionAnswerModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssentialQuestionAnswerModels.swift; sourceTree = "<group>"; };
 		F6D3CCAD2A7B3F8900383BBB /* PredictTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictTypeModel.swift; sourceTree = "<group>"; };
-		F6F6421C2AB201960009A554 /* HospitalMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalMapView.swift; sourceTree = "<group>"; };
-		F6F642202AB202820009A554 /* HospitalMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalMapViewController.swift; sourceTree = "<group>"; };
-		F6F642292AB205D10009A554 /* HospitalMapHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalMapHelper.swift; sourceTree = "<group>"; };
 		F6F6422B2AB2159C0009A554 /* ViewSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSizeCalculator.swift; sourceTree = "<group>"; };
 		F6FD5E432AC860FB002498F9 /* DeepMind.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DeepMind.entitlements; sourceTree = "<group>"; };
 		F6FD5E442AC86169002498F9 /* HealthDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthDataHelper.swift; sourceTree = "<group>"; };
@@ -255,6 +263,7 @@
 				F60A10A32AA5C62400FA9AD9 /* CommunityMainView.swift */,
 				F60A10AF2AA5CE2100FA9AD9 /* WriteCommunityView.swift */,
 				F60A10B12AA6D2D600FA9AD9 /* CommunityDetailView.swift */,
+				F677CE2C2AC9A4580082DDA7 /* CommunityWrittenArticleListView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -267,6 +276,7 @@
 				F60A10AD2AA5CAE200FA9AD9 /* CommunityArticleListModel.swift */,
 				F60A10B32AA6DA5600FA9AD9 /* CommunityCommentsListModel.swift */,
 				F69F94062AA860CD002EE0A3 /* CommunityDeletionModel.swift */,
+				F677CE2E2AC9AAD30082DDA7 /* CommunityUserDataModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -399,7 +409,6 @@
 			children = (
 				F6344B312A76308500FA3440 /* MoreView.swift */,
 				F6344B3A2A764A6E00FA3440 /* InfoView.swift */,
-				F69586582A9EFB40006F0520 /* UserInfoView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -450,8 +459,8 @@
 		F6559D9C2A7607DC00C1207A /* DeepMind */ = {
 			isa = PBXGroup;
 			children = (
+				F677CE382AC9C1960082DDA7 /* Consulting */,
 				F6FD5E432AC860FB002498F9 /* DeepMind.entitlements */,
-				F6A132702AB1FF6F00F53CF8 /* HospitalMap */,
 				F699F3BC2AB1EAD800D530FC /* Demo */,
 				F60A10A12AA5C61900FA9AD9 /* Community */,
 				F62753902A80A806008104B5 /* Info.plist */,
@@ -545,10 +554,12 @@
 		F6559DE12A76103300C1207A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F69586582A9EFB40006F0520 /* UserInfoView.swift */,
 				F6559DEB2A76169F00C1207A /* SignInView.swift */,
 				F6559DFA2A7617C100C1207A /* SignUpView.swift */,
 				F6559DFE2A762C4700C1207A /* UploadFeatureView.swift */,
 				F69586542A9EDE21006F0520 /* UserTypeSelectionView.swift */,
+				F677CE302AC9B0A70082DDA7 /* UpdateUserInfoView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -569,8 +580,35 @@
 				F6559E002A762D6300C1207A /* FeatureSeverityOption.swift */,
 				F69586522A9EDDBC006F0520 /* UserTypeModel.swift */,
 				F69586562A9EFB1B006F0520 /* ProBadgeView.swift */,
+				F677CE322AC9B0CF0082DDA7 /* UpdateUserInfoModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		F677CE382AC9C1960082DDA7 /* Consulting */ = {
+			isa = PBXGroup;
+			children = (
+				F677CE3F2AC9C49F0082DDA7 /* Helper */,
+				F677CE392AC9C1E80082DDA7 /* View */,
+			);
+			path = Consulting;
+			sourceTree = "<group>";
+		};
+		F677CE392AC9C1E80082DDA7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F677CE3A2AC9C1EF0082DDA7 /* ConsultingMainView.swift */,
+				F677CE3D2AC9C1FD0082DDA7 /* ConsultingProView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F677CE3F2AC9C49F0082DDA7 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				F677CE402AC9C4A70082DDA7 /* ConsultingHelper.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		F67F59262A78CC51005E558A /* Helper */ = {
@@ -621,32 +659,6 @@
 				F6A1326C2AB1EB7A00F53CF8 /* InspectionResultView.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		F6A132702AB1FF6F00F53CF8 /* HospitalMap */ = {
-			isa = PBXGroup;
-			children = (
-				F6F642282AB2056F0009A554 /* Helper */,
-				F6F6421B2AB2018F0009A554 /* View */,
-			);
-			path = HospitalMap;
-			sourceTree = "<group>";
-		};
-		F6F6421B2AB2018F0009A554 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				F6F6421C2AB201960009A554 /* HospitalMapView.swift */,
-				F6F642202AB202820009A554 /* HospitalMapViewController.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		F6F642282AB2056F0009A554 /* Helper */ = {
-			isa = PBXGroup;
-			children = (
-				F6F642292AB205D10009A554 /* HospitalMapHelper.swift */,
-			);
-			path = Helper;
 			sourceTree = "<group>";
 		};
 		F6FE66D92A8C99AB00AF9D94 /* Helper */ = {
@@ -833,11 +845,14 @@
 				F6559DF62A76176600C1207A /* RadioButtonGroup.swift in Sources */,
 				F6559DEC2A76169F00C1207A /* SignInView.swift in Sources */,
 				F67F59252A78C8D5005E558A /* PersonGenderModel.swift in Sources */,
+				F677CE412AC9C4A70082DDA7 /* ConsultingHelper.swift in Sources */,
+				F677CE3E2AC9C1FD0082DDA7 /* ConsultingProView.swift in Sources */,
 				F69F94052AA8606A002EE0A3 /* CommonAlertModel.swift in Sources */,
 				F6559DF22A76174A00C1207A /* CheckBox.swift in Sources */,
 				F6FE66E72A8CB3E900AF9D94 /* StatisticsEmotionDataModel.swift in Sources */,
 				F6559DCF2A760A1B00C1207A /* AES256Util.swift in Sources */,
 				F69586572A9EFB1B006F0520 /* ProBadgeView.swift in Sources */,
+				F677CE3B2AC9C1EF0082DDA7 /* ConsultingMainView.swift in Sources */,
 				F674751F2A84AF8F006471CA /* CL02.mlpackage in Sources */,
 				F6344B222A76304800FA3440 /* HomeView.swift in Sources */,
 				F62753962A80B3CB008104B5 /* DiaryCanvasView.swift in Sources */,
@@ -856,17 +871,16 @@
 				F6FE66E92A8CBBE300AF9D94 /* InspectionEssentialQuestionView.swift in Sources */,
 				F67F59282A78CC57005E558A /* InspectionHelper.swift in Sources */,
 				F674751B2A84A2DF006471CA /* Detection.swift in Sources */,
-				F6F6421D2AB201960009A554 /* HospitalMapView.swift in Sources */,
 				F60A10B02AA5CE2100FA9AD9 /* WriteCommunityView.swift in Sources */,
 				F690AADE2A9A44A6004775FC /* ActivityViewController.swift in Sources */,
 				F60A10A42AA5C62400FA9AD9 /* CommunityMainView.swift in Sources */,
 				F6BE65202A8DBC5600C40E57 /* EssentialQuestionAnswerModels.swift in Sources */,
-				F6F6422A2AB205D10009A554 /* HospitalMapHelper.swift in Sources */,
 				F6D3CCAE2A7B3F8900383BBB /* PredictTypeModel.swift in Sources */,
 				F6BE651E2A8DB58500C40E57 /* HouseEssentialQuestionModels.swift in Sources */,
 				F6FD5E472AC86EE1002498F9 /* AddDailyEmotionView.swift in Sources */,
 				F627538C2A80A08C008104B5 /* WriteDiaryView.swift in Sources */,
 				F62753982A80B4AA008104B5 /* DiaryMarkUpView.swift in Sources */,
+				F677CE312AC9B0A70082DDA7 /* UpdateUserInfoView.swift in Sources */,
 				F6344B342A7638E000FA3440 /* DrawingView.swift in Sources */,
 				F6559D9E2A7607DC00C1207A /* DeepMindApp.swift in Sources */,
 				F69586592A9EFB40006F0520 /* UserInfoView.swift in Sources */,
@@ -881,15 +895,17 @@
 				F60A10B42AA6DA5600FA9AD9 /* CommunityCommentsListModel.swift in Sources */,
 				F6559DEE2A7616B500C1207A /* LAHelper.swift in Sources */,
 				F62753832A808E03008104B5 /* DiaryHelper.swift in Sources */,
-				F6F642212AB202820009A554 /* HospitalMapViewController.swift in Sources */,
+				F677CE2F2AC9AAD30082DDA7 /* CommunityUserDataModel.swift in Sources */,
 				F6559DE42A76104100C1207A /* UserManagement.swift in Sources */,
 				F69F94072AA860CD002EE0A3 /* CommunityDeletionModel.swift in Sources */,
 				F6344B392A76407100FA3440 /* DrawingTypeModel.swift in Sources */,
 				F6344B362A763ACC00FA3440 /* CanvasView.swift in Sources */,
 				F6559DFF2A762C4700C1207A /* UploadFeatureView.swift in Sources */,
 				F6344B262A76305300FA3440 /* DiaryView.swift in Sources */,
+				F677CE2D2AC9A4580082DDA7 /* CommunityWrittenArticleListView.swift in Sources */,
 				F6A1326D2AB1EB7A00F53CF8 /* InspectionResultView.swift in Sources */,
 				F67475232A84B922006471CA /* DetectionResultsView.swift in Sources */,
+				F677CE332AC9B0CF0082DDA7 /* UpdateUserInfoModel.swift in Sources */,
 				F695865C2A9EFDA7006F0520 /* UserStatusChangeResultModel.swift in Sources */,
 				F6344B1E2A76302700FA3440 /* TabManager.swift in Sources */,
 				F6559DE72A76105A00C1207A /* UserInfoModel.swift in Sources */,

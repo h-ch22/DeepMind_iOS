@@ -12,6 +12,16 @@ struct CommunityArticleListModel: View {
     
     var body: some View {
         HStack{
+            if data.thumbnail != nil{
+                AsyncImage(url: data.thumbnail, content: { image in
+                    image.resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 150, height: 150)
+                }, placeholder: {
+                    ProgressView()
+                })
+            }
+            
             VStack{
                 HStack{
                     Text(data.title)
@@ -51,7 +61,7 @@ struct CommunityArticleListModel: View {
                     .foregroundStyle(Color.white)
             }
 
-        }.padding(10)
+        }
             
 
     }
@@ -59,6 +69,6 @@ struct CommunityArticleListModel: View {
 
 struct CommunityArticleListModel_previews: PreviewProvider{
     static var previews: some View{
-        CommunityArticleListModel(data: CommunityArticleDataModel(id: "", title: "", contents: "", imageIndex: 0, author: "", nickName: "", createDate: "", views: 0, commentCount: 0, board: ""))
+        CommunityArticleListModel(data: CommunityArticleDataModel(id: "", title: "", contents: "", imageIndex: 0, author: "", nickName: "", createDate: "", views: 0, commentCount: 0, board: "", profile: nil, thumbnail: nil))
     }
 }

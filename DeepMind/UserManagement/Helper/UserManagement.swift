@@ -8,12 +8,15 @@
 import Foundation
 import FirebaseFirestore
 import FirebaseAuth
+import FirebaseStorage
 
 class UserManagement: ObservableObject{
     @Published var userInfo: UserInfoModel? = nil
+    @Published var profile: URL? = nil
     
     private let auth = Auth.auth()
     private let db = Firestore.firestore()
+    private let storage = Storage.storage()
     
     func getUID() -> String{
         return auth.currentUser?.uid ?? ""
@@ -72,6 +75,86 @@ class UserManagement: ObservableObject{
                 completion(true)
                 return
             }
+        }
+    }
+    
+    func updateNickName(nickName: String, completion: @escaping(_ result: Bool?) -> Void){
+        db.collection("Users").document(auth.currentUser?.uid ?? "").updateData([
+            "nickName": AES256Util.encrypt(string: nickName)
+        ]){ error in
+            if error != nil{
+                print(error?.localizedDescription)
+                completion(false)
+                return
+            }
+            
+            self.getUserInfo(){ result in
+                guard let result = result else{return}
+                completion(true)
+                return
+            }
+        }
+    }
+    
+    func updatePhone(phone: String, completion: @escaping(_ result: Bool?) -> Void){
+        db.collection("Users").document(auth.currentUser?.uid ?? "").updateData([
+            "phone": AES256Util.encrypt(string: phone)
+        ]){ error in
+            if error != nil{
+                print(error?.localizedDescription)
+                completion(false)
+                return
+            }
+            
+            self.getUserInfo(){ result in
+                guard let result = result else{return}
+                completion(true)
+                return
+            }
+        }
+    }
+    
+    func updatePassword(newPassword: String, completion: @escaping(_ result: Bool?) -> Void){
+        auth.currentUser?.updatePassword(to: newPassword){ error in
+            if error != nil{
+                print(error?.localizedDescription)
+                completion(false)
+                return
+            }
+            
+            completion(true)
+            return
+        }
+    }
+    
+    func updateProfile(data: UIImage, completion: @escaping(_ result: Bool?) -> Void){
+        let storageRef = self.storage.reference().child("Profile/\(self.auth.currentUser?.uid ?? "")/profile.png")
+        storageRef.putData(data.pngData()!, metadata: nil){ (_, error) in
+            if error != nil{
+                print(error?.localizedDescription)
+                completion(false)
+                return
+            }
+            
+            self.getProfile(){ result in
+                guard let result = result else{return}
+                completion(true)
+                return
+            }
+        }
+    }
+    
+    func getProfile(completion: @escaping(_ result: Bool?) -> Void){
+        self.storage.reference().child("Profile/\(self.auth.currentUser?.uid ?? "")/profile.png").downloadURL(){(downloadURL, error) in
+            if error != nil{
+                print(error?.localizedDescription)
+                completion(false)
+                return
+            }
+            
+            self.profile = downloadURL
+            completion(true)
+            return
         }
     }
     
@@ -141,6 +224,7 @@ class UserManagement: ObservableObject{
                                             
                                             completion(true)
                                             return
+
                                         } else{
                                             completion(false)
                                             return

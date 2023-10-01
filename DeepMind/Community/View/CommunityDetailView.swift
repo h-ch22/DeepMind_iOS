@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct CommunityDetailView: View {
-    @State private var helper = CommunityHelper()
     @State private var comment = ""
     @State private var showProgress = false
     @State private var showImages = false
@@ -20,6 +19,8 @@ struct CommunityDetailView: View {
     @State private var selectedComment: CommunityCommentDataModel? = nil
     
     @StateObject var userManagement: UserManagement
+    @StateObject var helper: CommunityHelper
+    
     @Environment(\.presentationMode) var presentationMode
     
     let data: CommunityArticleDataModel
@@ -31,31 +32,50 @@ struct CommunityDetailView: View {
             ScrollView{
                 VStack{
                     HStack{
-                        Text(data.title)
-                            .font(.largeTitle)
-                            .fontWeight(.semibold)
-                            .foregroundStyle(Color.txt_color)
-                        
+                        NavigationLink(destination: CommunityWrittenArticleListView(helper: helper,
+                                                                                    userManagement: userManagement,
+                                                                                    userData: CommunityUserDataModel(uid: data.author, nickName: data.nickName, profile: data.profile))){
+                            HStack{
+                                if data.profile != nil{
+                                    AsyncImage(url: data.profile!, content: { image in
+                                        image.resizable()
+                                            .aspectRatio(contentMode: .fill)
+                                            .frame(width: 30, height: 30)
+                                            .clipShape(Circle())
+                                    }, placeholder: {
+                                        ProgressView()
+                                    })
+                                } else{
+                                    Image("ic_appstore")
+                                        .resizable()
+                                        .frame(width : 30, height : 30)
+                                        .clipShape(Circle())
+                                }
+                                
+                                Spacer().frame(width: 10)
+                                
+                                Text(data.nickName)
+                                    .font(.caption)
+                                    .foregroundStyle(Color.accent)
+                            }
+
+                        }
+
                         Spacer()
-                        
-                        Text(data.createDate)
-                            .font(.caption)
-                            .foregroundStyle(Color.gray)
+
+                        VStack(alignment: .trailing){
+                            Text(data.createDate)
+                                .font(.caption)
+                                .foregroundStyle(Color.gray)
+                            
+                            Text(data.board)
+                                .font(.caption)
+                                .foregroundStyle(Color.gray)
+                        }
+
                     }
                     
                     Spacer().frame(height : 20)
-                    
-                    HStack{
-                        Text(data.nickName)
-                            .font(.caption)
-                            .foregroundStyle(Color.gray)
-                        
-                        Spacer()
-                        
-                        Text(data.board)
-                            .font(.caption)
-                            .foregroundStyle(Color.accent)
-                    }
                     
                     if data.imageIndex > 0 && showImages{
                         Spacer().frame(height : 20)
@@ -182,7 +202,6 @@ struct CommunityDetailView: View {
                         }
                     }
                 }
-                .navigationBarTitleDisplayMode(.inline)
                 .toolbar{
                     ToolbarItemGroup(placement: .topBarTrailing, content: {
                         if userManagement.userInfo?.UID ?? "" == data.author{
@@ -240,10 +259,11 @@ struct CommunityDetailView: View {
                     }
                 })
                 .overlay(ProcessView().isHidden(!showOverlay))
+                .navigationTitle(Text(data.title))
         }
     }
 }
 
 #Preview {
-    CommunityDetailView(userManagement: UserManagement(), data: CommunityArticleDataModel(id: "", title: "Test Title", contents: "Test Contents", imageIndex: 0, author: "author", nickName: "nickName", createDate: "date", views: 0, commentCount: 2, board: "Free"))
+    CommunityDetailView(userManagement: UserManagement(), helper: CommunityHelper(), data: CommunityArticleDataModel(id: "", title: "Test Title", contents: "Test Contents", imageIndex: 0, author: "author", nickName: "nickName", createDate: "date", views: 0, commentCount: 2, board: "Free", profile: nil, thumbnail: nil))
 }

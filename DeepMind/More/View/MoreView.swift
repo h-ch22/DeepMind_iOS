@@ -32,10 +32,21 @@ struct MoreView: View {
                         
                         NavigationLink(destination: UserInfoView(helper: helper)){
                             HStack{
-                                Image("ic_appstore")
-                                    .resizable()
-                                    .frame(width : 35, height : 35)
-                                    .clipShape(Circle())
+                                if helper.profile != nil{
+                                    AsyncImage(url: helper.profile!, content: { image in
+                                        image.resizable()
+                                            .aspectRatio(contentMode: .fill)
+                                            .frame(width: 35, height: 35)
+                                            .clipShape(Circle())
+                                    }, placeholder: {
+                                        ProgressView()
+                                    })
+                                } else{
+                                    Image("ic_appstore")
+                                        .resizable()
+                                        .frame(width : 35, height : 35)
+                                        .clipShape(Circle())
+                                }
                                 
                                 VStack(alignment : .leading){
                                     HStack{
@@ -123,6 +134,11 @@ struct MoreView: View {
                     
                 }.padding(20)
                     .animation(.easeInOut, value: 1.0)
+                    .onAppear{
+                        helper.getProfile(){ result in
+                            guard let result = result else{return}
+                        }
+                    }
             }
         }
         

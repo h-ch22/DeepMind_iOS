@@ -32,11 +32,7 @@ struct TabManager: View {
                         HomeView(userManagement: userManagement, parent: self).navigationTitle(Text("홈"))
                         
                     case 1:
-                        if userManagement.userInfo?.type == .CUSTOMER{
-                            HospitalMapView(bottomBarHeight: viewSize.height).navigationTitle(Text("병원 찾기 및 예약"))
-                        } else{
-                            HospitalMapView(bottomBarHeight: viewSize.height).navigationTitle(Text("상담 관리"))
-                        }
+                        EmptyView().navigationTitle(Text("상담 관리"))
                         
                     case 3:
                         CommunityMainView(userManagement: userManagement).navigationTitle(Text("커뮤니티"))

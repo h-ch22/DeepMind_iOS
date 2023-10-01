@@ -12,9 +12,13 @@ import FirebaseStorage
 
 class CommunityHelper: ObservableObject{
     @Published var articleList: [CommunityArticleDataModel] = []
+    @Published var filteredArticleList: [CommunityArticleDataModel] = []
     @Published var latestArticles: [CommunityArticleDataModel] = []
-    @Published var boardList: [String:String] = ["자유 게시판": "Free", "질문 게시판": "Question", "맛집 게시판": "Restaurant", "병원 추천" : "Hospital", "문화/생활" : "Culture", "이벤트": "Event", "자녀방": "Children", "구인/구직": "JobSearch", "판매": "Market"]
-    @Published var filterList = ["전체", "자유 게시판", "질문 게시판", "맛집 게시판", "병원 추천", "문화/생활", "이벤트", "자녀방", "구인/구직", "판매"]
+    @Published var writtenArticleList: [CommunityArticleDataModel] = []
+    
+    @Published var boardList: [String:String] = ["자유 게시판": "Free", "질문 게시판": "Question", "맛집 게시판": "Restaurant", "병원 추천" : "Hospital", "문화/생활" : "Culture", "이벤트": "Event", "자녀방": "Children", "구인/구직": "JobSearch", "판매": "Market", "HTP 검사 결과 공유": "HTP"]
+    @Published var filterList = ["전체", "자유 게시판", "질문 게시판", "맛집 게시판", "병원 추천", "문화/생활", "이벤트", "자녀방", "구인/구직", "판매", "HTP 검사 결과 공유"]
+    
     @Published var imgList: [URL] = []
     @Published var comments: [CommunityCommentDataModel] = []
     
@@ -37,9 +41,17 @@ class CommunityHelper: ObservableObject{
                     let createDate = document.get("createDate") as? String ?? ""
                     let views = document.get("views") as? Int ?? 0
                     let board = document.get("board") as? String ?? ""
-                    
+                                        
                     self.getCommentCount(id: document.documentID){ result in
                         guard let result = result else {return}
+                        
+                        var thumbnail: URL? = nil
+                        
+                        if imageIndex > 0{
+                            self.getThumbnail(id: document.documentID){ thumbnailURL in
+                                thumbnail = thumbnailURL
+                            }
+                        }
                         
                         self.latestArticles.append(
                             CommunityArticleDataModel(id: document.documentID,
@@ -51,7 +63,9 @@ class CommunityHelper: ObservableObject{
                                                       createDate: createDate,
                                                       views: views,
                                                       commentCount: result,
-                                                      board: self.boardList.someKey(forValue: AES256Util.decrypt(encoded: board)) ?? "")
+                                                      board: self.boardList.someKey(forValue: AES256Util.decrypt(encoded: board)) ?? "",
+                                                     profile: nil,
+                                                    thumbnail: thumbnail)
                         )
                     }
                 }
@@ -59,7 +73,29 @@ class CommunityHelper: ObservableObject{
         }
     }
     
+    func filterList(filter: String){
+        self.filteredArticleList.removeAll()
+        
+        for article in articleList{
+            if article.board == filter{
+                filteredArticleList.append(article)
+            }
+        }
+    }
+    
+    func getWrittenArticles(uid: String){
+        writtenArticleList.removeAll()
+        
+        for article in articleList{
+            if article.author == uid{
+                writtenArticleList.append(article)
+            }
+        }
+    }
+    
     func getAllArticles(completion: @escaping(_ result: Bool?) -> Void){
+        self.articleList.removeAll()
+        
         self.db.collection("Community").getDocuments(){(querySnapshot, error) in
             if error != nil{
                 print(error?.localizedDescription)
@@ -81,18 +117,32 @@ class CommunityHelper: ObservableObject{
                     self.getCommentCount(id: document.documentID){ result in
                         guard let result = result else {return}
                         
-                        self.articleList.append(
-                            CommunityArticleDataModel(id: document.documentID,
-                                                      title: AES256Util.decrypt(encoded: title),
-                                                      contents: AES256Util.decrypt(encoded: contents),
-                                                      imageIndex: imageIndex,
-                                                      author: author,
-                                                      nickName: AES256Util.decrypt(encoded: nickName),
-                                                      createDate: createDate,
-                                                      views: views,
-                                                      commentCount: result,
-                                                      board: self.boardList.someKey(forValue: AES256Util.decrypt(encoded: board)) ?? "")
-                        )
+                        self.getProfile(uid: author){ profileURL in
+                            var thumbnail: URL? = nil
+                            
+                            if imageIndex > 0{
+                                self.getThumbnail(id: document.documentID){ thumbnailURL in
+                                    thumbnail = thumbnailURL
+                                }
+                            }
+                            
+                            self.articleList.append(
+                                CommunityArticleDataModel(id: document.documentID,
+                                                          title: AES256Util.decrypt(encoded: title),
+                                                          contents: AES256Util.decrypt(encoded: contents),
+                                                          imageIndex: imageIndex,
+                                                          author: author,
+                                                          nickName: AES256Util.decrypt(encoded: nickName),
+                                                          createDate: createDate,
+                                                          views: views,
+                                                          commentCount: result,
+                                                          board: self.boardList.someKey(forValue: AES256Util.decrypt(encoded: board)) ?? "",
+                                                          profile: profileURL,
+                                                        thumbnail: thumbnail)
+                            )
+                        }
+                        
+
                     }
                 }
                 
@@ -123,6 +173,19 @@ class CommunityHelper: ObservableObject{
         completion(true)
     }
     
+    func getProfile(uid: String, completion: @escaping(_ result: URL?) -> Void){
+        self.storage.reference().child("Profile/\(uid)/profile.png").downloadURL(){(downloadURL, error) in
+            if error != nil{
+                print(error?.localizedDescription)
+                completion(nil)
+                return
+            }
+            
+            completion(downloadURL)
+            return
+        }
+    }
+    
     func getComments(id: String, completion: @escaping(_ result: Bool?) -> Void){
         comments.removeAll()
         
@@ -140,10 +203,15 @@ class CommunityHelper: ObservableObject{
                     let contents = document.get("contents") as? String ?? ""
                     let uploadDate = document.get("uploadDate") as? String ?? ""
                     
-                    self.comments.append(CommunityCommentDataModel(author: author,
-                                                                   nickName: AES256Util.decrypt(encoded: nickName),
-                                                                   contents: AES256Util.decrypt(encoded: contents),
-                                                                   uploadDate: uploadDate))
+                    self.getProfile(uid: author){ profileURL in
+                        self.comments.append(CommunityCommentDataModel(author: author,
+                                                                       nickName: AES256Util.decrypt(encoded: nickName),
+                                                                       contents: AES256Util.decrypt(encoded: contents),
+                                                                       uploadDate: uploadDate,
+                                                                       profile: profileURL))
+                    }
+                    
+
                 }
                 
                 completion(true)
@@ -187,6 +255,19 @@ class CommunityHelper: ObservableObject{
                 completion(0)
                 return
             }
+        }
+    }
+    
+    private func getThumbnail(id: String, completion: @escaping(_ result: URL?) -> Void){
+        storage.reference().child("Community/\(id)/\0.png").downloadURL(){(downloadURL, error) in
+            if error != nil{
+                print(error?.localizedDescription)
+                completion(nil)
+                return
+            }
+            
+            completion(downloadURL)
+            return
         }
     }
     
