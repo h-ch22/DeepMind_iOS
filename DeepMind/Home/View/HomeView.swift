@@ -10,11 +10,11 @@ import SwiftUI
 struct HomeView: View {
     @StateObject private var inspectionHelper = InspectionHelper()
     @StateObject private var communityHelper = CommunityHelper()
+    @StateObject private var healthKitHelper = HealthDataHelper()
     @StateObject var userManagement: UserManagement
-    @State private var emotions = ["🥰 행복해요", "😆 최고예요", "😀 좋아요", "🙂 그저그래요", "☹️ 안좋아요", "😢 슬퍼요", "😣 혼자있고싶어요", "😡 화나요"]
-    @State private var dailyEmotion: DiaryEmotionModel? = nil
-    @State private var categories = ["HTP 검사", "하루일기", "하루감정"]
+
     @State private var currentIndex = 0
+    @State private var showDailyEmotionView = false
     
     let parent: TabManager
     let columns = [
@@ -23,7 +23,7 @@ struct HomeView: View {
     
     var body: some View {
         ZStack{
-            Color.backgroundColor.edgesIgnoringSafeArea(.all)
+            LinearGradient(gradient: Gradient(colors: [Color.accentColor, Color.backgroundColor.opacity(0.7)]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
             
             ScrollView{
                 VStack{
@@ -36,47 +36,145 @@ struct HomeView: View {
                     
                     Spacer().frame(height : 20)
                     
-                    HStack{
-                        if inspectionHelper.latestInspectionResult == nil{
-                            Button(action: {}){
-                                VStack{
-                                    Text("최근 검사 기록이 없어요😢")
-                                        .foregroundStyle(Color.white)
-                                        .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
-                                }.padding(20)
-                                    .padding([.vertical], 50)
-                                    .frame(width: 150, height: 150)
-                                    .background(RoundedRectangle(cornerRadius: 15).foregroundStyle(Color.gray).shadow(radius: 5))
-                            }
-                        }
-
-                        
-                        Button(action: {}){
-                            VStack(alignment: .leading){
+                    Button(action:{}){
+                        VStack(alignment: .leading){
+                            HStack{
+                                Image(systemName: "pencil.and.scribble")
+                                    .foregroundStyle(Color.accentColor)
+                                
                                 Text("HTP 검사")
                                     .font(.caption)
-                                    .foregroundStyle(Color.white)
+                                    .fontWeight(.semibold)
+                                    .foregroundStyle(Color.accentColor)
                                 
-                                HStack{
-                                    Text("시작하기")
-                                        .fontWeight(.semibold)
-                                        .foregroundStyle(Color.white)
-                                    
-                                    Image(systemName : "arrow.right.circle.fill")
-                                        .foregroundStyle(Color.white)
-                                }
-                            }.padding(20)
-                                .padding([.vertical], 50)
-                                .frame(width: 150, height: 150)
-                                .background(RoundedRectangle(cornerRadius: 15).foregroundStyle(Color.accent).shadow(radius: 5))
-                        }
-                    }.fixedSize(horizontal: false, vertical: true)
-                        .frame(maxWidth: .infinity, maxHeight: 200)
+                                Spacer()
+                            }
+                            
+                            Spacer().frame(height: 10)
+                            
+                            HStack{
+                                Text(inspectionHelper.latestInspectionResult == nil ? "최근 검사 기록 없음" : "")
+                                    .fontWeight(.semibold)
+                                    .foregroundStyle(Color.txt_color)
+                            }
+                        }.padding(20)
+                            .background(RoundedRectangle(cornerRadius: 15).foregroundStyle(Color.btn_color).shadow(radius: 5))
+                    }
+                    
+                    Spacer().frame(height: 10)
+                    
+                    Button(action:{}){
+                        VStack(alignment: .leading){
+                            HStack{
+                                Image(systemName: "flame.fill")
+                                    .foregroundStyle(Color.orange)
+                                
+                                Text("걷기 및 달리기 거리")
+                                    .font(.caption)
+                                    .fontWeight(.semibold)
+                                    .foregroundStyle(Color.orange)
+                                
+                                Spacer()
+                            }
+                            
+                            Spacer().frame(height: 10)
+                            
+                            HStack{
+                                Text("\(String(format: "%.2f", healthKitHelper.excerciseDistance)) m")
+                                    .fontWeight(.semibold)
+                                    .foregroundStyle(Color.txt_color)
+                            }
+                        }.padding(20)
+                            .background(RoundedRectangle(cornerRadius: 15).foregroundStyle(Color.btn_color).shadow(radius: 5))
+                    }
+                    
+                    Spacer().frame(height: 10)
+                    
+                    Button(action:{
+                        self.showDailyEmotionView = true
+                    }){
+                        VStack(alignment: .leading){
+                            HStack{
+                                Image(systemName: "heart.fill")
+                                    .foregroundStyle(Color.red)
+                                
+                                Text("하루 감정")
+                                    .font(.caption)
+                                    .fontWeight(.semibold)
+                                    .foregroundStyle(Color.red)
+                                
+                                Spacer()
+                                
+                                Text(healthKitHelper.dailyEmotionTime ?? "")
+                                    .font(.caption)
+                                    .foregroundStyle(Color.gray)
+                            }
+                            
+                            Spacer().frame(height: 10)
+                            
+                            HStack{
+                                Text("\(DiaryHelper.convertEmotionCodeToString(code: healthKitHelper.dailyEmotion) ?? "데이터 없음")")
+                                    .fontWeight(.semibold)
+                                    .foregroundStyle(Color.txt_color)
+                            }
+                        }.padding(20)
+                            .background(RoundedRectangle(cornerRadius: 15).foregroundStyle(Color.btn_color).shadow(radius: 5))
+                    }
+                    
+                    Spacer().frame(height: 10)
+                    
+                    Button(action:{}){
+                        VStack(alignment: .leading){
+                            HStack{
+                                Image(systemName: "sun.max.fill")
+                                    .foregroundStyle(Color.blue)
+                                
+                                Text("일광 시간")
+                                    .font(.caption)
+                                    .fontWeight(.semibold)
+                                    .foregroundStyle(Color.blue)
+                                
+                                Spacer()
+                            }
+                            
+                            Spacer().frame(height: 10)
+                            
+                            HStack{
+                                Text("\(String(format: "%d", Int(healthKitHelper.dayLightTime))) 분")
+                                    .fontWeight(.semibold)
+                                    .foregroundStyle(Color.txt_color)
+                            }
+                        }.padding(20)
+                            .background(RoundedRectangle(cornerRadius: 15).foregroundStyle(Color.btn_color).shadow(radius: 5))
+                    }
                     
                     Spacer().frame(height: 20)
                     
                     if userManagement.userInfo?.type == .PROFESSIONAL{
+                        HStack{
+                            Text("상담 관리")
+                                .foregroundStyle(Color.txt_color)
+                                .fontWeight(.semibold)
+                            
+                            Spacer()
+                        }
                         
+                        Spacer().frame(height: 20)
+
+                        HStack{
+                            Button(action: {}){
+                                HStack{
+                                    Text("더 많은 상담 관리하기")
+                                        .foregroundStyle(Color.txt_color)
+                                        .fontWeight(.semibold)
+                                    
+                                    Image(systemName: "arrow.right.circle.fill")
+                                        .foregroundStyle(Color.txt_color)
+                                }.padding(20)
+                                    .frame(minHeight: 80, maxHeight: 80)
+                                    .background(RoundedRectangle(cornerRadius: 15).foregroundStyle(Color.btn_color).shadow(radius: 5))
+                            }
+                        }
                     } else{
                         HStack{
                             Text("🔥 최신 커뮤니티 게시물")
@@ -116,16 +214,19 @@ struct HomeView: View {
                     
                 }.padding(20)
                     .onAppear{
-//                        inspectionHelper.getLatestHistory(){ result in
-//                            guard let result = result else{return}
-//                        }
-//                        
-//                        communityHelper.getLatestArticles(){ result in
-//                            guard let result = result else{return}
-//                        }
+                        healthKitHelper.requestAuthorization(){ result in
+                            guard let result = result else{return}
+                            
+                            if result{
+                                healthKitHelper.updateData()
+                            }
+                        }
                     }
                     .navigationBarHidden(true)
                     .animation(.easeInOut)
+                    .sheet(isPresented: $showDailyEmotionView){
+                        AddDailyEmotionView()
+                    }
             }
         }
     }

@@ -91,6 +91,9 @@
 		F6F642272AB205370009A554 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = F6F642262AB205370009A554 /* SwiftyJSON */; };
 		F6F6422A2AB205D10009A554 /* HospitalMapHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F642292AB205D10009A554 /* HospitalMapHelper.swift */; };
 		F6F6422C2AB2159C0009A554 /* ViewSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F6422B2AB2159C0009A554 /* ViewSizeCalculator.swift */; };
+		F6FD5E452AC86169002498F9 /* HealthDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FD5E442AC86169002498F9 /* HealthDataHelper.swift */; };
+		F6FD5E472AC86EE1002498F9 /* AddDailyEmotionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FD5E462AC86EE1002498F9 /* AddDailyEmotionView.swift */; };
+		F6FD5E492AC86EEB002498F9 /* DailyEmotionSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FD5E482AC86EEB002498F9 /* DailyEmotionSlider.swift */; };
 		F6FE66E72A8CB3E900AF9D94 /* StatisticsEmotionDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FE66E62A8CB3E900AF9D94 /* StatisticsEmotionDataModel.swift */; };
 		F6FE66E92A8CBBE300AF9D94 /* InspectionEssentialQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FE66E82A8CBBE300AF9D94 /* InspectionEssentialQuestionView.swift */; };
 		F6FE66EB2A8CBEDE00AF9D94 /* InspectionEssentialQuestionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FE66EA2A8CBEDE00AF9D94 /* InspectionEssentialQuestionType.swift */; };
@@ -192,6 +195,10 @@
 		F6F642202AB202820009A554 /* HospitalMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalMapViewController.swift; sourceTree = "<group>"; };
 		F6F642292AB205D10009A554 /* HospitalMapHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalMapHelper.swift; sourceTree = "<group>"; };
 		F6F6422B2AB2159C0009A554 /* ViewSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSizeCalculator.swift; sourceTree = "<group>"; };
+		F6FD5E432AC860FB002498F9 /* DeepMind.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DeepMind.entitlements; sourceTree = "<group>"; };
+		F6FD5E442AC86169002498F9 /* HealthDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthDataHelper.swift; sourceTree = "<group>"; };
+		F6FD5E462AC86EE1002498F9 /* AddDailyEmotionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDailyEmotionView.swift; sourceTree = "<group>"; };
+		F6FD5E482AC86EEB002498F9 /* DailyEmotionSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyEmotionSlider.swift; sourceTree = "<group>"; };
 		F6FE66E62A8CB3E900AF9D94 /* StatisticsEmotionDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsEmotionDataModel.swift; sourceTree = "<group>"; };
 		F6FE66E82A8CBBE300AF9D94 /* InspectionEssentialQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectionEssentialQuestionView.swift; sourceTree = "<group>"; };
 		F6FE66EA2A8CBEDE00AF9D94 /* InspectionEssentialQuestionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectionEssentialQuestionType.swift; sourceTree = "<group>"; };
@@ -311,6 +318,7 @@
 			isa = PBXGroup;
 			children = (
 				F6344B212A76304800FA3440 /* HomeView.swift */,
+				F6FD5E462AC86EE1002498F9 /* AddDailyEmotionView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -442,6 +450,7 @@
 		F6559D9C2A7607DC00C1207A /* DeepMind */ = {
 			isa = PBXGroup;
 			children = (
+				F6FD5E432AC860FB002498F9 /* DeepMind.entitlements */,
 				F6A132702AB1FF6F00F53CF8 /* HospitalMap */,
 				F699F3BC2AB1EAD800D530FC /* Demo */,
 				F60A10A12AA5C61900FA9AD9 /* Community */,
@@ -643,6 +652,7 @@
 		F6FE66D92A8C99AB00AF9D94 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				F6FD5E442AC86169002498F9 /* HealthDataHelper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -651,6 +661,7 @@
 			isa = PBXGroup;
 			children = (
 				F6A1326E2AB1F12D00F53CF8 /* HomeCommunityListModel.swift */,
+				F6FD5E482AC86EEB002498F9 /* DailyEmotionSlider.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -817,6 +828,7 @@
 				F6FE66EB2A8CBEDE00AF9D94 /* InspectionEssentialQuestionType.swift in Sources */,
 				F6559DF72A76176600C1207A /* RadioButton.swift in Sources */,
 				F69586552A9EDE21006F0520 /* UserTypeSelectionView.swift in Sources */,
+				F6FD5E492AC86EEB002498F9 /* DailyEmotionSlider.swift in Sources */,
 				F6344B2E2A76307A00FA3440 /* StatisticsView.swift in Sources */,
 				F6559DF62A76176600C1207A /* RadioButtonGroup.swift in Sources */,
 				F6559DEC2A76169F00C1207A /* SignInView.swift in Sources */,
@@ -852,11 +864,13 @@
 				F6F6422A2AB205D10009A554 /* HospitalMapHelper.swift in Sources */,
 				F6D3CCAE2A7B3F8900383BBB /* PredictTypeModel.swift in Sources */,
 				F6BE651E2A8DB58500C40E57 /* HouseEssentialQuestionModels.swift in Sources */,
+				F6FD5E472AC86EE1002498F9 /* AddDailyEmotionView.swift in Sources */,
 				F627538C2A80A08C008104B5 /* WriteDiaryView.swift in Sources */,
 				F62753982A80B4AA008104B5 /* DiaryMarkUpView.swift in Sources */,
 				F6344B342A7638E000FA3440 /* DrawingView.swift in Sources */,
 				F6559D9E2A7607DC00C1207A /* DeepMindApp.swift in Sources */,
 				F69586592A9EFB40006F0520 /* UserInfoView.swift in Sources */,
+				F6FD5E452AC86169002498F9 /* HealthDataHelper.swift in Sources */,
 				F6559DFD2A7617E100C1207A /* SignUpAlertModel.swift in Sources */,
 				F6559DFB2A7617C100C1207A /* SignUpView.swift in Sources */,
 				F6559DCA2A76085100C1207A /* SplashView.swift in Sources */,
@@ -1044,6 +1058,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = DeepMind/DeepMind.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1000b;
 				DEVELOPMENT_ASSET_PATHS = "\"DeepMind/Preview Content\"";
@@ -1053,6 +1068,8 @@
 				INFOPLIST_FILE = DeepMind/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "하루 일기에 사진을 추가하기 위해 카메라 권한이 필요합니다.";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "자동 로그인 기능 활성화를 위해 생체인식 권한이 필요합니다.";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "홈에서 마음 챙기기 시간, 일광 시간, 운동 시간을 표시하기 위해 해당 데이터의 접근이 필요합니다.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "홈에서 마음 챙기기 시간, 일광 시간, 운동 시간을 표시하기 위해 해당 데이터의 접근이 필요합니다.";
 				INFOPLIST_KEY_NSLocationUsageDescription = "현재 위치를 기준으로 근처 병원의 위치를 표시하기 위해 위치 권한이 필요합니다.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "현재 위치를 기준으로 근처 병원의 위치를 표시하기 위해 위치 권한이 필요합니다.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
@@ -1061,7 +1078,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1080,6 +1097,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = DeepMind/DeepMind.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1000b;
 				DEVELOPMENT_ASSET_PATHS = "\"DeepMind/Preview Content\"";
@@ -1089,6 +1107,8 @@
 				INFOPLIST_FILE = DeepMind/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "하루 일기에 사진을 추가하기 위해 카메라 권한이 필요합니다.";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "자동 로그인 기능 활성화를 위해 생체인식 권한이 필요합니다.";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "홈에서 마음 챙기기 시간, 일광 시간, 운동 시간을 표시하기 위해 해당 데이터의 접근이 필요합니다.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "홈에서 마음 챙기기 시간, 일광 시간, 운동 시간을 표시하기 위해 해당 데이터의 접근이 필요합니다.";
 				INFOPLIST_KEY_NSLocationUsageDescription = "현재 위치를 기준으로 근처 병원의 위치를 표시하기 위해 위치 권한이 필요합니다.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "현재 위치를 기준으로 근처 병원의 위치를 표시하기 위해 위치 권한이 필요합니다.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
@@ -1097,7 +1117,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

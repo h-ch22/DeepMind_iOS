@@ -31,6 +31,20 @@ class DiaryHelper: ObservableObject{
         }
     }
     
+    static func convertEmotionCodeToString(code: DiaryEmotionModel?) -> String?{
+        switch code{
+        case .HAPPY: return "행복해요"
+        case .GREAT: return "최고예요"
+        case .GOOD: return "좋아요"
+        case .SOSO: return "그저 그래요"
+        case .BAD: return "안좋아요"
+        case .SAD: return "슬퍼요"
+        case .STAY_ALONE: return "혼자 있고 싶어요"
+        case .ANGRY: return "화나요"
+        default: return nil
+        }
+    }
+    
     static func indexToEmotion(index: Int) -> DiaryEmotionModel?{
         switch index{
         case 0:
