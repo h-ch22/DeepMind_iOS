@@ -70,7 +70,7 @@ struct DiaryView: View {
                         Image(systemName : "square.and.pencil")
                             .font(.title)
                         
-                        Text("당신의 하루를 기록해보세요.")
+                        Text("오늘의 당신을 기록해보세요.")
                             .fontWeight(.semibold)
                             .foregroundStyle(Color.gray)
                         

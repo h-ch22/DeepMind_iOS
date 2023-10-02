@@ -15,8 +15,9 @@ struct CommunityArticleListModel: View {
             if data.thumbnail != nil{
                 AsyncImage(url: data.thumbnail, content: { image in
                     image.resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 150, height: 150)
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 35, height: 35)
+                        .clipShape(RoundedRectangle(cornerRadius: 5))
                 }, placeholder: {
                     ProgressView()
                 })
@@ -41,7 +42,7 @@ struct CommunityArticleListModel: View {
                 }
                 
                 HStack{
-                    Text("\(data.board)|\(data.createDate)")
+                    Text("\(data.board) | \(data.createDate)")
                         .font(.caption)
                         .foregroundStyle(Color.gray)
                     

@@ -11,9 +11,10 @@ struct TabManager: View {
     @State private var selectedIndex = 0
     @State private var showModal = false
     @State private var viewSize: CGSize = .zero
+    
     @StateObject var userManagement : UserManagement
     
-    let icon = ["house.fill", "map.fill", "applepencil.and.scribble", "shared.with.you", "ellipsis.circle.fill"]
+    let icon = ["house.fill", "calendar.badge.clock", "applepencil.and.scribble", "shared.with.you", "ellipsis.circle.fill"]
     
     func changeView(index: Int){
         self.selectedIndex = index
@@ -32,7 +33,11 @@ struct TabManager: View {
                         HomeView(userManagement: userManagement, parent: self).navigationTitle(Text("홈"))
                         
                     case 1:
-                        EmptyView().navigationTitle(Text("상담 관리"))
+                        if userManagement.userInfo?.type == .PROFESSIONAL{
+                            ConsultingProView(userManagement: userManagement).navigationTitle(Text("상담 관리"))
+                        } else{
+                            ConsultingMainView().navigationTitle(Text("상담 관리"))
+                        }
                         
                     case 3:
                         CommunityMainView(userManagement: userManagement).navigationTitle(Text("커뮤니티"))
@@ -77,23 +82,13 @@ struct TabManager: View {
                             }
                             
                             else{
-                                if number == 1 && userManagement.userInfo?.type == .PROFESSIONAL{
-                                    Image(systemName: "calendar.badge.clock")
-                                        .font(.system(
-                                            size: 25,
-                                            weight: .regular,
-                                            design: .default
-                                        ))
-                                        .foregroundColor(selectedIndex == number ? .accent : .gray)
-                                } else{
-                                    Image(systemName: icon[number])
-                                        .font(.system(
-                                            size: 25,
-                                            weight: .regular,
-                                            design: .default
-                                        ))
-                                        .foregroundColor(selectedIndex == number ? .accent : .gray)
-                                }
+                                Image(systemName: icon[number])
+                                    .font(.system(
+                                        size: 25,
+                                        weight: .regular,
+                                        design: .default
+                                    ))
+                                    .foregroundColor(selectedIndex == number ? .accent : .gray)
 
                             }
                             

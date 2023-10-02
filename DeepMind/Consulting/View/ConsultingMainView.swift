@@ -9,7 +9,15 @@ import SwiftUI
 
 struct ConsultingMainView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack{
+            LinearGradient(gradient: Gradient(colors: [Color.indigo.opacity(0.5), Color.backgroundColor.opacity(0.7)]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
+            
+            ScrollView{
+                VStack{
+                    
+                }.padding(20)
+            }
+        }
     }
 }
 

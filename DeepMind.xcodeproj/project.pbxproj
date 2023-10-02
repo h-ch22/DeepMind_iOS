@@ -84,6 +84,15 @@
 		F69586572A9EFB1B006F0520 /* ProBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69586562A9EFB1B006F0520 /* ProBadgeView.swift */; };
 		F69586592A9EFB40006F0520 /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69586582A9EFB40006F0520 /* UserInfoView.swift */; };
 		F695865C2A9EFDA7006F0520 /* UserStatusChangeResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F695865B2A9EFDA7006F0520 /* UserStatusChangeResultModel.swift */; };
+		F695A2C22ACA6A11007A3769 /* ConsultingDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F695A2C12ACA6A11007A3769 /* ConsultingDataModel.swift */; };
+		F695A2C42ACA6A66007A3769 /* MentorInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F695A2C32ACA6A66007A3769 /* MentorInfoModel.swift */; };
+		F695A2C62ACA7452007A3769 /* ConsultingHospitalMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F695A2C52ACA7452007A3769 /* ConsultingHospitalMapView.swift */; };
+		F695A2C82ACA7489007A3769 /* ConsultingHospitalMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F695A2C72ACA7489007A3769 /* ConsultingHospitalMapViewController.swift */; };
+		F695A2CA2ACA7B7D007A3769 /* ConsultingHospitalSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F695A2C92ACA7B7D007A3769 /* ConsultingHospitalSelectionView.swift */; };
+		F695A2CC2ACA7BCD007A3769 /* ConsultingHospitalSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F695A2CB2ACA7BCD007A3769 /* ConsultingHospitalSelectionViewController.swift */; };
+		F695A2CE2ACA7C5A007A3769 /* HospitalLocationReceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = F695A2CD2ACA7C5A007A3769 /* HospitalLocationReceiver.swift */; };
+		F695A2D02ACA7C7B007A3769 /* HospitalSelectionMapDragListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = F695A2CF2ACA7C7B007A3769 /* HospitalSelectionMapDragListener.swift */; };
+		F695A2D22ACA84D9007A3769 /* WriteCommunityDeepLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F695A2D12ACA84D9007A3769 /* WriteCommunityDeepLinkView.swift */; };
 		F69F94052AA8606A002EE0A3 /* CommonAlertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69F94042AA8606A002EE0A3 /* CommonAlertModel.swift */; };
 		F69F94072AA860CD002EE0A3 /* CommunityDeletionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69F94062AA860CD002EE0A3 /* CommunityDeletionModel.swift */; };
 		F6A1326D2AB1EB7A00F53CF8 /* InspectionResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A1326C2AB1EB7A00F53CF8 /* InspectionResultView.swift */; };
@@ -195,6 +204,15 @@
 		F69586562A9EFB1B006F0520 /* ProBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProBadgeView.swift; sourceTree = "<group>"; };
 		F69586582A9EFB40006F0520 /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
 		F695865B2A9EFDA7006F0520 /* UserStatusChangeResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatusChangeResultModel.swift; sourceTree = "<group>"; };
+		F695A2C12ACA6A11007A3769 /* ConsultingDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultingDataModel.swift; sourceTree = "<group>"; };
+		F695A2C32ACA6A66007A3769 /* MentorInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MentorInfoModel.swift; sourceTree = "<group>"; };
+		F695A2C52ACA7452007A3769 /* ConsultingHospitalMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultingHospitalMapView.swift; sourceTree = "<group>"; };
+		F695A2C72ACA7489007A3769 /* ConsultingHospitalMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultingHospitalMapViewController.swift; sourceTree = "<group>"; };
+		F695A2C92ACA7B7D007A3769 /* ConsultingHospitalSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultingHospitalSelectionView.swift; sourceTree = "<group>"; };
+		F695A2CB2ACA7BCD007A3769 /* ConsultingHospitalSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultingHospitalSelectionViewController.swift; sourceTree = "<group>"; };
+		F695A2CD2ACA7C5A007A3769 /* HospitalLocationReceiver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalLocationReceiver.swift; sourceTree = "<group>"; };
+		F695A2CF2ACA7C7B007A3769 /* HospitalSelectionMapDragListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalSelectionMapDragListener.swift; sourceTree = "<group>"; };
+		F695A2D12ACA84D9007A3769 /* WriteCommunityDeepLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteCommunityDeepLinkView.swift; sourceTree = "<group>"; };
 		F69F94042AA8606A002EE0A3 /* CommonAlertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonAlertModel.swift; sourceTree = "<group>"; };
 		F69F94062AA860CD002EE0A3 /* CommunityDeletionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityDeletionModel.swift; sourceTree = "<group>"; };
 		F6A1326C2AB1EB7A00F53CF8 /* InspectionResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectionResultView.swift; sourceTree = "<group>"; };
@@ -264,6 +282,7 @@
 				F60A10AF2AA5CE2100FA9AD9 /* WriteCommunityView.swift */,
 				F60A10B12AA6D2D600FA9AD9 /* CommunityDetailView.swift */,
 				F677CE2C2AC9A4580082DDA7 /* CommunityWrittenArticleListView.swift */,
+				F695A2D12ACA84D9007A3769 /* WriteCommunityDeepLinkView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -588,6 +607,7 @@
 		F677CE382AC9C1960082DDA7 /* Consulting */ = {
 			isa = PBXGroup;
 			children = (
+				F695A2C02ACA6A07007A3769 /* Models */,
 				F677CE3F2AC9C49F0082DDA7 /* Helper */,
 				F677CE392AC9C1E80082DDA7 /* View */,
 			);
@@ -599,6 +619,10 @@
 			children = (
 				F677CE3A2AC9C1EF0082DDA7 /* ConsultingMainView.swift */,
 				F677CE3D2AC9C1FD0082DDA7 /* ConsultingProView.swift */,
+				F695A2C52ACA7452007A3769 /* ConsultingHospitalMapView.swift */,
+				F695A2C72ACA7489007A3769 /* ConsultingHospitalMapViewController.swift */,
+				F695A2C92ACA7B7D007A3769 /* ConsultingHospitalSelectionView.swift */,
+				F695A2CB2ACA7BCD007A3769 /* ConsultingHospitalSelectionViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -623,6 +647,17 @@
 			isa = PBXGroup;
 			children = (
 				F695865B2A9EFDA7006F0520 /* UserStatusChangeResultModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F695A2C02ACA6A07007A3769 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F695A2C12ACA6A11007A3769 /* ConsultingDataModel.swift */,
+				F695A2C32ACA6A66007A3769 /* MentorInfoModel.swift */,
+				F695A2CD2ACA7C5A007A3769 /* HospitalLocationReceiver.swift */,
+				F695A2CF2ACA7C7B007A3769 /* HospitalSelectionMapDragListener.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -846,20 +881,25 @@
 				F6559DEC2A76169F00C1207A /* SignInView.swift in Sources */,
 				F67F59252A78C8D5005E558A /* PersonGenderModel.swift in Sources */,
 				F677CE412AC9C4A70082DDA7 /* ConsultingHelper.swift in Sources */,
+				F695A2CA2ACA7B7D007A3769 /* ConsultingHospitalSelectionView.swift in Sources */,
 				F677CE3E2AC9C1FD0082DDA7 /* ConsultingProView.swift in Sources */,
 				F69F94052AA8606A002EE0A3 /* CommonAlertModel.swift in Sources */,
 				F6559DF22A76174A00C1207A /* CheckBox.swift in Sources */,
 				F6FE66E72A8CB3E900AF9D94 /* StatisticsEmotionDataModel.swift in Sources */,
+				F695A2C62ACA7452007A3769 /* ConsultingHospitalMapView.swift in Sources */,
+				F695A2CE2ACA7C5A007A3769 /* HospitalLocationReceiver.swift in Sources */,
 				F6559DCF2A760A1B00C1207A /* AES256Util.swift in Sources */,
 				F69586572A9EFB1B006F0520 /* ProBadgeView.swift in Sources */,
 				F677CE3B2AC9C1EF0082DDA7 /* ConsultingMainView.swift in Sources */,
 				F674751F2A84AF8F006471CA /* CL02.mlpackage in Sources */,
+				F695A2CC2ACA7BCD007A3769 /* ConsultingHospitalSelectionViewController.swift in Sources */,
 				F6344B222A76304800FA3440 /* HomeView.swift in Sources */,
 				F62753962A80B3CB008104B5 /* DiaryCanvasView.swift in Sources */,
 				F60A10AE2AA5CAE200FA9AD9 /* CommunityArticleListModel.swift in Sources */,
 				F6110ACC2A8F05DB0090F9B9 /* InspectionHistoryModel.swift in Sources */,
 				F62753882A808E36008104B5 /* DiaryEmotionModel.swift in Sources */,
 				F60A10A72AA5C63700FA9AD9 /* CommunityArticleDataModel.swift in Sources */,
+				F695A2C22ACA6A11007A3769 /* ConsultingDataModel.swift in Sources */,
 				F6344B322A76308500FA3440 /* MoreView.swift in Sources */,
 				F67475212A84AF95006471CA /* CL03.mlpackage in Sources */,
 				F62753862A808E17008104B5 /* DiaryContentsModel.swift in Sources */,
@@ -871,6 +911,7 @@
 				F6FE66E92A8CBBE300AF9D94 /* InspectionEssentialQuestionView.swift in Sources */,
 				F67F59282A78CC57005E558A /* InspectionHelper.swift in Sources */,
 				F674751B2A84A2DF006471CA /* Detection.swift in Sources */,
+				F695A2C82ACA7489007A3769 /* ConsultingHospitalMapViewController.swift in Sources */,
 				F60A10B02AA5CE2100FA9AD9 /* WriteCommunityView.swift in Sources */,
 				F690AADE2A9A44A6004775FC /* ActivityViewController.swift in Sources */,
 				F60A10A42AA5C62400FA9AD9 /* CommunityMainView.swift in Sources */,
@@ -879,6 +920,7 @@
 				F6BE651E2A8DB58500C40E57 /* HouseEssentialQuestionModels.swift in Sources */,
 				F6FD5E472AC86EE1002498F9 /* AddDailyEmotionView.swift in Sources */,
 				F627538C2A80A08C008104B5 /* WriteDiaryView.swift in Sources */,
+				F695A2C42ACA6A66007A3769 /* MentorInfoModel.swift in Sources */,
 				F62753982A80B4AA008104B5 /* DiaryMarkUpView.swift in Sources */,
 				F677CE312AC9B0A70082DDA7 /* UpdateUserInfoView.swift in Sources */,
 				F6344B342A7638E000FA3440 /* DrawingView.swift in Sources */,
@@ -904,7 +946,9 @@
 				F6344B262A76305300FA3440 /* DiaryView.swift in Sources */,
 				F677CE2D2AC9A4580082DDA7 /* CommunityWrittenArticleListView.swift in Sources */,
 				F6A1326D2AB1EB7A00F53CF8 /* InspectionResultView.swift in Sources */,
+				F695A2D22ACA84D9007A3769 /* WriteCommunityDeepLinkView.swift in Sources */,
 				F67475232A84B922006471CA /* DetectionResultsView.swift in Sources */,
+				F695A2D02ACA7C7B007A3769 /* HospitalSelectionMapDragListener.swift in Sources */,
 				F677CE332AC9B0CF0082DDA7 /* UpdateUserInfoModel.swift in Sources */,
 				F695865C2A9EFDA7006F0520 /* UserStatusChangeResultModel.swift in Sources */,
 				F6344B1E2A76302700FA3440 /* TabManager.swift in Sources */,
