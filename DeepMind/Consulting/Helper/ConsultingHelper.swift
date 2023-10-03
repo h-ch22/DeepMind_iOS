@@ -12,6 +12,11 @@ import Firebase
 
 class ConsultingHelper: ObservableObject{
     @Published var mentorInfo: MentorInfoModel? = nil
+    @Published var mentors: [MentorInfoModel] = []
+    @Published var reservationList: [ConsultingDataModel] = []
+    @Published var unratedReservationList: [ConsultingDataModel] = []
+    @Published var allReservationList: [ConsultingDataModel] = []
+    @Published var imgList: [URL] = []
     
     private let db = Firestore.firestore()
     private let storage = Storage.storage()
@@ -57,16 +62,13 @@ class ConsultingHelper: ObservableObject{
         }
     }
     
-    private func getMentorProfile(uid: String, completion: @escaping(_ result: URL?) -> Void){
+    func getMentorProfile(uid: String, completion: @escaping(_ result: URL?) -> Void){
         storage.reference().child("Profile/\(uid)/profile.png").downloadURL(){(downloadURL, error) in
             if error != nil{
                 print(error?.localizedDescription)
-                completion(nil)
-                return
             }
             
             completion(downloadURL)
-            return
         }
     }
     
@@ -86,15 +88,17 @@ class ConsultingHelper: ObservableObject{
         }
     }
     
-    func reserveConsulting(date: String, title: String, contents: String, files: [URL], uid: String, mentorUID: String, completion: @escaping(_ result: Bool?) -> Void){
+    func reserveConsulting(mentorName: String, date: String, time: String, message: String, type: ConsultingMethodType, images: [UIImage], uid: String, mentorUID: String, completion: @escaping(_ result: Bool?) -> Void){
         let docRef = db.collection("Consulting").document()
         docRef.setData([
             "date": date,
-            "title": AES256Util.encrypt(string: title),
-            "contents": AES256Util.encrypt(string: contents),
-            "fileCount": files.count,
+            "time": "\(time):00",
+            "message": AES256Util.encrypt(string: message),
+            "type": type == .INTERVIEW ? "INTERVIEW" : "CHAT",
+            "imageCount": images.count,
             "uid": uid,
-            "mentorUID": mentorUID
+            "mentorUID": mentorUID,
+            "mentorName": AES256Util.encrypt(string: mentorName)
         ]){error in
             if error != nil{
                 print(error?.localizedDescription)
@@ -102,11 +106,183 @@ class ConsultingHelper: ObservableObject{
                 return
             }
             
-            if files.count > 0{
-                for i in 0..<files.count{
-                    let pathExtension = files[i].pathExtension
-                    self.storage.reference().child("Consulting/\(docRef.documentID)\(i).\(pathExtension)")
+            if images.count > 0{
+                for i in 0..<images.count{
+                    let storageRef = self.storage.reference().child("Consulting/\(docRef.documentID)/\(i).png")
+                    storageRef.putData(images[i].pngData()!){_, error in
+                        if error != nil{
+                            print(error?.localizedDescription)
+                            completion(false)
+                            return
+                        } else{
+                            completion(true)
+                            return
+                        }
+                    }
                 }
+                
+                completion(true)
+                return
+            }
+        }
+    }
+    
+    func getReservationList(uid: String, date: String, completion: @escaping(_ result: [String]?) -> Void){
+        var reservationTimes: [String] = []
+        
+        let docRef = db.collection("Consulting")
+            .whereField("mentorUID", isEqualTo: uid)
+            .whereField("date", isEqualTo: date)
+            .getDocuments(){(querySnapshot, error) in
+                if error != nil{
+                    print(error?.localizedDescription)
+                    completion(reservationTimes)
+                    return
+                } else if querySnapshot != nil{
+                    for document in querySnapshot!.documents{
+                        let time = document.get("time") as? String ?? ""
+                        
+                        reservationTimes.append(time)
+                    }
+                    
+                    completion(reservationTimes)
+                    return
+                } else{
+                    completion(reservationTimes)
+                    return
+                }
+            }
+    }
+    
+    func getReservationList(uid: String, completion: @escaping(_ result: Bool?) -> Void){
+        db.collection("Consulting").whereField("uid", isEqualTo: uid).getDocuments(){(querySnapshot, error) in
+            if error != nil{
+                print(error?.localizedDescription)
+                completion(false)
+                return
+            } else if querySnapshot != nil{
+                for document in querySnapshot!.documents{
+                    let id = document.documentID
+                    let message = document.get("message") as? String ?? ""
+                    let date = document.get("date") as? String ?? ""
+                    let time = document.get("time") as? String ?? ""
+                    let mentorUID = document.get("mentorUID") as? String ?? ""
+                    let imageIndex = document.get("imageCount") as? Int ?? 0
+                    let type = document.get("type") as? String ?? ""
+                    let mentorName = document.get("mentorName") as? String ?? ""
+
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "yyyy. MM. dd."
+                    
+                    let current = dateFormatter.date(from: dateFormatter.string(from: Date()))
+                    let reservationDate = dateFormatter.date(from: date)
+                    
+                    self.getMentorProfile(uid: mentorUID){ result in
+                        
+                        if current! < reservationDate!{
+                            self.reservationList.append(ConsultingDataModel(id: id, message: AES256Util.decrypt(encoded: message), date: date, time: time, mentorUID: mentorUID, imageIndex: imageIndex, type: type == "INTERVIEW" ? .INTERVIEW : .CHAT, mentorName: AES256Util.decrypt(encoded: mentorName), mentorProfile: result))
+                            self.reservationList.sort(by: {$0.date < $1.date})
+                        } else{
+                            let isRated = document.get("isRated") as? Bool ?? false
+                            
+                            if !isRated{
+                                self.unratedReservationList.append(ConsultingDataModel(id: id, message: AES256Util.decrypt(encoded: message), date: date, time: time, mentorUID: mentorUID, imageIndex: imageIndex, type: type == "INTERVIEW" ? .INTERVIEW : .CHAT, mentorName: AES256Util.decrypt(encoded: mentorName), mentorProfile: result))
+                                self.unratedReservationList.sort(by: {$0.date < $1.date})
+                            }
+                        }
+                        
+                        self.allReservationList.append(ConsultingDataModel(id: id, message: AES256Util.decrypt(encoded: message), date: date, time: time, mentorUID: mentorUID, imageIndex: imageIndex, type: type == "INTERVIEW" ? .INTERVIEW : .CHAT, mentorName: AES256Util.decrypt(encoded: mentorName), mentorProfile: result))
+                        self.allReservationList.sort(by: {$0.date < $1.date})
+                    }
+                }
+                
+                completion(true)
+                return
+            } else{
+                completion(false)
+                return
+            }
+        }
+    }
+    
+    func downloadImages(id: String, imageCount: Int, completion: @escaping(_ result: Bool?) -> Void){
+        self.imgList.removeAll()
+        
+        for i in 0..<imageCount{
+            self.storage.reference().child("Consulting/\(id)/\(i).png").downloadURL(){(downloadURL, error) in
+                if error != nil{
+                    print(error?.localizedDescription)
+                    completion(false)
+                    return
+                } else if downloadURL != nil{
+                    self.imgList.append(downloadURL!)
+                }
+            }
+        }
+        
+        completion(true)
+        return
+    }
+    
+    func cancelConsulting(id: String, imageCount: Int, completion: @escaping(_ result: Bool?) -> Void){
+        self.db.collection("Consulting").document(id).delete(){error in
+            if error != nil{
+                print(error?.localizedDescription)
+                completion(false)
+                return
+            } else{
+                for i in 0..<imageCount{
+                    self.storage.reference().child("Consulting/\(id)/\(i).png").delete(){_ in
+                        
+                    }
+                }
+                
+                completion(true)
+                return
+            }
+        }
+    }
+    
+    func getAllMentors(completion: @escaping(_ result: Bool?) -> Void){
+        self.mentors.removeAll()
+        
+        self.db.collection("Users").whereField("type", isEqualTo: "Professional").getDocuments(){ (querySnapshot, error) in
+            if error != nil{
+                print(error?.localizedDescription)
+                completion(false)
+                return
+            } else if querySnapshot != nil{
+                for document in querySnapshot!.documents{
+                    let uid = document.documentID
+                    let name = document.get("name") as? String ?? ""
+                    let hospitalLocation = document.get("hospitalLocation") as? String ?? ""
+                    let hospitalAddress = document.get("hospitalAddress") as? String ?? ""
+                    let rate = document.get("rate") as? Double ?? 0.0
+                    
+                    var hospitalCoord: [Double]? = []
+                    
+                    if hospitalLocation.contains(", "){
+                        let coord = hospitalLocation.split(separator: ", ")
+                        hospitalCoord?.append(Double(coord[0]) ?? 0.0)
+                        hospitalCoord?.append(Double(coord[1]) ?? 0.0)
+                    }
+                    
+                    self.getMentorProfile(uid: uid){ result in
+                        self.mentors.append(
+                            MentorInfoModel(mentorUID: uid, mentorName: AES256Util.decrypt(encoded: name), mentorProfile: result, hospitalLocation: hospitalCoord == nil ? nil : hospitalCoord, hospitalAddress: hospitalAddress, rate: rate)
+                        )
+                        
+                        print(self.mentors)
+                        
+                        if self.mentors.count == querySnapshot!.documents.count{
+                            completion(true)
+                            return
+                        }
+                    }
+                }
+            } else{
+                completion(false)
+                return
             }
         }
     }

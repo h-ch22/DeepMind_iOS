@@ -36,7 +36,7 @@ struct TabManager: View {
                         if userManagement.userInfo?.type == .PROFESSIONAL{
                             ConsultingProView(userManagement: userManagement).navigationTitle(Text("상담 관리"))
                         } else{
-                            ConsultingMainView().navigationTitle(Text("상담 관리"))
+                            ConsultingMainView(userManagement: userManagement).navigationTitle(Text("상담 관리"))
                         }
                         
                     case 3:

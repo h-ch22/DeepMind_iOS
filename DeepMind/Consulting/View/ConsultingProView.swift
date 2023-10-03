@@ -84,7 +84,9 @@ struct ConsultingProView: View {
                     .sheet(isPresented: $showRegisterHospitalView, content: {
                         ConsultingHospitalSelectionView(helper: helper, userManagement: userManagement)
                     })
-            }
+            }.background(
+                LinearGradient(gradient: Gradient(colors: [Color.indigo.opacity(0.5), Color.backgroundColor.opacity(0.7)]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
+            )
         }
     }
 }

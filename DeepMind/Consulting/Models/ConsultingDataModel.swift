@@ -8,23 +8,25 @@
 import Foundation
 
 struct ConsultingDataModel: Hashable{
-    var consultingID: String
+    var id: String
+    var message: String
+    var date: String
+    var time: String
     var mentorUID: String
-    var menteeUID: String
+    var imageIndex: Int
+    var type: ConsultingMethodType
     var mentorName: String
-    var menteeName: String
-    var consultingTitle: String
-    var consultingContents: String
-    var files: [URL]?
+    var mentorProfile: URL?
     
-    init(consultingID: String, mentorUID: String, menteeUID: String, mentorName: String, menteeName: String, consultingTitle: String, consultingContents: String, files: [URL]?) {
-        self.consultingID = consultingID
+    init(id: String, message: String, date: String, time: String, mentorUID: String, imageIndex: Int, type: ConsultingMethodType, mentorName: String, mentorProfile: URL?) {
+        self.id = id
+        self.message = message
+        self.date = date
+        self.time = time
         self.mentorUID = mentorUID
-        self.menteeUID = menteeUID
+        self.imageIndex = imageIndex
+        self.type = type
         self.mentorName = mentorName
-        self.menteeName = menteeName
-        self.consultingTitle = consultingTitle
-        self.consultingContents = consultingContents
-        self.files = files
+        self.mentorProfile = mentorProfile
     }
 }
