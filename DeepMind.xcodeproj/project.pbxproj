@@ -16,6 +16,20 @@
 		F60A10B22AA6D2D600FA9AD9 /* CommunityDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60A10B12AA6D2D600FA9AD9 /* CommunityDetailView.swift */; };
 		F60A10B42AA6DA5600FA9AD9 /* CommunityCommentsListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60A10B32AA6DA5600FA9AD9 /* CommunityCommentsListModel.swift */; };
 		F6110ACC2A8F05DB0090F9B9 /* InspectionHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6110ACB2A8F05DB0090F9B9 /* InspectionHistoryModel.swift */; };
+		F62572552ACD300500332661 /* ConsultingChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62572542ACD300500332661 /* ConsultingChatView.swift */; };
+		F62572572ACD306800332661 /* ChatHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62572562ACD306800332661 /* ChatHelper.swift */; };
+		F62572592ACD309500332661 /* ChatType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62572582ACD309500332661 /* ChatType.swift */; };
+		F625725B2ACD30BD00332661 /* ChatDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F625725A2ACD30BD00332661 /* ChatDataModel.swift */; };
+		F625725D2ACD346800332661 /* ChatContentsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F625725C2ACD346800332661 /* ChatContentsRow.swift */; };
+		F625725F2ACD349900332661 /* ChatBubbleShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = F625725E2ACD349900332661 /* ChatBubbleShape.swift */; };
+		F62572612ACD357F00332661 /* FittingFontSizeModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62572602ACD357F00332661 /* FittingFontSizeModifier.swift */; };
+		F62572632ACD369F00332661 /* LinkPreviewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62572622ACD369F00332661 /* LinkPreviewRow.swift */; };
+		F62572652ACD3A1500332661 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62572642ACD3A1500332661 /* KeyboardView.swift */; };
+		F62572672ACD3A2A00332661 /* KeyboardResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62572662ACD3A2A00332661 /* KeyboardResponder.swift */; };
+		F62572692ACD3A4F00332661 /* AutoSizingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62572682ACD3A4F00332661 /* AutoSizingTextField.swift */; };
+		F625726B2ACD3A6700332661 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F625726A2ACD3A6700332661 /* BlurView.swift */; };
+		F625726D2ACD3A7D00332661 /* CustomCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F625726C2ACD3A7D00332661 /* CustomCorner.swift */; };
+		F625726F2ACD448100332661 /* ConsultingLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F625726E2ACD448100332661 /* ConsultingLogView.swift */; };
 		F62753832A808E03008104B5 /* DiaryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62753822A808E03008104B5 /* DiaryHelper.swift */; };
 		F62753862A808E17008104B5 /* DiaryContentsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62753852A808E17008104B5 /* DiaryContentsModel.swift */; };
 		F62753882A808E36008104B5 /* DiaryEmotionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62753872A808E36008104B5 /* DiaryEmotionModel.swift */; };
@@ -143,6 +157,20 @@
 		F60A10B12AA6D2D600FA9AD9 /* CommunityDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityDetailView.swift; sourceTree = "<group>"; };
 		F60A10B32AA6DA5600FA9AD9 /* CommunityCommentsListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityCommentsListModel.swift; sourceTree = "<group>"; };
 		F6110ACB2A8F05DB0090F9B9 /* InspectionHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectionHistoryModel.swift; sourceTree = "<group>"; };
+		F62572542ACD300500332661 /* ConsultingChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultingChatView.swift; sourceTree = "<group>"; };
+		F62572562ACD306800332661 /* ChatHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatHelper.swift; sourceTree = "<group>"; };
+		F62572582ACD309500332661 /* ChatType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatType.swift; sourceTree = "<group>"; };
+		F625725A2ACD30BD00332661 /* ChatDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDataModel.swift; sourceTree = "<group>"; };
+		F625725C2ACD346800332661 /* ChatContentsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatContentsRow.swift; sourceTree = "<group>"; };
+		F625725E2ACD349900332661 /* ChatBubbleShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBubbleShape.swift; sourceTree = "<group>"; };
+		F62572602ACD357F00332661 /* FittingFontSizeModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FittingFontSizeModifier.swift; sourceTree = "<group>"; };
+		F62572622ACD369F00332661 /* LinkPreviewRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkPreviewRow.swift; sourceTree = "<group>"; };
+		F62572642ACD3A1500332661 /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
+		F62572662ACD3A2A00332661 /* KeyboardResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponder.swift; sourceTree = "<group>"; };
+		F62572682ACD3A4F00332661 /* AutoSizingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoSizingTextField.swift; sourceTree = "<group>"; };
+		F625726A2ACD3A6700332661 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
+		F625726C2ACD3A7D00332661 /* CustomCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCorner.swift; sourceTree = "<group>"; };
+		F625726E2ACD448100332661 /* ConsultingLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultingLogView.swift; sourceTree = "<group>"; };
 		F62753822A808E03008104B5 /* DiaryHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryHelper.swift; sourceTree = "<group>"; };
 		F62753852A808E17008104B5 /* DiaryContentsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryContentsModel.swift; sourceTree = "<group>"; };
 		F62753872A808E36008104B5 /* DiaryEmotionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryEmotionModel.swift; sourceTree = "<group>"; };
@@ -564,6 +592,8 @@
 			children = (
 				F6559DCE2A760A1B00C1207A /* AES256Util.swift */,
 				F6559DED2A7616B500C1207A /* LAHelper.swift */,
+				F62572602ACD357F00332661 /* FittingFontSizeModifier.swift */,
+				F62572662ACD3A2A00332661 /* KeyboardResponder.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -625,6 +655,7 @@
 		F677CE392AC9C1E80082DDA7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F62572542ACD300500332661 /* ConsultingChatView.swift */,
 				F677CE3A2AC9C1EF0082DDA7 /* ConsultingMainView.swift */,
 				F677CE3D2AC9C1FD0082DDA7 /* ConsultingProView.swift */,
 				F695A2C52ACA7452007A3769 /* ConsultingHospitalMapView.swift */,
@@ -633,6 +664,7 @@
 				F695A2CB2ACA7BCD007A3769 /* ConsultingHospitalSelectionViewController.swift */,
 				F634C68D2ACBC75E00CE3BDF /* ConsultingReservationView.swift */,
 				F634C6932ACBE43B00CE3BDF /* ConsultingDetailView.swift */,
+				F625726E2ACD448100332661 /* ConsultingLogView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -641,6 +673,7 @@
 			isa = PBXGroup;
 			children = (
 				F677CE402AC9C4A70082DDA7 /* ConsultingHelper.swift */,
+				F62572562ACD306800332661 /* ChatHelper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -670,6 +703,10 @@
 				F695A2CF2ACA7C7B007A3769 /* HospitalSelectionMapDragListener.swift */,
 				F634C68B2ACBBF3500CE3BDF /* ConsultingMentorListModel.swift */,
 				F634C68F2ACBCE4F00CE3BDF /* ConsultingMethodType.swift */,
+				F62572582ACD309500332661 /* ChatType.swift */,
+				F625725A2ACD30BD00332661 /* ChatDataModel.swift */,
+				F625725C2ACD346800332661 /* ChatContentsRow.swift */,
+				F625725E2ACD349900332661 /* ChatBubbleShape.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -696,6 +733,11 @@
 			isa = PBXGroup;
 			children = (
 				F69F94042AA8606A002EE0A3 /* CommonAlertModel.swift */,
+				F62572622ACD369F00332661 /* LinkPreviewRow.swift */,
+				F62572642ACD3A1500332661 /* KeyboardView.swift */,
+				F62572682ACD3A4F00332661 /* AutoSizingTextField.swift */,
+				F625726A2ACD3A6700332661 /* BlurView.swift */,
+				F625726C2ACD3A7D00332661 /* CustomCorner.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -892,12 +934,16 @@
 				F6559DF62A76176600C1207A /* RadioButtonGroup.swift in Sources */,
 				F6559DEC2A76169F00C1207A /* SignInView.swift in Sources */,
 				F67F59252A78C8D5005E558A /* PersonGenderModel.swift in Sources */,
+				F625726D2ACD3A7D00332661 /* CustomCorner.swift in Sources */,
 				F677CE412AC9C4A70082DDA7 /* ConsultingHelper.swift in Sources */,
 				F695A2CA2ACA7B7D007A3769 /* ConsultingHospitalSelectionView.swift in Sources */,
+				F62572692ACD3A4F00332661 /* AutoSizingTextField.swift in Sources */,
 				F677CE3E2AC9C1FD0082DDA7 /* ConsultingProView.swift in Sources */,
 				F69F94052AA8606A002EE0A3 /* CommonAlertModel.swift in Sources */,
 				F6559DF22A76174A00C1207A /* CheckBox.swift in Sources */,
+				F625725F2ACD349900332661 /* ChatBubbleShape.swift in Sources */,
 				F6FE66E72A8CB3E900AF9D94 /* StatisticsEmotionDataModel.swift in Sources */,
+				F62572592ACD309500332661 /* ChatType.swift in Sources */,
 				F695A2C62ACA7452007A3769 /* ConsultingHospitalMapView.swift in Sources */,
 				F695A2CE2ACA7C5A007A3769 /* HospitalLocationReceiver.swift in Sources */,
 				F6559DCF2A760A1B00C1207A /* AES256Util.swift in Sources */,
@@ -907,6 +953,7 @@
 				F695A2CC2ACA7BCD007A3769 /* ConsultingHospitalSelectionViewController.swift in Sources */,
 				F6344B222A76304800FA3440 /* HomeView.swift in Sources */,
 				F62753962A80B3CB008104B5 /* DiaryCanvasView.swift in Sources */,
+				F62572632ACD369F00332661 /* LinkPreviewRow.swift in Sources */,
 				F60A10AE2AA5CAE200FA9AD9 /* CommunityArticleListModel.swift in Sources */,
 				F6110ACC2A8F05DB0090F9B9 /* InspectionHistoryModel.swift in Sources */,
 				F62753882A808E36008104B5 /* DiaryEmotionModel.swift in Sources */,
@@ -916,6 +963,7 @@
 				F6344B322A76308500FA3440 /* MoreView.swift in Sources */,
 				F67475212A84AF95006471CA /* CL03.mlpackage in Sources */,
 				F62753862A808E17008104B5 /* DiaryContentsModel.swift in Sources */,
+				F625726F2ACD448100332661 /* ConsultingLogView.swift in Sources */,
 				F6A1326F2AB1F12D00F53CF8 /* HomeCommunityListModel.swift in Sources */,
 				F627538A2A8092AF008104B5 /* WriteDiaryMainView.swift in Sources */,
 				F674751D2A84AF86006471CA /* CL01.mlpackage in Sources */,
@@ -927,8 +975,10 @@
 				F695A2C82ACA7489007A3769 /* ConsultingHospitalMapViewController.swift in Sources */,
 				F60A10B02AA5CE2100FA9AD9 /* WriteCommunityView.swift in Sources */,
 				F690AADE2A9A44A6004775FC /* ActivityViewController.swift in Sources */,
+				F625726B2ACD3A6700332661 /* BlurView.swift in Sources */,
 				F60A10A42AA5C62400FA9AD9 /* CommunityMainView.swift in Sources */,
 				F6BE65202A8DBC5600C40E57 /* EssentialQuestionAnswerModels.swift in Sources */,
+				F62572652ACD3A1500332661 /* KeyboardView.swift in Sources */,
 				F634C6942ACBE43B00CE3BDF /* ConsultingDetailView.swift in Sources */,
 				F6D3CCAE2A7B3F8900383BBB /* PredictTypeModel.swift in Sources */,
 				F6BE651E2A8DB58500C40E57 /* HouseEssentialQuestionModels.swift in Sources */,
@@ -937,6 +987,7 @@
 				F695A2C42ACA6A66007A3769 /* MentorInfoModel.swift in Sources */,
 				F62753982A80B4AA008104B5 /* DiaryMarkUpView.swift in Sources */,
 				F677CE312AC9B0A70082DDA7 /* UpdateUserInfoView.swift in Sources */,
+				F62572552ACD300500332661 /* ConsultingChatView.swift in Sources */,
 				F6344B342A7638E000FA3440 /* DrawingView.swift in Sources */,
 				F6559D9E2A7607DC00C1207A /* DeepMindApp.swift in Sources */,
 				F69586592A9EFB40006F0520 /* UserInfoView.swift in Sources */,
@@ -944,6 +995,8 @@
 				F6559DFD2A7617E100C1207A /* SignUpAlertModel.swift in Sources */,
 				F6559DFB2A7617C100C1207A /* SignUpView.swift in Sources */,
 				F6559DCA2A76085100C1207A /* SplashView.swift in Sources */,
+				F62572612ACD357F00332661 /* FittingFontSizeModifier.swift in Sources */,
+				F625725D2ACD346800332661 /* ChatContentsRow.swift in Sources */,
 				F627539A2A80C0D4008104B5 /* ImagePicker.swift in Sources */,
 				F6F6422C2AB2159C0009A554 /* ViewSizeCalculator.swift in Sources */,
 				F60A10A92AA5C67300FA9AD9 /* CommunityCommentDataModel.swift in Sources */,
@@ -962,12 +1015,15 @@
 				F677CE2D2AC9A4580082DDA7 /* CommunityWrittenArticleListView.swift in Sources */,
 				F6A1326D2AB1EB7A00F53CF8 /* InspectionResultView.swift in Sources */,
 				F695A2D22ACA84D9007A3769 /* WriteCommunityDeepLinkView.swift in Sources */,
+				F62572572ACD306800332661 /* ChatHelper.swift in Sources */,
 				F634C6902ACBCE4F00CE3BDF /* ConsultingMethodType.swift in Sources */,
 				F67475232A84B922006471CA /* DetectionResultsView.swift in Sources */,
+				F625725B2ACD30BD00332661 /* ChatDataModel.swift in Sources */,
 				F695A2D02ACA7C7B007A3769 /* HospitalSelectionMapDragListener.swift in Sources */,
 				F677CE332AC9B0CF0082DDA7 /* UpdateUserInfoModel.swift in Sources */,
 				F695865C2A9EFDA7006F0520 /* UserStatusChangeResultModel.swift in Sources */,
 				F6344B1E2A76302700FA3440 /* TabManager.swift in Sources */,
+				F62572672ACD3A2A00332661 /* KeyboardResponder.swift in Sources */,
 				F6559DE72A76105A00C1207A /* UserInfoModel.swift in Sources */,
 				F6559E012A762D6300C1207A /* FeatureSeverityOption.swift in Sources */,
 				F60A10AC2AA5C6BD00FA9AD9 /* CommunityHelper.swift in Sources */,

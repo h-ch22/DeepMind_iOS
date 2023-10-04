@@ -170,6 +170,7 @@ class ConsultingHelper: ObservableObject{
                     let imageIndex = document.get("imageCount") as? Int ?? 0
                     let type = document.get("type") as? String ?? ""
                     let mentorName = document.get("mentorName") as? String ?? ""
+                    let menteeUID = document.get("uid") as? String ?? ""
 
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "yyyy. MM. dd."
@@ -180,18 +181,18 @@ class ConsultingHelper: ObservableObject{
                     self.getMentorProfile(uid: mentorUID){ result in
                         
                         if current! < reservationDate!{
-                            self.reservationList.append(ConsultingDataModel(id: id, message: AES256Util.decrypt(encoded: message), date: date, time: time, mentorUID: mentorUID, imageIndex: imageIndex, type: type == "INTERVIEW" ? .INTERVIEW : .CHAT, mentorName: AES256Util.decrypt(encoded: mentorName), mentorProfile: result))
+                            self.reservationList.append(ConsultingDataModel(id: id, message: AES256Util.decrypt(encoded: message), date: date, time: time, mentorUID: mentorUID, imageIndex: imageIndex, type: type == "INTERVIEW" ? .INTERVIEW : .CHAT, mentorName: AES256Util.decrypt(encoded: mentorName), mentorProfile: result, menteeUID: menteeUID))
                             self.reservationList.sort(by: {$0.date < $1.date})
                         } else{
                             let isRated = document.get("isRated") as? Bool ?? false
                             
                             if !isRated{
-                                self.unratedReservationList.append(ConsultingDataModel(id: id, message: AES256Util.decrypt(encoded: message), date: date, time: time, mentorUID: mentorUID, imageIndex: imageIndex, type: type == "INTERVIEW" ? .INTERVIEW : .CHAT, mentorName: AES256Util.decrypt(encoded: mentorName), mentorProfile: result))
+                                self.unratedReservationList.append(ConsultingDataModel(id: id, message: AES256Util.decrypt(encoded: message), date: date, time: time, mentorUID: mentorUID, imageIndex: imageIndex, type: type == "INTERVIEW" ? .INTERVIEW : .CHAT, mentorName: AES256Util.decrypt(encoded: mentorName), mentorProfile: result, menteeUID: menteeUID))
                                 self.unratedReservationList.sort(by: {$0.date < $1.date})
                             }
                         }
                         
-                        self.allReservationList.append(ConsultingDataModel(id: id, message: AES256Util.decrypt(encoded: message), date: date, time: time, mentorUID: mentorUID, imageIndex: imageIndex, type: type == "INTERVIEW" ? .INTERVIEW : .CHAT, mentorName: AES256Util.decrypt(encoded: mentorName), mentorProfile: result))
+                        self.allReservationList.append(ConsultingDataModel(id: id, message: AES256Util.decrypt(encoded: message), date: date, time: time, mentorUID: mentorUID, imageIndex: imageIndex, type: type == "INTERVIEW" ? .INTERVIEW : .CHAT, mentorName: AES256Util.decrypt(encoded: mentorName), mentorProfile: result, menteeUID: menteeUID))
                         self.allReservationList.sort(by: {$0.date < $1.date})
                     }
                 }

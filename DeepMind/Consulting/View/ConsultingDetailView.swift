@@ -10,6 +10,8 @@ import SwiftUI
 struct ConsultingDetailView: View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject var helper: ConsultingHelper
+    @StateObject var userManagement: UserManagement
+    
     @State private var percentage: Double = 50
     @State private var color = Color.cyan
 
@@ -20,6 +22,7 @@ struct ConsultingDetailView: View {
     let data: ConsultingDataModel
     let isDone: Bool
     let isUnRated: Bool
+    let isModal: Bool
     
     var body: some View {
         NavigationView{
@@ -132,18 +135,35 @@ struct ConsultingDetailView: View {
                                 ProgressView()
                             } else{
                                 if !isDone{
-                                    Button(action: {
-                                        alertModel = .CONFIRM
-                                        showAlert = true
-                                    }){
-                                        HStack{
-                                            Image(systemName: "xmark")
-                                                .foregroundStyle(Color.red)
+                                    HStack{
+                                        if data.type == .CHAT{
+                                            NavigationLink(destination: ConsultingChatView(consultingData: data, isModal: isModal, mentorInfo: helper.mentorInfo!, userManagement: userManagement)){
+                                                HStack{
+                                                    Image(systemName: "message.fill")
+                                                        .foregroundStyle(Color.accent)
+                                                    
+                                                    Text("채팅으로 이동")
+                                                        .foregroundStyle(Color.accent)
+                                                }
+                                            }.buttonStyle(.bordered)
                                             
-                                            Text("상담 취소하기")
-                                                .foregroundStyle(Color.red)
+                                            Spacer().frame(width: 20)
                                         }
-                                    }.buttonStyle(.bordered)
+                                        
+                                        Button(action: {
+                                            alertModel = .CONFIRM
+                                            showAlert = true
+                                        }){
+                                            HStack{
+                                                Image(systemName: "xmark")
+                                                    .foregroundStyle(Color.red)
+                                                
+                                                Text("상담 취소하기")
+                                                    .foregroundStyle(Color.red)
+                                            }
+                                        }.buttonStyle(.bordered)
+                                        
+                                    }
                                 } else if isUnRated{
                                     HStack{
                                         Text("상담 만족도 평가")
@@ -230,6 +250,7 @@ struct ConsultingDetailView: View {
                     })
                 }
             })
+            .navigationBarHidden(!isModal)
             .animation(.easeInOut)
             .onChange(of: self.percentage){ (newVal) in
                 if newVal <= 12.5{

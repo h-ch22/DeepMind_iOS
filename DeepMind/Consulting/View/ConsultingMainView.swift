@@ -231,7 +231,7 @@ struct ConsultingMainView: View {
         }
         .toolbar{
             ToolbarItemGroup(placement: .topBarTrailing, content: {
-                Button(action: {}){
+                NavigationLink(destination: ConsultingLogView(helper: helper, userManagement: userManagement)){
                     Image(systemName: "clock.arrow.circlepath")
                         .foregroundStyle(Color.txt_color)
                 }
@@ -261,7 +261,7 @@ struct ConsultingMainView: View {
             set: {showDetailView = $0}
         ), content: {
             if selectedData != nil{
-                ConsultingDetailView(helper: helper, data: selectedData!, isDone: isDone, isUnRated: isUnRated)
+                ConsultingDetailView(helper: helper, userManagement: userManagement, data: selectedData!, isDone: isDone, isUnRated: isUnRated, isModal: true)
             }
         })
     }
