@@ -108,6 +108,27 @@ struct CommunityDetailView: View {
                         Spacer()
                     }
                     
+                    if data.fileURL != nil{
+                        Spacer().frame(height : 20)
+
+                        HStack{
+                            Text(data.fileURL!.lastPathComponent)
+                                .fontWeight(.semibold)
+                                .foregroundStyle(Color.txt_color)
+                            
+                            Spacer()
+                            
+                            Button(action: {
+                                
+                            }){
+                                Image(systemName: "arrow.down.square.fill")
+                                    .foregroundStyle(Color.accentColor)
+                            }
+                            
+                        }.padding(10)
+                            .background(RoundedRectangle(cornerRadius: 15).foregroundStyle(Color.btn_color).shadow(radius: 5))
+                    }
+                    
                     Spacer().frame(height : 40)
                     
                     HStack{

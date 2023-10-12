@@ -53,7 +53,7 @@ struct HomeView: View {
                             Spacer().frame(height: 10)
                             
                             HStack{
-                                Text(inspectionHelper.latestInspectionResult == nil ? "최근 검사 기록 없음" : "")
+                                Text(inspectionHelper.latestInspectionResult ?? "최근 검사 기록 없음")
                                     .fontWeight(.semibold)
                                     .foregroundStyle(Color.txt_color)
                             }
@@ -221,6 +221,10 @@ struct HomeView: View {
                                 healthKitHelper.updateData()
                             }
                         }
+                        
+                        communityHelper.getLatestArticles(){ _ in }
+                        
+                        inspectionHelper.getLatestHistory(){_ in }
                     }
                     .navigationBarHidden(true)
                     .animation(.easeInOut)

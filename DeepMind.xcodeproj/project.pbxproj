@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D7B527BDB74A09822C34D8D /* Pods_DeepMind_DeepMindUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5023A7A656F0F73D8A0A2000 /* Pods_DeepMind_DeepMindUITests.framework */; };
+		99B45826D4D1408E46FF93C5 /* Pods_DeepMindTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A86EBC7A27D6F3096B86F37 /* Pods_DeepMindTests.framework */; };
+		D605BB031990AC15A7990683 /* Pods_DeepMind.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62A38D4962023D1ECFDC5FFE /* Pods_DeepMind.framework */; };
 		F60A10A42AA5C62400FA9AD9 /* CommunityMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60A10A32AA5C62400FA9AD9 /* CommunityMainView.swift */; };
 		F60A10A72AA5C63700FA9AD9 /* CommunityArticleDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60A10A62AA5C63700FA9AD9 /* CommunityArticleDataModel.swift */; };
 		F60A10A92AA5C67300FA9AD9 /* CommunityCommentDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60A10A82AA5C67300FA9AD9 /* CommunityCommentDataModel.swift */; };
@@ -54,6 +57,13 @@
 		F634C68E2ACBC75E00CE3BDF /* ConsultingReservationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F634C68D2ACBC75E00CE3BDF /* ConsultingReservationView.swift */; };
 		F634C6902ACBCE4F00CE3BDF /* ConsultingMethodType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F634C68F2ACBCE4F00CE3BDF /* ConsultingMethodType.swift */; };
 		F634C6942ACBE43B00CE3BDF /* ConsultingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F634C6932ACBE43B00CE3BDF /* ConsultingDetailView.swift */; };
+		F64E088B2AD4E9EF00F733B8 /* InspectionResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64E088A2AD4E9EF00F733B8 /* InspectionResultModel.swift */; };
+		F64E088D2AD4EA1500F733B8 /* InspectionSeverityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64E088C2AD4EA1500F733B8 /* InspectionSeverityModel.swift */; };
+		F64E088F2AD502A500F733B8 /* InspectionResultRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64E088E2AD502A500F733B8 /* InspectionResultRow.swift */; };
+		F64E08912AD502E400F733B8 /* InspectionSeverityLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64E08902AD502E400F733B8 /* InspectionSeverityLevel.swift */; };
+		F64E08932AD50D9300F733B8 /* HouseResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64E08922AD50D9300F733B8 /* HouseResultModel.swift */; };
+		F64E08952AD5135900F733B8 /* TreeResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64E08942AD5135900F733B8 /* TreeResultModel.swift */; };
+		F64E08972AD515D300F733B8 /* PersonResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64E08962AD515D300F733B8 /* PersonResultModel.swift */; };
 		F6559D9E2A7607DC00C1207A /* DeepMindApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6559D9D2A7607DC00C1207A /* DeepMindApp.swift */; };
 		F6559DA22A7607DF00C1207A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6559DA12A7607DF00C1207A /* Assets.xcassets */; };
 		F6559DA52A7607DF00C1207A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6559DA42A7607DF00C1207A /* Preview Assets.xcassets */; };
@@ -115,10 +125,10 @@
 		F69F94072AA860CD002EE0A3 /* CommunityDeletionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69F94062AA860CD002EE0A3 /* CommunityDeletionModel.swift */; };
 		F6A1326D2AB1EB7A00F53CF8 /* InspectionResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A1326C2AB1EB7A00F53CF8 /* InspectionResultView.swift */; };
 		F6A1326F2AB1F12D00F53CF8 /* HomeCommunityListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A1326E2AB1F12D00F53CF8 /* HomeCommunityListModel.swift */; };
+		F6A4565F2AD84CEE005B4B59 /* CommunityDeepLinkEntryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A4565E2AD84CEE005B4B59 /* CommunityDeepLinkEntryModel.swift */; };
 		F6BE651E2A8DB58500C40E57 /* HouseEssentialQuestionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BE651D2A8DB58500C40E57 /* HouseEssentialQuestionModels.swift */; };
 		F6BE65202A8DBC5600C40E57 /* EssentialQuestionAnswerModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BE651F2A8DBC5600C40E57 /* EssentialQuestionAnswerModels.swift */; };
 		F6D3CCAE2A7B3F8900383BBB /* PredictTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D3CCAD2A7B3F8900383BBB /* PredictTypeModel.swift */; };
-		F6F6421A2AB2016B0009A554 /* NMapsMap in Frameworks */ = {isa = PBXBuildFile; productRef = F6F642192AB2016B0009A554 /* NMapsMap */; };
 		F6F642242AB2050C0009A554 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = F6F642232AB2050C0009A554 /* Alamofire */; };
 		F6F642272AB205370009A554 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = F6F642262AB205370009A554 /* SwiftyJSON */; };
 		F6F6422C2AB2159C0009A554 /* ViewSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F6422B2AB2159C0009A554 /* ViewSizeCalculator.swift */; };
@@ -148,6 +158,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1CDE3D0D18154C9166B0027E /* Pods-DeepMindTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeepMindTests.debug.xcconfig"; path = "Target Support Files/Pods-DeepMindTests/Pods-DeepMindTests.debug.xcconfig"; sourceTree = "<group>"; };
+		3A86EBC7A27D6F3096B86F37 /* Pods_DeepMindTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DeepMindTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		49E0E7189FF56824B33F9B4A /* Pods-DeepMind.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeepMind.release.xcconfig"; path = "Target Support Files/Pods-DeepMind/Pods-DeepMind.release.xcconfig"; sourceTree = "<group>"; };
+		5023A7A656F0F73D8A0A2000 /* Pods_DeepMind_DeepMindUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DeepMind_DeepMindUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		62A38D4962023D1ECFDC5FFE /* Pods_DeepMind.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DeepMind.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B5B5AEEE4635B637EEA09E1 /* Pods-DeepMind-DeepMindUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeepMind-DeepMindUITests.debug.xcconfig"; path = "Target Support Files/Pods-DeepMind-DeepMindUITests/Pods-DeepMind-DeepMindUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		A015F2EF1E564B9F6C2B72B3 /* Pods-DeepMind.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeepMind.debug.xcconfig"; path = "Target Support Files/Pods-DeepMind/Pods-DeepMind.debug.xcconfig"; sourceTree = "<group>"; };
+		AD081408EE4DA75EA345B635 /* Pods-DeepMind-DeepMindUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeepMind-DeepMindUITests.release.xcconfig"; path = "Target Support Files/Pods-DeepMind-DeepMindUITests/Pods-DeepMind-DeepMindUITests.release.xcconfig"; sourceTree = "<group>"; };
+		E4B1B1D7847D50999DF75A1D /* Pods-DeepMindTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeepMindTests.release.xcconfig"; path = "Target Support Files/Pods-DeepMindTests/Pods-DeepMindTests.release.xcconfig"; sourceTree = "<group>"; };
 		F60A10A32AA5C62400FA9AD9 /* CommunityMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityMainView.swift; sourceTree = "<group>"; };
 		F60A10A62AA5C63700FA9AD9 /* CommunityArticleDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityArticleDataModel.swift; sourceTree = "<group>"; };
 		F60A10A82AA5C67300FA9AD9 /* CommunityCommentDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityCommentDataModel.swift; sourceTree = "<group>"; };
@@ -196,6 +215,13 @@
 		F634C68D2ACBC75E00CE3BDF /* ConsultingReservationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultingReservationView.swift; sourceTree = "<group>"; };
 		F634C68F2ACBCE4F00CE3BDF /* ConsultingMethodType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultingMethodType.swift; sourceTree = "<group>"; };
 		F634C6932ACBE43B00CE3BDF /* ConsultingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultingDetailView.swift; sourceTree = "<group>"; };
+		F64E088A2AD4E9EF00F733B8 /* InspectionResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectionResultModel.swift; sourceTree = "<group>"; };
+		F64E088C2AD4EA1500F733B8 /* InspectionSeverityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectionSeverityModel.swift; sourceTree = "<group>"; };
+		F64E088E2AD502A500F733B8 /* InspectionResultRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectionResultRow.swift; sourceTree = "<group>"; };
+		F64E08902AD502E400F733B8 /* InspectionSeverityLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectionSeverityLevel.swift; sourceTree = "<group>"; };
+		F64E08922AD50D9300F733B8 /* HouseResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseResultModel.swift; sourceTree = "<group>"; };
+		F64E08942AD5135900F733B8 /* TreeResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeResultModel.swift; sourceTree = "<group>"; };
+		F64E08962AD515D300F733B8 /* PersonResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonResultModel.swift; sourceTree = "<group>"; };
 		F6559D9A2A7607DC00C1207A /* DeepMind.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeepMind.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6559D9D2A7607DC00C1207A /* DeepMindApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepMindApp.swift; sourceTree = "<group>"; };
 		F6559DA12A7607DF00C1207A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -253,6 +279,7 @@
 		F69F94062AA860CD002EE0A3 /* CommunityDeletionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityDeletionModel.swift; sourceTree = "<group>"; };
 		F6A1326C2AB1EB7A00F53CF8 /* InspectionResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectionResultView.swift; sourceTree = "<group>"; };
 		F6A1326E2AB1F12D00F53CF8 /* HomeCommunityListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCommunityListModel.swift; sourceTree = "<group>"; };
+		F6A4565E2AD84CEE005B4B59 /* CommunityDeepLinkEntryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityDeepLinkEntryModel.swift; sourceTree = "<group>"; };
 		F6BE651D2A8DB58500C40E57 /* HouseEssentialQuestionModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseEssentialQuestionModels.swift; sourceTree = "<group>"; };
 		F6BE651F2A8DBC5600C40E57 /* EssentialQuestionAnswerModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssentialQuestionAnswerModels.swift; sourceTree = "<group>"; };
 		F6D3CCAD2A7B3F8900383BBB /* PredictTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictTypeModel.swift; sourceTree = "<group>"; };
@@ -277,10 +304,10 @@
 				F6559DDA2A760BE700C1207A /* FirebaseMessaging in Frameworks */,
 				F6559DD62A760BE700C1207A /* FirebaseFirestore in Frameworks */,
 				F6559DD82A760BE700C1207A /* FirebaseFunctions in Frameworks */,
-				F6F6421A2AB2016B0009A554 /* NMapsMap in Frameworks */,
 				F6559DDC2A760BE700C1207A /* FirebaseStorage in Frameworks */,
 				F6F642272AB205370009A554 /* SwiftyJSON in Frameworks */,
 				F6559DDF2A760D0600C1207A /* CryptoSwift in Frameworks */,
+				D605BB031990AC15A7990683 /* Pods_DeepMind.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,6 +315,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99B45826D4D1408E46FF93C5 /* Pods_DeepMindTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,12 +323,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D7B527BDB74A09822C34D8D /* Pods_DeepMind_DeepMindUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		589240861A2E4CA053AD3A85 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A015F2EF1E564B9F6C2B72B3 /* Pods-DeepMind.debug.xcconfig */,
+				49E0E7189FF56824B33F9B4A /* Pods-DeepMind.release.xcconfig */,
+				7B5B5AEEE4635B637EEA09E1 /* Pods-DeepMind-DeepMindUITests.debug.xcconfig */,
+				AD081408EE4DA75EA345B635 /* Pods-DeepMind-DeepMindUITests.release.xcconfig */,
+				1CDE3D0D18154C9166B0027E /* Pods-DeepMindTests.debug.xcconfig */,
+				E4B1B1D7847D50999DF75A1D /* Pods-DeepMindTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		D79A985B7608439822CEE89A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				62A38D4962023D1ECFDC5FFE /* Pods_DeepMind.framework */,
+				5023A7A656F0F73D8A0A2000 /* Pods_DeepMind_DeepMindUITests.framework */,
+				3A86EBC7A27D6F3096B86F37 /* Pods_DeepMindTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F60A10A12AA5C61900FA9AD9 /* Community */ = {
 			isa = PBXGroup;
 			children = (
@@ -332,6 +384,7 @@
 				F60A10B32AA6DA5600FA9AD9 /* CommunityCommentsListModel.swift */,
 				F69F94062AA860CD002EE0A3 /* CommunityDeletionModel.swift */,
 				F677CE2E2AC9AAD30082DDA7 /* CommunityUserDataModel.swift */,
+				F6A4565E2AD84CEE005B4B59 /* CommunityDeepLinkEntryModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -423,6 +476,7 @@
 		F6344B282A76305D00FA3440 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F6A1326C2AB1EB7A00F53CF8 /* InspectionResultView.swift */,
 				F6344B292A76306200FA3440 /* InspectionView.swift */,
 				F6344B332A7638E000FA3440 /* DrawingView.swift */,
 				F6344B352A763ACC00FA3440 /* CanvasView.swift */,
@@ -479,6 +533,13 @@
 				F6BE651D2A8DB58500C40E57 /* HouseEssentialQuestionModels.swift */,
 				F6BE651F2A8DBC5600C40E57 /* EssentialQuestionAnswerModels.swift */,
 				F6110ACB2A8F05DB0090F9B9 /* InspectionHistoryModel.swift */,
+				F64E088A2AD4E9EF00F733B8 /* InspectionResultModel.swift */,
+				F64E088C2AD4EA1500F733B8 /* InspectionSeverityModel.swift */,
+				F64E088E2AD502A500F733B8 /* InspectionResultRow.swift */,
+				F64E08902AD502E400F733B8 /* InspectionSeverityLevel.swift */,
+				F64E08922AD50D9300F733B8 /* HouseResultModel.swift */,
+				F64E08942AD5135900F733B8 /* TreeResultModel.swift */,
+				F64E08962AD515D300F733B8 /* PersonResultModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -498,6 +559,8 @@
 				F6559DAD2A7607DF00C1207A /* DeepMindTests */,
 				F6559DB72A7607DF00C1207A /* DeepMindUITests */,
 				F6559D9B2A7607DC00C1207A /* Products */,
+				589240861A2E4CA053AD3A85 /* Pods */,
+				D79A985B7608439822CEE89A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -516,7 +579,6 @@
 			children = (
 				F677CE382AC9C1960082DDA7 /* Consulting */,
 				F6FD5E432AC860FB002498F9 /* DeepMind.entitlements */,
-				F699F3BC2AB1EAD800D530FC /* Demo */,
 				F60A10A12AA5C61900FA9AD9 /* Community */,
 				F62753902A80A806008104B5 /* Info.plist */,
 				F627538D2A80A797008104B5 /* fonts */,
@@ -721,14 +783,6 @@
 			path = include;
 			sourceTree = "<group>";
 		};
-		F699F3BC2AB1EAD800D530FC /* Demo */ = {
-			isa = PBXGroup;
-			children = (
-				F6A1326B2AB1EB6900F53CF8 /* View */,
-			);
-			path = Demo;
-			sourceTree = "<group>";
-		};
 		F69F94032AA86063002EE0A3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -740,14 +794,6 @@
 				F625726C2ACD3A7D00332661 /* CustomCorner.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		F6A1326B2AB1EB6900F53CF8 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				F6A1326C2AB1EB7A00F53CF8 /* InspectionResultView.swift */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		F6FE66D92A8C99AB00AF9D94 /* Helper */ = {
@@ -782,9 +828,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F6559DBE2A7607DF00C1207A /* Build configuration list for PBXNativeTarget "DeepMind" */;
 			buildPhases = (
+				C3717B8C7A1F64F9371C0F9B /* [CP] Check Pods Manifest.lock */,
 				F6559D962A7607DC00C1207A /* Sources */,
 				F6559D972A7607DC00C1207A /* Frameworks */,
 				F6559D982A7607DC00C1207A /* Resources */,
+				947696D8BF03242B1DD92BBD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -799,7 +847,6 @@
 				F6559DD92A760BE700C1207A /* FirebaseMessaging */,
 				F6559DDB2A760BE700C1207A /* FirebaseStorage */,
 				F6559DDE2A760D0600C1207A /* CryptoSwift */,
-				F6F642192AB2016B0009A554 /* NMapsMap */,
 				F6F642232AB2050C0009A554 /* Alamofire */,
 				F6F642262AB205370009A554 /* SwiftyJSON */,
 			);
@@ -811,6 +858,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F6559DC12A7607DF00C1207A /* Build configuration list for PBXNativeTarget "DeepMindTests" */;
 			buildPhases = (
+				C75D2A5496D4AF84211571BC /* [CP] Check Pods Manifest.lock */,
 				F6559DA62A7607DF00C1207A /* Sources */,
 				F6559DA72A7607DF00C1207A /* Frameworks */,
 				F6559DA82A7607DF00C1207A /* Resources */,
@@ -829,9 +877,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F6559DC42A7607DF00C1207A /* Build configuration list for PBXNativeTarget "DeepMindUITests" */;
 			buildPhases = (
+				851FA883092AB87EB42E594D /* [CP] Check Pods Manifest.lock */,
 				F6559DB02A7607DF00C1207A /* Sources */,
 				F6559DB12A7607DF00C1207A /* Frameworks */,
 				F6559DB22A7607DF00C1207A /* Resources */,
+				4817DE3D0221CCE7DAC13724 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -878,7 +928,6 @@
 			packageReferences = (
 				F6559DD02A760BE600C1207A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				F6559DDD2A760D0600C1207A /* XCRemoteSwiftPackageReference "CryptoSwift" */,
-				F6F642182AB2016B0009A554 /* XCRemoteSwiftPackageReference "NMapsMap-SwiftPM" */,
 				F6F642222AB2050B0009A554 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				F6F642252AB205370009A554 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 			);
@@ -921,6 +970,109 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4817DE3D0221CCE7DAC13724 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DeepMind-DeepMindUITests/Pods-DeepMind-DeepMindUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DeepMind-DeepMindUITests/Pods-DeepMind-DeepMindUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DeepMind-DeepMindUITests/Pods-DeepMind-DeepMindUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		851FA883092AB87EB42E594D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DeepMind-DeepMindUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		947696D8BF03242B1DD92BBD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DeepMind/Pods-DeepMind-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DeepMind/Pods-DeepMind-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DeepMind/Pods-DeepMind-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C3717B8C7A1F64F9371C0F9B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DeepMind-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C75D2A5496D4AF84211571BC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DeepMindTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F6559D962A7607DC00C1207A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -953,6 +1105,7 @@
 				F695A2CC2ACA7BCD007A3769 /* ConsultingHospitalSelectionViewController.swift in Sources */,
 				F6344B222A76304800FA3440 /* HomeView.swift in Sources */,
 				F62753962A80B3CB008104B5 /* DiaryCanvasView.swift in Sources */,
+				F64E08912AD502E400F733B8 /* InspectionSeverityLevel.swift in Sources */,
 				F62572632ACD369F00332661 /* LinkPreviewRow.swift in Sources */,
 				F60A10AE2AA5CAE200FA9AD9 /* CommunityArticleListModel.swift in Sources */,
 				F6110ACC2A8F05DB0090F9B9 /* InspectionHistoryModel.swift in Sources */,
@@ -977,6 +1130,7 @@
 				F690AADE2A9A44A6004775FC /* ActivityViewController.swift in Sources */,
 				F625726B2ACD3A6700332661 /* BlurView.swift in Sources */,
 				F60A10A42AA5C62400FA9AD9 /* CommunityMainView.swift in Sources */,
+				F64E088B2AD4E9EF00F733B8 /* InspectionResultModel.swift in Sources */,
 				F6BE65202A8DBC5600C40E57 /* EssentialQuestionAnswerModels.swift in Sources */,
 				F62572652ACD3A1500332661 /* KeyboardView.swift in Sources */,
 				F634C6942ACBE43B00CE3BDF /* ConsultingDetailView.swift in Sources */,
@@ -1002,14 +1156,17 @@
 				F60A10A92AA5C67300FA9AD9 /* CommunityCommentDataModel.swift in Sources */,
 				F60A10B22AA6D2D600FA9AD9 /* CommunityDetailView.swift in Sources */,
 				F60A10B42AA6DA5600FA9AD9 /* CommunityCommentsListModel.swift in Sources */,
+				F64E08932AD50D9300F733B8 /* HouseResultModel.swift in Sources */,
 				F6559DEE2A7616B500C1207A /* LAHelper.swift in Sources */,
 				F62753832A808E03008104B5 /* DiaryHelper.swift in Sources */,
 				F677CE2F2AC9AAD30082DDA7 /* CommunityUserDataModel.swift in Sources */,
+				F64E08952AD5135900F733B8 /* TreeResultModel.swift in Sources */,
 				F6559DE42A76104100C1207A /* UserManagement.swift in Sources */,
 				F69F94072AA860CD002EE0A3 /* CommunityDeletionModel.swift in Sources */,
 				F634C68E2ACBC75E00CE3BDF /* ConsultingReservationView.swift in Sources */,
 				F6344B392A76407100FA3440 /* DrawingTypeModel.swift in Sources */,
 				F6344B362A763ACC00FA3440 /* CanvasView.swift in Sources */,
+				F64E088F2AD502A500F733B8 /* InspectionResultRow.swift in Sources */,
 				F6559DFF2A762C4700C1207A /* UploadFeatureView.swift in Sources */,
 				F6344B262A76305300FA3440 /* DiaryView.swift in Sources */,
 				F677CE2D2AC9A4580082DDA7 /* CommunityWrittenArticleListView.swift in Sources */,
@@ -1017,8 +1174,10 @@
 				F695A2D22ACA84D9007A3769 /* WriteCommunityDeepLinkView.swift in Sources */,
 				F62572572ACD306800332661 /* ChatHelper.swift in Sources */,
 				F634C6902ACBCE4F00CE3BDF /* ConsultingMethodType.swift in Sources */,
+				F6A4565F2AD84CEE005B4B59 /* CommunityDeepLinkEntryModel.swift in Sources */,
 				F67475232A84B922006471CA /* DetectionResultsView.swift in Sources */,
 				F625725B2ACD30BD00332661 /* ChatDataModel.swift in Sources */,
+				F64E088D2AD4EA1500F733B8 /* InspectionSeverityModel.swift in Sources */,
 				F695A2D02ACA7C7B007A3769 /* HospitalSelectionMapDragListener.swift in Sources */,
 				F677CE332AC9B0CF0082DDA7 /* UpdateUserInfoModel.swift in Sources */,
 				F695865C2A9EFDA7006F0520 /* UserStatusChangeResultModel.swift in Sources */,
@@ -1027,6 +1186,7 @@
 				F6559DE72A76105A00C1207A /* UserInfoModel.swift in Sources */,
 				F6559E012A762D6300C1207A /* FeatureSeverityOption.swift in Sources */,
 				F60A10AC2AA5C6BD00FA9AD9 /* CommunityHelper.swift in Sources */,
+				F64E08972AD515D300F733B8 /* PersonResultModel.swift in Sources */,
 				F6344B3B2A764A6E00FA3440 /* InfoView.swift in Sources */,
 				F69586532A9EDDBC006F0520 /* UserTypeModel.swift in Sources */,
 				F6344B2A2A76306200FA3440 /* InspectionView.swift in Sources */,
@@ -1187,6 +1347,7 @@
 		};
 		F6559DBF2A7607DF00C1207A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A015F2EF1E564B9F6C2B72B3 /* Pods-DeepMind.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1196,6 +1357,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"DeepMind/Preview Content\"";
 				DEVELOPMENT_TEAM = H7245MHSUG;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DeepMind/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "하루 일기에 사진을 추가하기 위해 카메라 권한이 필요합니다.";
@@ -1226,6 +1388,7 @@
 		};
 		F6559DC02A7607DF00C1207A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 49E0E7189FF56824B33F9B4A /* Pods-DeepMind.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1235,6 +1398,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"DeepMind/Preview Content\"";
 				DEVELOPMENT_TEAM = H7245MHSUG;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DeepMind/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "하루 일기에 사진을 추가하기 위해 카메라 권한이 필요합니다.";
@@ -1265,6 +1429,7 @@
 		};
 		F6559DC22A7607DF00C1207A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1CDE3D0D18154C9166B0027E /* Pods-DeepMindTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1285,6 +1450,7 @@
 		};
 		F6559DC32A7607DF00C1207A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4B1B1D7847D50999DF75A1D /* Pods-DeepMindTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1305,6 +1471,7 @@
 		};
 		F6559DC52A7607DF00C1207A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7B5B5AEEE4635B637EEA09E1 /* Pods-DeepMind-DeepMindUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1323,6 +1490,7 @@
 		};
 		F6559DC62A7607DF00C1207A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AD081408EE4DA75EA345B635 /* Pods-DeepMind-DeepMindUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1397,14 +1565,6 @@
 				minimumVersion = 1.7.2;
 			};
 		};
-		F6F642182AB2016B0009A554 /* XCRemoteSwiftPackageReference "NMapsMap-SwiftPM" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/stleamist/NMapsMap-SwiftPM";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 		F6F642222AB2050B0009A554 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
@@ -1458,11 +1618,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F6559DDD2A760D0600C1207A /* XCRemoteSwiftPackageReference "CryptoSwift" */;
 			productName = CryptoSwift;
-		};
-		F6F642192AB2016B0009A554 /* NMapsMap */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F6F642182AB2016B0009A554 /* XCRemoteSwiftPackageReference "NMapsMap-SwiftPM" */;
-			productName = NMapsMap;
 		};
 		F6F642232AB2050C0009A554 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;

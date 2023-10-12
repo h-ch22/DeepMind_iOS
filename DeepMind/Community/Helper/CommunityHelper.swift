@@ -127,6 +127,16 @@ class CommunityHelper: ObservableObject{
                     let views = document.get("views") as? Int ?? 0
                     let board = document.get("board") as? String ?? ""
                     
+                    var url: URL? = nil
+                    
+                    if AES256Util.decrypt(encoded: board) == "HTP"{
+                        self.getFiles(id: document.documentID){ result in
+                            guard let result = result else{return}
+                            
+                            url = result
+                        }
+                    }
+                    
                     self.getCommentCount(id: document.documentID){ result in
                         guard let result = result else {return}
                         
@@ -145,7 +155,8 @@ class CommunityHelper: ObservableObject{
                                                                   commentCount: result,
                                                                   board: self.boardList.someKey(forValue: AES256Util.decrypt(encoded: board)) ?? "",
                                                                   profile: nil,
-                                                                  thumbnail: thumbnailURL)
+                                                                  thumbnail: thumbnailURL,
+                                                                  fileURL: url)
                                     )
                                 }
                             } else{
@@ -161,7 +172,8 @@ class CommunityHelper: ObservableObject{
                                                               commentCount: result,
                                                               board: self.boardList.someKey(forValue: AES256Util.decrypt(encoded: board)) ?? "",
                                                               profile: nil,
-                                                              thumbnail: nil)
+                                                              thumbnail: nil,
+                                                              fileURL: url)
                                 )
                             }
                         }
@@ -170,6 +182,8 @@ class CommunityHelper: ObservableObject{
                     }
                 }
                 
+                self.articleList.sort(by: {$0.createDate > $1.createDate})
+                
                 completion(true)
                 return
             } else{
@@ -177,6 +191,20 @@ class CommunityHelper: ObservableObject{
                 return
             }
         }
+    }
+    
+    func getFiles(id: String, completion: @escaping(_ result: URL?) -> Void){
+        storage.reference().child("Community/\(id)/HTP_\(id).png").downloadURL(){(downloadURL, error) in
+            if error != nil{
+                print(error?.localizedDescription)
+                completion(nil)
+                return
+            }
+            
+            completion(downloadURL!)
+            return
+        }
+        
     }
     
     func downloadImages(id: String, imgIndex: Int, completion: @escaping(_ result: Bool?) -> Void){
@@ -330,7 +358,7 @@ class CommunityHelper: ObservableObject{
         }
     }
     
-    func upload(title: String, contents: String, author: String, nickName: String, board: String, imgs: [UIImage], completion: @escaping(_ result: Bool?) -> Void){
+    func upload(title: String, contents: String, author: String, nickName: String, board: String, imgs: [UIImage], data: Data? = nil, completion: @escaping(_ result: Bool?) -> Void){
         let docRef = db.collection("Community").document()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy.MM.dd. kk:mm:ss.SSSS"
@@ -349,6 +377,16 @@ class CommunityHelper: ObservableObject{
                 print(error?.localizedDescription)
                 completion(false)
                 return
+            }
+            
+            if self.boardList[board] == "HTP" && data != nil{
+                self.storage.reference().child("Community/\(docRef.documentID)/HTP_\(docRef.documentID).pdf").putData(data!, metadata: nil){(metadata, error) in
+                    if error != nil{
+                        print(error?.localizedDescription)
+                        completion(false)
+                        return
+                    }
+                }
             }
             
             if(imgs.count > 0){

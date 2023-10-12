@@ -10,12 +10,18 @@ import UIKit
 import Accelerate
 import Vision
 import Firebase
+import FirebaseFirestore
 import FirebaseStorage
 import PDFKit
 
 class InspectionHelper: ObservableObject{
-    @Published var inspectionResults: [InspectionHistoryModel] = []
-    @Published var latestInspectionResult: InspectionHistoryModel? = nil
+    @Published var latestInspectionResult: String? = nil
+    @Published var commonInspectionResult: InspectionResultModel? = nil
+    @Published var houseInspectionResult: HouseResultModel? = nil
+    @Published var treeInspectionResult: TreeResultModel? = nil
+    @Published var personInspectionResult: PersonResultModel? = nil
+    @Published var data: Data? = nil
+    @Published var inspectionDate = ""
     
     private let db = Firestore.firestore()
     private let storage = Storage.storage()
@@ -30,7 +36,7 @@ class InspectionHelper: ObservableObject{
         }
         return colorSet
     }()
-    
+        
     private func getDocumentsDirectory() -> URL?{
         do{
             let paths = try FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
@@ -41,6 +47,19 @@ class InspectionHelper: ObservableObject{
             return nil
         }
 
+    }
+    
+    init() {
+        //for Demo
+        #if DEBUG
+            commonInspectionResult = InspectionResultModel(emotionalDisorder: .HIGHLY_IMPROBABLE, inferiority: .HIGHLY_IMPROBABLE, severeDepression: .HIGHLY_IMPROBABLE, manic: .HIGHLY_IMPROBABLE, selfFirst: .HIGHLY_IMPROBABLE, lackOfPlanning: .EVEN_ODDS, alcoholics: .HIGHLY_IMPROBABLE, hysetical: .HIGHLY_IMPROBABLE, normalAndStable: .MODERATELY_LIKELY, fantasticism: .HIGHLY_IMPROBABLE, introverted: .HIGHLY_IMPROBABLE, pastStickiness: .HIGHLY_IMPROBABLE, extroverted: .HIGHLY_LIKELY, stability: .IMPROBABLE, impulsiveness: .IMPROBABLE, conscious: .IMPROBABLE, environmentalPhysicalBarriers: .HIGHLY_IMPROBABLE, poorExerciseControl: .HIGHLY_IMPROBABLE, brainDamage: .HIGHLY_IMPROBABLE, patientAndStable: .LIKELY, fast: .HIGHLY_LIKELY, adaptToTheOutside: .MODERATELY_LIKELY, slow: .IMPROBABLE, stickingToSpecificPart: .HIGHLY_IMPROBABLE, neurology: .MODERATELY_LIKELY, obsessive: .LIKELY, insecurity: .IMPROBABLE, uncompromising: .HIGHLY_IMPROBABLE, escapist: .HIGHLY_IMPROBABLE, simplicity: .LIKELY, exposure: .HIGHLY_IMPROBABLE, lowMentalIntelligence: .HIGHLY_IMPROBABLE, selfClosed: .HIGHLY_IMPROBABLE, guiltyConscience: .HIGHLY_IMPROBABLE, delusionalSchizophrenia: .HIGHLY_IMPROBABLE, anxiety: .IMPROBABLE, morbidOmen: .HIGHLY_IMPROBABLE, difficultyAccessToEnvironment: .HIGHLY_IMPROBABLE, bystanderAttitude: .HIGHLY_IMPROBABLE, workToWardToFuture: .LIKELY, futureuncertainty: .NOT_VERY_LIKELY, specialFeelingsForParents: .EVEN_ODDS)
+            
+            houseInspectionResult = HouseResultModel(scienceFiction: .HIGHLY_IMPROBABLE, emotionalAwareness: .HIGHLY_IMPROBABLE, obsessed: .HIGHLY_IMPROBABLE, lackOfControl: .HIGHLY_IMPROBABLE, selfDefense: .EVEN_ODDS, healthySelf: .LIKELY, poorSelfControl: .IMPROBABLE, criticalPower: .HIGHLY_IMPROBABLE, insufficientContact: .HIGHLY_IMPROBABLE, anxietyAtRealLevel: .MODERATELY_LIKELY, reluctantToEnvironment: .HIGHLY_IMPROBABLE, excessiveDependence: .HIGHLY_IMPROBABLE, desireToEmotionalWarmth: .IMPROBABLE, emotionsOfNotWantingToContact: .HIGHLY_IMPROBABLE, paranoia: .HIGHLY_IMPROBABLE, defensive: .NOT_VERY_LIKELY, preferenceOfDualRoles: .IMPROBABLE, openness: .EVEN_ODDS, skepticism: .HIGHLY_IMPROBABLE, characteristicsOfTheLipid: .HIGHLY_IMPROBABLE, sticking: .HIGHLY_IMPROBABLE, femeinine: .IMPROBABLE, existenceOfTension: .EVEN_ODDS, lackOfHomeWarmth: .EVEN_ODDS, pessimisticThoughtsFuture: .MODERATELY_LIKELY, distancingSelf: .HIGHLY_LIKELY, defensiveMeasures: .HIGHLY_IMPROBABLE, levelOfAnxiety: .MODERATELY_LIKELY, strongDesireForDependence: .HIGHLY_IMPROBABLE, obviousEnvySim: .HIGHLY_IMPROBABLE, seekingMotherProtection: .EVEN_ODDS)
+            
+            treeInspectionResult = TreeResultModel(energeticBeing: .LIKELY, haveFeelingsThatBeingDriven: .HIGHLY_IMPROBABLE, closed: .HIGHLY_IMPROBABLE, inferior: .HIGHLY_IMPROBABLE, signsOfMaladjustment: .IMPROBABLE, strongSensitivity: .IMPROBABLE, lackOfWarmth: .IMPROBABLE, pathologicalSigns: .HIGHLY_IMPROBABLE, actAggressively: .HIGHLY_IMPROBABLE, helplessness: .EVEN_ODDS, inflexiblePersonality: .HIGHLY_IMPROBABLE, slow: .HIGHLY_IMPROBABLE, strongFixationOnPast: .HIGHLY_IMPROBABLE, disbeliefInExtraterestrials: .HIGHLY_IMPROBABLE, pressure: .HIGHLY_IMPROBABLE, psychologicalTrauma: .HIGHLY_IMPROBABLE, highEnergy: .EVEN_ODDS, lowEnergy: .NOT_VERY_LIKELY, interestExpands: .EVEN_ODDS, depressed: .HIGHLY_IMPROBABLE, richSensitivity: .HIGHLY_IMPROBABLE, extroversion: .EVEN_ODDS, intellignece: .HIGHLY_IMPROBABLE, selfImprovement: .HIGHLY_IMPROBABLE, strongCriticism: .HIGHLY_IMPROBABLE, easyEmotions: .HIGHLY_IMPROBABLE, notSeekSatisfaction: .HIGHLY_IMPROBABLE, tryingToGetSatisfaction: .HIGHLY_IMPROBABLE, incompetence: .HIGHLY_IMPROBABLE, loveCraving: .HIGHLY_IMPROBABLE, interestInFamily: .HIGHLY_IMPROBABLE, grownIndependently: .HIGHLY_IMPROBABLE, lossOfLivelihood: .HIGHLY_IMPROBABLE, realityVerification: .HIGHLY_IMPROBABLE, instability: .HIGHLY_IMPROBABLE, immaturity: .HIGHLY_IMPROBABLE, strongDesireForStability: .MODERATELY_LIKELY, lossOfSelfConttrol: .HIGHLY_IMPROBABLE, helpless: .MODERATELY_LIKELY, face: .HIGHLY_IMPROBABLE, feelingRejected: .HIGHLY_IMPROBABLE, stonglyConscious: .HIGHLY_IMPROBABLE, resistive: .HIGHLY_IMPROBABLE, successiveBeats: .HIGHLY_IMPROBABLE, dependentOnOthers: .EVEN_ODDS, calm: .EVEN_ODDS)
+            
+            personInspectionResult = PersonResultModel(thinkingDisorder: .HIGHLY_IMPROBABLE, lowConfidence: .HIGHLY_IMPROBABLE, strongIntellectualEffort: .HIGHLY_LIKELY, obsessivePatients: .HIGHLY_IMPROBABLE, avoidFacingWorld: .HIGHLY_IMPROBABLE, lackOfConfidence: .HIGHLY_IMPROBABLE, compensationPsychology: .HIGHLY_IMPROBABLE, extremeAnxietyInEmotionalExchange: .HIGHLY_IMPROBABLE, ambivalenceOfApproach: .HIGHLY_IMPROBABLE, expressionOfEmotions: .HIGHLY_IMPROBABLE, atrophy: .HIGHLY_IMPROBABLE, anxietyInEmotionalExchange: .HIGHLY_IMPROBABLE, innerEmptiness: .HIGHLY_IMPROBABLE, narrowingTheChannel: .HIGHLY_IMPROBABLE, irritable: .HIGHLY_IMPROBABLE, obsessivePersonality: .HIGHLY_IMPROBABLE, contempt: .HIGHLY_IMPROBABLE, wild: .EVEN_ODDS, sentimentsAnxiety: .HIGHLY_IMPROBABLE, extremeSensitivity: .HIGHLY_IMPROBABLE, emotionalStimulus: .HIGHLY_IMPROBABLE, anxietyAboutEmotionalExchange: .HIGHLY_IMPROBABLE, veryInterestedInAppearance: .EVEN_ODDS, desireToShowOffOneSelf: .HIGHLY_IMPROBABLE, conflictWithSex: .EVEN_ODDS, homosexualTendencies: .HIGHLY_IMPROBABLE, powerStruggles: .HIGHLY_IMPROBABLE, agression: .HIGHLY_IMPROBABLE, considerableAggression: .HIGHLY_IMPROBABLE, bad: .HIGHLY_IMPROBABLE, immatureAttitude: .HIGHLY_IMPROBABLE, denialOfEarlyDepression: .HIGHLY_IMPROBABLE, projectingWeakness: .HIGHLY_IMPROBABLE, strongRejection: .HIGHLY_IMPROBABLE, conflictOrLackOfRelationships: .HIGHLY_IMPROBABLE, psychology: .HIGHLY_IMPROBABLE, avoidEmotionalInteraction: .LIKELY, insensitive: .LIKELY, personalityHostility: .HIGHLY_IMPROBABLE, excessiveDesireForAffection: .HIGHLY_IMPROBABLE, interpersonalInteractions: .HIGHLY_IMPROBABLE, happiness: .HIGHLY_IMPROBABLE, needAuthority: .HIGHLY_IMPROBABLE, weakness: .HIGHLY_IMPROBABLE, symbolOfPower: .EVEN_ODDS, desireToSignify: .HIGHLY_IMPROBABLE, sexualImmorality: .HIGHLY_IMPROBABLE, activeDaydreaming: .HIGHLY_IMPROBABLE, personallyExcessive: .HIGHLY_IMPROBABLE, excessivePassive: .HIGHLY_IMPROBABLE, impulsiveness: .HIGHLY_IMPROBABLE, selfish: .EVEN_ODDS)
+        #endif
     }
     
     func saveImage(image: UIImage, imageName: String) -> Bool{
@@ -295,184 +314,53 @@ class InspectionHelper: ObservableObject{
         }
     }
     
-    func getLatestHistory(completion: @escaping(_ result: Bool?) -> Void){
-        self.db.collection("Inspection").document(auth.currentUser?.uid ?? "").collection("Results").getDocuments(){(querySnapshot, error) in
-            if error != nil{
-                print(error?.localizedDescription)
-                completion(false)
-                return
-            } else{
-                if querySnapshot != nil{
-                    
-                } else{
+    func uploadResults(answer_House: HouseEssentialQuestionAnswerModel, answer_Tree: TreeEssentialQuestionAnswerModel, answer_Person_1: PersonEssentialQuestionAnswerModel, answer_Person_2: PersonEssentialQuestionAnswerModel,
+                       img_House: UIImage, img_Tree: UIImage, img_Person_1: UIImage, img_Person_2: UIImage,
+                       img_House_Detected: UIImage, img_Tree_Detected: UIImage, img_Person_1_Detected: UIImage, img_Person_2_Detected: UIImage,
+                     UID: String, date: String?, elapsedTimes: [Int], completion: @escaping(_ result: Bool?) -> Void){
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy.MM.dd. kk:mm:ss"
+        let current = dateFormatter.string(from: Date())
+        
+        let docRef = self.db.collection("Inspection").document(auth.currentUser?.uid ?? "").setData([
+            "latstInspection": date ?? current
+        ]){_ in
+            self.db.collection("Inspection").document(self.auth.currentUser?.uid ?? "").collection("Results").document(date ?? current).setData([
+                "isSuccessful": true
+            ]){error in
+                if error != nil{
+                    print(error?.localizedDescription)
                     completion(false)
                     return
-                }
-            }
-        }
-    }
-    
-    func getHistory(completion: @escaping(_ result: Bool?) -> Void){
-        self.db.collection("Users").document(auth.currentUser?.uid ?? "").collection("Results").getDocuments(){(querySnapshot, error) in
-            if error != nil{
-                print(error?.localizedDescription)
-                completion(false)
-                return
-            } else{
-                if querySnapshot != nil{
-                    for document in querySnapshot!.documents{
-                        let id = document.documentID
-                        var answer_House = HouseEssentialQuestionAnswerModel()
-                        answer_House.ANSWER_01 = document.get("answer_H_1") as? Bool ?? true
-                        answer_House.ANSWER_02 = document.get("answer_H_2") as? Bool ?? true
-                        answer_House.ANSWER_03 = HouseWeatherModel.getType(description: document.get("answer_H_3") as? String ?? "")
-                        answer_House.ANSWER_04 = document.get("answer_H_4") as? Bool ?? true
-                        answer_House.ANSWER_05 = document.get("answer_H_5") as? Int ?? 0
-                        answer_House.ANSWER_06 = HouseFamilyTypeModel.getType(description: document.get("answer_H_6") as? String ?? "")
-                        answer_House.ANSWER_07 = HouseAtmosphereModel.getType(description: document.get("answer_H_7") as? String ?? "")
-                        answer_House.ANSWER_08 = HouseInspirationModel.getType(description: document.get("answer_H_8") as? String ?? "")
-                        answer_House.ANSWER_09 = HouseRoomModel.getType(description: document.get("answer_H_9") as? String ?? "")
-                        answer_House.ANSWER_10 = HouseInspirationModel.getType(description: document.get("answer_H_10") as? String ?? "")
-                        answer_House.ANSWER_11 = document.get("answer_H_11") as? Bool ?? true
-                        answer_House.ANSWER_12 = HouseReferenceModel.getType(description: document.get("answer_H_12") as? String ?? "")
-                        answer_House.ANSWER_13 = document.get("answer_H_13") as? Bool ?? true
-                        answer_House.ANSWER_14 = document.get("answer_H_14") as? Bool ?? true
-                        
-                        var answer_Tree = TreeEssentialQuestionAnswerModel()
-                        answer_Tree.ANSWER_01 = document.get("answer_T_1") as? Bool ?? true
-                        answer_Tree.ANSWER_02 = document.get("answer_T_2") as? Bool ?? true
-                        answer_Tree.ANSWER_03 = HouseWeatherModel.getType(description: document.get("answer_T_3") as? String ?? "")
-                        answer_Tree.ANSWER_04 = document.get("answer_T_4") as? Bool ?? true
-                        answer_Tree.ANSWER_05 = document.get("answer_T_5") as? Int ?? 0
-                        answer_Tree.ANSWER_06 = document.get("answer_T_6") as? Bool ?? true
-                        answer_Tree.ANSWER_07 = document.get("answer_T_7") as? Int ?? 0
-                        answer_Tree.ANSWER_08 = document.get("answer_T_8") as? Bool ?? true
-                        answer_Tree.ANSWER_09 = HouseInspirationModel.getType(description: document.get("answer_T_9") as? String ?? "")
-                        answer_Tree.ANSWER_10 = PersonGenderModel.getType(description: document.get("answer_T_10") as? String ?? "")
-                        answer_Tree.ANSWER_11 = document.get("answer_T_11") as? Bool ?? true
-                        answer_Tree.ANSWER_12 = document.get("answer_T_12") as? Bool ?? true
-                        answer_Tree.ANSWER_13 = document.get("answer_T_13") as? Bool ?? true
-                        answer_Tree.ANSWER_14 = document.get("answer_T_14") as? Bool ?? true
-                        
-                        var answer_Person_01 = PersonEssentialQuestionAnswerModel()
-                        answer_Person_01.ANSWER_01 = document.get("answer_P_1_1") as? Int ?? 0
-                        answer_Person_01.ANSWER_02 = document.get("answer_P_1_2") as? Bool ?? true
-                        answer_Person_01.ANSWER_03 = document.get("answer_P_1_3") as? Int ?? 0
-                        answer_Person_01.ANSWER_04 = HouseFamilyTypeModel.getType(description: document.get("answer_P_1_4") as? String ?? "")
-                        answer_Person_01.ANSWER_05 = document.get("answer_P_1_5") as? Bool ?? true
-                        answer_Person_01.ANSWER_06 = document.get("answer_P_1_6") as? Bool ?? true
-                        answer_Person_01.ANSWER_07 = HouseFamilyTypeModel.getType(description: document.get("answer_P_1_7") as? String ?? "")
-                        answer_Person_01.ANSWER_08 = HouseFamilyTypeModel.getType(description: document.get("answer_P_1_8") as? String ?? "")
-                        answer_Person_01.ANSWER_09 = document.get("answer_P_1_9") as? Bool ?? true
-                        answer_Person_01.ANSWER_10 = document.get("answer_P_1_10") as? Bool ?? true
-                        answer_Person_01.ANSWER_11 = document.get("answer_P_1_11") as? Bool ?? true
-                        answer_Person_01.ANSWER_12 = document.get("answer_P_1_12") as? Bool ?? true
-                        answer_Person_01.ANSWER_13 = document.get("answer_P_1_13") as? Bool ?? true
-                        answer_Person_01.ANSWER_14 = HouseReferenceModel.getType(description: document.get("answer_P_1_14") as? String ?? "")
-                        answer_Person_01.ANSWER_15 = HouseReferenceModel.getType(description: document.get("answer_P_1_15") as? String ?? "")
-                        
-                        var answer_Person_02 = PersonEssentialQuestionAnswerModel()
-                        answer_Person_02.ANSWER_01 = document.get("answer_P_2_1") as? Int ?? 0
-                        answer_Person_02.ANSWER_02 = document.get("answer_P_2_2") as? Bool ?? true
-                        answer_Person_02.ANSWER_03 = document.get("answer_P_2_3") as? Int ?? 0
-                        answer_Person_02.ANSWER_04 = HouseFamilyTypeModel.getType(description: document.get("answer_P_2_4") as? String ?? "")
-                        answer_Person_02.ANSWER_05 = document.get("answer_P_2_5") as? Bool ?? true
-                        answer_Person_02.ANSWER_06 = document.get("answer_P_2_6") as? Bool ?? true
-                        answer_Person_02.ANSWER_07 = HouseFamilyTypeModel.getType(description: document.get("answer_P_2_7") as? String ?? "")
-                        answer_Person_02.ANSWER_08 = HouseFamilyTypeModel.getType(description: document.get("answer_P_2_8") as? String ?? "")
-                        answer_Person_02.ANSWER_09 = document.get("answer_P_2_9") as? Bool ?? true
-                        answer_Person_02.ANSWER_10 = document.get("answer_P_2_10") as? Bool ?? true
-                        answer_Person_02.ANSWER_11 = document.get("answer_P_2_11") as? Bool ?? true
-                        answer_Person_02.ANSWER_12 = document.get("answer_P_2_12") as? Bool ?? true
-                        answer_Person_02.ANSWER_13 = document.get("answer_P_2_13") as? Bool ?? true
-                        answer_Person_02.ANSWER_14 = HouseReferenceModel.getType(description: document.get("answer_P_2_14") as? String ?? "")
-                        answer_Person_02.ANSWER_15 = HouseReferenceModel.getType(description: document.get("answer_P_2_15") as? String ?? "")
-                        
-                        let files = ["House_Original.png", "House_Detected.png",
-                                     "Tree_Original.png", "Tree_Detected.png",
-                                     "Person_1_Original.png", "Person_1_Detected.png",
-                                     "Person_2_Original.png", "Person_2_Detected.png"]
-                        
-                        self.inspectionResults.append(InspectionHistoryModel(id: id, img_C01: nil, img_detected_C01: nil, answer_C01: answer_House, img_C02: nil, img_detected_C02: nil, answer_C02: answer_Tree, img_C03_1: nil, img_detected_C03_1: nil, answer_C03_1: answer_Person_01, img_C03_2: nil, img_detected_C03_2: nil, answer_C03_2: answer_Person_02))
-                        
+                } else{
+                    let data = self.createPDF(answer_House: answer_House, answer_Tree: answer_Tree, answer_Person_1: answer_Person_1, answer_Person_2: answer_Person_2, img_House: img_House, img_Tree: img_Tree, img_Person_1: img_Person_1, img_Person_2: img_Person_2, img_House_Detected: img_House_Detected, img_Tree_Detected: img_Tree_Detected, img_Person_1_Detected: img_Person_1_Detected, img_Person_2_Detected: img_Person_2_Detected, UID: UID, date: date, elapsedTimes: elapsedTimes)
+                    
+                    self.storage.reference().child("Results/\(self.auth.currentUser?.uid ?? "")/\(date ?? current)/\(date ?? current).pdf").putData(data, metadata: nil){(metadata, error) in
+                        if error != nil{
+                            print(error?.localizedDescription)
+                            completion(false)
+                            return
+                        } else{
+                            completion(true)
+                            return
+                        }
                     }
-                    
-                    completion(true)
-                    return
-                } else{
-                    completion(false)
-                    return
                 }
             }
         }
+
     }
     
-    func uploadEssentialQuestionAnswer(answer_House: HouseEssentialQuestionAnswerModel, answer_Tree: TreeEssentialQuestionAnswerModel, answer_Person_1: PersonEssentialQuestionAnswerModel, answer_Person_2: PersonEssentialQuestionAnswerModel, docId: String, completion: @escaping(_ result: Bool?) -> Void){
-        self.db.collection("Users").document(self.auth.currentUser?.uid ?? "").collection("Results").document(docId).setData([
-            "answer_H_1" : answer_House.ANSWER_01,
-            "answer_H_2" : answer_House.ANSWER_02,
-            "answer_H_3" : answer_House.ANSWER_03?.description,
-            "answer_H_4" : answer_House.ANSWER_04,
-            "answer_H_5" : answer_House.ANSWER_05,
-            "answer_H_6" : answer_House.ANSWER_06?.description,
-            "answer_H_7" : answer_House.ANSWER_07?.description,
-            "answer_H_8" : answer_House.ANSWER_08?.description,
-            "answer_H_9" : answer_House.ANSWER_09?.description,
-            "answer_H_10" : answer_House.ANSWER_10?.description,
-            "answer_H_11" : answer_House.ANSWER_11,
-            "answer_H_12" : answer_House.ANSWER_12?.description,
-            "answer_H_13" : answer_House.ANSWER_13,
-            "answer_H_14" : answer_House.ANSWER_14,
-            "answer_T_1" : answer_Tree.ANSWER_01,
-            "answer_T_2" : answer_Tree.ANSWER_02,
-            "answer_T_3" : answer_Tree.ANSWER_03?.description,
-            "answer_T_4" : answer_Tree.ANSWER_04,
-            "answer_T_5" : answer_Tree.ANSWER_05,
-            "answer_T_6" : answer_Tree.ANSWER_06,
-            "answer_T_7" : answer_Tree.ANSWER_07,
-            "answer_T_8" : answer_Tree.ANSWER_08,
-            "answer_T_9" : answer_Tree.ANSWER_09?.description,
-            "answer_T_10" : answer_Tree.ANSWER_10?.description,
-            "answer_T_11" : answer_Tree.ANSWER_11,
-            "answer_T_12" : answer_Tree.ANSWER_12,
-            "answer_T_13" : answer_Tree.ANSWER_13,
-            "answer_T_14" : answer_Tree.ANSWER_14,
-            "answer_P_1_1" : answer_Person_1.ANSWER_01,
-            "answer_P_1_2" : answer_Person_1.ANSWER_02,
-            "answer_P_1_3" : answer_Person_1.ANSWER_03,
-            "answer_P_1_4" : answer_Person_1.ANSWER_04?.description,
-            "answer_P_1_5" : answer_Person_1.ANSWER_05,
-            "answer_P_1_6" : answer_Person_1.ANSWER_06,
-            "answer_P_1_7" : answer_Person_1.ANSWER_07?.description,
-            "answer_P_1_8" : answer_Person_1.ANSWER_08?.description,
-            "answer_P_1_9" : answer_Person_1.ANSWER_09,
-            "answer_P_1_10" : answer_Person_1.ANSWER_10,
-            "answer_P_1_11" : answer_Person_1.ANSWER_11,
-            "answer_P_1_12" : answer_Person_1.ANSWER_12,
-            "answer_P_1_13" : answer_Person_1.ANSWER_13,
-            "answer_P_1_14" : answer_Person_1.ANSWER_14?.description,
-            "answer_P_1_15" : answer_Person_1.ANSWER_15?.description,
-            "answer_P_2_1" : answer_Person_2.ANSWER_01,
-            "answer_P_2_2" : answer_Person_2.ANSWER_02,
-            "answer_P_2_3" : answer_Person_2.ANSWER_03,
-            "answer_P_2_4" : answer_Person_2.ANSWER_04?.description,
-            "answer_P_2_5" : answer_Person_2.ANSWER_05,
-            "answer_P_2_6" : answer_Person_2.ANSWER_06,
-            "answer_P_2_7" : answer_Person_2.ANSWER_07?.description,
-            "answer_P_2_8" : answer_Person_2.ANSWER_08?.description,
-            "answer_P_2_9" : answer_Person_2.ANSWER_09,
-            "answer_P_2_10" : answer_Person_2.ANSWER_10,
-            "answer_P_2_11" : answer_Person_2.ANSWER_11,
-            "answer_P_2_12" : answer_Person_2.ANSWER_12,
-            "answer_P_2_13" : answer_Person_2.ANSWER_13,
-            "answer_P_2_14" : answer_Person_2.ANSWER_14?.description,
-            "answer_P_2_15" : answer_Person_2.ANSWER_15?.description
-        ]){error in
+    func getLatestHistory(completion: @escaping(_ result: Bool?) -> Void){
+        self.db.collection("Inspection").document(auth.currentUser?.uid ?? "").getDocument(){(document, error) in
             if error != nil{
                 print(error?.localizedDescription)
                 completion(false)
                 return
-            } else{
+            }
+            
+            if document != nil{
+                self.latestInspectionResult = document!.get("latstInspection") as? String ?? nil
                 completion(true)
                 return
             }
@@ -552,7 +440,7 @@ class InspectionHelper: ObservableObject{
             
             cursor += 12
 
-            cursor = context.addCenteredText(fontSize: 24, weight: .bold, text: "HTP 검사 결과 (Object Detection)", cursor: cursor, pdfSize: pageRect.size)
+            cursor = context.addCenteredText(fontSize: 24, weight: .bold, text: "HTP 검사 결과", cursor: cursor, pdfSize: pageRect.size)
             
             cursor += 12
             
@@ -663,7 +551,78 @@ class InspectionHelper: ObservableObject{
                 cursor = context.addSingleLineText(fontSize: 12, weight: .regular, text: "\(questions_Person[i]) : \(answer_Person_2.getAnswer(index: i))", indent: leftMargin, cursor: cursor, pdfSize: pageRect.size, annotation: nil, annotationColor: .black)
                 cursor += 6
             }
+            
+            if commonInspectionResult != nil{
+                context.beginPage()
+                
+                cursor = 12
+                
+                cursor = context.addSingleLineText(fontSize: 16, weight: .semibold, text: "HTP 검사 분석 결과 (공통)", indent: leftMargin, cursor: cursor, pdfSize: pageRect.size, annotation: .underline, annotationColor: .black)
+                                
+                let titles = self.commonInspectionResult!.getTitle()
+                let results = self.commonInspectionResult!.getResults()
+                
+                for i in titles.indices{
+                    cursor += 10
+                    
+                    context.addSingleLineText(fontSize: 8, weight: .regular, text: "\(titles[i]) : \(results[i].rawValue)", indent: leftMargin, cursor: cursor, pdfSize: pageRect.size, annotation: nil, annotationColor: .black)
+                }
+            }
+            
+            if houseInspectionResult != nil{
+                context.beginPage()
+                
+                cursor = 12
+                
+                cursor = context.addSingleLineText(fontSize: 16, weight: .semibold, text: "HTP 검사 분석 결과 (집)", indent: leftMargin, cursor: cursor, pdfSize: pageRect.size, annotation: .underline, annotationColor: .black)
+                                
+                let titles = self.houseInspectionResult!.getTitle()
+                let results = self.houseInspectionResult!.getResults()
+                
+                for i in titles.indices{
+                    cursor += 10
+
+                    context.addSingleLineText(fontSize: 8, weight: .regular, text: "\(titles[i]) : \(results[i].rawValue)", indent: leftMargin, cursor: cursor, pdfSize: pageRect.size, annotation: nil, annotationColor: .black)
+                }
+            }
+            
+            if treeInspectionResult != nil{
+                context.beginPage()
+                
+                cursor = 15
+                
+                cursor = context.addSingleLineText(fontSize: 16, weight: .semibold, text: "HTP 검사 분석 결과 (나무)", indent: leftMargin, cursor: cursor, pdfSize: pageRect.size, annotation: .underline, annotationColor: .black)
+                                
+                let titles = self.treeInspectionResult!.getTitle()
+                let results = self.treeInspectionResult!.getResults()
+                
+                for i in titles.indices{
+                    cursor += 10
+
+                    context.addSingleLineText(fontSize: 8, weight: .regular, text: "\(titles[i]) : \(results[i].rawValue)", indent: leftMargin, cursor: cursor, pdfSize: pageRect.size, annotation: nil, annotationColor: .black)
+                }
+            }
+            
+            if personInspectionResult != nil{
+                context.beginPage()
+                
+                cursor = 12
+                
+                cursor = context.addSingleLineText(fontSize: 16, weight: .semibold, text: "HTP 검사 분석 결과 (사람)", indent: leftMargin, cursor: cursor, pdfSize: pageRect.size, annotation: .underline, annotationColor: .black)
+                                
+                let titles = self.personInspectionResult!.getTitle()
+                let results = self.personInspectionResult!.getResults()
+                
+                for i in titles.indices{
+                    cursor += 10
+                    
+                    context.addSingleLineText(fontSize: 8, weight: .regular, text: "\(titles[i]) : \(results[i].rawValue)", indent: leftMargin, cursor: cursor, pdfSize: pageRect.size, annotation: nil, annotationColor: .black)
+                }
+            }
+
         }
+        
+        self.data = data
         
         return data
     }

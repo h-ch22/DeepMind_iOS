@@ -1,27 +1,19 @@
 ![ ](imgs/ic_deepMind_h.png)</br>
+![ ](imgs/mockup.PNG)</br>
 # DeepMind</br>
 ### Check your psychological status with ML, based on YOLOv8<br>
-ⓒ 2023. Changjin Ha, Yujee Chang. All Rights Reserved.<br><br>
+ⓒ 2023. Changjin Ha, [Yujee-Chang](https://github.com/yujeecatherine). All Rights Reserved.<br><br>
 
 ## Features</br>
 #### Home</br>
-> Check your latest inspection results, emotion statistics at a glance.</br>
+> Check your latest inspection results, emotion statistics, health data and Latest informations at a glance.</br>
 
-![ ](imgs/home_1.PNG) ![ ](imgs/home_2.PNG) ![ ](imgs/home_3.PNG)</br>
+![ ](imgs/home_1.PNG)</br>
 
-#### Daily Diary</br>
-> Once a day, record your day with emotions.</br>
+#### Daily Emotion</br>
+> Once a day, record your emotion.</br>
 
-![ ](imgs/dailyDiary_1.PNG)</br>
-
-> Record your day with images, markups, and text. </br>
-
-![ ](imgs/dailyDiary_2.PNG)</br>
-
-#### Statistics</br>
-> Check your inspection results, emotion statistics history by date, with a chart.</br>
-
-![ ](imgs/statistics_1.PNG) ![ ](imgs/statistics_2.PNG) ![ ](imgs/statistics_3.PNG)</br>
+![ ](imgs/dailyEmotion_1.PNG)</br>
 
 #### Inspection</br>
 > Draw House, Tree, Person with your Apple Pencil, or any inputs.</br>
@@ -36,9 +28,57 @@
 
 ![ ](imgs/inspection_6.PNG)</br>
 
+> Check your inspection results in the blink of an eye </br>
+
+![ ](imgs/inspection_8.PNG)</br>
+
 > Share your inspection data as PDF. </br>
 
 ![ ](imgs/inspection_7.PNG)</br>
+
+> Share your inspection data to Community. </br>
+
+![ ](imgs/inspection_9.PNG)</br>
+
+#### Consulting</br>
+> The easiest way to contact a professional. </br>
+
+![ ](imgs/consulting_1.PNG)</br>
+
+> Book a consultation with just one touch. </br>
+
+![ ](imgs/consulting_2.PNG)</br>
+
+> Consult in a comfortable way between chat and door-to-door consultation. </br>
+
+![ ](imgs/consulting_3.PNG) ![ ](imgs/consulting_4.PNG) </br>
+
+> Is the consultation over? Evaluate your experts and share them with others. </br>
+
+![ ](imgs/consulting_5.PNG) </br>
+
+#### Community</br>
+> An easy way to communicate with people around the world </br>
+
+![ ](imgs/community_1.PNG) </br>
+
+> Talk to people through posts and comments. </br>
+
+![ ](imgs/community_2.PNG) </br>
+
+#### Grow-up Diary</br>
+> Once a day, record your day with emotions.</br>
+
+![ ](imgs/dailyDiary_1.PNG)</br>
+
+> Record your day with images, markups, and text. </br>
+
+![ ](imgs/dailyDiary_2.PNG)</br>
+
+#### Statistics</br>
+> Check your inspection results, emotion statistics history by date, with a chart.</br>
+
+![ ](imgs/statistics_1.PNG) ![ ](imgs/statistics_2.PNG) ![ ](imgs/statistics_3.PNG)</br>
 
 #### and so much more.</br>
 > Change your information, delete your data on server, change your sensitive info, sign out, and secession </br>

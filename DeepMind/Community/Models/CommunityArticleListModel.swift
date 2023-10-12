@@ -29,6 +29,13 @@ struct CommunityArticleListModel: View {
                         .foregroundStyle(Color.txt_color)
                         .fontWeight(.semibold)
                     
+                    if data.fileURL != nil{
+                        Spacer().frame(width: 5)
+                        
+                        Image(systemName: "paperclip")
+                            .foregroundStyle(Color.accent)
+                    }
+                    
                     Spacer()
                     
                 }

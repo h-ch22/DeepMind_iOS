@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DetectionResultsView: View {
     @Environment(\.presentationMode) var presentationMode
-
+    
     @State private var typeList : [DrawingTypeModel] = [.HOUSE, .TREE, .PERSON_1, .PERSON_2]
     @State private var currentIndex = 0
     @State private var showModal = false
@@ -21,11 +21,15 @@ struct DetectionResultsView: View {
     @State private var showAlert = false
     @State private var showShareSheet = false
     @State private var showDetected = true
+    @State private var showResult = false
+    @State private var inspectionDate = ""
+    
     @Binding var elapsedTimes: [Int]
     
     @StateObject private var helper = InspectionHelper()
     @StateObject private var userManagement = UserManagement()
 
+    
     let docId: String
     
     var body: some View {
@@ -56,63 +60,31 @@ struct DetectionResultsView: View {
                         
                         Toggle("검출된 이미지 보기", isOn: $showDetected)
                     }
-                                        
+                    
                     Spacer().frame(height : 10)
                     
                     if UIDevice.current.userInterfaceIdiom == .pad{
                         Image(uiImage: (showDetected ? helper.getDetectedImage(type: typeList[currentIndex]) :
                                             helper.getImage(type: typeList[currentIndex])) ?? UIImage())
-                            .resizable()
-                            .frame(width: 700, height : 700)
+                        .resizable()
+                        .frame(width: 700, height : 700)
                     } else{
                         Image(uiImage: (showDetected ? helper.getDetectedImage(type: typeList[currentIndex]) :
                                             helper.getImage(type: typeList[currentIndex])) ?? UIImage())
-                            .resizable()
-                            .frame(width: 350, height : 350)
+                        .resizable()
+                        .frame(width: 350, height : 350)
                     }
                     
                     Spacer().frame(height : 20)
                     
-                    if currentIndex < 3{
-                        Button(action: {
-                            showModal = true
-                        }){
-                            Text("필수 문답 작성하기")
-                        }.padding(10).buttonStyle(.borderedProminent)
-                    } else{
-                        HStack{
-                            Button(action: {
-                                showModal = true
-                            }){
-                                Text("필수 문답 작성하기")
-                            }.padding(10).buttonStyle(.borderedProminent)
-                            
-                            Spacer()
-                            
-                            if self.showShareSheet{
-                                ProgressView()
-                            } else{
-                                Button(action:{
-                                    self.showShareSheet = true
-                                }){
-                                    HStack{
-                                        Image(systemName: "square.and.arrow.up")
-                                        Text("PDF 내보내기")
-                                    }
-                                }.padding(10).buttonStyle(.bordered)
-                            }
-                        }
-                        
-                        Spacer().frame(height : 5)
-                        
-                        Text("심리상태에 문제가 있다고 판단되는 경우 이 검출 결과를 PDF로 내보내어 의료기관에 참고자료로 이용할 수 있습니다.")
-                            .font(.caption)
-                            .foregroundStyle(Color.gray)
-                    }
-
+                    Button(action: {
+                        showModal = true
+                    }){
+                        Text("필수 문답 작성하기")
+                    }.padding(10).buttonStyle(.borderedProminent)
+                    
                     Spacer()
                     
-                                        
                     HStack{
                         Button(action: {
                             if currentIndex > 0{
@@ -129,14 +101,25 @@ struct DetectionResultsView: View {
                                 currentIndex += 1
                             } else{
                                 showProgress = true
-                                helper.uploadEssentialQuestionAnswer(answer_House: answer_House, answer_Tree: answer_Tree, answer_Person_1: answer_Person_1, answer_Person_2: answer_Person_2, docId: docId){result in
-                                    guard let result = result else{return}
+                                
+                                helper.uploadResults(answer_House: answer_House,
+                                                     answer_Tree: answer_Tree,
+                                                     answer_Person_1: answer_Person_1,
+                                                     answer_Person_2: answer_Person_2,
+                                                     img_House: helper.getImage(type: DrawingTypeModel.HOUSE) ?? UIImage(),
+                                                     img_Tree: helper.getImage(type: DrawingTypeModel.TREE) ?? UIImage(),
+                                                     img_Person_1: helper.getImage(type: DrawingTypeModel.PERSON_1) ?? UIImage(),
+                                                     img_Person_2: helper.getImage(type: DrawingTypeModel.PERSON_2) ?? UIImage(),
+                                                     img_House_Detected: helper.getDetectedImage(type: DrawingTypeModel.HOUSE) ?? UIImage(),
+                                                     img_Tree_Detected: helper.getDetectedImage(type: DrawingTypeModel.TREE) ?? UIImage(),
+                                                     img_Person_1_Detected: helper.getDetectedImage(type: DrawingTypeModel.PERSON_1) ?? UIImage(),
+                                                     img_Person_2_Detected: helper.getDetectedImage(type: DrawingTypeModel.PERSON_2) ?? UIImage(),
+                                                     UID: userManagement.getUID(),
+                                                     date: docId,
+                                                     elapsedTimes: elapsedTimes){uploadResult in
+                                    guard let uploadResult = uploadResult else{return}
                                     
-                                    showProgress = false
-                                    
-                                    if result{
-                                        self.presentationMode.wrappedValue.dismiss()
-                                    }
+                                    showResult = true
                                 }
                             }
                         }){
@@ -171,22 +154,8 @@ struct DetectionResultsView: View {
             .alert(isPresented: $showAlert){
                 return Alert(title: Text("오류"), message: Text("결과를 서버에 업로드하는 중 문제가 발생하였습니다.\n나중에 다시 시도하십시오."), dismissButton: .default(Text("확인")))
             }
-            .sheet(isPresented: $showShareSheet, content:{
-                ActivityViewController(activityItems: [helper.exportAsPDF(data: helper.createPDF(answer_House: answer_House,
-                                                                                                 answer_Tree: answer_Tree,
-                                                                                                 answer_Person_1: answer_Person_1,
-                                                                                                 answer_Person_2: answer_Person_2,
-                                                                                                 img_House: helper.getImage(type: DrawingTypeModel.HOUSE) ?? UIImage(),
-                                                                                                 img_Tree: helper.getImage(type: DrawingTypeModel.TREE) ?? UIImage(),
-                                                                                                 img_Person_1: helper.getImage(type: DrawingTypeModel.PERSON_1) ?? UIImage(),
-                                                                                                 img_Person_2: helper.getImage(type: DrawingTypeModel.PERSON_2) ?? UIImage(),
-                                                                                                 img_House_Detected: helper.getDetectedImage(type: DrawingTypeModel.HOUSE) ?? UIImage(),
-                                                                                                 img_Tree_Detected: helper.getDetectedImage(type: DrawingTypeModel.TREE) ?? UIImage(),
-                                                                                                 img_Person_1_Detected: helper.getDetectedImage(type: DrawingTypeModel.PERSON_1) ?? UIImage(),
-                                                                                                 img_Person_2_Detected: helper.getDetectedImage(type: DrawingTypeModel.PERSON_2) ?? UIImage(),
-                                                                                                 UID: userManagement.getUID(),
-                                                                                                 date: nil,
-                                                                                                 elapsedTimes: elapsedTimes), UID: userManagement.getUID())])
+            .fullScreenCover(isPresented: $showResult, content: {
+                InspectionResultView(helper: helper, userManagement: userManagement)
             })
     }
 }
