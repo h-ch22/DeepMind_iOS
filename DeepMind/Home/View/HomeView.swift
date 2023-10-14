@@ -15,6 +15,8 @@ struct HomeView: View {
 
     @State private var currentIndex = 0
     @State private var showDailyEmotionView = false
+    @State private var showArticle = false
+    @State private var selectedArticle: CommunityArticleDataModel? = nil
     
     let parent: TabManager
     let columns = [
@@ -188,14 +190,19 @@ struct HomeView: View {
                         
                         HStack{
                             ForEach(communityHelper.latestArticles, id:\.self){item in
-                                Button(action: {}){
+                                Button(action: {
+                                    self.selectedArticle = item
+                                    showArticle = true
+                                }){
                                     HomeCommunityListModel(data: item)
                                 }
                                 
                                 Spacer().frame(width: 10)
                             }
                             
-                            Button(action: {}){
+                            Button(action: {
+                                parent.changeView(index: 3)
+                            }){
                                 HStack{
                                     Text("더 많은 게시물 확인하기")
                                         .foregroundStyle(Color.txt_color)
@@ -231,6 +238,14 @@ struct HomeView: View {
                     .sheet(isPresented: $showDailyEmotionView){
                         AddDailyEmotionView()
                     }
+                    .sheet(isPresented: Binding(
+                        get: {showArticle},
+                        set: {showArticle = $0}
+                    ), content: {
+                        if selectedArticle != nil{
+                            CommunityDetailView(userManagement: userManagement, helper: communityHelper, data: selectedArticle!)
+                        }
+                    })
             }
         }
     }

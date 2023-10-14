@@ -89,7 +89,11 @@
 > DeepMind is compatible with these devices. </br>
 ### iPhone</br>
 
-> iPhone 14 Pro Max </br>
+> iPhone 15 Pro Max </br>
+ iPhone 15 Pro </br>
+ iPhone 15 Plus </br>
+ iPhone 15 </br>
+ iPhone 14 Pro Max </br>
  iPhone 14 Pro </br>
  iPhone 14 Plus </br>
  iPhone 14 </br>
@@ -130,5 +134,5 @@
  iPad (10th-Generation) </br>
  iPad (9th-Generation) </br>
 
- * Required iOS/iPadOS 16 or up. </br>
+ * Required iOS/iPadOS 17.0 or up. </br>
  * 1GB or higher storage required for install application.

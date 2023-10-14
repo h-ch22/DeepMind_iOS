@@ -17,6 +17,8 @@ struct CommunityDetailView: View {
     @State private var deletionModel: CommunityDeletionModel? = nil
     @State private var showOverlay = false
     @State private var selectedComment: CommunityCommentDataModel? = nil
+    @State private var showFileProgress = true
+    @State private var showPDFViewer = false
     
     @StateObject var userManagement: UserManagement
     @StateObject var helper: CommunityHelper
@@ -108,25 +110,37 @@ struct CommunityDetailView: View {
                         Spacer()
                     }
                     
-                    if data.fileURL != nil{
+                    if data.fileNum > 0 && !showFileProgress{
+                        if helper.fileURL != nil{
+                            Spacer().frame(height : 20)
+
+                            HStack{
+                                Image(systemName: "paperclip")
+                                    .font(.title)
+                                    .foregroundStyle(Color.accent)
+                                
+                                Text(helper.fileURL!.lastPathComponent)
+                                    .fontWeight(.semibold)
+                                    .foregroundStyle(Color.txt_color)
+                                
+                                Spacer()
+                                
+                                Button(action: {
+                                    showPDFViewer = true
+                                }){
+                                    Image(systemName: "square.and.arrow.down.fill")
+                                        .font(.title)
+                                        .foregroundStyle(Color.accentColor)
+                                }
+                                
+                            }.padding(10)
+                                .background(RoundedRectangle(cornerRadius: 15).foregroundStyle(Color.btn_color).shadow(radius: 5))
+                        }
+
+                    } else if data.fileNum > 0 && showFileProgress{
                         Spacer().frame(height : 20)
 
-                        HStack{
-                            Text(data.fileURL!.lastPathComponent)
-                                .fontWeight(.semibold)
-                                .foregroundStyle(Color.txt_color)
-                            
-                            Spacer()
-                            
-                            Button(action: {
-                                
-                            }){
-                                Image(systemName: "arrow.down.square.fill")
-                                    .foregroundStyle(Color.accentColor)
-                            }
-                            
-                        }.padding(10)
-                            .background(RoundedRectangle(cornerRadius: 15).foregroundStyle(Color.btn_color).shadow(radius: 5))
+                        ProgressView()
                     }
                     
                     Spacer().frame(height : 40)
@@ -222,6 +236,15 @@ struct CommunityDetailView: View {
                             showComments = true
                         }
                     }
+                    
+                    if data.fileNum > 0{
+                        helper.getFiles(id: data.id){ result in
+                            guard let result = result else{return}
+                            
+                            self.showFileProgress = false
+
+                        }
+                    }
                 }
                 .toolbar{
                     ToolbarItemGroup(placement: .topBarTrailing, content: {
@@ -237,6 +260,9 @@ struct CommunityDetailView: View {
                         }
                     })
                 }
+                .sheet(isPresented: $showPDFViewer, content: {
+                    PDFViewer(url: helper.fileURL!)
+                })
                 .alert(isPresented: $showAlert, content: {
                     switch alertModel{
                     case .CONFIRM:

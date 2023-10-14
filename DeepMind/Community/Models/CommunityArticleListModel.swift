@@ -29,7 +29,7 @@ struct CommunityArticleListModel: View {
                         .foregroundStyle(Color.txt_color)
                         .fontWeight(.semibold)
                     
-                    if data.fileURL != nil{
+                    if data.fileNum > 0{
                         Spacer().frame(width: 5)
                         
                         Image(systemName: "paperclip")

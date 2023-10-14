@@ -21,6 +21,7 @@ class CommunityHelper: ObservableObject{
     
     @Published var imgList: [URL] = []
     @Published var comments: [CommunityCommentDataModel] = []
+    @Published var fileURL : URL? = nil
     
     private let db = Firestore.firestore()
     private let storage = Storage.storage()
@@ -41,7 +42,8 @@ class CommunityHelper: ObservableObject{
                     let createDate = document.get("createDate") as? String ?? ""
                     let views = document.get("views") as? Int ?? 0
                     let board = document.get("board") as? String ?? ""
-                    
+                    let fileNum = document.get("fileNum") as? Int ?? 0
+
                     self.getCommentCount(id: document.documentID){ result in
                         guard let result = result else {return}
                         
@@ -59,7 +61,8 @@ class CommunityHelper: ObservableObject{
                                                               commentCount: result,
                                                               board: self.boardList.someKey(forValue: AES256Util.decrypt(encoded: board)) ?? "",
                                                               profile: nil,
-                                                              thumbnail: thumbnailURL)
+                                                              thumbnail: thumbnailURL,
+                                                              fileNum: fileNum)
                                 )
                             }
                         } else{
@@ -75,7 +78,8 @@ class CommunityHelper: ObservableObject{
                                                           commentCount: result,
                                                           board: self.boardList.someKey(forValue: AES256Util.decrypt(encoded: board)) ?? "",
                                                           profile: nil,
-                                                          thumbnail: nil)
+                                                          thumbnail: nil,
+                                                          fileNum: fileNum)
                             )
                         }
                         
@@ -126,16 +130,7 @@ class CommunityHelper: ObservableObject{
                     let createDate = document.get("createDate") as? String ?? ""
                     let views = document.get("views") as? Int ?? 0
                     let board = document.get("board") as? String ?? ""
-                    
-                    var url: URL? = nil
-                    
-                    if AES256Util.decrypt(encoded: board) == "HTP"{
-                        self.getFiles(id: document.documentID){ result in
-                            guard let result = result else{return}
-                            
-                            url = result
-                        }
-                    }
+                    let fileNum = document.get("fileNum") as? Int ?? 0
                     
                     self.getCommentCount(id: document.documentID){ result in
                         guard let result = result else {return}
@@ -156,7 +151,8 @@ class CommunityHelper: ObservableObject{
                                                                   board: self.boardList.someKey(forValue: AES256Util.decrypt(encoded: board)) ?? "",
                                                                   profile: nil,
                                                                   thumbnail: thumbnailURL,
-                                                                  fileURL: url)
+                                                                  fileURL: nil,
+                                                                fileNum: fileNum)
                                     )
                                 }
                             } else{
@@ -173,7 +169,8 @@ class CommunityHelper: ObservableObject{
                                                               board: self.boardList.someKey(forValue: AES256Util.decrypt(encoded: board)) ?? "",
                                                               profile: nil,
                                                               thumbnail: nil,
-                                                              fileURL: url)
+                                                              fileURL: nil,
+                                                             fileNum: fileNum)
                                 )
                             }
                         }
@@ -193,15 +190,16 @@ class CommunityHelper: ObservableObject{
         }
     }
     
-    func getFiles(id: String, completion: @escaping(_ result: URL?) -> Void){
-        storage.reference().child("Community/\(id)/HTP_\(id).png").downloadURL(){(downloadURL, error) in
+    func getFiles(id: String, completion: @escaping(_ result: Bool?) -> Void){
+        storage.reference().child("Results/\(id)/HTP_\(id).pdf").downloadURL(){(downloadURL, error) in
             if error != nil{
                 print(error?.localizedDescription)
-                completion(nil)
+                completion(false)
                 return
             }
             
-            completion(downloadURL!)
+            self.fileURL = downloadURL
+            completion(true)
             return
         }
         
@@ -371,7 +369,8 @@ class CommunityHelper: ObservableObject{
             "nickName": nickName,
             "createDate": dateFormatter.string(from: Date()),
             "views": 0,
-            "board": AES256Util.encrypt(string: boardList[board] ?? "")
+            "board": AES256Util.encrypt(string: boardList[board] ?? ""),
+            "fileNum": data == nil ? 0 : 1
         ]){error in
             if error != nil{
                 print(error?.localizedDescription)

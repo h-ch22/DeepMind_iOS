@@ -116,7 +116,7 @@ struct AddDailyEmotionView: View {
                     emotion = String(newEmotion[1])
                 }
 
-        }
+        }.navigationViewStyle(StackNavigationViewStyle())
 
     }
 }

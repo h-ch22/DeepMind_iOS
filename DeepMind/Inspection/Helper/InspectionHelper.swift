@@ -22,7 +22,9 @@ class InspectionHelper: ObservableObject{
     @Published var personInspectionResult: PersonResultModel? = nil
     @Published var data: Data? = nil
     @Published var inspectionDate = ""
-    
+    @Published var inspectionResults: [String] = []
+    @Published var fileURL : URL? = nil
+
     private let db = Firestore.firestore()
     private let storage = Storage.storage()
     private let auth = Auth.auth()
@@ -364,6 +366,40 @@ class InspectionHelper: ObservableObject{
                 completion(true)
                 return
             }
+        }
+    }
+    
+    func getInspectionHistory(completion: @escaping(_ result: Bool?) -> Void){
+        self.db.collection("Inspection").document(auth.currentUser?.uid ?? "").collection("Results").getDocuments(){(querySnapshot, error) in
+            if error != nil{
+                print(error?.localizedDescription)
+                completion(false)
+                return
+            }
+            
+            if querySnapshot != nil{
+                for document in querySnapshot!.documents{
+                    self.inspectionResults.append(document.documentID)
+                }
+            }
+            
+            self.inspectionResults.sort(by: {$0 > $1})
+            completion(true)
+            return
+        }
+    }
+    
+    func getFileURL(id: String, completion: @escaping(_ result: Bool?) -> Void){
+        storage.reference().child("Results/\(auth.currentUser?.uid ?? "")/\(id)/\(id).pdf").downloadURL(){(downloadURL, error) in
+            if error != nil{
+                print(error?.localizedDescription)
+                completion(false)
+                return
+            }
+            
+            self.fileURL = downloadURL
+            completion(true)
+            return
         }
     }
     
