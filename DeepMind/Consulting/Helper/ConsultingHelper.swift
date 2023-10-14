@@ -12,6 +12,7 @@ import Firebase
 
 class ConsultingHelper: ObservableObject{
     @Published var mentorInfo: MentorInfoModel? = nil
+    @Published var menteeInfo: MentorInfoModel? = nil
     @Published var mentors: [MentorInfoModel] = []
     @Published var reservationList: [ConsultingDataModel] = []
     @Published var unratedReservationList: [ConsultingDataModel] = []
@@ -20,6 +21,7 @@ class ConsultingHelper: ObservableObject{
     
     private let db = Firestore.firestore()
     private let storage = Storage.storage()
+    private let auth = Auth.auth()
     
     func getMentorInfo(uid: String, completion: @escaping(_ result: Bool?) -> Void){
         db.collection("Users").document(uid).getDocument(){(document, error) in
@@ -40,7 +42,7 @@ class ConsultingHelper: ObservableObject{
                         _hospitalLocation = hospitalLocation.split(separator: ", ")
                     }
                     
-                    self.getMentorProfile(uid: uid){(downloadURL) in
+                    self.getProfile(uid: uid){(downloadURL) in
                         self.mentorInfo = MentorInfoModel(mentorUID: uid,
                                                           mentorName: AES256Util.decrypt(encoded: name),
                                                           mentorProfile: downloadURL,
@@ -62,7 +64,48 @@ class ConsultingHelper: ObservableObject{
         }
     }
     
-    func getMentorProfile(uid: String, completion: @escaping(_ result: URL?) -> Void){
+    func getMenteeInfo(uid: String, completion: @escaping(_ result: Bool?) -> Void){
+        db.collection("Users").document(uid).getDocument(){(document, error) in
+            if error != nil{
+                print(error?.localizedDescription)
+                completion(false)
+                return
+            } else{
+                if document != nil{
+                    let name = document?.get("name") as? String ?? ""
+                    let hospitalLocation = document?.get("hospitalLocation") as? String ?? ""
+                    let hospitalAddress = document?.get("hospitalAddress") as? String ?? ""
+                    let rate = document?.get("rate") as? Double ?? 0.0
+                    
+                    var _hospitalLocation: [Substring] = []
+                    
+                    if hospitalLocation.contains(", "){
+                        _hospitalLocation = hospitalLocation.split(separator: ", ")
+                    }
+                    
+                    self.getProfile(uid: uid){(downloadURL) in
+                        self.menteeInfo = MentorInfoModel(mentorUID: uid,
+                                                          mentorName: AES256Util.decrypt(encoded: name),
+                                                          mentorProfile: downloadURL,
+                                                          hospitalLocation: hospitalLocation.contains(", ") ? [
+                                                            Double(_hospitalLocation[0]) ?? 0.0,
+                                                            Double(_hospitalLocation[1]) ?? 0.0
+                                                          ] : nil,
+                                                          hospitalAddress: hospitalAddress,
+                                                          rate: rate)
+                        
+                        completion(true)
+                        return
+                    }
+                } else{
+                    completion(false)
+                    return
+                }
+            }
+        }
+    }
+    
+    func getProfile(uid: String, completion: @escaping(_ result: URL?) -> Void){
         storage.reference().child("Profile/\(uid)/profile.png").downloadURL(){(downloadURL, error) in
             if error != nil{
                 print(error?.localizedDescription)
@@ -88,7 +131,7 @@ class ConsultingHelper: ObservableObject{
         }
     }
     
-    func reserveConsulting(mentorName: String, date: String, time: String, message: String, type: ConsultingMethodType, images: [UIImage], uid: String, mentorUID: String, completion: @escaping(_ result: Bool?) -> Void){
+    func reserveConsulting(mentorName: String, menteeName: String, date: String, time: String, message: String, type: ConsultingMethodType, images: [UIImage], uid: String, mentorUID: String, completion: @escaping(_ result: Bool?) -> Void){
         let docRef = db.collection("Consulting").document()
         docRef.setData([
             "date": date,
@@ -98,7 +141,8 @@ class ConsultingHelper: ObservableObject{
             "imageCount": images.count,
             "uid": uid,
             "mentorUID": mentorUID,
-            "mentorName": AES256Util.encrypt(string: mentorName)
+            "mentorName": AES256Util.encrypt(string: mentorName),
+            "menteeName": AES256Util.encrypt(string: menteeName)
         ]){error in
             if error != nil{
                 print(error?.localizedDescription)
@@ -154,7 +198,67 @@ class ConsultingHelper: ObservableObject{
             }
     }
     
+    func getReservationList(completion: @escaping(_ result: Bool?) -> Void){
+        self.reservationList.removeAll()
+        self.unratedReservationList.removeAll()
+        self.allReservationList.removeAll()
+        
+        db.collection("Consulting").whereField("mentorUID", isEqualTo: auth.currentUser?.uid ?? "").getDocuments(){(querySnapshot, error) in
+            if error != nil{
+                print(error?.localizedDescription)
+                completion(false)
+                return
+            }
+            
+            if querySnapshot != nil{
+                for document in querySnapshot!.documents{
+                    let id = document.documentID
+                    let message = document.get("message") as? String ?? ""
+                    let date = document.get("date") as? String ?? ""
+                    let time = document.get("time") as? String ?? ""
+                    let mentorUID = document.get("mentorUID") as? String ?? ""
+                    let imageIndex = document.get("imageCount") as? Int ?? 0
+                    let type = document.get("type") as? String ?? ""
+                    let mentorName = document.get("mentorName") as? String ?? ""
+                    let menteeUID = document.get("uid") as? String ?? ""
+                    let menteeName = document.get("menteeName") as? String ?? ""
+
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "yyyy. MM. dd."
+                    
+                    let current = dateFormatter.date(from: dateFormatter.string(from: Date()))
+                    let reservationDate = dateFormatter.date(from: date)
+                    
+                    self.getProfile(uid: menteeUID){ result in
+                        
+                        if current! < reservationDate!{
+                            self.reservationList.append(ConsultingDataModel(id: id, message: AES256Util.decrypt(encoded: message), date: date, time: time, mentorUID: mentorUID, imageIndex: imageIndex, type: type == "INTERVIEW" ? .INTERVIEW : .CHAT, mentorName: AES256Util.decrypt(encoded: mentorName), mentorProfile: result, menteeUID: menteeUID, menteeName: AES256Util.decrypt(encoded: menteeName)))
+                            self.reservationList.sort(by: {$0.date < $1.date})
+                        }else{
+                            let isRated = document.get("isProRated") as? Bool ?? false
+                            
+                            if !isRated{
+                                self.unratedReservationList.append(ConsultingDataModel(id: id, message: AES256Util.decrypt(encoded: message), date: date, time: time, mentorUID: mentorUID, imageIndex: imageIndex, type: type == "INTERVIEW" ? .INTERVIEW : .CHAT, mentorName: AES256Util.decrypt(encoded: mentorName), mentorProfile: result, menteeUID: menteeUID, menteeName: AES256Util.decrypt(encoded: menteeName)))
+                                self.unratedReservationList.sort(by: {$0.date < $1.date})
+                            }
+                        }
+                        
+                        self.allReservationList.append(ConsultingDataModel(id: id, message: AES256Util.decrypt(encoded: message), date: date, time: time, mentorUID: mentorUID, imageIndex: imageIndex, type: type == "INTERVIEW" ? .INTERVIEW : .CHAT, mentorName: AES256Util.decrypt(encoded: mentorName), mentorProfile: result, menteeUID: menteeUID, menteeName: AES256Util.decrypt(encoded: menteeName)))
+                        self.allReservationList.sort(by: {$0.date < $1.date})
+                    }
+                }
+            }
+            
+            completion(true)
+            return
+        }
+    }
+    
     func getReservationList(uid: String, completion: @escaping(_ result: Bool?) -> Void){
+        self.reservationList.removeAll()
+        self.unratedReservationList.removeAll()
+        self.allReservationList.removeAll()
+        
         db.collection("Consulting").whereField("uid", isEqualTo: uid).getDocuments(){(querySnapshot, error) in
             if error != nil{
                 print(error?.localizedDescription)
@@ -171,6 +275,7 @@ class ConsultingHelper: ObservableObject{
                     let type = document.get("type") as? String ?? ""
                     let mentorName = document.get("mentorName") as? String ?? ""
                     let menteeUID = document.get("uid") as? String ?? ""
+                    let menteeName = document.get("menteeName") as? String ?? ""
 
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "yyyy. MM. dd."
@@ -178,21 +283,21 @@ class ConsultingHelper: ObservableObject{
                     let current = dateFormatter.date(from: dateFormatter.string(from: Date()))
                     let reservationDate = dateFormatter.date(from: date)
                     
-                    self.getMentorProfile(uid: mentorUID){ result in
+                    self.getProfile(uid: mentorUID){ result in
                         
                         if current! < reservationDate!{
-                            self.reservationList.append(ConsultingDataModel(id: id, message: AES256Util.decrypt(encoded: message), date: date, time: time, mentorUID: mentorUID, imageIndex: imageIndex, type: type == "INTERVIEW" ? .INTERVIEW : .CHAT, mentorName: AES256Util.decrypt(encoded: mentorName), mentorProfile: result, menteeUID: menteeUID))
+                            self.reservationList.append(ConsultingDataModel(id: id, message: AES256Util.decrypt(encoded: message), date: date, time: time, mentorUID: mentorUID, imageIndex: imageIndex, type: type == "INTERVIEW" ? .INTERVIEW : .CHAT, mentorName: AES256Util.decrypt(encoded: mentorName), mentorProfile: result, menteeUID: menteeUID, menteeName: AES256Util.decrypt(encoded: menteeName)))
                             self.reservationList.sort(by: {$0.date < $1.date})
                         } else{
                             let isRated = document.get("isRated") as? Bool ?? false
                             
                             if !isRated{
-                                self.unratedReservationList.append(ConsultingDataModel(id: id, message: AES256Util.decrypt(encoded: message), date: date, time: time, mentorUID: mentorUID, imageIndex: imageIndex, type: type == "INTERVIEW" ? .INTERVIEW : .CHAT, mentorName: AES256Util.decrypt(encoded: mentorName), mentorProfile: result, menteeUID: menteeUID))
+                                self.unratedReservationList.append(ConsultingDataModel(id: id, message: AES256Util.decrypt(encoded: message), date: date, time: time, mentorUID: mentorUID, imageIndex: imageIndex, type: type == "INTERVIEW" ? .INTERVIEW : .CHAT, mentorName: AES256Util.decrypt(encoded: mentorName), mentorProfile: result, menteeUID: menteeUID, menteeName: AES256Util.decrypt(encoded: menteeName)))
                                 self.unratedReservationList.sort(by: {$0.date < $1.date})
                             }
                         }
                         
-                        self.allReservationList.append(ConsultingDataModel(id: id, message: AES256Util.decrypt(encoded: message), date: date, time: time, mentorUID: mentorUID, imageIndex: imageIndex, type: type == "INTERVIEW" ? .INTERVIEW : .CHAT, mentorName: AES256Util.decrypt(encoded: mentorName), mentorProfile: result, menteeUID: menteeUID))
+                        self.allReservationList.append(ConsultingDataModel(id: id, message: AES256Util.decrypt(encoded: message), date: date, time: time, mentorUID: mentorUID, imageIndex: imageIndex, type: type == "INTERVIEW" ? .INTERVIEW : .CHAT, mentorName: AES256Util.decrypt(encoded: mentorName), mentorProfile: result, menteeUID: menteeUID, menteeName: AES256Util.decrypt(encoded: menteeName)))
                         self.allReservationList.sort(by: {$0.date < $1.date})
                     }
                 }
@@ -268,7 +373,7 @@ class ConsultingHelper: ObservableObject{
                         hospitalCoord?.append(Double(coord[1]) ?? 0.0)
                     }
                     
-                    self.getMentorProfile(uid: uid){ result in
+                    self.getProfile(uid: uid){ result in
                         self.mentors.append(
                             MentorInfoModel(mentorUID: uid, mentorName: AES256Util.decrypt(encoded: name), mentorProfile: result, hospitalLocation: hospitalCoord == nil ? nil : hospitalCoord, hospitalAddress: hospitalAddress, rate: rate)
                         )

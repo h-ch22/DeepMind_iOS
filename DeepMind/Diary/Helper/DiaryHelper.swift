@@ -12,6 +12,8 @@ import FirebaseStorage
 class DiaryHelper: ObservableObject{
     @Published var diaryList: [DiaryContentsModel] = []
     @Published var urlList: [URL?] = []
+    @Published var emotionList: [StatisticsEmotionDataModel] = []
+    @Published var emotionStack: [String: String] = [:]
     
     private let auth = Auth.auth()
     private let db = Firestore.firestore()
@@ -41,6 +43,20 @@ class DiaryHelper: ObservableObject{
         case .SAD: return "슬퍼요"
         case .STAY_ALONE: return "혼자 있고 싶어요"
         case .ANGRY: return "화나요"
+        default: return nil
+        }
+    }
+    
+    static func convertCodeToEmoji(code: DiaryEmotionModel?) -> String?{
+        switch code{
+        case .HAPPY: return "🥰 행복해요"
+        case .GREAT: return "😆 최고예요"
+        case .GOOD: return "😀 좋아요"
+        case .SOSO: return "🙂 그저 그래요"
+        case .BAD: return "☹️ 안좋아요"
+        case .SAD: return "😢 슬퍼요"
+        case .STAY_ALONE: return "😣 혼자 있고 싶어요"
+        case .ANGRY: return "😡 화나요"
         default: return nil
         }
     }
@@ -114,7 +130,7 @@ class DiaryHelper: ObservableObject{
                                 cnt+=1
                             }
                         }
-
+                        
                         if !images.isEmpty{
                             for image in images{
                                 let storageRef = self.storage.reference().child("Diary/\(self.auth.currentUser?.uid ?? "")/\(dateFormatter.string(from: Date()))/\(cnt).png")
@@ -130,7 +146,7 @@ class DiaryHelper: ObservableObject{
                                 cnt+=1
                             }
                         }
-
+                        
                         if !markUps.isEmpty{
                             for image in markUps{
                                 let storageRef = self.storage.reference().child("Diary/\(self.auth.currentUser?.uid ?? "")/\(dateFormatter.string(from: Date()))/\(cnt).png")
@@ -156,7 +172,7 @@ class DiaryHelper: ObservableObject{
                 }
             }
         }
-
+        
     }
     
     func getDiaryList(completion: @escaping(_ result: Bool?) -> Void){
@@ -198,8 +214,145 @@ class DiaryHelper: ObservableObject{
                 }
             }
         }
-                
+        
         completion(true)
         return
+    }
+    
+    func getEmotionList(uid: String, completion: @escaping(_ result: [StatisticsEmotionDataModel]?) -> Void){
+        var emotionList: [StatisticsEmotionDataModel] = []
+        var cnts = [Int](repeating: 0, count: 8)
+        var emotions: [DiaryEmotionModel] = [.HAPPY, .GREAT, .GOOD, .SOSO, .BAD, .SAD, .STAY_ALONE, .ANGRY]
+        
+        db.collection("Diary").document(uid)
+            .collection("Diaries").getDocuments(){(querySnapshot, error) in
+                if error != nil{
+                    print(error?.localizedDescription)
+                } else{
+                    if querySnapshot != nil{
+                        for document in querySnapshot!.documents{
+                            let data = AES256Util.decrypt(encoded: document.get("emotion") as? String ?? "")
+                            
+                            switch data{
+                            case "HAPPY":
+                                cnts[0] += 1
+                                
+                            case "GREAT":
+                                cnts[1] += 1
+                                
+                            case "GOOD":
+                                cnts[2] += 1
+                                
+                            case "SOSO":
+                                cnts[3] += 1
+                                
+                            case "BAD":
+                                cnts[4] += 1
+                                
+                            case "SAD":
+                                cnts[5] += 1
+                                
+                            case "STAY_ALONE":
+                                cnts[6] += 1
+                                
+                            case "ANGRY":
+                                cnts[7] += 1
+                                
+                            default:
+                                break
+                            }
+                        }
+                        
+                        for i in 0..<cnts.count{
+                            emotionList.append(StatisticsEmotionDataModel(emotion: DiaryHelper.convertEmotionCodeToString(code: emotions[i]) ?? "", count: cnts[i]))
+                        }
+                    }
+                }
+                
+                completion(emotionList)
+                return
+            }
+    }
+    
+    func getEmotionStack(uid: String, completion: @escaping(_ result: [String:String]?) -> Void){
+        var emotionStack: [String:String] = [:]
+        
+        db.collection("Diary").document(uid)
+            .collection("Diaries").getDocuments(){(querySnapshot, error) in
+                
+                if error != nil{
+                    print(error?.localizedDescription)
+                } else{
+                    if querySnapshot != nil{
+                        for document in querySnapshot!.documents{
+                            let data = AES256Util.decrypt(encoded: document.get("emotion") as? String ?? "")
+                            emotionStack[document.documentID] = DiaryHelper.convertCodeToEmoji(code: DiaryHelper.convertEmotionCodeToEmotion(code: data))
+                        }
+                    }
+                    
+                    completion(emotionStack)
+                    return
+                }
+            }
+    }
+    
+    func getEmotionList(completion: @escaping(_ result: Bool?) -> Void){
+        self.emotionStack.removeAll()
+        self.emotionList.removeAll()
+        
+        var cnts = [Int](repeating: 0, count: 8)
+        var emotions: [DiaryEmotionModel] = [.HAPPY, .GREAT, .GOOD, .SOSO, .BAD, .SAD, .STAY_ALONE, .ANGRY]
+        
+        db.collection("Diary").document(auth.currentUser?.uid ?? "")
+            .collection("Diaries").getDocuments(){(querySnapshot, error) in
+                if error != nil{
+                    print(error?.localizedDescription)
+                    completion(false)
+                    return
+                }
+                
+                if querySnapshot != nil{
+                    for document in querySnapshot!.documents{
+                        let data = AES256Util.decrypt(encoded: document.get("emotion") as? String ?? "")
+                        self.emotionStack[document.documentID] = DiaryHelper.convertCodeToEmoji(code: DiaryHelper.convertEmotionCodeToEmotion(code: data))
+                        
+                        switch data{
+                        case "HAPPY":
+                            cnts[0] += 1
+                            
+                        case "GREAT":
+                            cnts[1] += 1
+                            
+                        case "GOOD":
+                            cnts[2] += 1
+                            
+                        case "SOSO":
+                            cnts[3] += 1
+                            
+                        case "BAD":
+                            cnts[4] += 1
+                            
+                        case "SAD":
+                            cnts[5] += 1
+                            
+                        case "STAY_ALONE":
+                            cnts[6] += 1
+                            
+                        case "ANGRY":
+                            cnts[7] += 1
+                            
+                        default:
+                            break
+                        }
+                    }
+                    
+                    for i in 0..<cnts.count{
+                        self.emotionList.append(StatisticsEmotionDataModel(emotion: DiaryHelper.convertEmotionCodeToString(code: emotions[i]) ?? "", count: cnts[i]))
+                    }
+                }
+                
+                completion(true)
+                return
+            }
     }
 }

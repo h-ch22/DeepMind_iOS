@@ -34,7 +34,7 @@ struct UploadFeatureView: View {
                     
                     Spacer().frame(height : 10)
                     
-                    Text("모든 정보는 암호화되어 저장되며, 해당 정보는 사용자를 제외한 모든 사람이 조회할 수 없습니다.")
+                    Text("모든 정보는 암호화되어 저장되며, 해당 정보는 사용자와 상담을 신청한 전문가를 제외한 모든 사람이 조회할 수 없습니다.")
                         .font(.caption)
                         .foregroundStyle(Color.gray)
                     

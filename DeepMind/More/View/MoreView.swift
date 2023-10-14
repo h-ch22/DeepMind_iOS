@@ -102,21 +102,6 @@ struct MoreView: View {
                         }
                         
                         Spacer().frame(height : 20)
-                        
-                        NavigationLink(destination : EmptyView()){
-                            HStack{
-                                Image(systemName: "calendar.badge.clock")
-                                
-                                VStack(alignment : .leading){
-                                    Text("병원 예약 기록")
-                                        .foregroundColor(.txt_color)
-                                }
-                                
-                                Spacer()
-                            }.padding(20).background(RoundedRectangle(cornerRadius: 15).foregroundColor(.btn_color).shadow(radius: 2, x:0, y:2))
-                        }
-                        
-                        Spacer().frame(height : 20)
 
                         NavigationLink(destination : InfoView()){
                             HStack{

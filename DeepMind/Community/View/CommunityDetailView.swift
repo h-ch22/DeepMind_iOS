@@ -116,7 +116,6 @@ struct CommunityDetailView: View {
 
                             HStack{
                                 Image(systemName: "paperclip")
-                                    .font(.title)
                                     .foregroundStyle(Color.accent)
                                 
                                 Text(helper.fileURL!.lastPathComponent)

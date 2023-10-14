@@ -12,10 +12,12 @@ struct ConsultingChatView: View {
     let consultingData: ConsultingDataModel
     let isModal: Bool
     let mentorInfo: MentorInfoModel
+    let menteeInfo: MentorInfoModel?
+    let patientInfo: [Bool]
     
     @StateObject var userManagement: UserManagement
-    
-    @State private var helper = ChatHelper()
+    @StateObject private var helper = ChatHelper()
+
     @State private var animate = false
     @State private var msg = ""
     @State private var containerHeight : CGFloat = 0.0
@@ -26,11 +28,15 @@ struct ConsultingChatView: View {
     @State private var opponentName = ""
     @State private var showProgress = false
     @State private var endTutorial = false
-    
+    @State private var questions = ["아동학대 가해자 판정 여부", "아동학대 피해자 판정 여부", "가정폭력 가해자 판정 여부", "가정폭력 피해자 판정 여부", "정신병 및 관련 질환 진단 여부"]
+
     @State private var selectedPhotos : [PhotosPickerItem] = []
     @State private var showPhotosPicker = false
+    @State private var showStatistics = false
     
     @GestureState private var gestureOffset : CGFloat = 0
+    
+    @Environment(\.presentationMode) var presentationMode
     
     func onChange(){
         DispatchQueue.main.async{
@@ -50,6 +56,17 @@ struct ConsultingChatView: View {
             
             GeometryReader{proxy in
                 VStack {
+                    HStack{
+                        Spacer()
+                        
+                        Button(action: {
+                            self.presentationMode.wrappedValue.dismiss()
+                        }){
+                            Image(systemName: "xmark.circle.fill")
+                                .foregroundStyle(Color.gray)
+                        }
+                    }
+                    
                     ScrollViewReader{reader in
                         ScrollView{
                             VStack{
@@ -148,19 +165,7 @@ struct ConsultingChatView: View {
                                     
                                 }.padding()
                                 
-                                HStack(spacing : 15) {
-                                    Text("상담 정보")
-                                        .fontWeight(.semibold)
-                                        .foregroundColor(.white)
-                                    
-                                    Spacer()
-                                }
-                                .padding(20)
-                                
-                                Divider()
-                                    .background(Color.white)
-                                
-                                ConsultingMentorListModel(data: mentorInfo)
+                                ConsultingMentorListModel(data: userManagement.userInfo?.type == .PROFESSIONAL ? menteeInfo! : mentorInfo)
                                 
                                 Spacer().frame(height : 10)
                                 
@@ -179,29 +184,97 @@ struct ConsultingChatView: View {
                                         .foregroundStyle(Color.accentColor)
                                 }.padding(20)
                                 
-                                HStack(spacing : 15) {
-                                    Text("방문 상담 정보")
-                                        .fontWeight(.semibold)
-                                        .foregroundColor(.white)
-                                    
-                                    Spacer()
-                                }
-                                .padding(20)
-                                
-                                Divider()
-                                    .background(Color.white)
-                                
-                                if mentorInfo.hospitalLocation != nil{
-                                    ConsultingHospitalMapView(location: mentorInfo.hospitalLocation!,
-                                                              hospitalAddress: mentorInfo.hospitalAddress ?? "")
-                                    .frame(height: 250)
+                                if userManagement.userInfo?.type == .PROFESSIONAL{
+                                    HStack(spacing: 15){
+                                        Text("상담 정보")
+                                            .fontWeight(.semibold)
+                                            .foregroundColor(.white)
+                                        
+                                        Spacer()
+                                    }
                                     .padding(20)
-                                } else{
-                                    Text("등록된 병원 정보가 없습니다.")
-                                        .font(.caption)
-                                        .foregroundStyle(Color.gray)
-                                }
+                                    
+                                    Divider()
+                                        .background(Color.white)
+                                    
+                                    HStack{
+                                        Text(consultingData.message)
+                                            .foregroundColor(.white)
+                                        
+                                        Spacer()
+                                    }
+                                    
+                                    HStack(spacing: 15){
+                                        Text("환자 정보")
+                                            .fontWeight(.semibold)
+                                            .foregroundColor(.white)
+                                        
+                                        Spacer()
+                                    }
+                                    .padding(20)
+                                    
+                                    Divider()
+                                        .background(Color.white)
+                                    
+                                    if !patientInfo.isEmpty{
+                                        ForEach(questions.indices, id: \.self){ index in
+                                            Spacer().frame(height: 10)
+                                            
+                                            HStack{
+                                                Text(questions[index])
+                                                    .foregroundColor(.white)
 
+                                                Spacer()
+                                                
+                                                Text(patientInfo[index] ? "예" : "아니오")
+                                                    .fontWeight(.semibold)
+                                                    .foregroundStyle(Color.accent)
+                                            }                                    
+                                            .padding(20)
+
+                                        }
+                                    } else{
+                                        Spacer().frame(height: 10)
+
+                                        Text("환자 정보가 없습니다.")
+                                            .foregroundStyle(Color.gray)
+                                    }
+                                    
+                                    Button(action: {
+                                        self.showStatistics = true
+                                    }){
+                                        Image(systemName: "pencil.and.scribble")
+                                            .foregroundStyle(Color.accentColor)
+                                        
+                                        Text("환자 검사 결과 확인하기")
+                                            .foregroundStyle(Color.accentColor)
+                                    }.buttonStyle(BorderedButtonStyle())
+                                    
+                                } else{
+                                    HStack(spacing : 15) {
+                                        Text("방문 상담 정보")
+                                            .fontWeight(.semibold)
+                                            .foregroundColor(.white)
+                                        
+                                        Spacer()
+                                    }
+                                    .padding(20)
+                                    
+                                    Divider()
+                                        .background(Color.white)
+                                    
+                                    if mentorInfo.hospitalLocation != nil{
+                                        ConsultingHospitalMapView(location: mentorInfo.hospitalLocation!,
+                                                                  hospitalAddress: mentorInfo.hospitalAddress ?? "")
+                                        .frame(height: 250)
+                                        .padding(20)
+                                    } else{
+                                        Text("등록된 병원 정보가 없습니다.")
+                                            .font(.caption)
+                                            .foregroundStyle(Color.gray)
+                                    }
+                                }
+                                
                             }
                             .frame(maxHeight : .infinity, alignment: .top)
                         }.offset(y: height - 100)
@@ -269,6 +342,9 @@ struct ConsultingChatView: View {
             helper.sendImage(id: consultingData.id, sender: userManagement.userInfo?.UID ?? "", images: items){ _ in
                 showProgress = false
             }
+        }
+        .sheet(isPresented: $showStatistics){
+            ProStatisticsView(uid: consultingData.menteeUID)
         }
         .navigationBarTitle("채팅 상담", displayMode: .inline)
         .navigationBarHidden(!isModal)

@@ -207,13 +207,6 @@ struct InspectionResultView: View {
                         }.buttonStyle(.bordered)
                         
                         Spacer()
-                        
-                        Button(action: {}){
-                            Image(systemName: "calendar.badge.clock")
-                            Text("상담 신청")
-                        }.buttonStyle(.bordered)
-                        
-                        Spacer()
                     }
                     
                 }.padding(20)

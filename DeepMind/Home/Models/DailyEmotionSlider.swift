@@ -32,7 +32,7 @@ struct DailyEmotionSlider: View {
                 
                 HStack{
                     Circle()
-                        .foregroundStyle(Color.btn_color)
+                        .foregroundStyle(Color.white)
                         .frame(width: cursorSize, height: cursorSize)
                         .offset(x: sliderVal)
                         .gesture(

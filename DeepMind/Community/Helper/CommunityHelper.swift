@@ -191,7 +191,7 @@ class CommunityHelper: ObservableObject{
     }
     
     func getFiles(id: String, completion: @escaping(_ result: Bool?) -> Void){
-        storage.reference().child("Results/\(id)/HTP_\(id).pdf").downloadURL(){(downloadURL, error) in
+        storage.reference().child("Community/\(id)/HTP_\(id).pdf").downloadURL(){(downloadURL, error) in
             if error != nil{
                 print(error?.localizedDescription)
                 completion(false)

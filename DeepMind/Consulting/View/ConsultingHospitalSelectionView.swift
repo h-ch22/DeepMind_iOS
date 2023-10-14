@@ -80,7 +80,7 @@ struct ConsultingHospitalSelectionView: View {
                     receiver.location.removeAll()
                 }
             }
-        }
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

@@ -370,6 +370,8 @@ class InspectionHelper: ObservableObject{
     }
     
     func getInspectionHistory(completion: @escaping(_ result: Bool?) -> Void){
+        self.inspectionResults.removeAll()
+        
         self.db.collection("Inspection").document(auth.currentUser?.uid ?? "").collection("Results").getDocuments(){(querySnapshot, error) in
             if error != nil{
                 print(error?.localizedDescription)
@@ -389,8 +391,43 @@ class InspectionHelper: ObservableObject{
         }
     }
     
+    func getInspectionHistory(uid: String, completion: @escaping(_ result: [String]?) -> Void){
+        var results: [String] = []
+        
+        self.db.collection("Inspection").document(uid).collection("Results").getDocuments(){(querySnapshot, error) in
+            if error != nil{
+                print(error?.localizedDescription)
+            } else{
+                if querySnapshot != nil{
+                    for document in querySnapshot!.documents{
+                        results.append(document.documentID)
+                    }
+                }
+            }
+            
+            results.sort(by: {$0 > $1})
+            
+            completion(results)
+            return
+        }
+    }
+    
     func getFileURL(id: String, completion: @escaping(_ result: Bool?) -> Void){
         storage.reference().child("Results/\(auth.currentUser?.uid ?? "")/\(id)/\(id).pdf").downloadURL(){(downloadURL, error) in
+            if error != nil{
+                print(error?.localizedDescription)
+                completion(false)
+                return
+            }
+            
+            self.fileURL = downloadURL
+            completion(true)
+            return
+        }
+    }
+    
+    func getFileURL(uid: String, id: String, completion: @escaping(_ result: Bool?) -> Void){
+        storage.reference().child("Results/\(uid)/\(id)/\(id).pdf").downloadURL(){(downloadURL, error) in
             if error != nil{
                 print(error?.localizedDescription)
                 completion(false)

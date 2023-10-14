@@ -53,6 +53,8 @@ class ChatHelper: ObservableObject{
                         )
                     }
                     
+                    print("added: \(message)")
+                    
                     self.chatList.sort(by: {$0.sentTime < $1.sentTime})
                     
                 case .modified, .removed:

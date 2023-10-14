@@ -11,12 +11,15 @@ struct HomeView: View {
     @StateObject private var inspectionHelper = InspectionHelper()
     @StateObject private var communityHelper = CommunityHelper()
     @StateObject private var healthKitHelper = HealthDataHelper()
+    @StateObject private var consultingHelper = ConsultingHelper()
     @StateObject var userManagement: UserManagement
-
+    
     @State private var currentIndex = 0
     @State private var showDailyEmotionView = false
     @State private var showArticle = false
     @State private var selectedArticle: CommunityArticleDataModel? = nil
+    @State private var selectedConsulting: ConsultingDataModel? = nil
+    @State private var showConsultingDetailView = false
     
     let parent: TabManager
     let columns = [
@@ -115,7 +118,7 @@ struct HomeView: View {
                             Spacer().frame(height: 10)
                             
                             HStack{
-                                Text("\(DiaryHelper.convertEmotionCodeToString(code: healthKitHelper.dailyEmotion) ?? "데이터 없음")")
+                                Text("\(healthKitHelper.dailyEmotion ?? "데이터 없음")")
                                     .fontWeight(.semibold)
                                     .foregroundStyle(Color.txt_color)
                             }
@@ -152,43 +155,87 @@ struct HomeView: View {
                     
                     Spacer().frame(height: 20)
                     
-                    if userManagement.userInfo?.type == .PROFESSIONAL{
-                        HStack{
-                            Text("상담 관리")
-                                .foregroundStyle(Color.txt_color)
-                                .fontWeight(.semibold)
-                            
-                            Spacer()
-                        }
+                    HStack{
+                        Text("🗓️ 상담 관리")
+                            .foregroundStyle(Color.txt_color)
+                            .fontWeight(.semibold)
                         
-                        Spacer().frame(height: 20)
-
-                        HStack{
-                            Button(action: {}){
+                        Spacer()
+                    }
+                    
+                    Spacer().frame(height: 20)
+                    
+                    ScrollView(.horizontal){
+                        LazyHStack{
+                            ForEach(consultingHelper.reservationList, id:\.self){item in
+                                Button(action: {
+                                    selectedConsulting = item
+                                    showConsultingDetailView = true
+                                }){
+                                    HStack{
+                                        VStack{
+                                            HStack{
+                                                Text("\(item.date) \(item.time)")
+                                                    .foregroundStyle(Color.accentColor)
+                                                
+                                                Spacer()
+                                            }
+                                            
+                                            Spacer().frame(height: 5)
+                                            
+                                            HStack{
+                                                Text(userManagement.userInfo?.type == .PROFESSIONAL ? AES256Util.decrypt(encoded: item.menteeName) : item.mentorName)
+                                                    .font(.caption)
+                                                    .foregroundStyle(Color.gray)
+                                                
+                                                Spacer()
+                                                
+                                                Text("\(item.type == .INTERVIEW ? "방문 상담" : "채팅 상담")")
+                                                    .font(.caption)
+                                                    .foregroundStyle(Color.gray)
+                                            }
+                                        }
+                                    }.padding(20).frame(minHeight: 80, maxHeight: 80)
+                                        .background(RoundedRectangle(cornerRadius: 15).foregroundStyle(Color.btn).shadow(radius: 5))
+                                    
+                                    Spacer().frame(width: 10)
+                                }
+                                
+                            }
+                            
+                            Button(action: {
+                                parent.changeView(index: 1)
+                            }){
                                 HStack{
-                                    Text("더 많은 상담 관리하기")
+                                    Text("자세히 보기")
                                         .foregroundStyle(Color.txt_color)
                                         .fontWeight(.semibold)
                                     
                                     Image(systemName: "arrow.right.circle.fill")
                                         .foregroundStyle(Color.txt_color)
                                 }.padding(20)
-                                    .frame(minHeight: 80, maxHeight: 80)
+                                    .frame(minWidth: 200, maxWidth: 200, minHeight: 80, maxHeight: 80)
                                     .background(RoundedRectangle(cornerRadius: 15).foregroundStyle(Color.btn_color).shadow(radius: 5))
                             }
-                        }
-                    } else{
-                        HStack{
-                            Text("🔥 최신 커뮤니티 게시물")
-                                .foregroundStyle(Color.txt_color)
-                                .fontWeight(.semibold)
                             
                             Spacer()
                         }
+                    }
+                    
+                    Spacer().frame(height: 20)
+                    
+                    HStack{
+                        Text("🔥 최신 커뮤니티 게시물")
+                            .foregroundStyle(Color.txt_color)
+                            .fontWeight(.semibold)
                         
-                        Spacer().frame(height: 20)
-                        
-                        HStack{
+                        Spacer()
+                    }
+                    
+                    Spacer().frame(height: 20)
+                    
+                    ScrollView(.horizontal){
+                        LazyHStack{
                             ForEach(communityHelper.latestArticles, id:\.self){item in
                                 Button(action: {
                                     self.selectedArticle = item
@@ -219,6 +266,7 @@ struct HomeView: View {
                         }
                     }
                     
+                    
                 }.padding(20)
                     .onAppear{
                         healthKitHelper.requestAuthorization(){ result in
@@ -232,9 +280,15 @@ struct HomeView: View {
                         communityHelper.getLatestArticles(){ _ in }
                         
                         inspectionHelper.getLatestHistory(){_ in }
+                        
+                        if userManagement.userInfo?.type == .PROFESSIONAL{
+                            consultingHelper.getReservationList(){_ in }
+                        } else{
+                            consultingHelper.getReservationList(uid: userManagement.userInfo?.UID ?? ""){ _ in}
+                        }
+                        
                     }
                     .navigationBarHidden(true)
-                    .animation(.easeInOut)
                     .sheet(isPresented: $showDailyEmotionView){
                         AddDailyEmotionView()
                     }
@@ -244,6 +298,14 @@ struct HomeView: View {
                     ), content: {
                         if selectedArticle != nil{
                             CommunityDetailView(userManagement: userManagement, helper: communityHelper, data: selectedArticle!)
+                        }
+                    })
+                    .sheet(isPresented: Binding(
+                        get: {showConsultingDetailView},
+                        set: {showConsultingDetailView = $0}
+                    ), content: {
+                        if selectedConsulting != nil{
+                            ConsultingDetailView(helper: consultingHelper, userManagement: userManagement, data: selectedConsulting!, isDone: false, isUnRated: false, isModal: true)
                         }
                     })
             }

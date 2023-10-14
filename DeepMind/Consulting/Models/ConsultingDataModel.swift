@@ -18,8 +18,9 @@ struct ConsultingDataModel: Hashable{
     var mentorName: String
     var mentorProfile: URL?
     var menteeUID: String
+    var menteeName: String
     
-    init(id: String, message: String, date: String, time: String, mentorUID: String, imageIndex: Int, type: ConsultingMethodType, mentorName: String, mentorProfile: URL?, menteeUID: String) {
+    init(id: String, message: String, date: String, time: String, mentorUID: String, imageIndex: Int, type: ConsultingMethodType, mentorName: String, mentorProfile: URL?, menteeUID: String, menteeName: String) {
         self.id = id
         self.message = message
         self.date = date
@@ -30,5 +31,6 @@ struct ConsultingDataModel: Hashable{
         self.mentorName = mentorName
         self.mentorProfile = mentorProfile
         self.menteeUID = menteeUID
+        self.menteeName = menteeName
     }
 }

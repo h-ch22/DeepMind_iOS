@@ -184,6 +184,27 @@ class UserManagement: ObservableObject{
         }
     }
     
+    func getFeatures(uid: String, completion: @escaping(_ result: [Bool]?) -> Void){
+        var results: [Bool] = []
+        
+        db.collection("FeatureInformation").document(uid).getDocument(){(document, error) in
+            if error != nil{
+                print(error?.localizedDescription)
+            } else{
+                let isChildAbuseAttacker = document?.get(FieldPath([AES256Util.encrypt(string: "isChildAbuseAttacker")]))  as? Bool ?? false
+                let isChildAbuseVictim = document?.get(FieldPath([AES256Util.encrypt(string: "isChildAbuseVictim")]))  as? Bool ?? false
+                let isDomesticViolenceAttacker = document?.get(FieldPath([AES256Util.encrypt(string: "isDomesticViolenceAttacker")]))  as? Bool ?? false
+                let isDomesticViolenceVictim = document?.get(FieldPath([AES256Util.encrypt(string: "isDomesticViolenceAttacker")]))  as? Bool ?? false
+                let isPsychosis = document?.get(FieldPath([AES256Util.encrypt(string: "isPsychosis")])) as? Bool ?? false
+
+                results = [isChildAbuseAttacker, isChildAbuseVictim, isDomesticViolenceAttacker, isDomesticViolenceVictim, isPsychosis]
+            }
+            
+            completion(results)
+            return
+        }
+    }
+    
     func getUserInfo(completion: @escaping(_ result: Bool?) -> Void){
         if auth.currentUser?.uid ?? "" == ""{
             completion(false)

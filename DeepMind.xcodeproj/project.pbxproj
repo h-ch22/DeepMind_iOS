@@ -58,6 +58,7 @@
 		F634C6902ACBCE4F00CE3BDF /* ConsultingMethodType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F634C68F2ACBCE4F00CE3BDF /* ConsultingMethodType.swift */; };
 		F634C6942ACBE43B00CE3BDF /* ConsultingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F634C6932ACBE43B00CE3BDF /* ConsultingDetailView.swift */; };
 		F63DE0192ADAAD6900CE9E97 /* PDFViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63DE0182ADAAD6900CE9E97 /* PDFViewer.swift */; };
+		F63DE01D2ADADEA100CE9E97 /* ProStatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63DE01C2ADADEA100CE9E97 /* ProStatisticsView.swift */; };
 		F64E088B2AD4E9EF00F733B8 /* InspectionResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64E088A2AD4E9EF00F733B8 /* InspectionResultModel.swift */; };
 		F64E088D2AD4EA1500F733B8 /* InspectionSeverityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64E088C2AD4EA1500F733B8 /* InspectionSeverityModel.swift */; };
 		F64E088F2AD502A500F733B8 /* InspectionResultRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64E088E2AD502A500F733B8 /* InspectionResultRow.swift */; };
@@ -217,6 +218,7 @@
 		F634C68F2ACBCE4F00CE3BDF /* ConsultingMethodType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultingMethodType.swift; sourceTree = "<group>"; };
 		F634C6932ACBE43B00CE3BDF /* ConsultingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultingDetailView.swift; sourceTree = "<group>"; };
 		F63DE0182ADAAD6900CE9E97 /* PDFViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewer.swift; sourceTree = "<group>"; };
+		F63DE01C2ADADEA100CE9E97 /* ProStatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProStatisticsView.swift; sourceTree = "<group>"; };
 		F64E088A2AD4E9EF00F733B8 /* InspectionResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectionResultModel.swift; sourceTree = "<group>"; };
 		F64E088C2AD4EA1500F733B8 /* InspectionSeverityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectionSeverityModel.swift; sourceTree = "<group>"; };
 		F64E088E2AD502A500F733B8 /* InspectionResultRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectionResultRow.swift; sourceTree = "<group>"; };
@@ -501,6 +503,7 @@
 			isa = PBXGroup;
 			children = (
 				F6344B2D2A76307A00FA3440 /* StatisticsView.swift */,
+				F63DE01C2ADADEA100CE9E97 /* ProStatisticsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1094,6 +1097,7 @@
 				F695A2CA2ACA7B7D007A3769 /* ConsultingHospitalSelectionView.swift in Sources */,
 				F62572692ACD3A4F00332661 /* AutoSizingTextField.swift in Sources */,
 				F677CE3E2AC9C1FD0082DDA7 /* ConsultingProView.swift in Sources */,
+				F63DE01D2ADADEA100CE9E97 /* ProStatisticsView.swift in Sources */,
 				F69F94052AA8606A002EE0A3 /* CommonAlertModel.swift in Sources */,
 				F6559DF22A76174A00C1207A /* CheckBox.swift in Sources */,
 				F625725F2ACD349900332661 /* ChatBubbleShape.swift in Sources */,

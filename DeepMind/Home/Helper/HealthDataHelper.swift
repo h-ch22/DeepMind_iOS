@@ -12,8 +12,10 @@ import Firebase
 class HealthDataHelper: ObservableObject{
     @Published var dayLightTime: Double = 0
     @Published var excerciseDistance: Double = 0
-    @Published var dailyEmotion: DiaryEmotionModel? = nil
+    @Published var dailyEmotion: String? = nil
     @Published var dailyEmotionTime: String? = nil
+    @Published var emotionList: [StatisticsEmotionDataModel] = []
+    @Published var emotionStack: [String: String] = [:]
     
     private let healthStore = HKHealthStore()
     private let db = Firestore.firestore()
@@ -58,7 +60,7 @@ class HealthDataHelper: ObservableObject{
         let predicate = HKQuery.predicateForSamples(withStart: startDate, end: current, options: .strictStartDate)
         
         let query = HKStatisticsQuery(quantityType: distanceWalkingRunningType,
-                                        quantitySamplePredicate: predicate,
+                                      quantitySamplePredicate: predicate,
                                       options: .cumulativeSum){(_, result, error) in
             var distance: Double = 0
             
@@ -84,7 +86,7 @@ class HealthDataHelper: ObservableObject{
         let predicate = HKQuery.predicateForSamples(withStart: startDate, end: current, options:. strictStartDate)
         
         let query = HKStatisticsQuery(quantityType: dayLightType,
-                                    quantitySamplePredicate: predicate,
+                                      quantitySamplePredicate: predicate,
                                       options: .cumulativeSum){(_, result, error) in
             var time: Double = 0
             
@@ -102,19 +104,82 @@ class HealthDataHelper: ObservableObject{
     
     private func getDailyEmotion(){
         db.collection("Users").document(auth.currentUser?.uid ?? "")
-            .collection("DailyEmotion").limit(to: 1).getDocuments(){(querySnapshot, error) in
+            .collection("DailyEmotion").getDocuments(){(querySnapshot, error) in
                 if error != nil{
                     print(error?.localizedDescription)
                     return
                 } else{
-                    for document in querySnapshot!.documents{
+                    if querySnapshot != nil && !querySnapshot!.isEmpty{
+                        let document = querySnapshot!.documents[querySnapshot!.documents.count-1]
                         let time = document.documentID
                         let data = document.get("emotion") as? String ?? ""
                         
-                        self.dailyEmotion = DiaryHelper.convertEmotionCodeToEmotion(code: data)
+                        self.dailyEmotion = DiaryHelper.convertCodeToEmoji(code: DiaryHelper.convertEmotionCodeToEmotion(code: AES256Util.decrypt(encoded: document.get("emotion") as? String ?? "")))
                         self.dailyEmotionTime = time
                     }
                 }
+                
+                return
+            }
+    }
+    
+    func getDailyEmotionList(completion: @escaping(_ result: Bool?) -> Void){
+        self.emotionStack.removeAll()
+        self.emotionList.removeAll()
+        
+        var cnts = Array(repeating: 0, count: 8)
+        var emotions: [DiaryEmotionModel] = [.HAPPY, .GREAT, .GOOD, .SOSO, .BAD, .SAD, .STAY_ALONE, .ANGRY]
+        
+        db.collection("Users").document(auth.currentUser?.uid ?? "")
+            .collection("DailyEmotion").getDocuments(){(querySnapshot, error) in
+                if error != nil{
+                    print(error?.localizedDescription)
+                    completion(false)
+                    return
+                }
+                
+                if querySnapshot != nil{
+                    for document in querySnapshot!.documents{
+                        let data = AES256Util.decrypt(encoded: document.get("emotion") as? String ?? "")
+                        self.emotionStack[document.documentID] = DiaryHelper.convertCodeToEmoji(code: DiaryHelper.convertEmotionCodeToEmotion(code: data))
+                        
+                        switch data{
+                        case "HAPPY":
+                            cnts[0] += 1
+                            
+                        case "GREAT":
+                            cnts[1] += 1
+                            
+                        case "GOOD":
+                            cnts[2] += 1
+                            
+                        case "SOSO":
+                            cnts[3] += 1
+                            
+                        case "BAD":
+                            cnts[4] += 1
+                            
+                        case "SAD":
+                            cnts[5] += 1
+                            
+                        case "STAY_ALONE":
+                            cnts[6] += 1
+                            
+                        case "ANGRY":
+                            cnts[7] += 1
+                            
+                        default:
+                            break
+                        }
+                        
+                        for i in 0..<cnts.count{
+                            self.emotionList.append(StatisticsEmotionDataModel(emotion: DiaryHelper.convertEmotionCodeToString(code: emotions[i]) ?? "", count: cnts[i]))
+                        }
+                    }
+                }
+                
+                completion(true)
+                return
             }
     }
     
@@ -124,7 +189,7 @@ class HealthDataHelper: ObservableObject{
         
         db.collection("Users").document(auth.currentUser?.uid ?? "")
             .collection("DailyEmotion").document(dateFormatter.string(from: Date())).setData([
-                "emotion": DiaryHelper.convertEmotionCodeToString(code: emotion)
+                "emotion": AES256Util.encrypt(string: emotion.description)
             ]){error in
                 if error != nil{
                     print(error?.localizedDescription)
@@ -134,6 +199,83 @@ class HealthDataHelper: ObservableObject{
                 
                 completion(true)
                 return
+            }
+    }
+    
+    func getEmotionList(uid: String, completion: @escaping(_ result: [StatisticsEmotionDataModel]?) -> Void){
+        var emotionList: [StatisticsEmotionDataModel] = []
+        var cnts = [Int](repeating: 0, count: 8)
+        var emotions: [DiaryEmotionModel] = [.HAPPY, .GREAT, .GOOD, .SOSO, .BAD, .SAD, .STAY_ALONE, .ANGRY]
+        
+        db.collection("Users").document(uid)
+            .collection("DailyEmotion").getDocuments(){(querySnapshot, error) in
+                if error != nil{
+                    print(error?.localizedDescription)
+                } else{
+                    if querySnapshot != nil{
+                        for document in querySnapshot!.documents{
+                            let data = AES256Util.decrypt(encoded: document.get("emotion") as? String ?? "")
+                            
+                            switch data{
+                            case "HAPPY":
+                                cnts[0] += 1
+                                
+                            case "GREAT":
+                                cnts[1] += 1
+                                
+                            case "GOOD":
+                                cnts[2] += 1
+                                
+                            case "SOSO":
+                                cnts[3] += 1
+                                
+                            case "BAD":
+                                cnts[4] += 1
+                                
+                            case "SAD":
+                                cnts[5] += 1
+                                
+                            case "STAY_ALONE":
+                                cnts[6] += 1
+                                
+                            case "ANGRY":
+                                cnts[7] += 1
+                                
+                            default:
+                                break
+                            }
+                        }
+                        
+                        for i in 0..<cnts.count{
+                            emotionList.append(StatisticsEmotionDataModel(emotion: DiaryHelper.convertEmotionCodeToString(code: emotions[i]) ?? "", count: cnts[i]))
+                        }
+                    }
+                }
+                
+                completion(emotionList)
+                return
+            }
+    }
+    
+    func getEmotionStack(uid: String, completion: @escaping(_ result: [String:String]?) -> Void){
+        var emotionStack: [String:String] = [:]
+        
+        db.collection("Users").document(uid)
+            .collection("DailyEmotion").getDocuments(){(querySnapshot, error) in
+                
+                if error != nil{
+                    print(error?.localizedDescription)
+                } else{
+                    if querySnapshot != nil{
+                        for document in querySnapshot!.documents{
+                            let data = AES256Util.decrypt(encoded: document.get("emotion") as? String ?? "")
+                            emotionStack[document.documentID] = DiaryHelper.convertCodeToEmoji(code: DiaryHelper.convertEmotionCodeToEmotion(code: data))
+                        }
+                    }
+                    
+                    completion(emotionStack)
+                    return
+                }
             }
     }
 }

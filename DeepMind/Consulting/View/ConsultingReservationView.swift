@@ -179,25 +179,14 @@ struct ConsultingReservationView: View {
                             
                             Spacer().frame(height: 10)
                             
-                            HStack{
-                                Button(action: {
-                                    showPhotosPicker = true
-                                }){
-                                    HStack{
-                                        Image(systemName: "photo.fill")
-                                        Text("이미지 추가")
-                                    }
-                                }.buttonStyle(.bordered)
-                                
-                                Spacer()
-                                
-                                Button(action: {}){
-                                    HStack{
-                                        Image(systemName: "pencil.and.scribble")
-                                        Text("HTP 검사 결과 추가")
-                                    }
-                                }.buttonStyle(.bordered)
-                            }
+                            Button(action: {
+                                showPhotosPicker = true
+                            }){
+                                HStack{
+                                    Image(systemName: "photo.fill")
+                                    Text("이미지 추가")
+                                }
+                            }.buttonStyle(.bordered)
                             
                             if selectedType == .INTERVIEW{
                                 Spacer().frame(height: 20)
@@ -283,7 +272,7 @@ struct ConsultingReservationView: View {
                                     let dateFormatter = DateFormatter()
                                     dateFormatter.dateFormat = "yyyy. MM. dd."
                                     
-                                    helper.reserveConsulting(mentorName: data.mentorName, date: dateFormatter.string(from: date), time: selectedTime, message: message, type: selectedType, images: imageData, uid: userManagement.userInfo?.UID ?? "", mentorUID: data.mentorUID){ result in
+                                    helper.reserveConsulting(mentorName: data.mentorName, menteeName: userManagement.userInfo?.name ?? "", date: dateFormatter.string(from: date), time: selectedTime, message: message, type: selectedType, images: imageData, uid: userManagement.userInfo?.UID ?? "", mentorUID: data.mentorUID){ result in
                                         guard let result = result else{return}
                                         
                                         if result{
