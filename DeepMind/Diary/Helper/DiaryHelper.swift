@@ -8,6 +8,7 @@
 import Firebase
 import FirebaseFirestore
 import FirebaseStorage
+import FirebaseAuth
 
 class DiaryHelper: ObservableObject{
     @Published var diaryList: [DiaryContentsModel] = []

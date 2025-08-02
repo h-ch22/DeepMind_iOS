@@ -122,9 +122,13 @@ struct InspectionView: View {
                     
                 }.padding(20).navigationTitle(Text("HTP 검사 시작하기"))
                     .toolbar(content: {
-                        Button("닫기"){
-                            self.presentationMode.wrappedValue.dismiss()
-                        }
+                        ToolbarItem(placement: .topBarLeading, content: {
+                            Button(action: {
+                                self.presentationMode.wrappedValue.dismiss()
+                            }){
+                                Image(systemName: "xmark")
+                            }
+                        })
                     })
                     .fullScreenCover(isPresented: $showDrawingView, content: {
                         DrawingView()

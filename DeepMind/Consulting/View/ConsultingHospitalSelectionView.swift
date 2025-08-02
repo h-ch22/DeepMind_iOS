@@ -43,8 +43,10 @@ struct ConsultingHospitalSelectionView: View {
 
                 }.toolbar{
                     ToolbarItemGroup(placement: .topBarLeading, content: {
-                        Button("닫기"){
+                        Button(action: {
                             self.presentationMode.wrappedValue.dismiss()
+                        }){
+                            Image(systemName: "xmark")
                         }
                     })
                     

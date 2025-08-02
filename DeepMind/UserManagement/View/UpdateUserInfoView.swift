@@ -105,8 +105,10 @@ struct UpdateUserInfoView: View {
                 }.padding(20)
                     .toolbar{
                         ToolbarItem(placement: .topBarLeading, content: {
-                            Button("닫기"){
+                            Button(action: {
                                 self.presentationMode.wrappedValue.dismiss()
+                            }){
+                                Image(systemName: "xmark")
                             }
                         })
                         

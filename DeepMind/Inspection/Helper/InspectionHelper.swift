@@ -10,6 +10,7 @@ import UIKit
 import Accelerate
 import Vision
 import Firebase
+import FirebaseAuth
 import FirebaseFirestore
 import FirebaseStorage
 import PDFKit

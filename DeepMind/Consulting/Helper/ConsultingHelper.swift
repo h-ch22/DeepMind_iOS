@@ -9,6 +9,7 @@ import Foundation
 import FirebaseFirestore
 import FirebaseStorage
 import Firebase
+import FirebaseAuth
 
 class ConsultingHelper: ObservableObject{
     @Published var mentorInfo: MentorInfoModel? = nil

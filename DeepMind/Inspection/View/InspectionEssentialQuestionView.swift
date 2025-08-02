@@ -344,8 +344,10 @@ struct InspectionEssentialQuestionView: View {
             }.navigationTitle(Text("필수 문답"))
                 .toolbar{
                     ToolbarItemGroup(placement: .topBarLeading, content: {
-                        Button("닫기"){
+                        Button(action: {
                             self.presentationMode.wrappedValue.dismiss()
+                        }){
+                            Image(systemName: "xmark")
                         }
                     })
                     

@@ -134,11 +134,11 @@ struct DetectionResultsView: View {
             }
         }.navigationTitle(Text("오브젝트 검출 결과"))
             .toolbar{
-                ToolbarItemGroup(placement: .topBarTrailing, content: {
-                    Button(action:{
+                ToolbarItemGroup(placement: .topBarLeading, content: {
+                    Button(action: {
                         self.presentationMode.wrappedValue.dismiss()
                     }){
-                        Text("닫기")
+                        Image(systemName: "xmark")
                     }
                 })
             }

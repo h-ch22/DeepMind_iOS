@@ -7,9 +7,36 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D7B527BDB74A09822C34D8D /* Pods_DeepMind_DeepMindUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5023A7A656F0F73D8A0A2000 /* Pods_DeepMind_DeepMindUITests.framework */; };
-		99B45826D4D1408E46FF93C5 /* Pods_DeepMindTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A86EBC7A27D6F3096B86F37 /* Pods_DeepMindTests.framework */; };
-		D605BB031990AC15A7990683 /* Pods_DeepMind.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62A38D4962023D1ECFDC5FFE /* Pods_DeepMind.framework */; };
+		7BE554302E3E588200C22731 /* CL03.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 7BE5542F2E3E588200C22731 /* CL03.mlpackage */; };
+		7BE554322E3E588800C22731 /* CL02.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 7BE554312E3E588800C22731 /* CL02.mlpackage */; };
+		7BE554342E3E588E00C22731 /* CL01.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 7BE554332E3E588E00C22731 /* CL01.mlpackage */; };
+		7BE554372E3E597700C22731 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 7BE554362E3E597700C22731 /* FirebaseAnalytics */; };
+		7BE554392E3E597700C22731 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 7BE554382E3E597700C22731 /* FirebaseAuth */; };
+		7BE5543B2E3E597700C22731 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 7BE5543A2E3E597700C22731 /* FirebaseFirestore */; };
+		7BE5543D2E3E597700C22731 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 7BE5543C2E3E597700C22731 /* FirebaseStorage */; };
+		7BE554582E3E5A0400C22731 /* CheckBox_w.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE5544C2E3E5A0400C22731 /* CheckBox_w.swift */; };
+		7BE554592E3E5A0400C22731 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE554512E3E5A0400C22731 /* RadioButton.swift */; };
+		7BE5545A2E3E5A0400C22731 /* FittingFontSizeModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE5543F2E3E5A0400C22731 /* FittingFontSizeModifier.swift */; };
+		7BE5545B2E3E5A0400C22731 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE554472E3E5A0400C22731 /* KeyboardView.swift */; };
+		7BE5545C2E3E5A0400C22731 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE554532E3E5A0400C22731 /* SplashView.swift */; };
+		7BE5545D2E3E5A0400C22731 /* LinkPreviewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE554482E3E5A0400C22731 /* LinkPreviewRow.swift */; };
+		7BE5545E2E3E5A0400C22731 /* ViewSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE554552E3E5A0400C22731 /* ViewSizeCalculator.swift */; };
+		7BE5545F2E3E5A0400C22731 /* TabManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE554542E3E5A0400C22731 /* TabManager.swift */; };
+		7BE554602E3E5A0400C22731 /* LAHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE554412E3E5A0400C22731 /* LAHelper.swift */; };
+		7BE554612E3E5A0400C22731 /* KeyboardResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE554402E3E5A0400C22731 /* KeyboardResponder.swift */; };
+		7BE554622E3E5A0400C22731 /* AutoSizingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE554432E3E5A0400C22731 /* AutoSizingTextField.swift */; };
+		7BE554632E3E5A0400C22731 /* PDFViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE5544F2E3E5A0400C22731 /* PDFViewer.swift */; };
+		7BE554642E3E5A0400C22731 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE5544B2E3E5A0400C22731 /* CheckBox.swift */; };
+		7BE554652E3E5A0400C22731 /* RadioButtonGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE554522E3E5A0400C22731 /* RadioButtonGroup.swift */; };
+		7BE554662E3E5A0400C22731 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE5544A2E3E5A0400C22731 /* ActivityViewController.swift */; };
+		7BE554672E3E5A0400C22731 /* ProcessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE554502E3E5A0400C22731 /* ProcessView.swift */; };
+		7BE554682E3E5A0400C22731 /* DeepMindApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE5544D2E3E5A0400C22731 /* DeepMindApp.swift */; };
+		7BE554692E3E5A0400C22731 /* CommonAlertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE554452E3E5A0400C22731 /* CommonAlertModel.swift */; };
+		7BE5546A2E3E5A0400C22731 /* CustomCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE554462E3E5A0400C22731 /* CustomCorner.swift */; };
+		7BE5546B2E3E5A0400C22731 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE554442E3E5A0400C22731 /* BlurView.swift */; };
+		7BE5546C2E3E5A0400C22731 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE5544E2E3E5A0400C22731 /* ImagePicker.swift */; };
+		7BE5546E2E3E5A0D00C22731 /* AES256Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE5546D2E3E5A0B00C22731 /* AES256Util.swift */; };
+		7BE554712E3E5A6700C22731 /* NMapsMap in Frameworks */ = {isa = PBXBuildFile; productRef = 7BE554702E3E5A6700C22731 /* NMapsMap */; };
 		F60A10A42AA5C62400FA9AD9 /* CommunityMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60A10A32AA5C62400FA9AD9 /* CommunityMainView.swift */; };
 		F60A10A72AA5C63700FA9AD9 /* CommunityArticleDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60A10A62AA5C63700FA9AD9 /* CommunityArticleDataModel.swift */; };
 		F60A10A92AA5C67300FA9AD9 /* CommunityCommentDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60A10A82AA5C67300FA9AD9 /* CommunityCommentDataModel.swift */; };
@@ -75,12 +102,6 @@
 		F6559DCA2A76085100C1207A /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6559DC92A76085100C1207A /* SplashView.swift */; };
 		F6559DCC2A76093900C1207A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F6559DCB2A76093900C1207A /* GoogleService-Info.plist */; };
 		F6559DCF2A760A1B00C1207A /* AES256Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6559DCE2A760A1B00C1207A /* AES256Util.swift */; };
-		F6559DD22A760BE700C1207A /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = F6559DD12A760BE700C1207A /* FirebaseAnalytics */; };
-		F6559DD42A760BE700C1207A /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = F6559DD32A760BE700C1207A /* FirebaseAuth */; };
-		F6559DD62A760BE700C1207A /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = F6559DD52A760BE700C1207A /* FirebaseFirestore */; };
-		F6559DD82A760BE700C1207A /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = F6559DD72A760BE700C1207A /* FirebaseFunctions */; };
-		F6559DDA2A760BE700C1207A /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = F6559DD92A760BE700C1207A /* FirebaseMessaging */; };
-		F6559DDC2A760BE700C1207A /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = F6559DDB2A760BE700C1207A /* FirebaseStorage */; };
 		F6559DDF2A760D0600C1207A /* CryptoSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F6559DDE2A760D0600C1207A /* CryptoSwift */; };
 		F6559DE42A76104100C1207A /* UserManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6559DE32A76104100C1207A /* UserManagement.swift */; };
 		F6559DE72A76105A00C1207A /* UserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6559DE62A76105A00C1207A /* UserInfoModel.swift */; };
@@ -95,9 +116,6 @@
 		F6559DFF2A762C4700C1207A /* UploadFeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6559DFE2A762C4700C1207A /* UploadFeatureView.swift */; };
 		F6559E012A762D6300C1207A /* FeatureSeverityOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6559E002A762D6300C1207A /* FeatureSeverityOption.swift */; };
 		F674751B2A84A2DF006471CA /* Detection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F674751A2A84A2DF006471CA /* Detection.swift */; };
-		F674751D2A84AF86006471CA /* CL01.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = F674751C2A84AF86006471CA /* CL01.mlpackage */; };
-		F674751F2A84AF8F006471CA /* CL02.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = F674751E2A84AF8F006471CA /* CL02.mlpackage */; };
-		F67475212A84AF95006471CA /* CL03.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = F67475202A84AF95006471CA /* CL03.mlpackage */; };
 		F67475232A84B922006471CA /* DetectionResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67475222A84B922006471CA /* DetectionResultsView.swift */; };
 		F677CE2D2AC9A4580082DDA7 /* CommunityWrittenArticleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F677CE2C2AC9A4580082DDA7 /* CommunityWrittenArticleListView.swift */; };
 		F677CE2F2AC9AAD30082DDA7 /* CommunityUserDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F677CE2E2AC9AAD30082DDA7 /* CommunityUserDataModel.swift */; };
@@ -160,15 +178,31 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1CDE3D0D18154C9166B0027E /* Pods-DeepMindTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeepMindTests.debug.xcconfig"; path = "Target Support Files/Pods-DeepMindTests/Pods-DeepMindTests.debug.xcconfig"; sourceTree = "<group>"; };
-		3A86EBC7A27D6F3096B86F37 /* Pods_DeepMindTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DeepMindTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		49E0E7189FF56824B33F9B4A /* Pods-DeepMind.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeepMind.release.xcconfig"; path = "Target Support Files/Pods-DeepMind/Pods-DeepMind.release.xcconfig"; sourceTree = "<group>"; };
-		5023A7A656F0F73D8A0A2000 /* Pods_DeepMind_DeepMindUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DeepMind_DeepMindUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		62A38D4962023D1ECFDC5FFE /* Pods_DeepMind.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DeepMind.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7B5B5AEEE4635B637EEA09E1 /* Pods-DeepMind-DeepMindUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeepMind-DeepMindUITests.debug.xcconfig"; path = "Target Support Files/Pods-DeepMind-DeepMindUITests/Pods-DeepMind-DeepMindUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		A015F2EF1E564B9F6C2B72B3 /* Pods-DeepMind.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeepMind.debug.xcconfig"; path = "Target Support Files/Pods-DeepMind/Pods-DeepMind.debug.xcconfig"; sourceTree = "<group>"; };
-		AD081408EE4DA75EA345B635 /* Pods-DeepMind-DeepMindUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeepMind-DeepMindUITests.release.xcconfig"; path = "Target Support Files/Pods-DeepMind-DeepMindUITests/Pods-DeepMind-DeepMindUITests.release.xcconfig"; sourceTree = "<group>"; };
-		E4B1B1D7847D50999DF75A1D /* Pods-DeepMindTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeepMindTests.release.xcconfig"; path = "Target Support Files/Pods-DeepMindTests/Pods-DeepMindTests.release.xcconfig"; sourceTree = "<group>"; };
+		7BE5542F2E3E588200C22731 /* CL03.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = CL03.mlpackage; sourceTree = "<group>"; };
+		7BE554312E3E588800C22731 /* CL02.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = CL02.mlpackage; sourceTree = "<group>"; };
+		7BE554332E3E588E00C22731 /* CL01.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = CL01.mlpackage; sourceTree = "<group>"; };
+		7BE5543F2E3E5A0400C22731 /* FittingFontSizeModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FittingFontSizeModifier.swift; sourceTree = "<group>"; };
+		7BE554402E3E5A0400C22731 /* KeyboardResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponder.swift; sourceTree = "<group>"; };
+		7BE554412E3E5A0400C22731 /* LAHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LAHelper.swift; sourceTree = "<group>"; };
+		7BE554432E3E5A0400C22731 /* AutoSizingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoSizingTextField.swift; sourceTree = "<group>"; };
+		7BE554442E3E5A0400C22731 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
+		7BE554452E3E5A0400C22731 /* CommonAlertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonAlertModel.swift; sourceTree = "<group>"; };
+		7BE554462E3E5A0400C22731 /* CustomCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCorner.swift; sourceTree = "<group>"; };
+		7BE554472E3E5A0400C22731 /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
+		7BE554482E3E5A0400C22731 /* LinkPreviewRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkPreviewRow.swift; sourceTree = "<group>"; };
+		7BE5544A2E3E5A0400C22731 /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
+		7BE5544B2E3E5A0400C22731 /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
+		7BE5544C2E3E5A0400C22731 /* CheckBox_w.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox_w.swift; sourceTree = "<group>"; };
+		7BE5544D2E3E5A0400C22731 /* DeepMindApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepMindApp.swift; sourceTree = "<group>"; };
+		7BE5544E2E3E5A0400C22731 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		7BE5544F2E3E5A0400C22731 /* PDFViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewer.swift; sourceTree = "<group>"; };
+		7BE554502E3E5A0400C22731 /* ProcessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessView.swift; sourceTree = "<group>"; };
+		7BE554512E3E5A0400C22731 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
+		7BE554522E3E5A0400C22731 /* RadioButtonGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonGroup.swift; sourceTree = "<group>"; };
+		7BE554532E3E5A0400C22731 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		7BE554542E3E5A0400C22731 /* TabManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabManager.swift; sourceTree = "<group>"; };
+		7BE554552E3E5A0400C22731 /* ViewSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSizeCalculator.swift; sourceTree = "<group>"; };
+		7BE5546D2E3E5A0B00C22731 /* AES256Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AES256Util.swift; sourceTree = "<group>"; };
 		F60A10A32AA5C62400FA9AD9 /* CommunityMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityMainView.swift; sourceTree = "<group>"; };
 		F60A10A62AA5C63700FA9AD9 /* CommunityArticleDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityArticleDataModel.swift; sourceTree = "<group>"; };
 		F60A10A82AA5C67300FA9AD9 /* CommunityCommentDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityCommentDataModel.swift; sourceTree = "<group>"; };
@@ -251,9 +285,6 @@
 		F6559DFE2A762C4700C1207A /* UploadFeatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadFeatureView.swift; sourceTree = "<group>"; };
 		F6559E002A762D6300C1207A /* FeatureSeverityOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureSeverityOption.swift; sourceTree = "<group>"; };
 		F674751A2A84A2DF006471CA /* Detection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detection.swift; sourceTree = "<group>"; };
-		F674751C2A84AF86006471CA /* CL01.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = CL01.mlpackage; sourceTree = "<group>"; };
-		F674751E2A84AF8F006471CA /* CL02.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = CL02.mlpackage; sourceTree = "<group>"; };
-		F67475202A84AF95006471CA /* CL03.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = CL03.mlpackage; sourceTree = "<group>"; };
 		F67475222A84B922006471CA /* DetectionResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectionResultsView.swift; sourceTree = "<group>"; };
 		F677CE2C2AC9A4580082DDA7 /* CommunityWrittenArticleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityWrittenArticleListView.swift; sourceTree = "<group>"; };
 		F677CE2E2AC9AAD30082DDA7 /* CommunityUserDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityUserDataModel.swift; sourceTree = "<group>"; };
@@ -303,15 +334,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6F642242AB2050C0009A554 /* Alamofire in Frameworks */,
-				F6559DD22A760BE700C1207A /* FirebaseAnalytics in Frameworks */,
-				F6559DD42A760BE700C1207A /* FirebaseAuth in Frameworks */,
-				F6559DDA2A760BE700C1207A /* FirebaseMessaging in Frameworks */,
-				F6559DD62A760BE700C1207A /* FirebaseFirestore in Frameworks */,
-				F6559DD82A760BE700C1207A /* FirebaseFunctions in Frameworks */,
-				F6559DDC2A760BE700C1207A /* FirebaseStorage in Frameworks */,
+				7BE554392E3E597700C22731 /* FirebaseAuth in Frameworks */,
 				F6F642272AB205370009A554 /* SwiftyJSON in Frameworks */,
+				7BE554372E3E597700C22731 /* FirebaseAnalytics in Frameworks */,
+				7BE5543D2E3E597700C22731 /* FirebaseStorage in Frameworks */,
+				7BE554712E3E5A6700C22731 /* NMapsMap in Frameworks */,
 				F6559DDF2A760D0600C1207A /* CryptoSwift in Frameworks */,
-				D605BB031990AC15A7990683 /* Pods_DeepMind.framework in Frameworks */,
+				7BE5543B2E3E597700C22731 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,7 +348,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				99B45826D4D1408E46FF93C5 /* Pods_DeepMindTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,34 +355,73 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D7B527BDB74A09822C34D8D /* Pods_DeepMind_DeepMindUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		589240861A2E4CA053AD3A85 /* Pods */ = {
+		7B8DC8922E3E4CAC00456CE3 /* Include */ = {
 			isa = PBXGroup;
 			children = (
-				A015F2EF1E564B9F6C2B72B3 /* Pods-DeepMind.debug.xcconfig */,
-				49E0E7189FF56824B33F9B4A /* Pods-DeepMind.release.xcconfig */,
-				7B5B5AEEE4635B637EEA09E1 /* Pods-DeepMind-DeepMindUITests.debug.xcconfig */,
-				AD081408EE4DA75EA345B635 /* Pods-DeepMind-DeepMindUITests.release.xcconfig */,
-				1CDE3D0D18154C9166B0027E /* Pods-DeepMindTests.debug.xcconfig */,
-				E4B1B1D7847D50999DF75A1D /* Pods-DeepMindTests.release.xcconfig */,
+				7BE5542F2E3E588200C22731 /* CL03.mlpackage */,
+				7BE554312E3E588800C22731 /* CL02.mlpackage */,
+				7BE554332E3E588E00C22731 /* CL01.mlpackage */,
 			);
-			path = Pods;
+			path = Include;
 			sourceTree = "<group>";
 		};
-		D79A985B7608439822CEE89A /* Frameworks */ = {
+		7BE554422E3E5A0400C22731 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				62A38D4962023D1ECFDC5FFE /* Pods_DeepMind.framework */,
-				5023A7A656F0F73D8A0A2000 /* Pods_DeepMind_DeepMindUITests.framework */,
-				3A86EBC7A27D6F3096B86F37 /* Pods_DeepMindTests.framework */,
+				7BE5546D2E3E5A0B00C22731 /* AES256Util.swift */,
+				7BE5543F2E3E5A0400C22731 /* FittingFontSizeModifier.swift */,
+				7BE554402E3E5A0400C22731 /* KeyboardResponder.swift */,
+				7BE554412E3E5A0400C22731 /* LAHelper.swift */,
 			);
-			name = Frameworks;
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		7BE554492E3E5A0400C22731 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7BE554432E3E5A0400C22731 /* AutoSizingTextField.swift */,
+				7BE554442E3E5A0400C22731 /* BlurView.swift */,
+				7BE554452E3E5A0400C22731 /* CommonAlertModel.swift */,
+				7BE554462E3E5A0400C22731 /* CustomCorner.swift */,
+				7BE554472E3E5A0400C22731 /* KeyboardView.swift */,
+				7BE554482E3E5A0400C22731 /* LinkPreviewRow.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7BE554562E3E5A0400C22731 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7BE5544A2E3E5A0400C22731 /* ActivityViewController.swift */,
+				7BE5544B2E3E5A0400C22731 /* CheckBox.swift */,
+				7BE5544C2E3E5A0400C22731 /* CheckBox_w.swift */,
+				7BE5544D2E3E5A0400C22731 /* DeepMindApp.swift */,
+				7BE5544E2E3E5A0400C22731 /* ImagePicker.swift */,
+				7BE5544F2E3E5A0400C22731 /* PDFViewer.swift */,
+				7BE554502E3E5A0400C22731 /* ProcessView.swift */,
+				7BE554512E3E5A0400C22731 /* RadioButton.swift */,
+				7BE554522E3E5A0400C22731 /* RadioButtonGroup.swift */,
+				7BE554532E3E5A0400C22731 /* SplashView.swift */,
+				7BE554542E3E5A0400C22731 /* TabManager.swift */,
+				7BE554552E3E5A0400C22731 /* ViewSizeCalculator.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7BE554572E3E5A0400C22731 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7BE554422E3E5A0400C22731 /* Helper */,
+				7BE554492E3E5A0400C22731 /* Models */,
+				7BE554562E3E5A0400C22731 /* View */,
+			);
+			path = Frameworks;
 			sourceTree = "<group>";
 		};
 		F60A10A12AA5C61900FA9AD9 /* Community */ = {
@@ -564,8 +631,6 @@
 				F6559DAD2A7607DF00C1207A /* DeepMindTests */,
 				F6559DB72A7607DF00C1207A /* DeepMindUITests */,
 				F6559D9B2A7607DC00C1207A /* Products */,
-				589240861A2E4CA053AD3A85 /* Pods */,
-				D79A985B7608439822CEE89A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -582,12 +647,13 @@
 		F6559D9C2A7607DC00C1207A /* DeepMind */ = {
 			isa = PBXGroup;
 			children = (
+				7BE554572E3E5A0400C22731 /* Frameworks */,
+				7B8DC8922E3E4CAC00456CE3 /* Include */,
 				F677CE382AC9C1960082DDA7 /* Consulting */,
 				F6FD5E432AC860FB002498F9 /* DeepMind.entitlements */,
 				F60A10A12AA5C61900FA9AD9 /* Community */,
 				F62753902A80A806008104B5 /* Info.plist */,
 				F627538D2A80A797008104B5 /* fonts */,
-				F6974C062A78C2AC00BCEB07 /* include */,
 				F6344B1F2A76304000FA3440 /* Home */,
 				F6344B232A76304A00FA3440 /* Diary */,
 				F6344B272A76305500FA3440 /* Inspection */,
@@ -779,16 +845,6 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		F6974C062A78C2AC00BCEB07 /* include */ = {
-			isa = PBXGroup;
-			children = (
-				F674751C2A84AF86006471CA /* CL01.mlpackage */,
-				F674751E2A84AF8F006471CA /* CL02.mlpackage */,
-				F67475202A84AF95006471CA /* CL03.mlpackage */,
-			);
-			path = include;
-			sourceTree = "<group>";
-		};
 		F69F94032AA86063002EE0A3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -834,11 +890,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F6559DBE2A7607DF00C1207A /* Build configuration list for PBXNativeTarget "DeepMind" */;
 			buildPhases = (
-				C3717B8C7A1F64F9371C0F9B /* [CP] Check Pods Manifest.lock */,
 				F6559D962A7607DC00C1207A /* Sources */,
 				F6559D972A7607DC00C1207A /* Frameworks */,
 				F6559D982A7607DC00C1207A /* Resources */,
-				947696D8BF03242B1DD92BBD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -846,15 +900,14 @@
 			);
 			name = DeepMind;
 			packageProductDependencies = (
-				F6559DD12A760BE700C1207A /* FirebaseAnalytics */,
-				F6559DD32A760BE700C1207A /* FirebaseAuth */,
-				F6559DD52A760BE700C1207A /* FirebaseFirestore */,
-				F6559DD72A760BE700C1207A /* FirebaseFunctions */,
-				F6559DD92A760BE700C1207A /* FirebaseMessaging */,
-				F6559DDB2A760BE700C1207A /* FirebaseStorage */,
 				F6559DDE2A760D0600C1207A /* CryptoSwift */,
 				F6F642232AB2050C0009A554 /* Alamofire */,
 				F6F642262AB205370009A554 /* SwiftyJSON */,
+				7BE554362E3E597700C22731 /* FirebaseAnalytics */,
+				7BE554382E3E597700C22731 /* FirebaseAuth */,
+				7BE5543A2E3E597700C22731 /* FirebaseFirestore */,
+				7BE5543C2E3E597700C22731 /* FirebaseStorage */,
+				7BE554702E3E5A6700C22731 /* NMapsMap */,
 			);
 			productName = DeepMind;
 			productReference = F6559D9A2A7607DC00C1207A /* DeepMind.app */;
@@ -864,7 +917,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F6559DC12A7607DF00C1207A /* Build configuration list for PBXNativeTarget "DeepMindTests" */;
 			buildPhases = (
-				C75D2A5496D4AF84211571BC /* [CP] Check Pods Manifest.lock */,
 				F6559DA62A7607DF00C1207A /* Sources */,
 				F6559DA72A7607DF00C1207A /* Frameworks */,
 				F6559DA82A7607DF00C1207A /* Resources */,
@@ -883,11 +935,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F6559DC42A7607DF00C1207A /* Build configuration list for PBXNativeTarget "DeepMindUITests" */;
 			buildPhases = (
-				851FA883092AB87EB42E594D /* [CP] Check Pods Manifest.lock */,
 				F6559DB02A7607DF00C1207A /* Sources */,
 				F6559DB12A7607DF00C1207A /* Frameworks */,
 				F6559DB22A7607DF00C1207A /* Resources */,
-				4817DE3D0221CCE7DAC13724 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -932,10 +982,11 @@
 			);
 			mainGroup = F6559D912A7607DC00C1207A;
 			packageReferences = (
-				F6559DD02A760BE600C1207A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				F6559DDD2A760D0600C1207A /* XCRemoteSwiftPackageReference "CryptoSwift" */,
 				F6F642222AB2050B0009A554 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				F6F642252AB205370009A554 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				7BE554352E3E597700C22731 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				7BE5546F2E3E5A6700C22731 /* XCRemoteSwiftPackageReference "SPM-NMapsMap" */,
 			);
 			productRefGroup = F6559D9B2A7607DC00C1207A /* Products */;
 			projectDirPath = "";
@@ -976,109 +1027,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		4817DE3D0221CCE7DAC13724 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DeepMind-DeepMindUITests/Pods-DeepMind-DeepMindUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DeepMind-DeepMindUITests/Pods-DeepMind-DeepMindUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DeepMind-DeepMindUITests/Pods-DeepMind-DeepMindUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		851FA883092AB87EB42E594D /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-DeepMind-DeepMindUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		947696D8BF03242B1DD92BBD /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DeepMind/Pods-DeepMind-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DeepMind/Pods-DeepMind-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DeepMind/Pods-DeepMind-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C3717B8C7A1F64F9371C0F9B /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-DeepMind-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C75D2A5496D4AF84211571BC /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-DeepMindTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		F6559D962A7607DC00C1207A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -1091,7 +1039,9 @@
 				F6344B2E2A76307A00FA3440 /* StatisticsView.swift in Sources */,
 				F6559DF62A76176600C1207A /* RadioButtonGroup.swift in Sources */,
 				F6559DEC2A76169F00C1207A /* SignInView.swift in Sources */,
+				7BE5546E2E3E5A0D00C22731 /* AES256Util.swift in Sources */,
 				F67F59252A78C8D5005E558A /* PersonGenderModel.swift in Sources */,
+				7BE554342E3E588E00C22731 /* CL01.mlpackage in Sources */,
 				F625726D2ACD3A7D00332661 /* CustomCorner.swift in Sources */,
 				F677CE412AC9C4A70082DDA7 /* ConsultingHelper.swift in Sources */,
 				F695A2CA2ACA7B7D007A3769 /* ConsultingHospitalSelectionView.swift in Sources */,
@@ -1099,6 +1049,27 @@
 				F677CE3E2AC9C1FD0082DDA7 /* ConsultingProView.swift in Sources */,
 				F63DE01D2ADADEA100CE9E97 /* ProStatisticsView.swift in Sources */,
 				F69F94052AA8606A002EE0A3 /* CommonAlertModel.swift in Sources */,
+				7BE554582E3E5A0400C22731 /* CheckBox_w.swift in Sources */,
+				7BE554592E3E5A0400C22731 /* RadioButton.swift in Sources */,
+				7BE5545A2E3E5A0400C22731 /* FittingFontSizeModifier.swift in Sources */,
+				7BE5545B2E3E5A0400C22731 /* KeyboardView.swift in Sources */,
+				7BE5545C2E3E5A0400C22731 /* SplashView.swift in Sources */,
+				7BE5545D2E3E5A0400C22731 /* LinkPreviewRow.swift in Sources */,
+				7BE5545E2E3E5A0400C22731 /* ViewSizeCalculator.swift in Sources */,
+				7BE5545F2E3E5A0400C22731 /* TabManager.swift in Sources */,
+				7BE554602E3E5A0400C22731 /* LAHelper.swift in Sources */,
+				7BE554612E3E5A0400C22731 /* KeyboardResponder.swift in Sources */,
+				7BE554622E3E5A0400C22731 /* AutoSizingTextField.swift in Sources */,
+				7BE554632E3E5A0400C22731 /* PDFViewer.swift in Sources */,
+				7BE554642E3E5A0400C22731 /* CheckBox.swift in Sources */,
+				7BE554652E3E5A0400C22731 /* RadioButtonGroup.swift in Sources */,
+				7BE554662E3E5A0400C22731 /* ActivityViewController.swift in Sources */,
+				7BE554672E3E5A0400C22731 /* ProcessView.swift in Sources */,
+				7BE554682E3E5A0400C22731 /* DeepMindApp.swift in Sources */,
+				7BE554692E3E5A0400C22731 /* CommonAlertModel.swift in Sources */,
+				7BE5546A2E3E5A0400C22731 /* CustomCorner.swift in Sources */,
+				7BE5546B2E3E5A0400C22731 /* BlurView.swift in Sources */,
+				7BE5546C2E3E5A0400C22731 /* ImagePicker.swift in Sources */,
 				F6559DF22A76174A00C1207A /* CheckBox.swift in Sources */,
 				F625725F2ACD349900332661 /* ChatBubbleShape.swift in Sources */,
 				F6FE66E72A8CB3E900AF9D94 /* StatisticsEmotionDataModel.swift in Sources */,
@@ -1108,7 +1079,6 @@
 				F6559DCF2A760A1B00C1207A /* AES256Util.swift in Sources */,
 				F69586572A9EFB1B006F0520 /* ProBadgeView.swift in Sources */,
 				F677CE3B2AC9C1EF0082DDA7 /* ConsultingMainView.swift in Sources */,
-				F674751F2A84AF8F006471CA /* CL02.mlpackage in Sources */,
 				F695A2CC2ACA7BCD007A3769 /* ConsultingHospitalSelectionViewController.swift in Sources */,
 				F6344B222A76304800FA3440 /* HomeView.swift in Sources */,
 				F62753962A80B3CB008104B5 /* DiaryCanvasView.swift in Sources */,
@@ -1121,12 +1091,10 @@
 				F695A2C22ACA6A11007A3769 /* ConsultingDataModel.swift in Sources */,
 				F634C68C2ACBBF3500CE3BDF /* ConsultingMentorListModel.swift in Sources */,
 				F6344B322A76308500FA3440 /* MoreView.swift in Sources */,
-				F67475212A84AF95006471CA /* CL03.mlpackage in Sources */,
 				F62753862A808E17008104B5 /* DiaryContentsModel.swift in Sources */,
 				F625726F2ACD448100332661 /* ConsultingLogView.swift in Sources */,
 				F6A1326F2AB1F12D00F53CF8 /* HomeCommunityListModel.swift in Sources */,
 				F627538A2A8092AF008104B5 /* WriteDiaryMainView.swift in Sources */,
-				F674751D2A84AF86006471CA /* CL01.mlpackage in Sources */,
 				F6559DF82A76176600C1207A /* ProcessView.swift in Sources */,
 				F6344B3E2A764A8500FA3440 /* VersionManagement.swift in Sources */,
 				F6FE66E92A8CBBE300AF9D94 /* InspectionEssentialQuestionView.swift in Sources */,
@@ -1139,6 +1107,7 @@
 				F60A10A42AA5C62400FA9AD9 /* CommunityMainView.swift in Sources */,
 				F64E088B2AD4E9EF00F733B8 /* InspectionResultModel.swift in Sources */,
 				F6BE65202A8DBC5600C40E57 /* EssentialQuestionAnswerModels.swift in Sources */,
+				7BE554322E3E588800C22731 /* CL02.mlpackage in Sources */,
 				F62572652ACD3A1500332661 /* KeyboardView.swift in Sources */,
 				F634C6942ACBE43B00CE3BDF /* ConsultingDetailView.swift in Sources */,
 				F6D3CCAE2A7B3F8900383BBB /* PredictTypeModel.swift in Sources */,
@@ -1186,6 +1155,7 @@
 				F67475232A84B922006471CA /* DetectionResultsView.swift in Sources */,
 				F625725B2ACD30BD00332661 /* ChatDataModel.swift in Sources */,
 				F64E088D2AD4EA1500F733B8 /* InspectionSeverityModel.swift in Sources */,
+				7BE554302E3E588200C22731 /* CL03.mlpackage in Sources */,
 				F695A2D02ACA7C7B007A3769 /* HospitalSelectionMapDragListener.swift in Sources */,
 				F677CE332AC9B0CF0082DDA7 /* UpdateUserInfoModel.swift in Sources */,
 				F695865C2A9EFDA7006F0520 /* UserStatusChangeResultModel.swift in Sources */,
@@ -1355,7 +1325,6 @@
 		};
 		F6559DBF2A7607DF00C1207A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A015F2EF1E564B9F6C2B72B3 /* Pods-DeepMind.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1363,7 +1332,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1000b;
 				DEVELOPMENT_ASSET_PATHS = "\"DeepMind/Preview Content\"";
-				DEVELOPMENT_TEAM = H7245MHSUG;
+				DEVELOPMENT_TEAM = JLQKH6P6PL;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1396,7 +1365,6 @@
 		};
 		F6559DC02A7607DF00C1207A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 49E0E7189FF56824B33F9B4A /* Pods-DeepMind.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1404,7 +1372,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1000b;
 				DEVELOPMENT_ASSET_PATHS = "\"DeepMind/Preview Content\"";
-				DEVELOPMENT_TEAM = H7245MHSUG;
+				DEVELOPMENT_TEAM = JLQKH6P6PL;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1437,7 +1405,6 @@
 		};
 		F6559DC22A7607DF00C1207A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1CDE3D0D18154C9166B0027E /* Pods-DeepMindTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1458,7 +1425,6 @@
 		};
 		F6559DC32A7607DF00C1207A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E4B1B1D7847D50999DF75A1D /* Pods-DeepMindTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1479,7 +1445,6 @@
 		};
 		F6559DC52A7607DF00C1207A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7B5B5AEEE4635B637EEA09E1 /* Pods-DeepMind-DeepMindUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1498,7 +1463,6 @@
 		};
 		F6559DC62A7607DF00C1207A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AD081408EE4DA75EA345B635 /* Pods-DeepMind-DeepMindUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1557,20 +1521,28 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		F6559DD02A760BE600C1207A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+		7BE554352E3E597700C22731 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 10.12.0;
+				minimumVersion = 12.0.0;
+			};
+		};
+		7BE5546F2E3E5A6700C22731 /* XCRemoteSwiftPackageReference "SPM-NMapsMap" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/navermaps/SPM-NMapsMap";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.22.1;
 			};
 		};
 		F6559DDD2A760D0600C1207A /* XCRemoteSwiftPackageReference "CryptoSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/krzyzanowskim/CryptoSwift.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.7.2;
+				branch = main;
+				kind = branch;
 			};
 		};
 		F6F642222AB2050B0009A554 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
@@ -1592,35 +1564,30 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		F6559DD12A760BE700C1207A /* FirebaseAnalytics */ = {
+		7BE554362E3E597700C22731 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F6559DD02A760BE600C1207A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 7BE554352E3E597700C22731 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAnalytics;
 		};
-		F6559DD32A760BE700C1207A /* FirebaseAuth */ = {
+		7BE554382E3E597700C22731 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F6559DD02A760BE600C1207A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 7BE554352E3E597700C22731 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
 		};
-		F6559DD52A760BE700C1207A /* FirebaseFirestore */ = {
+		7BE5543A2E3E597700C22731 /* FirebaseFirestore */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F6559DD02A760BE600C1207A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 7BE554352E3E597700C22731 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
 		};
-		F6559DD72A760BE700C1207A /* FirebaseFunctions */ = {
+		7BE5543C2E3E597700C22731 /* FirebaseStorage */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F6559DD02A760BE600C1207A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseFunctions;
-		};
-		F6559DD92A760BE700C1207A /* FirebaseMessaging */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F6559DD02A760BE600C1207A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseMessaging;
-		};
-		F6559DDB2A760BE700C1207A /* FirebaseStorage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F6559DD02A760BE600C1207A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 7BE554352E3E597700C22731 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		7BE554702E3E5A6700C22731 /* NMapsMap */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7BE5546F2E3E5A6700C22731 /* XCRemoteSwiftPackageReference "SPM-NMapsMap" */;
+			productName = NMapsMap;
 		};
 		F6559DDE2A760D0600C1207A /* CryptoSwift */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -110,9 +110,11 @@ struct WriteDiaryMainView: View {
             }
             .navigationTitle(Text("하루 일기 작성하기"))
                 .toolbar(content: {
-                    ToolbarItemGroup(placement: .topBarTrailing, content: {
-                        Button("닫기"){
+                    ToolbarItemGroup(placement: .topBarLeading, content: {
+                        Button(action: {
                             self.presentationMode.wrappedValue.dismiss()
+                        }){
+                            Image(systemName: "xmark")
                         }
                     })
                 })

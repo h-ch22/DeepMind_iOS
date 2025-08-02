@@ -8,6 +8,7 @@
 import HealthKit
 import FirebaseFirestore
 import Firebase
+import FirebaseAuth
 
 class HealthDataHelper: ObservableObject{
     @Published var dayLightTime: Double = 0
