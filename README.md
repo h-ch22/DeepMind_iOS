@@ -4,7 +4,93 @@
 ### Check your psychological status with ML, based on YOLOv8<br>
 ⓒ 2023. Changjin Ha, [Yujee-Chang](https://github.com/yujeecatherine). All Rights Reserved.<br><br>
 
-## Features</br>
+## 🚀 Tech Stack
+
+### Client (iOS)
+
+<img src="https://img.shields.io/badge/Swift-df5d43?style=flat-square&logo=Swift&logoColor=white"/></a>
+<img src="https://img.shields.io/badge/SwiftUI-df5d43?style=flat-square&logo=Swift&logoColor=white"/></a>
+
+### Backend (BaaS & Serverless)
+
+- Firebase Firestore: Realtime chat and sync inspection/health data
+- Firebase Cloud Functions: Process backend business logic to reduce client burden
+- Firebase Cloud Messaging: Send push notifications to target user when new consultation or chat is updated
+
+### AI
+
+- PyTorch: To train and evaluate YOLO models
+- CoreML: Maximize performance for On-Device AI
+
+### External API
+
+- Naver Maps API (Render location based markers)
+
+
+## 🏗️ Architecture
+
+```mermaid
+graph TD
+    %% AI Model pipeline
+    subgraph AIPipeline [🧠 AI Pipeline]
+        PyTorch[PyTorch YOLO]
+        Export[CoreMLTools / Export]
+        PyTorch -->|Train & Eval| Export
+    end
+
+    %% Client
+    subgraph Client [📱 iOS App]
+        UI[SwiftUI]
+        CoreML[CoreML / Vision]
+        State[State Management]
+
+        Export -.->|Deploy Model| CoreML
+        CoreML <-->|On-Device Inference| State
+        UI <--> State
+    end
+
+    %% Backend & Infra
+    subgraph Serverless [☁️ Firebase BaaS]
+        Auth[Firebase Auth]
+        DB[Firebase Firestore]
+        Storage[Firebase Storage]
+        Functions[Firebase Cloud Functions]
+        FCM[Firebase Cloud Messaging]
+    end
+
+    %% External API
+    subgraph External [External APIs]
+        Map[Naver Maps API]
+    end
+
+    %% Data flow
+    State <--> Auth
+    State <--> DB
+    State <--> Storage
+    State --> Map
+
+    %% Push notifications and BE logic flow
+    DB -->|Event Trigger| Functions
+    Functions -->|Send Push Request| FCM
+    FCM -.->|Push Notification| UI
+```
+
+## 🧱 If I were to rebuild it in 2026
+
+| Layer | Original | 2026 Pick | Reason |
+|---|---|---|---|
+| Package Management | CocoaPods + SPM | SPM Only | Official support of NMapsMap |
+| Encrypt | CryptoSwift (`main` branch) | Apple CryptoKit | First-party, Persistence to Secure Enclave, Remove branch pin |
+| CoreML Execution | Sync for every call new instance | Cache with `actor` + `MLModelConfiguration(.all)` | Accelerate ANE, Thread safety, Reusable |
+| VNCoreMLRequest | Sync `handler.perform([request])` | `async let` + `VNImageRequestHandler.perform` | Async, No UI blocking |
+| PDF generation | CoreGraphics | SwiftUI View -> `UIHostingController` -> PDF renderer | 1/5 code, preview available |
+| Authorization session | UserDefaults (Encrypt credentials) | Use Firebase Auth's own session | Safety |
+| Authorization | Callback based | `async throws` | Delete nested callbacks, clearable error handling |
+
+## ✨ Core Features</br>
+<details>
+<summary>Show Contents</summary>
+
 #### Home</br>
 > Check your latest inspection results, emotion statistics, health data and Latest informations at a glance.</br>
 
@@ -154,3 +240,5 @@ The simplest consultation solution for professionals. </br>
 
  * Required iOS/iPadOS 17.0 or up. </br>
  * 1GB or higher storage required for install application.
+
+</details>
